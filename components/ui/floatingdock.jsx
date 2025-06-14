@@ -1,15 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import {
-  IconLayoutNavbarCollapse
-} from "@tabler/icons-react";
+import { IconLayoutNavbarCollapse } from "@tabler/icons-react";
 import {
   AnimatePresence,
   motion,
   useMotionValue,
   useSpring,
-  useTransform
+  useTransform,
 } from "framer-motion";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -52,17 +50,30 @@ const FloatingDockMobile = ({ items = [], className }) => {
                 }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
               >
-                <Link
-                  href={item.href}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
-                >
-                  <div className="h-4 w-4">{item.icon}</div>
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.href}
+                    target={item.download ? "_self" : "_blank"}
+                    rel={item.download ? undefined : "noopener noreferrer"}
+                    download={item.download ? true : undefined}
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+                  >
+                    <div className="h-4 w-4">{item.icon}</div>
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+                  >
+                    <div className="h-4 w-4">{item.icon}</div>
+                  </Link>
+                )}
               </motion.div>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
+
       <button
         onClick={() => setOpen(!open)}
         className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800"
@@ -92,7 +103,7 @@ const FloatingDockDesktop = ({ items = [], className }) => {
   );
 };
 
-function IconContainer({ mouseX, title, icon, href }) {
+function IconContainer({ mouseX, title, icon, href, external, download }) {
   const ref = useRef(null);
   const [hovered, setHovered] = useState(false);
 
@@ -128,8 +139,19 @@ function IconContainer({ mouseX, title, icon, href }) {
     damping: 12,
   });
 
+  const props = external
+    ? {
+        href,
+        target: download ? "_self" : "_blank",
+        rel: download ? undefined : "noopener noreferrer",
+        download: download ? true : undefined,
+      }
+    : { href };
+
+  const Wrapper = external ? "a" : Link;
+
   return (
-    <Link href={href} target="">
+    <Wrapper {...props}>
       <motion.div
         ref={ref}
         style={{ width, height }}
@@ -156,6 +178,6 @@ function IconContainer({ mouseX, title, icon, href }) {
           {icon}
         </motion.div>
       </motion.div>
-    </Link>
+    </Wrapper>
   );
 }

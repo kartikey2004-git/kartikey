@@ -16,19 +16,24 @@ export default function ThemeToggle() {
 
   return (
     <div className="fixed top-4 right-4 z-50">
-      <motion.button
-        whileTap={{ rotate: 360, scale: 0.9 }}
-        transition={{ type: 'spring', stiffness: 300 }}
+      <button
         onClick={() => setTheme(isDark ? 'light' : 'dark')}
-        className="p-2 rounded-full border border-border hover:border-primary transition-colors duration-300 bg-background shadow-md hover:shadow-lg"
-        aria-label="Toggle theme"
+        className="relative flex items-center w-14 h-8 rounded-full border border-border bg-background shadow-sm transition-colors duration-300 hover:ring-1 hover:ring-primary/40"
+        aria-label="Toggle Theme"
       >
-        {isDark ? (
-          <MoonIcon className="h-6 w-6 text-yellow-300 transition duration-300" />
-        ) : (
-          <SunIcon className="h-6 w-6 text-orange-400 transition duration-300" />
-        )}
-      </motion.button>
+        {/* Handle */}
+        <motion.div
+          className="absolute top-[2px] left-[2px] w-6 h-6 rounded-full flex items-center justify-center"
+          animate={{ x: isDark ? 24 : 0 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        >
+          {isDark ? (
+            <MoonIcon className="h-5 w-5 text-yellow-300" />
+          ) : (
+            <SunIcon className="h-5 w-5 text-orange-400" />
+          )}
+        </motion.div>
+      </button>
     </div>
   );
 }
