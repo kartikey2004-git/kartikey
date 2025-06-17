@@ -24,7 +24,7 @@ const ChapterSection = () => {
             <Link href={item.link} target="_blank">
               <PinContainer title={item.title} href={item.link}>
                 <div
-                  className={`flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 bg-card border border-border rounded-xl ${
+                  className={`flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2  rounded-xl ${
                     idx == 1
                       ? "md:w-[18rem] md:h-[22rem] w-[16rem] h-[20rem]"
                       : "w-[16rem] h-[20rem]"

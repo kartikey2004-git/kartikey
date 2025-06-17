@@ -6,7 +6,7 @@ import ThemeToggle from "@/components/toggle-theme";
 import UiLibraries from "@/components/UI-libraries";
 
 import Footer from "@/components/Footer";
-import { AnimatedTestimonialsDemo} from "@/components/Testimonial";
+// import { AnimatedTestimonialsDemo} from "@/components/Testimonial";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <TechStack />
       <Me />
       <UiLibraries />
-      <AnimatedTestimonialsDemo/>
+      {/* <AnimatedTestimonialsDemo/> */}
       <Footer />
     </>
   );

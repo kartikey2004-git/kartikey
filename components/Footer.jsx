@@ -19,7 +19,7 @@ const Footer = () => {
       {/* Content */}
       <div className="relative z-10 text-center">
         <h1 className="text-4xl font-greatVibes mb-4">Kartikey Bhatnagar</h1>
-        <p className="text-sm bg-background text-foreground">© 2025</p>
+        <p className="text-sm text-foreground">© 2025</p>
       </div>
     </footer>
   );

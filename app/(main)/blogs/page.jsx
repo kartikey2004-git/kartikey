@@ -1,35 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-const blogs = [
-  {
-    title: "Bantr Project Breakdown: How I Built a Chat App from Scratch",
-    description:
-      "Ever since I started coding, I've been fascinated by how real-time communication works. This breakdown shares how I built my own chat app from the ground up.",
-    tags: ["Coding", "Full Stack", "Chat"],
-    type: "Project",
-    date: "Nov 8",
-  },
-  {
-    title: "Designing Our Agency's Website",
-    description:
-      "Creating our agency website was essential for presenting our work and allowing clients easy access. Here’s the design journey behind it.",
-    tags: ["Coding", "Frontend", "Design"],
-    type: "Project",
-    date: "Jul 27",
-  },
-  {
-    title: "Zenos AI Project Breakdown: Building a Real-Time AI Chat",
-    description:
-      "I've always wanted to build something in full-stack development that could offer real utility. Here's how I built Zenos AI.",
-    tags: ["Coding", "Full Stack"],
-    type: "Project",
-    date: "May 12",
-  },
-  // Add more blog entries here...
-];
+import { blogs } from "@/app/data";
 
 const Blogs = () => {
   return (
@@ -51,7 +24,7 @@ const Blogs = () => {
             <Link
               href="#"
               key={index}
-              className="group relative bg-background border border-muted-foreground/10 rounded-xl p-6 transition-transform hover:-translate-y-1 hover:shadow-xl hover:border-muted-foreground/20"
+              className="group relative bg-background border-2 border-muted-foreground/20 rounded-xl p-6 transition-transform hover:-translate-y-1 hover:shadow-xl hover:border-muted-foreground/20"
             >
               <div className="flex justify-between items-center mb-3">
                 <span className="text-xs font-medium uppercase tracking-wide text-orange-400 bg-orange-400/10 px-2 py-0.5 rounded">

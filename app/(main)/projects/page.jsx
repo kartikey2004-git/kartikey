@@ -4,82 +4,13 @@ import {
   Modal,
   ModalBody,
   ModalContent,
-  ModalFooter,
   ModalTrigger,
 } from "@/components/ui/animated-modal";
 
-import { motion } from "motion/react";
+import { projects } from "@/app/data";
 import Image from "next/image";
-import CleanCarousel, { Carousel } from "@/components/ui/carousel";
-
-const projects = [
-  {
-    title: "Luvo Web",
-    description:
-      "Luvo Web is my web development agency focused on crafting responsive and engaging websites.",
-    tech: ["React", "Tailwind", "Vite", "Figma"],
-    image: "/ghantee.jpg",
-    link: "https://luvo.in",
-  },
-  {
-    title: "Bantr - Chatting App",
-    description:
-      "Real-time chatting app similar to Discord. Servers, channels, DMs, and more.",
-    tech: ["React", "Node.js", "Socket.io", "Express.js"],
-    image: "/mountain.jpeg", // replace with your image
-    link: "https://bantr.in",
-  },
-  {
-    title: "Bantr - Chatting App",
-    description:
-      "Real-time chatting app similar to Discord. Servers, channels, DMs, and more.",
-    tech: ["React", "Node.js", "Socket.io", "Express.js"],
-    image: "/mountain.jpeg", // replace with your image
-    link: "https://bantr.in",
-  },
-  {
-    title: "Bantr - Chatting App",
-    description:
-      "Real-time chatting app similar to Discord. Servers, channels, DMs, and more.",
-    tech: ["React", "Node.js", "Socket.io", "Express.js"],
-    image: "/mountain.jpeg", // replace with your image
-    link: "https://bantr.in",
-  },
-  // Add 6+ more projects here...
-];
-
-const slideData = [
-  {
-    title: "Mystic Mountains",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1494806812796-244fe51b774d?q=80&w=3534&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Urban Dreams",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1518710843675-2540dd79065c?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Neon Nights",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1590041794748-2d8eb73a571c?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    title: "Desert Whispers",
-    button: "Explore Component",
-    src: "https://images.unsplash.com/photo-1679420437432-80cfbf88986c?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
 
 const Projects = () => {
-  const images = [
-    "https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=3425&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  ];
-
   return (
     <div className="w-full min-h-screen bg-background text-foreground py-20 px-4 md:px-10">
       <h2 className="text-3xl md:text-5xl font-bold bg-background text-foreground  mb-12 text-center">
@@ -90,29 +21,19 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-background text-foreground  border rounded-2xl overflow-hidden shadow-md"
+            className="bg-background text-foreground border rounded-xl overflow-hidden shadow-md flex flex-col"
           >
-            <div className="relative h-[250px] w-full">
+            <div className="w-full overflow-hidden relative">
               <Image
                 src={project.image}
                 alt={project.title}
-                fill
-                className="object-cover"
+                width={800}
+                height={450}
+                className="w-full h-auto object-contain rounded-t-2xl"
               />
             </div>
 
             <div className="p-6">
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.tech.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="text-xs bg-background text-foreground  px-3 py-1 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
               <h3 className="text-xl font-semibold bg-background text-foreground mb-2">
                 {project.title}
               </h3>
@@ -123,16 +44,71 @@ const Projects = () => {
 
               <Modal>
                 <ModalTrigger>
-                  <span className="inline-block px-4 py-2 rounded-lg border bg-background text-foreground  hover:bg-slate-100 hover:text-black transition">
-                    View Project
+                  <span className="inline-block px-4 py-2 rounded-lg border bg-background text-foreground hover:bg-black hover:text-white dark:hover:bg-slate-100 dark:hover:text-black transition">
+                    View Projects
                   </span>
                 </ModalTrigger>
 
                 <ModalBody>
                   <ModalContent>
-                    <section className="min-h-screen  text-foreground">
-                      <CleanCarousel />
-                    </section>
+                    <div className="hide-scrollbar  max-w-4xl w-full max-h-[90vh] mx-auto p-4 sm:p-6 rounded-xl shadow-xl bg-background text-foreground overflow-y-auto space-y-6 scroll-smooth">
+                      {/* Image */}
+                      <div className="relative w-full h-52 sm:h-64 md:h-80 overflow-hidden rounded-lg">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-contain"
+                          priority
+                        />
+                      </div>
+
+                      {/* Title + Description */}
+                      <div className="text-center space-y-2 px-2">
+                        <h2 className="text-xl sm:text-2xl font-bold">
+                          {project.title}
+                        </h2>
+                        <p className="text-muted-foreground text-sm sm:text-base">
+                          {project.description}
+                        </p>
+                      </div>
+
+                      {/* Tech Stack */}
+                      <div className="text-center space-y-1 px-2">
+                        <h3 className="font-semibold">Tech Stack:</h3>
+                        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+                          {project.tech.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 text-sm bg-muted text-foreground rounded-full border border-border"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Features */}
+                      <div className="text-center space-y-1 px-2">
+                        <h3 className="font-semibold">Features:</h3>
+                        <ul className="list-disc list-inside text-left max-w-md mx-auto text-muted-foreground text-sm sm:text-base">
+                          {project.features.map((feature, idx) => (
+                            <li key={idx}>{feature}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="flex justify-end">
+                        <a
+                          href={project.demoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block px-5 py-2 font-medium text-white bg-black rounded-lg mb-20 hover:bg-neutral-800 transition"
+                        >
+                          Demo
+                        </a>
+                      </div>
+                    </div>
                   </ModalContent>
                 </ModalBody>
               </Modal>

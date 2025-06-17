@@ -48,7 +48,7 @@ const techCategories = [
   {
     name: "Learning",
     icon: <BiCodeAlt size={28} />,
-    description: "Docker, Prisma, GraphQL, Redis",
+    description: "Prisma, Redis",
     color: "bg-pink-600",
   },
 ];

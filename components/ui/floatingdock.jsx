@@ -36,47 +36,53 @@ const FloatingDockMobile = ({ items = [], className }) => {
         {open && (
           <motion.div
             layoutId="nav"
-            className="absolute inset-x-0 bottom-full mb-2 flex flex-col gap-2"
+            className="absolute bottom-full inset-x-0 mb-3 px-2"
           >
-            {items.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{
-                  opacity: 0,
-                  y: 10,
-                  transition: { delay: idx * 0.05 },
-                }}
-                transition={{ delay: (items.length - 1 - idx) * 0.05 }}
-              >
-                {item.external ? (
-                  <a
-                    href={item.href}
-                    target={item.download ? "_self" : "_blank"}
-                    rel={item.download ? undefined : "noopener noreferrer"}
-                    download={item.download ? true : undefined}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
+            <motion.div
+              className="flex items-center justify-center gap-3 rounded-xl  p-2"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+            >
+              {items.map((item, idx) => {
+                const IconWrapper = item.external ? "a" : Link;
+                const props = item.external
+                  ? {
+                      href: item.href,
+                      target: item.download ? "_self" : "_blank",
+                      rel: item.download ? undefined : "noopener noreferrer",
+                      download: item.download ? true : undefined,
+                    }
+                  : { href: item.href };
+
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{
+                      opacity: 0,
+                      y: 10,
+                      transition: { delay: idx * 0.05 },
+                    }}
+                    transition={{ delay: idx * 0.05 }}
                   >
-                    <div className="h-4 w-4">{item.icon}</div>
-                  </a>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-900"
-                  >
-                    <div className="h-4 w-4">{item.icon}</div>
-                  </Link>
-                )}
-              </motion.div>
-            ))}
+                    <IconWrapper {...props}>
+                      <div className="h-8 w-8 flex items-center justify-center rounded-full bg-white dark:bg-neutral-800 border border-border">
+                        <div className="h-4 w-4">{item.icon}</div>
+                      </div>
+                    </IconWrapper>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-50 dark:bg-neutral-800"
+        className="mt-2 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800 border"
       >
         <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
       </button>
