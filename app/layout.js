@@ -28,6 +28,7 @@ import {
   IconDownload,
 } from "@tabler/icons-react";
 import { FloatingDock } from "@/components/ui/floatingdock";
+import Navbar from "@/components/Navbar";
 
 export default function RootLayout({ children }) {
   const links = [
@@ -91,22 +92,28 @@ export default function RootLayout({ children }) {
       ),
       href: "/resume.pdf",
       external: true,
-      download: true, 
+      download: true,
     },
   ];
 
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <Providers>{children}</Providers>
-        <div className="fixed z-50 w-full flex justify-center md:bottom-6 bottom-4 md:left-0 md:right-0 md:px-0 px-4 pointer-events-none">
-          <FloatingDock
-            items={links}
-            desktopClassName="hidden md:flex pointer-events-auto"
-            mobileClassName="flex md:hidden pointer-events-auto"
-          />
+
+        <Navbar/>
+
+        {/* Floating Dock */}
+        <div
+          className="
+        fixed z-50 w-full flex justify-center 
+        bottom-[env(safe-area-inset-bottom,1rem)]
+        left-0 px-4 sm:px-6 lg:px-8
+      "
+        >
+          <FloatingDock items={links} desktopClassName="hidden md:flex" />
         </div>
       </body>
     </html>

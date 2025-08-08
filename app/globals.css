@@ -141,68 +141,41 @@
   }
 }
 
-
 /* global.css (or whatever file you’re importing) */
 
-
-
 .dark .grid-background {
-  position: absolute;    /* was fixed */
-  top: 0;
-  left: 0;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: 
-    linear-gradient(
+  background: linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.1) 1px,
+      rgba(255, 255, 255, 0.01) 1px,
       transparent 1px
     ),
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.1) 1px,
-      transparent 1px
-    );
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
-  z-index: 0;             /* sits below content */
+  z-index: 0;
 }
 
 .dark .grid-background::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* dark vignette */
-  background: radial-gradient(
-    circle,
-    transparent,
-    rgba(0, 0, 0, 0.9)
-  );
+  inset: 0;
+  background: radial-gradient(circle at center);
   pointer-events: none;
 }
 
-
-
 .grid-background {
-  position: absolute; /* or fixed if you want it locked */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background:
-    linear-gradient(
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
       to right,
-      rgba(0, 0, 0, 0.2) 1px,
+      rgba(0, 0, 0, 0.08) 1px,
       transparent 1px
     ),
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.2) 1px,
-      transparent 1px
-    );
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
   z-index: 0;
@@ -211,24 +184,15 @@
 .grid-background::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* subtle light vignette */
-  background: radial-gradient(
-    circle,
-    transparent,
-    rgba(255, 255, 255, 0.8)
-  );
+  inset: 0;
+  background: radial-gradient(circle at center);
   pointer-events: none;
 }
-
 
 /* globals.css */
 .hide-scrollbar {
   scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE/Edge */
+  -ms-overflow-style: none; /* IE/Edge */
 }
 
 .hide-scrollbar::-webkit-scrollbar {

@@ -3,7 +3,7 @@ export const Chapters = [
     id: 1,
     title: "React Bits",
     des: "In ReactBits, I prioritize simplicity and performance, empowering developers to build consistent, functional UIs with minimal effort.",
-    img: "/a.png",
+    img: "/a.webp",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
     link: "https://www.reactbits.dev/",
   },
@@ -11,7 +11,7 @@ export const Chapters = [
     id: 2,
     title: "Acertinity UI",
     des: "With Acertinity UI, I craft visually refined and accessible components, enabling teams to deliver polished experiences with ease and precision.",
-    img: "/b.png",
+    img: "/b.webp",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
     link: "https://ui.aceternity.com/",
   },
@@ -19,7 +19,7 @@ export const Chapters = [
     id: 3,
     title: "Shadcn UI",
     des: "In Shadcn UI, we combine utility-first styling with accessible components, allowing developers to ship modern, theme-ready interfaces effortlessly.",
-    img: "/c.png",
+    img: "/c.webp",
     iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
     link: "https://ui.shadcn.com/",
   },
@@ -31,35 +31,35 @@ export const projects = [
     description:
       "Trimmr is a clean and efficient URL shortener that transforms long links into concise, shareable URLs with real-time redirection and tracking support.",
     tech: ["React", "Tailwind", "Vite"],
-    image: "/url.png",
+    image: "/url.webp",
     features: [
       "Instant URL shortening",
       "Custom link aliasing",
       "Real-time analytics & click tracking",
       "Secure redirection with validation",
     ],
-    demoLink: "",
+    demoLink: "https://tiny-ur-lz.vercel.app/",
   },
   {
     title: "CareerConnect",
     description:
       "CareerConnect is a dynamic job portal platform that bridges the gap between recruiters and job seekers, featuring real-time applications, role-based access, and intuitive user experience.",
     tech: ["React", "Tailwind", "Vite"],
-    image: "/job.png",
+    image: "/job.webp",
     features: [
       "Role-based access for recruiters & applicants",
       "Live job application tracking",
       "Personalized job dashboard",
       "Clean, responsive user interface",
     ],
-    demoLink: "",
+    demoLink: "https://career-connect-sigma.vercel.app/",
   },
   {
     title: "Schedulerr",
     description:
       "Schedulerr is a smart event scheduling app designed to streamline planning, send invites, and sync seamlessly with calendars, helping users organize events with ease and clarity.",
     tech: ["React", "Tailwind", "Vite"],
-    image: "/connect.png",
+    image: "/connect.webp",
     features: [
       "Smart calendar integration",
       "Real-time invite & RSVP system",
@@ -67,6 +67,26 @@ export const projects = [
       "Interactive and responsive UI",
     ],
     demoLink: "",
+  },
+  {
+    title: "AI Resume Analyzer",
+    description:
+      "AI Resume Analyzer streamlines resume improvements by scoring, error detection, and job description matching—all deployed seamlessly on Puter.js.",
+    tech: [
+      "React",
+      "Puter.js",
+      "Multer",
+      "Claude Sonnet-3-7",
+      "Tailwind CSS",
+    ],
+    image: "/resumeAi.webp",
+    features: [
+      "Secure resume file upload and storage with Puter.js and Multer",
+      "AI-driven resume scoring and error detection using Claude Sonnet-3-7",
+      "Job description relevance matching for personalized feedback",
+      "Detailed section-wise resume improvement suggestions",
+    ],
+    demoLink: "https://puter.com/app/ai-resume-analyzerr",
   },
 ];
 

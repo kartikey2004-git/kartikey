@@ -7,11 +7,8 @@ import {
   Great_Vibes,
 } from "next/font/google";
 
-import {
-  TypewriterEffect,
-  TypewriterEffectSmooth,
-} from "./ui/typewriter-effect";
-import { FaRegHandPointDown } from "react-icons/fa";
+import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
+
 
 const greatVibes = Great_Vibes({
   subsets: ["latin"],
@@ -40,6 +37,8 @@ const arizonia = Arizonia({
 const Hero = () => {
   const baseClass = "font-light text-black dark:text-white";
 
+  
+
   const words = [
     { text: "Innovating ", className: baseClass },
     { text: "through", className: baseClass },
@@ -55,34 +54,26 @@ const Hero = () => {
   return (
     <>
       <section
-        className={`min-h-screen w-full flex items-center justify-center text-center px-4 bg-background text-foreground relative
-        ${greatVibes.variable} ${dancingScript.variable} ${parisienne.variable} ${arizonia.variable}`}
+        className={`relative min-h-screen w-full flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 px-6 sm:px-10 lg:px-16 xl:px-24 bg-background text-foreground overflow-hidden
+      ${greatVibes.variable} ${dancingScript.variable} ${parisienne.variable} ${arizonia.variable}`}
       >
         {/* Background grid */}
         <div className="absolute inset-0 grid-background z-0" />
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full">
-          <h1 className="text-3xl sm:text-4xl font-dancing font-semibold mb-8">
-            Hi, I&apos;m&nbsp;&nbsp;
-            <span className="text-5xl sm:text-6xl font-normal">
+        <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left max-w-2xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-dancing font-semibold mb-4 leading-tight">
+            Hi, I&apos;m{" "}
+            <span className="block text-5xl sm:text-6xl lg:text-7xl font-normal">
               Kartikey Bhatnagar
             </span>
           </h1>
 
-          <h2 className="text-3xl sm:text-4xl font-greatVibes mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-greatVibes mb-8 opacity-90">
             A Full Stack Web Developer
           </h2>
 
           <TypewriterEffectSmooth words={words} />
-        </div>
-
-        <div
-          className="absolute bottom-4 sm:bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-black dark:text-white z-20"
-          aria-hidden="true"
-          title="Scroll Down"
-        >
-          <FaRegHandPointDown className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 opacity-80" />
         </div>
       </section>
     </>

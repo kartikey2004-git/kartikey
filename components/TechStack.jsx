@@ -30,7 +30,7 @@ const techCategories = [
   {
     name: "Database",
     icon: <FaDatabase size={28} />,
-    description: "Firebase, Supabase, MongoDB, PostgreSQL",
+    description: "Appwrite, Supabase, MongoDB, PostgreSQL",
     color: "bg-yellow-700",
   },
   {
@@ -40,15 +40,15 @@ const techCategories = [
     color: "bg-red-600",
   },
   {
-    name: "Misc",
+    name: "Tools",
     icon: <FaHammer size={28} />,
-    description: "Zustand, ShadCN, Framer Motion, Clerk, Git",
+    description: "Zustand, ShadCN, Framer Motion, Clerk, Prisma ,Git, Postman",
     color: "bg-purple-600",
   },
   {
     name: "Learning",
     icon: <BiCodeAlt size={28} />,
-    description: "Prisma, Redis",
+    description: "Kafka,Redis,RabbitMQ",
     color: "bg-pink-600",
   },
 ];
@@ -59,7 +59,7 @@ export default function TechStack() {
       {/* Header */}
       <h2
         className={cn(
-          "text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10",
+          "text-3xl sm:text-4xl md:text-5xl font-semibold text-center mb-10",
           dancingScript.variable
         )}
       >

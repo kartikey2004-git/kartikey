@@ -1,122 +1,77 @@
 "use client";
 import React from "react";
-import {
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalTrigger,
-} from "@/components/ui/animated-modal";
-
 import { projects } from "@/app/data";
 import Image from "next/image";
 
 const Projects = () => {
   return (
-    <div className="w-full min-h-screen bg-background text-foreground py-20 px-4 md:px-10">
-      <h2 className="text-3xl md:text-5xl font-bold bg-background text-foreground  mb-12 text-center">
+    <section className="w-full min-h-screen bg-background text-foreground py-20 px-6 md:px-16">
+      <h2 className="text-4xl md:text-6xl font-semibold mb-16 text-center tracking-wide">
         Projects
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
         {projects.map((project, index) => (
-          <div
+          <article
             key={index}
-            className="bg-background text-foreground border rounded-xl overflow-hidden shadow-md flex flex-col"
+            className="bg-background border border-border rounded-2xl shadow-lg flex flex-col transition-transform hover:scale-[1.02] hover:shadow-2xl"
           >
-            <div className="w-full overflow-hidden relative">
+            {/* <div className="relative w-full h-64 overflow-hidden rounded-3xl bg-background shadow-sm flex items-center justify-center">
               <Image
                 src={project.image}
                 alt={project.title}
-                width={800}
-                height={450}
-                className="w-full h-auto object-contain rounded-t-2xl"
+                fill
+                className="object-contain max-h-full max-w-full"
+                priority={index < 3}
+                sizes="(max-width: 768px) 100vw, 33vw"
+                draggable={false}
               />
-            </div>
+            </div> */}
+            <div className="p-6 flex flex-col flex-grow">
+              <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
 
-            <div className="p-6">
-              <h3 className="text-xl font-semibold bg-background text-foreground mb-2">
-                {project.title}
-              </h3>
-
-              <p className="text-gray-400 text-sm mb-4">
+              <p className="text-gray-400 mb-4 leading-relaxed flex-grow">
                 {project.description}
               </p>
 
-              <Modal>
-                <ModalTrigger>
-                  <span className="inline-block px-4 py-2 rounded-lg border bg-background text-foreground hover:bg-black hover:text-white dark:hover:bg-slate-100 dark:hover:text-black transition">
-                    View Projects
-                  </span>
-                </ModalTrigger>
+              {/* Tech Stack */}
+              <div className="mb-4">
+                <h4 className="font-semibold mb-2">Tech Stack</h4>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 text-sm bg-muted text-foreground rounded-full border border-border"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-                <ModalBody>
-                  <ModalContent>
-                    <div className="hide-scrollbar  max-w-4xl w-full max-h-[90vh] mx-auto p-4 sm:p-6 rounded-xl shadow-xl bg-background text-foreground overflow-y-auto space-y-6 scroll-smooth">
-                      {/* Image */}
-                      <div className="relative w-full h-52 sm:h-64 md:h-80 overflow-hidden rounded-lg">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-contain"
-                          priority
-                        />
-                      </div>
+              {/* Features */}
+              <div className="mb-6">
+                <h4 className="font-semibold mb-2">Features</h4>
+                <ul className="list-disc list-inside text-muted-foreground text-sm max-h-24 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-background">
+                  {project.features.map((feature, idx) => (
+                    <li key={idx}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
 
-                      {/* Title + Description */}
-                      <div className="text-center space-y-2 px-2">
-                        <h2 className="text-xl sm:text-2xl font-bold">
-                          {project.title}
-                        </h2>
-                        <p className="text-muted-foreground text-sm sm:text-base">
-                          {project.description}
-                        </p>
-                      </div>
-
-                      {/* Tech Stack */}
-                      <div className="text-center space-y-1 px-2">
-                        <h3 className="font-semibold">Tech Stack:</h3>
-                        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-                          {project.tech.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-3 py-1 text-sm bg-muted text-foreground rounded-full border border-border"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Features */}
-                      <div className="text-center space-y-1 px-2">
-                        <h3 className="font-semibold">Features:</h3>
-                        <ul className="list-disc list-inside text-left max-w-md mx-auto text-muted-foreground text-sm sm:text-base">
-                          {project.features.map((feature, idx) => (
-                            <li key={idx}>{feature}</li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="flex justify-end">
-                        <a
-                          href={project.demoLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block px-5 py-2 font-medium text-white bg-black rounded-lg mb-20 hover:bg-neutral-800 transition"
-                        >
-                          Demo
-                        </a>
-                      </div>
-                    </div>
-                  </ModalContent>
-                </ModalBody>
-              </Modal>
+              <a
+                href={project.demoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-auto px-6 py-3 text-center bg-black text-white rounded-lg font-semibold hover:bg-neutral-800 transition"
+              >
+                View Live Demo
+              </a>
             </div>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
