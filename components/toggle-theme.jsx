@@ -15,7 +15,7 @@ export default function ThemeToggle() {
   const isDark = (theme === 'system' ? resolvedTheme : theme) === 'dark';
 
   return (
-    <div className="fixed top-4 right-4 z-50">
+    <div className="fixed top-4 left-4 z-50">
       <button
         onClick={() => setTheme(isDark ? 'light' : 'dark')}
         className="relative flex items-center w-14 h-8 rounded-full border border-border bg-background shadow-sm transition-colors duration-300 hover:ring-1 hover:ring-primary/40"

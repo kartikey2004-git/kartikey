@@ -12,13 +12,11 @@ export default function Home() {
   return (
     <>
       <ThemeToggle />
-      
       <Hero />
       <About />
       <TechStack />
       <Me />
       <UiLibraries />
-      {/* <AnimatedTestimonialsDemo/> */}
       <Footer />
     </>
   );
