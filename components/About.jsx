@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import { SiCodesignal } from "react-icons/si";
 import { Parisienne } from "next/font/google";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const parisienne = Parisienne({
@@ -14,22 +13,21 @@ const parisienne = Parisienne({
 
 const roles = [
   {
-    title: "GeeksforGeeks ABESEC Technical Coordinator",
+    title: "GFG ABESEC Technical Coordinator",
     duration: "Oct 2024 – Present",
     points: [
-      "Collaborated effectively with team members to ensure successful project outcomes.",
-
-      "Planned technical events and workshops.",
-      "Helped manage all technical community initiatives.",
+      "Led and supported core tech projects.",
+      "Planned events, contests, and workshops.",
+      "Managed community tasks and initiatives.",
     ],
   },
   {
     title: "Elixir Tech Community Member",
     duration: "Dec 2023 – Present",
     points: [
-      "Contribute in website for Elixir Community.",
-      "Used React, Next.js, and Tailwind.",
-      "Collaborated on new features.",
+      "Worked on the Elixir Community website.",
+      "Used React, Next.js, and Tailwind CSS.",
+      "Helped improve features and design.",
     ],
   },
 ];
@@ -40,80 +38,64 @@ const About = () => {
   return (
     <section
       ref={ref}
-      className="snap-start bg-background text-foreground max-w-7xl mx-auto px-4 py-16 md:py-32 w-full relative"
+      className="snap-start bg-background text-foreground max-w-7xl mx-auto px-4 py-16 md:py-28 w-full relative"
     >
-      {/* Glass Container */}
-      <div className="backdrop-blur rounded-3xl p-6 md:p-12 bg-white/10 dark:bg-black/20 overflow-hidden">
-        <div className="flex flex-col md:flex-row gap-10 lg:gap-14 items-start">
-          {/* Info Side */}
-          <div className="w-full md:w-1/2 space-y-10">
-            <h1
-              className={cn(
-                parisienne.variable,
-                "text-3xl md:text-4xl font-semibold tracking-tight ml-3 text-black dark:text-white"
-              )}
-            >
-              Chapters of My Journey
-            </h1>
+      <div className="flex flex-col items-center text-center mb-12">
+        <h1
+          className={cn(
+            parisienne.variable,
+            "text-3xl md:text-4xl font-semibold tracking-tight text-foreground"
+          )}
+        >
+          Chapters of My Journey
+        </h1>
+        <p className="mt-3 text-base md:text-lg text-muted-foreground max-w-2xl">
+          A look back at the milestones that shaped my career and passions.
+        </p>
+      </div>
 
-            {roles.map((role, idx) => (
-              <div key={idx} className="space-y-3 pl-4">
-                <h2 className="text-lg sm:text-xl md:text-2xl flex items-center gap-3 font-semibold text-black dark:text-white">
+      <div className="mt-10 flex justify-center mb-12">
+        <div className="w-full md:w-8/12 rounded-2xl p-6 md:p-8 shadow-lg border backdrop-blur-md  border-gray-300 dark:border-neutral-700 hover:shadow-xl transition-all duration-300 bg-white dark:bg-neutral-900">
+          <h3 className="lg:text-xl md:text-base font-semibold text-foreground mb-2">
+            About Me
+          </h3>
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+            I’m Kartikey Bhatnagar, a Full Stack Developer passionate about
+            building real-world projects, contributing to tech communities, and
+            exploring full-stack innovations.
+          </p>
+          <ul className="list-disc list-inside mt-4 space-y-1 text-sm md:text-base text-foreground">
+            <li>Frontend & Backend Development</li>
+            <li>Database Design & Optimization</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-stretch">
+        {roles.slice(0, 2).map((role, idx) => (
+          <div
+            key={idx}
+            className="flex flex-col justify-between h-full backdrop-blur-md rounded-2xl border border-gray-300 dark:border-neutral-700 p-6 shadow-md hover:shadow-xl transition-all duration-300 bg-white dark:bg-neutral-900"
+          >
+            <div>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <h2 className="flex items-center gap-3  lg:text-lg sm:text-lg md:text-sm font-semibold text-foreground mb-2">
                   <SiCodesignal className="text-blue-500 text-xl md:text-2xl" />
                   {role.title}
                 </h2>
-                <p className="text-sm md:text-base italic text-neutral-700 dark:text-neutral-300">
+                <p className="text-sm md:text-base italic text-muted-foreground">
                   {role.duration}
                 </p>
-                <ul className="list-disc list-inside mt-2 space-y-1 text-sm md:text-base text-black dark:text-white">
-                  {role.points.map((point, i) => (
-                    <li
-                      key={i}
-                      className="transition-transform hover:translate-x-2 duration-200"
-                    >
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          {/* Visual Card */}
-          <div className="w-full md:w-1/2 relative h-[320px] sm:h-[380px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl group transition-transform duration-500 hover:scale-[1.02]">
-            {/* Background Image */}
-            <Image
-              src="https://images.unsplash.com/photo-1544077960-604201fe74bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80"
-              alt="Background"
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              priority
-            />
-
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent z-10" />
-
-            {/* Content Overlay */}
-            <div className="absolute bottom-0 left-0 w-full p-4 z-20">
-              <div>
-                <p className="text-gray-50 font-normal text-lg">
-                  Kartikey Bhatnagar
-                </p>
-                <p className="text-gray-400 text-sm">BTech ECE, ABESEC</p>
               </div>
 
-              <div className="mt-3">
-                <h3 className="text-white text-lg md:text-xl">
-                  Full Stack Developer
-                </h3>
-                <p className="text-sm text-gray-200 mt-1 leading-relaxed">
-                  Passionate about building real-world projects, contributing to
-                  tech communities, and exploring full-stack innovations.
-                </p>
-              </div>
+              <ul className="list-disc list-outside pl-6 mt-4 space-y-1 text-sm md:text-base text-foreground leading-relaxed">
+                {role.points.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );

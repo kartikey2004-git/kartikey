@@ -2,10 +2,13 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
+
+import { FiFolder } from "react-icons/fi";
+import { FiBookOpen } from "react-icons/fi";
+
 import {
   IconHome,
-  IconWorldWww,
-  IconArticle,
+
   IconMail,
   IconBrandLinkedin,
   IconBrandX,
@@ -27,14 +30,14 @@ export default function Navbar() {
     {
       title: "Projects",
       icon: (
-        <IconWorldWww className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+        <FiFolder className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
       ),
       href: "/projects",
     },
     {
       title: "Blogs",
       icon: (
-        <IconArticle className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+        <FiBookOpen className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
       ),
       href: "/blogs",
     },
