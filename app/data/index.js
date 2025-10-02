@@ -1,30 +1,3 @@
-export const Chapters = [
-  {
-    id: 1,
-    title: "React Bits",
-    des: "In ReactBits, I prioritize simplicity and performance, empowering developers to build consistent, functional UIs with minimal effort.",
-    img: "/a.webp",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "https://www.reactbits.dev/",
-  },
-  {
-    id: 2,
-    title: "Acertinity UI",
-    des: "With Acertinity UI, I craft visually refined and accessible components, enabling teams to deliver polished experiences with ease and precision.",
-    img: "/b.webp",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "https://ui.aceternity.com/",
-  },
-  {
-    id: 3,
-    title: "Shadcn UI",
-    des: "In Shadcn UI, we combine utility-first styling with accessible components, allowing developers to ship modern, theme-ready interfaces effortlessly.",
-    img: "/c.webp",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "https://ui.shadcn.com/",
-  },
-];
-
 export const projects = [
   {
     title: "Trimmr",
@@ -38,7 +11,7 @@ export const projects = [
       "Real-time analytics & click tracking",
       "Secure redirection with validation",
     ],
-    demoLink: "https://tiny-ur-lz.vercel.app/",
+    demoLink: "https://clippyurl.vercel.app",
   },
   {
     title: "CareerConnect",
@@ -52,7 +25,7 @@ export const projects = [
       "Personalized job dashboard",
       "Clean, responsive user interface",
     ],
-    demoLink: "https://career-connect-sigma.vercel.app/",
+    demoLink: "https://jobconnectx.vercel.app",
   },
   {
     title: "Schedulerr",
@@ -66,19 +39,13 @@ export const projects = [
       "Conflict-free scheduling algorithm",
       "Interactive and responsive UI",
     ],
-    demoLink: "",
+    demoLink: "https://connectify-space.vercel.app",
   },
   {
     title: "AI Resume Analyzer",
     description:
       "AI Resume Analyzer streamlines resume improvements by scoring, error detection, and job description matching—all deployed seamlessly on Puter.js.",
-    tech: [
-      "React",
-      "Puter.js",
-      "Multer",
-      "Claude Sonnet-3-7",
-      "Tailwind CSS",
-    ],
+    tech: ["React", "Puter.js", "Multer", "Claude Sonnet-3-7", "Tailwind CSS"],
     image: "/resumeAi.webp",
     features: [
       "Secure resume file upload and storage with Puter.js and Multer",
@@ -90,45 +57,47 @@ export const projects = [
   },
 ];
 
-export const blogs = [
+export const people = [
   {
-    title: "Mastering JavaScript Closures: A Simple Guide for Beginners",
-    description:
-      "Closures are one of the trickiest yet most powerful concepts in JavaScript. This blog explains closures in a beginner-friendly way with visuals and real examples.",
-    tags: ["JavaScript", "Coding", "Concept"],
-    type: "Learning",
-    date: "Jun 17",
+    id: 1,
+    name: "John Doe",
+    designation: "Software Engineer",
+    image:
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
   },
   {
-    title: "Why React Hooks Changed Everything",
-    description:
-      "From `useState` to `useEffect` and custom hooks, here's why React Hooks have become the backbone of modern frontend development.",
-    tags: ["React", "Frontend", "Hooks"],
-    type: "Tech Insight",
-    date: "Jun 11",
+    id: 2,
+    name: "Robert Johnson",
+    designation: "Product Manager",
+    image:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
   },
   {
-    title: "Building REST APIs with Express.js – A Developer's Starter Guide",
-    description:
-      "If you're diving into backend dev, Express.js is a great first step. In this blog, I walk you through setting up a RESTful API with best practices.",
-    tags: ["Backend", "Express.js", "API"],
-    type: "Learning",
-    date: "May 28",
+    id: 3,
+    name: "Jane Smith",
+    designation: "Data Scientist",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
   },
   {
-    title: "React Performance Optimization Tips You Should Know",
-    description:
-      "React apps can slow down quickly as they grow. These tips on memoization, lazy loading, and avoiding re-renders will keep your UI fast.",
-    tags: ["React", "Performance", "Frontend"],
-    type: "Guide",
-    date: "Apr 19",
+    id: 4,
+    name: "Emily Davis",
+    designation: "UX Designer",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
   },
   {
-    title: "Understanding Authentication: Sessions vs JWT",
-    description:
-      "When it comes to authentication in backend development, should you go with sessions or JWT? Here's a deep dive comparing both.",
-    tags: ["Backend", "Auth", "JWT"],
-    type: "Tech Insight",
-    date: "Mar 10",
+    id: 5,
+    name: "Tyler Durden",
+    designation: "Soap Developer",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80",
+  },
+  {
+    id: 6,
+    name: "Dora",
+    designation: "The Explorer",
+    image:
+      "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
   },
 ];

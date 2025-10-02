@@ -1,68 +1,88 @@
 "use client";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import React, { useState } from "react";
+import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/navLinks";
+import { Menu, X } from "lucide-react";
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+export function NavbarDemo() {
+  return (
+    <div className="relative w-full flex items-center justify-center">
+      <Navbar className="top-4" />
+    </div>
+  );
+}
+
+function Navbar({ className }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleClick = (e, href) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+      setMenuOpen(false);
+    }
+  };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-neutral-900 shadow-md block md:hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="text-xl font-bold text-neutral-800 dark:text-neutral-100"></div>
+    <div
+      className={cn(
+        "fixed inset-x-0 top-4 z-50 mx-auto flex flex-col items-center",
+        className
+      )}
+    >
+      {/* Navbar container */}
+      <div className="hidden md:inline-flex items-center justify-center bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-full px-8 py-3 space-x-8">
+        {navLinks.map((link) => (
+          <a
+            key={link.title}
+            href={link.href}
+            target={link.external ? "_blank" : "_self"}
+            download={link.download ? true : undefined}
+            onClick={(e) => handleClick(e, link.href)}
+            className="relative text-white text-base font-medium transition-colors duration-200 
+              after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 
+              after:bg-white after:rounded-full after:transition-all after:duration-300 
+              hover:after:w-full"
+          >
+            {link.title}
+          </a>
+        ))}
+      </div>
 
-          {/* Desktop menu */}
-          <div className="hidden md:flex space-x-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.title}
-                href={link.href}
-                {...(link.external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                {...(link.download ? { download: true } : {})}
-                className="flex items-center gap-2 text-neutral-700 dark:text-neutral-300 hover:text-blue-500 transition-colors"
-              >
-                {link.icon}
-                {link.title}
-              </a>
-            ))}
-          </div>
-
-          {/* Mobile menu toggle */}
-          <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X size={26} /> : <Menu size={26} />}
-            </button>
-          </div>
-        </div>
+      {/* Mobile menu button */}
+      <div className="md:hidden flex justify-between items-center w-full px-4 bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-full py-2">
+        <span className="text-white font-semibold">Menu</span>
+        <button
+          className="text-white"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+        </button>
       </div>
 
       {/* Mobile dropdown */}
-      {isOpen && (
-        <div className="md:hidden bg-white dark:bg-neutral-900 px-4 py-4 space-y-3 shadow-lg">
+      {menuOpen && (
+        <div className="flex flex-col items-center mt-3 space-y-3 bg-neutral-900/70 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-4 md:hidden">
           {navLinks.map((link) => (
             <a
               key={link.title}
               href={link.href}
-              {...(link.external
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-              {...(link.download ? { download: true } : {})}
-              className="flex items-center gap-3 text-neutral-700 dark:text-neutral-300 hover:text-blue-500 transition-colors"
-              onClick={() => setIsOpen(false)}
+              target={link.external ? "_blank" : "_self"}
+              download={link.download ? true : undefined}
+              onClick={(e) => handleClick(e, link.href)}
+              className="relative text-white text-base font-medium transition-colors duration-200 
+                after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] 
+                after:w-0 after:bg-white after:rounded-full after:transition-all after:duration-300 
+                hover:after:w-full"
             >
-              <div className="w-5 h-5">
-                {" "}
-                {/* Fixed icon container size */}
-                {link.icon}
-              </div>
               {link.title}
             </a>
           ))}
         </div>
       )}
-    </nav>
+    </div>
   );
 }

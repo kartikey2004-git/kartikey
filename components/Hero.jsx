@@ -1,83 +1,76 @@
+"use client";
 import React from "react";
-
-import {
-  Parisienne,
-  Arizonia,
-  Dancing_Script,
-  Great_Vibes,
-} from "next/font/google";
-
-import { TypewriterEffectSmooth } from "./ui/typewriter-effect";
-
-const greatVibes = Great_Vibes({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-great-vibes",
-});
-
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-dancing",
-});
-
-const parisienne = Parisienne({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-parisienne",
-});
-
-const arizonia = Arizonia({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-arizonia",
-});
+import { ChevronRight, Download } from "lucide-react";
+import { AnimatedTooltip } from "./ui/animated-tooltip";
+import { people } from "@/app/data";
 
 const Hero = () => {
-  const baseClass = "font-light text-black dark:text-white";
-
-  const words = [
-    { text: "Innovating ", className: baseClass },
-    { text: "through", className: baseClass },
-    { text: "code,", className: baseClass },
-    { text: "shaping", className: baseClass },
-    { text: "tomorrow's", className: baseClass },
-    {
-      text: "tech.",
-      className: "font-light text-blue-500 dark:text-blue-500",
-    },
-  ];
-
   return (
-    <>
-      <section
-        className={`relative min-h-screen w-full flex flex-col md:flex-row items-center justify-center gap-12 px-6 sm:px-10 lg:px-16 xl:px-24 bg-background text-foreground overflow-hidden
-      ${greatVibes.variable} ${dancingScript.variable} ${parisienne.variable} ${arizonia.variable}`}
-      >
-        {/* Background Grid */}
-        <div className="absolute inset-0 grid-background pointer-events-none z-0" />
+    <section
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-black/60"
+      id="hero"
+    >
+      <div className="absolute  inset-0 grid-background pointer-events-none z-0" />
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left max-w-2xl">
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-dancing font-semibold leading-tight mb-2">
-            Hi, I&apos;m
-          </h1>
+      <div className="text-sm tracking-widest font-semibold uppercase mb-10 text-gray-400 z-10">
+        Based in India
+      </div>
 
-          <span className="text-3xl sm:text-6xl lg:text-7xl font-normal mb-4 block">
-            Kartikey Bhatnagar
-          </span>
+      <div className="max-w-5xl text-center z-10">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl  leading-tighter mb-6 tracking-tighter text-white">
+          Innovating{" "}
+          <span className="text-blue-500">
+            through code
+            <br />
+            shaping
+          </span>{" "}
+          tomorrow's tech.
+        </h1>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-greatVibes mb-6 opacity-90">
-            Full Stack Web Developer
-          </h2>
+        <p className="text-base sm:text-md lg:text-lg text-gray-300 mb-12 max-w-3xl mx-auto tracking-tight">
+          Hi, I’m Kartikey. I build for the web, turning ideas into seamless
+          experiences.
+        </p>
 
-          <TypewriterEffectSmooth
-            words={words}
-            className="text-lg sm:text-lg md:text-xl lg:text-2xl"
-          />
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12">
+          <style>{`
+            @keyframes shine {
+              0% { left: -100%; }
+              100% { left: 200%; }
+            }
+            .animate-shine { animation: shine 3s infinite; }
+          `}</style>
+
+          <button
+            onClick={() => {
+              const section = document.getElementById("projects");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="group relative px-6 py-3 bg-white/5 backdrop-blur-xl text-white rounded-md border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all duration-500 flex items-center gap-3 font-medium text-lg shadow-2xl overflow-hidden"
+          >
+            <span className="relative z-10">See My Work</span>
+            <ChevronRight />
+            <div className="absolute inset-0 w-1/12 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 animate-shine"></div>
+          </button>
+
+          <a
+            href="/Kartikey-Resume.pdf"
+            download="Kartikey-Resume.pdf"
+            className="group px-8 py-3 text-blue-500 hover:text-blue-400 transition-colors duration-300 flex items-center gap-2 w-full sm:w-auto justify-center"
+          >
+            <span className="font-medium flex items-center gap-2">
+              <Download size={20} /> Download CV
+            </span>
+          </a>
         </div>
-      </section>
-    </>
+
+        <div className="flex flex-row items-center justify-center mb-10 w-full">
+          <AnimatedTooltip items={people} />
+        </div>
+      </div>
+    </section>
   );
 };
 

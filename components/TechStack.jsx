@@ -1,97 +1,283 @@
 "use client";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { useState } from "react";
 
-import { FaServer, FaDatabase, FaCloud, FaHammer } from "react-icons/fa";
-import { BiCodeAlt } from "react-icons/bi";
-import { MdGridView } from "react-icons/md";
-import { Dancing_Script } from "next/font/google";
-import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
-import Image from "next/image";
+const TechStack = () => {
+  const technologies = [
+    {
+      iconname: "JavaScript",
+      description: "Web scripting language",
+      icon: "/images/javascript.svg",
+      bgColor: "bg-yellow-500",
+    },
+    {
+      iconname: "TypeScript",
+      description: "Typed JS superset",
+      icon: "/images/typescript.svg",
+      bgColor: "bg-blue-600",
+    },
+    {
+      iconname: "React",
+      description: "UI library",
+      icon: "/images/react.svg",
+      bgColor: "bg-cyan-500",
+    },
+    {
+      iconname: "Next.js",
+      description: "React framework",
+      icon: "/images/nextdotjs.svg",
+      bgColor: "bg-gray-800",
+    },
+    {
+      iconname: "Tailwind CSS",
+      description: "Utility CSS",
+      icon: "/images/tailwindcss.svg",
+      bgColor: "bg-teal-500",
+    },
+    {
+      iconname: "Node.js",
+      description: "Backend runtime",
+      icon: "/images/nodedotjs.svg",
+      bgColor: "bg-green-700",
+    },
+    {
+      iconname: "Express",
+      description: "Node.js framework",
+      icon: "/images/express.svg",
+      bgColor: "bg-gray-700",
+    },
+    {
+      iconname: "Prisma",
+      description: "Node ORM",
+      icon: "/images/prisma.svg",
+      bgColor: "bg-indigo-400",
+    },
+    {
+      iconname: "MongoDB",
+      description: "NoSQL database",
+      icon: "/images/mongodb.svg",
+      bgColor: "bg-green-600",
+    },
+    {
+      iconname: "PostgreSQL",
+      description: "Relational database",
+      icon: "/images/postgresql.svg",
+      bgColor: "bg-blue-700",
+    },
+    {
+      iconname: "SQL",
+      description: "Database queries",
+      icon: "/images/mysql.svg",
+      bgColor: "bg-indigo-500",
+    },
+    {
+      iconname: "Vercel",
+      description: "Frontend deployment",
+      icon: "/images/vercel.svg",
+      bgColor: "bg-white/80",
+    },
+    {
+      iconname: "Netlify",
+      description: "Static hosting",
+      icon: "/images/netlify.svg",
+      bgColor: "bg-green-500",
+    },
+    {
+      iconname: "Render",
+      description: "Cloud hosting",
+      icon: "/images/render.svg",
+      bgColor: "bg-purple-400",
+    },
+    {
+      iconname: "Git",
+      description: "Version control",
+      icon: "/images/git.svg",
+      bgColor: "bg-red-500",
+    },
+    {
+      iconname: "Firebase",
+      description: "App backend",
+      icon: "/images/firebase.svg",
+      bgColor: "bg-orange-500",
+    },
+    {
+      iconname: "Supabase",
+      description: "Open-source backend",
+      icon: "/images/supabase.svg",
+      bgColor: "bg-sky-500",
+    },
+    {
+      iconname: "Appwrite",
+      description: "Backend platform",
+      icon: "/images/appwrite.svg",
+      bgColor: "bg-red-500",
+    },
+    {
+      iconname: "Redis",
+      description: "In-memory DB",
+      icon: "/images/redis.svg",
+      bgColor: "bg-red-600",
+    },
+    {
+      iconname: "RabbitMQ",
+      description: "Message broker",
+      icon: "/images/rabbitmq.svg",
+      bgColor: "bg-pink-500",
+    },
+    {
+      iconname: "ShadCN",
+      description: "UI components",
+      icon: "/images/shadcnui.svg",
+      bgColor: "bg-indigo-400",
+    },
+    {
+      iconname: "Framer Motion",
+      description: "Animations",
+      icon: "/images/framer.svg",
+      bgColor: "bg-pink-500",
+    },
+    {
+      iconname: "Clerk",
+      description: "Authentication",
+      icon: "/images/clerk.svg",
+      bgColor: "bg-orange-500",
+    },
+    {
+      iconname: "Postman",
+      description: "API testing",
+      icon: "/images/postman.svg",
+      bgColor: "bg-orange-400",
+    },
+    {
+      iconname: "HTML",
+      description: "Markup language",
+      icon: "/images/html5.svg",
+      bgColor: "bg-orange-500",
+    },
+    {
+      iconname: "CSS",
+      description: "Styling language",
+      icon: "/images/css.svg",
+      bgColor: "bg-blue-500",
+    },
+    {
+      iconname: "C++",
+      description: "High-performance language",
+      icon: "/images/cplusplus.svg",
+      bgColor: "bg-purple-700",
+    },
+    {
+      iconname: "Python",
+      description: "Versatile programming",
+      icon: "/images/python.svg",
+      bgColor: "bg-green-500",
+    },
+  ];
 
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-dancing",
-});
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
 
-const techCategories = [
-  {
-    name: "Frontend",
-    icon: <MdGridView size={28} />,
-    description: "React, Next.js, Tailwind CSS, HTML, CSS, JS",
-    color: "bg-blue-600",
-  },
-  {
-    name: "Backend",
-    icon: <FaServer size={28} />,
-    description: "Node.js, Express, REST APIs, Next API Routes",
-    color: "bg-green-600",
-  },
-  {
-    name: "Database",
-    icon: <FaDatabase size={28} />,
-    description: "Appwrite, Supabase, MongoDB, PostgreSQL",
-    color: "bg-yellow-700",
-  },
-  {
-    name: "Hosting",
-    icon: <FaCloud size={28} />,
-    description: "Vercel, Netlify, Render, GitHub Pages",
-    color: "bg-red-600",
-  },
-  {
-    name: "Tools",
-    icon: <FaHammer size={28} />,
-    description: "Zustand, ShadCN, Framer Motion, Clerk, Prisma ,Git, Postman",
-    color: "bg-purple-600",
-  },
-  {
-    name: "Learning",
-    icon: <BiCodeAlt size={28} />,
-    description: "Kafka,Redis,RabbitMQ",
-    color: "bg-pink-600",
-  },
-];
+  const totalPages = Math.ceil(technologies.length / itemsPerPage);
 
-export default function TechStack() {
-  return (
-    <section className="py-16 px-6 md:px-12 bg-background text-foreground">
-      {/* Header */}
-      <h2
-        className={cn(
-          "text-3xl sm:text-4xl md:text-5xl font-semibold text-center mb-10",
-          dancingScript.variable
-        )}
-      >
-        My Tech Stack
-      </h2>
-
-      {/* Category Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">
-        {techCategories.map((tech, index) => (
-          <motion.div
-            key={tech.name}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="relative rounded-xl border border-gray-300 dark:border-neutral-700 p-6 shadow-md hover:shadow-xl transition-all duration-300 bg-white dark:bg-neutral-900"
-          >
-            <div
-              className={cn(
-                "w-12 h-12 rounded-full flex items-center justify-center text-white mb-4",
-                tech.color
-              )}
-            >
-              {tech.icon}
-            </div>
-            <h3 className="text-lg font-semibold mb-2">{tech.name}</h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {tech.description}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+  const currentItems = technologies.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
   );
-}
+
+  return (
+    <div className="min-h-[90vh] bg-black/60 flex flex-col items-center justify-center px-4 sm:px-6 py-6" id="skills">
+      <div className="max-w-6xl w-full">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-2 tracking-tight text-left">
+          Current Technologies
+        </h1>
+        <p className="text-gray-400 mb-6 max-w-3xl text-sm sm:text-base md:text-lg leading-snug text-left">
+          I'm proficient in modern technologies that empower me to build
+          functional solutions. These are some of my main technologies.
+        </p>
+      </div>
+
+      <div className="max-w-6xl w-full">
+        {/* Grid of tech items */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 justify-items-center">
+          {currentItems.map((tech, idx) => (
+            <div
+              key={idx}
+              className="p-3 rounded-lg text-white flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 shadow-md hover:shadow-lg hover:bg-white/10 transition-all duration-300 w-full max-w-xs"
+            >
+              {/* Icon */}
+              <img src={tech.icon} alt={tech.iconname} className="w-7 h-7" />
+
+              {/* Name + Description */}
+              <div className="flex flex-col">
+                <h3 className="font-semibold text-sm sm:text-base">
+                  {tech.iconname}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-300">
+                  {tech.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Pagination */}
+        <div className="flex justify-center mt-5">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage((prev) => Math.max(prev - 1, 1));
+                  }}
+                />
+              </PaginationItem>
+
+              {Array.from({ length: totalPages }, (_, i) => (
+                <PaginationItem key={i}>
+                  <PaginationLink
+                    href="#"
+                    isActive={currentPage === i + 1}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentPage(i + 1);
+                    }}
+                  >
+                    {i + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+
+              {totalPages > 5 && (
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+              )}
+
+              <PaginationItem>
+                <PaginationNext
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+                  }}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TechStack;

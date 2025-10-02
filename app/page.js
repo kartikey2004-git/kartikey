@@ -1,22 +1,18 @@
-import About from "@/components/About";
+import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Me from "@/components/Me";
+import Projects from "@/components/Projects";
 import TechStack from "@/components/TechStack";
-import ThemeToggle from "@/components/toggle-theme";
 import UiLibraries from "@/components/UI-libraries";
-
-import Footer from "@/components/Footer";
-// import { AnimatedTestimonialsDemo} from "@/components/Testimonial";
 
 export default function Home() {
   return (
     <>
-      <ThemeToggle />
       <Hero />
-      <About />
       <TechStack />
-      <Me />
+      <Projects />
       <UiLibraries />
+      <Me />
       <Footer />
     </>
   );
