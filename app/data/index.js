@@ -3,7 +3,7 @@ export const projects = [
     title: "Trimmr",
     description:
       "Trimmr is a clean and efficient URL shortener that transforms long links into concise, shareable URLs with real-time redirection and tracking support.",
-    tech: ["React", "Tailwind", "Vite"],
+    tech: ["React", "Tailwind", "Vite", "Supabase", "Clerk", "Shadcn UI"],
     image: "/url.webp",
     features: [
       "Instant URL shortening",
@@ -17,7 +17,7 @@ export const projects = [
     title: "CareerConnect",
     description:
       "CareerConnect is a dynamic job portal platform that bridges the gap between recruiters and job seekers, featuring real-time applications, role-based access, and intuitive user experience.",
-    tech: ["React", "Tailwind", "Vite"],
+    tech: ["React", "Tailwind", "Vite", "Supabase", "Clerk", "Shadcn UI"],
     image: "/job.webp",
     features: [
       "Role-based access for recruiters & applicants",
@@ -31,7 +31,7 @@ export const projects = [
     title: "Schedulerr",
     description:
       "Schedulerr is a smart event scheduling app designed to streamline planning, send invites, and sync seamlessly with calendars, helping users organize events with ease and clarity.",
-    tech: ["React", "Tailwind", "Vite"],
+    tech: ["React", "Tailwind", "Vite", "Neon DB", "Clerk", "Shadcn UI"],
     image: "/connect.webp",
     features: [
       "Smart calendar integration",
@@ -42,18 +42,56 @@ export const projects = [
     demoLink: "https://connectify-space.vercel.app",
   },
   {
-    title: "AI Resume Analyzer",
-    description:
-      "AI Resume Analyzer streamlines resume improvements by scoring, error detection, and job description matching—all deployed seamlessly on Puter.js.",
-    tech: ["React", "Puter.js", "Multer", "Claude Sonnet-3-7", "Tailwind CSS"],
-    image: "/resumeAi.webp",
+    title: "VartaX",
+    description: "Scalable microservices-based chat platform",
+    tech: ["React", "MongoDB", "Express", "Node", "Socket.IO", "Redis"],
+    image: "/Vartax.png",
     features: [
-      "Secure resume file upload and storage with Puter.js and Multer",
-      "AI-driven resume scoring and error detection using Claude Sonnet-3-7",
-      "Job description relevance matching for personalized feedback",
-      "Detailed section-wise resume improvement suggestions",
+      "Architected a distributed chat system handling thousands of concurrent users with <200ms message latency.",
+      "Leveraged RabbitMQ for message queues and Redis caching to optimize throughput and real-time communication.",
+      "Implemented 1:1 and group chat, file sharing, and delivery/read receipts, improving user engagement by 40%.",
     ],
-    demoLink: "https://puter.com/app/ai-resume-analyzerr",
+    demoLink: "https://github.com/kartikey2004-git/vartaX",
+  },
+  {
+    title: "RouteX",
+    description: "AI-powered collaborative API design and testing platform",
+    tech: [
+      "Nextjs",
+      "Better-Auth",
+      "TanStack React Query",
+      "Zustand",
+      "AI SDK",
+      "TypeScript",
+      "NeonDB",
+    ],
+    image: "/routex.png",
+    features: [
+      "Developed a collaborative platform using Next.js and TypeScript to design, test, and manage APIs in real time.",
+      "Implemented secure authentication via Google and GitHub, with live updates powered by TanStack React Query.",
+      "Enabled multiple HTTP methods with configurable headers, query parameters, and request body data.",
+      "Integrated AI SDK for automatic JSON body generation, WebSocket support for live responses, and multi-user workspace collaboration.",
+    ],
+    demoLink: "https://github.com/kartikey2004-git/routeX",
+  },
+  {
+    title: "Rank Tracker",
+    description: "SEO keyword ranking automation platform",
+    tech: [
+      "Nextjs",
+      "MongoDB",
+      "Bright Data",
+      "Recharts",
+      "Tailwind CSS",
+      "Shadcn UI",
+    ],
+    image: "/rankbit.png",
+    features: [
+      "Built with Next.js, MongoDB, Prisma ORM, and BrightData SERP API to automate keyword rank tracking.",
+      "Reduced manual SEO tracking effort by 90% through automated cron-based updates and alerts.",
+      "Visualized ranking trends with interactive dashboards, enabling data-driven SEO decisions.",
+    ],
+    demoLink: "https://github.com/kartikey2004-git/Rankbit",
   },
 ];
 
