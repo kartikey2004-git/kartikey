@@ -25,17 +25,14 @@ const Footer = () => {
             out <span className="text-blue-500 underline">via email</span> to
             collaborate!
           </h2>
-
-          <button
-            onClick={() =>
-              (window.location.href = "mailto:kartikeybhatnagar247@gmail.com")
-            }
+          <a
+            href="mailto:kartikeybhatnagar247@gmail.com"
             className="group relative px-6 py-2 bg-white/5 backdrop-blur-xl text-white rounded-md border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all duration-500 flex items-center gap-3 font-medium text-base shadow-xl overflow-hidden mt-4"
           >
-            <span className="relative z-10">Schedule Call</span>
+            Schedule Call
             <ChevronRight />
             <div className="absolute inset-0 w-1/12 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 animate-shine"></div>
-          </button>
+          </a>
         </div>
 
         {/* Divider */}
@@ -102,10 +99,10 @@ const Footer = () => {
                   Projects
                 </h4>
                 <ul className="space-y-2">
-                  <li>ShortenX</li>
-                  <li>JobConnect</li>
+                  <li>VartaX</li>
+                  <li>RankBit</li>
                   <li>Connectify</li>
-                  <li>AI Resume Analyzer</li>
+                  <li>RouteX</li>
                 </ul>
               </div>
 

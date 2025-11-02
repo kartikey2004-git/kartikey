@@ -51,12 +51,16 @@ export default function Projects() {
               className="relative overflow-hidden bg-white/5 backdrop-blur-lg border border-white/10 transition-all group"
             >
               {/* Image */}
-              <div className="relative h-72 overflow-hidden ">
+              <div className="relative w-full h-48 sm:h-60 md:h-40 lg:h-60 xl:h-72 overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw,
+           (max-width: 1024px) 80vw,
+           50vw"
+                  className="object-cover object-center transition-transform duration-500 hover:scale-105"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               </div>

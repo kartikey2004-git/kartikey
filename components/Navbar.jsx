@@ -53,33 +53,33 @@ function Navbar({ className }) {
       </div>
 
       {/* Mobile menu button */}
-      <div className="md:hidden flex justify-between items-center w-full px-4 bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-full py-2">
+      <div className="md:hidden flex justify-between items-center w-full px-4 bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-md py-2">
         <span className="text-white font-semibold">Menu</span>
-        <button
-          className="text-white"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
+        <button className="text-white" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className="flex flex-col items-center mt-3 space-y-3 bg-neutral-900/70 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-4 md:hidden">
+        <div className="flex flex-col space-y-4 bg-neutral-900/70 backdrop-blur-md border border-white/10 px-6 py-4 w-full md:hidden">
           {navLinks.map((link) => (
-            <a
-              key={link.title}
-              href={link.href}
-              target={link.external ? "_blank" : "_self"}
-              download={link.download ? true : undefined}
-              onClick={(e) => handleClick(e, link.href)}
-              className="relative text-white text-base font-medium transition-colors duration-200 
-                after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] 
-                after:w-0 after:bg-white after:rounded-full after:transition-all after:duration-300 
-                hover:after:w-full"
-            >
-              {link.title}
-            </a>
+            <div key={link.title} className="flex flex-col">
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : "_self"}
+                download={link.download ? true : undefined}
+                onClick={(e) => handleClick(e, link.href)}
+                className="flex items-center space-x-3 text-white text-base transition-colors duration-200"
+              >
+                <span className="flex-shrink-0">{link.icon}</span>
+                <span>{link.title}</span>
+              </a>
+
+              <span className="text-sm text-neutral-400 pl-8">
+                {link.description}
+              </span>
+            </div>
           ))}
         </div>
       )}

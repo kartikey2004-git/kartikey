@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { ChevronRight, Download } from "lucide-react";
+import { ChevronRight, Download, FileText } from "lucide-react";
 import { AnimatedTooltip } from "./ui/animated-tooltip";
 import { people } from "@/app/data";
 
@@ -56,12 +56,13 @@ const Hero = () => {
           </button>
 
           <a
-            href="/Kartikey-Resume.pdf"
-            download="Kartikey-Resume.pdf"
-            className="group px-8 py-3 text-blue-500 hover:text-blue-400 transition-colors duration-300 flex items-center gap-2 w-full sm:w-auto justify-center"
+            href="https://drive.google.com/file/d/
+            1vJSB5VNl0Uruq29kMfCSzA8cv0cTm-nD/view?usp=sharing"
+            target="_blank"
+            className="group relative px-11 py-3 bg-white/5 backdrop-blur-xl text-white rounded-md border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all duration-500 flex items-center gap-6 font-medium text-lg shadow-2xl overflow-hidden"
           >
-            <span className="font-medium flex items-center gap-2">
-              <Download size={20} /> Download CV
+            <span className="font-medium flex items-center gap-2">View CV
+              <FileText strokeWidth="1.5"/>
             </span>
           </a>
         </div>
