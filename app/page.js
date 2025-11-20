@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Github from "@/components/Github";
 import Hero from "@/components/Hero";
 import Me from "@/components/Me";
 import Projects from "@/components/Projects";
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <TechStack />
       <Projects />
+      <Github />
       <UiLibraries />
       <Me />
       <Footer />
