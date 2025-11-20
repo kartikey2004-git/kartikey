@@ -46,7 +46,7 @@ export default function GithubAnalyticsPanel({ data }) {
   };
 
   return (
-    <div className="p-5 rounded-xl bg-[#0d0d0d] border border-[#1a1a1a]">
+    <div className="p-5 bg-[#0d0d0d] border border-[#1a1a1a]">
       {/* Title */}
       <h3 className="text-lg font-semibold text-white mb-4 tracking-tight">
         Analytics Overview

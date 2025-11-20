@@ -9,7 +9,7 @@ export default function GithubStreakCard({ data }) {
   const streaks = computeStreaks(contributions);
 
   return (
-    <div className="p-4 rounded-xl bg-[#0d0d0d] border border-[#1a1a1a]">
+    <div className="p-4  bg-[#0d0d0d] border border-[#1a1a1a]">
       {/* Title + Badge */}
       <div className="flex items-center gap-2 mb-3">
         <h3 className="text-base font-semibold text-white tracking-tight">

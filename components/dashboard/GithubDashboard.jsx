@@ -31,23 +31,31 @@ export default function GithubDashboard({ username = "kartikey2004-git" }) {
   return (
     <div className="flex flex-col gap-6">
       {/* Overview */}
-      <div className="rounded-xl bg-[#0c0c0c] border border-[#1a1a1a] p-4">
-        <OverviewPanel data={data} />
+      <div className=" bg-[#0c0c0c] border border-[#1a1a1a]  md:p-4 sm:p-0">
+        <div className="w-full overflow-x-auto">
+          <OverviewPanel data={data} />
+        </div>
       </div>
 
       {/* Analytics */}
-      <div className="rounded-xl bg-[#0c0c0c] border border-[#1a1a1a] p-4">
-        <GithubAnalyticsPanel data={data} />
+      <div className=" bg-[#0c0c0c] border border-[#1a1a1a] md:p-4 sm:p-0">
+        <div className="w-full overflow-x-auto">
+          <GithubAnalyticsPanel data={data} />
+        </div>
       </div>
 
       {/* Heatmap + Streak */}
       <div className="grid grid-cols-1 gap-4">
-        <div className="rounded-xl bg-[#0c0c0c] border border-[#1a1a1a] p-4">
-          <GithubStreakCard data={data} />
+        <div className="bg-[#0c0c0c] border border-[#1a1a1a]  md:p-4 sm:p-0">
+          <div className="w-full overflow-x-auto">
+            <GithubStreakCard data={data} />
+          </div>
         </div>
 
-        <div className="rounded-xl bg-[#0c0c0c] border border-[#1a1a1a] p-4">
-          <ContributionHeatmap data={data} />
+        <div className=" bg-[#0c0c0c] border border-[#1a1a1a]  md:p-4 sm:p-0">
+          <div className="w-full overflow-x-auto">
+            <ContributionHeatmap data={data} />
+          </div>
         </div>
       </div>
     </div>

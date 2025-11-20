@@ -22,9 +22,11 @@ const GithubSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="rounded-2xl bg-[#0f0f0f] border p-6 md:p-10"
+        className="bg-[#0f0f0f] border p-6 md:p-10"
       >
-        <GithubDashboard />
+        <div className="w-full overflow-x-auto">
+          <GithubDashboard />
+        </div>
       </motion.div>
     </section>
   );
