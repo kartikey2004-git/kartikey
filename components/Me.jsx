@@ -26,10 +26,10 @@ const Me = () => {
 
       <div className="w-full max-w-4xl h-40 sm:h-48 relative">
         {/* Gradients */}
-        <div className="absolute left-1/4 right-1/4 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-1/2 blur-sm" />
-        <div className="absolute left-1/4 right-1/4 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-1/2" />
-        <div className="absolute left-3/4 right-1/4 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-        <div className="absolute left-3/4 right-1/4 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+        <div className="absolute left-1/4 right-1/4 top-0 h-[2px] w-1/2 blur-sm" />
+        <div className="absolute left-1/4 right-1/4 top-0 h-px w-1/2" />
+        <div className="absolute left-3/4 right-1/4 top-0 h-[5px] w-1/4 blur-sm" />
+        <div className="absolute left-3/4 right-1/4 top-0 h-px w-1/4" />
 
         {/* Core component */}
         <SparklesCore

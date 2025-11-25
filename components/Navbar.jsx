@@ -53,7 +53,11 @@ function Navbar({ className }) {
       </div>
 
       {/* Mobile menu button */}
-      <div className="md:hidden flex justify-between items-center w-full px-4 bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-md py-2">
+      <div
+        className="md:hidden fixed top-0 left-0 right-0 z-50
+     flex justify-between items-center px-4 py-2
+     bg-neutral-900/40 backdrop-blur-lg border-b border-white/10"
+      >
         <span className="text-white font-semibold">Menu</span>
         <button className="text-white" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -62,7 +66,15 @@ function Navbar({ className }) {
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className="flex flex-col space-y-4 bg-neutral-900/70 backdrop-blur-md border border-white/10 px-6 py-4 w-full md:hidden">
+        <div
+          className="md:hidden fixed top-10 left-0 right-0 z-40
+    flex flex-col space-y-4 
+    bg-neutral-900/80 backdrop-blur-xl
+    border-b border-white/10 
+    px-6 py-4
+
+    animate-slideDownSmooth"
+        >
           {navLinks.map((link) => (
             <div key={link.title} className="flex flex-col">
               <a

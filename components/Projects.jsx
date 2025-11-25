@@ -23,19 +23,23 @@ export default function Projects() {
       id="projects"
       className="relative bg-black/60 text-white py-24 px-6 sm:px-10 overflow-hidden"
     >
+      {/* Fix: stable dark layer */}
+      <div className="absolute inset-0"></div>
+
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-16">
           <h1
-            className={`text-4xl sm:text-5xl sm:mb-0 font-semibold text-white mb-2 tracking-tight text-left${dancingScript.variable}`}
+            className={`text-4xl sm:text-5xl sm:mb-0 font-semibold text-white mb-2 tracking-tight text-left ${dancingScript.variable}`}
           >
             My <span>Projects</span>
           </h1>
+
           <a
             href="https://github.com/kartikey2004-git"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative overflow-hidden px-6 py-3 border border-white/20 rounded-full text-sm font-medium backdrop-blur-md transition-all"
+            className="relative overflow-hidden px-6 py-3 border border-white/20 rounded-full text-sm font-medium backdrop-blur-md transition-all"
           >
             <span className="relative z-10 flex items-center gap-2">
               All Projects <ArrowUpRight className="w-5 h-5" />
@@ -48,8 +52,11 @@ export default function Projects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="relative overflow-hidden bg-white/5 backdrop-blur-lg border border-white/10 transition-all group"
+              className="group relative overflow-hidden bg-white/5 backdrop-blur-lg border border-white/10 transition-all"
             >
+              {/* Fix: smooth hover white layer instead of flashing */}
+              <div className="absolute inset-0 bg-white opacity-0  pointer-events-none"></div>
+
               {/* Image */}
               <div className="relative w-full h-48 sm:h-60 md:h-40 lg:h-60 xl:h-72 overflow-hidden">
                 <Image
@@ -57,16 +64,16 @@ export default function Projects() {
                   alt={project.title}
                   fill
                   sizes="(max-width: 640px) 100vw,
-           (max-width: 1024px) 80vw,
-           50vw"
-                  className="object-cover object-center transition-transform duration-500 hover:scale-105"
+              (max-width: 1024px) 80vw,
+              50vw"
+                  className="object-cover object-center transition-transform duration-500"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               </div>
 
               {/* Content */}
-              <div className="p-6">
+              <div className="p-6 relative z-10">
                 <h2 className="text-2xl font-normal mb-3 transition-colors">
                   {project.title}
                 </h2>
@@ -75,7 +82,7 @@ export default function Projects() {
                   {project.description}
                 </p>
 
-                {/* Tech Stack */}
+                {/* Tech */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((tech, i) => (
                     <span
@@ -102,7 +109,7 @@ export default function Projects() {
                 {/* Visit Button */}
                 <button
                   onClick={() => window.open(project.demoLink, "_blank")}
-                  className="relative overflow-hidden px-6 py-3 rounded-full border border-zinc-800 text-white font-medium text-sm transition-all duration-300 hover:scale-105 hover:bg-white/10 hover:border-white/40 active:scale-95"
+                  className="px-6 py-3 rounded-full border border-zinc-800 text-white font-medium text-sm transition-all duration-300 hover:bg-white/10 hover:border-white/10 "
                 >
                   Visit Demo
                   <ArrowUpRight className="inline-block ml-2 w-4 h-4" />

@@ -3,6 +3,7 @@
 import React from "react";
 import { BackgroundBeams } from "./ui/background-beams";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   const scrollToSection = (id) => {
@@ -27,6 +28,7 @@ const Footer = () => {
           </h2>
           <a
             href="mailto:kartikeybhatnagar247@gmail.com"
+            target="_blank"
             className="group relative px-6 py-2 bg-white/5 backdrop-blur-xl text-white rounded-md border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all duration-500 flex items-center gap-3 font-medium text-base shadow-xl overflow-hidden mt-4"
           >
             Schedule Call
