@@ -108,8 +108,8 @@ export default function Projects() {
 
                 {/* Visit Button */}
                 <button
-                  onClick={() => window.open(project.demoLink, "_blank")}
-                  className="px-6 py-3 rounded-full border border-zinc-800 text-white font-medium text-sm transition-all duration-300 hover:bg-white/10 hover:border-white/10 "
+                  onClick={() => window.open(project.projectLink, "_blank")}
+                  className="px-6 py-3 rounded-full border border-zinc-800 text-white font-medium text-sm transition-all duration-300 hover:bg-white/10 hover:border-white/10"
                 >
                   Visit Demo
                   <ArrowUpRight className="inline-block ml-2 w-4 h-4" />
