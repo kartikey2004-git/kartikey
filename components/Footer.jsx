@@ -3,7 +3,6 @@
 import React from "react";
 import { BackgroundBeams } from "./ui/background-beams";
 import { ChevronRight } from "lucide-react";
-import Link from "next/link";
 
 const Footer = () => {
   const scrollToSection = (id) => {
@@ -26,15 +25,19 @@ const Footer = () => {
             out <span className="text-blue-500 underline">via email</span> to
             collaborate!
           </h2>
-          <a
-            href="mailto:kartikeybhatnagar247@gmail.com"
-            target="_blank"
+
+          <button
+            onClick={() =>
+              window.open(
+                "https://mail.google.com/mail/?view=cm&fs=1&to=kartikeybhatnagar247@gmail.com"
+              )
+            }
             className="group relative px-6 py-2 bg-white/5 backdrop-blur-xl text-white rounded-md border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all duration-500 flex items-center gap-3 font-medium text-base shadow-xl overflow-hidden mt-4"
           >
-            Schedule Call
+            Let's connect
             <ChevronRight />
             <div className="absolute inset-0 w-1/12 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 animate-shine"></div>
-          </a>
+          </button>
         </div>
 
         {/* Divider */}

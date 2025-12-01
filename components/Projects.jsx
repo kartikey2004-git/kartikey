@@ -18,6 +18,8 @@ import { ArrowUpRight } from "lucide-react";
 import { Button } from "./ui/button";
 
 export default function Projects() {
+  const sortedProjects = projects.reverse();
+
   return (
     <section
       id="projects"
@@ -49,7 +51,7 @@ export default function Projects() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {projects.map((project, index) => (
+          {sortedProjects.map((project, index) => (
             <div
               key={index}
               className="group relative overflow-hidden bg-white/5 backdrop-blur-lg border border-white/10 transition-all"
