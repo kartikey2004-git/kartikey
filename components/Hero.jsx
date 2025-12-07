@@ -1,30 +1,35 @@
 "use client";
 
 import React from "react";
-import { ChevronRight, FileText } from "lucide-react";
+import { ChevronRight, FileText, Send } from "lucide-react";
 import Link from "next/link";
+import SpotifyCard from "./Spotify-Card";
+import LastPlayedCard from "./LastPlayedCard";
+import { Twitter, Linkedin, Github, Youtube, Instagram } from "lucide-react";
 
 const Hero = () => {
+  const iconClasses = "w-5 h-5 text-gray-400 hover:text-white transition";
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center px-6 lg:px-10 bg-black"
+      className="relative min-h-screen flex flex-col justify-start pt-28 px-6 lg:px-10 bg-black"
     >
       {/* Background Grid */}
       <div className="absolute inset-0 grid-background opacity-[0.12] pointer-events-none" />
 
-
       <div className="relative z-10 max-w-4xl mx-auto flex flex-col gap-10 -ml-2">
-        {/* ───────────────────────────── */}
-        {/* TOP INTRO ROW */}
-        {/* ───────────────────────────── */}
         <div className="flex items-center gap-6">
-          {/* Avatar Wrapper */}
           <div className="relative w-16 h-16">
             {/* Halo ring */}
             <div className="absolute inset-0 rounded-full bg-white/5 blur-md" />
 
-          
+            {/* Your actual image */}
+            <img
+              src="/hi.png" // <-- put your actual image path here
+              alt="Kartikey Avatar"
+              className="w-full h-full object-cover rounded-full relative z-10"
+            />
           </div>
 
           {/* Name intro */}
@@ -37,18 +42,11 @@ const Hero = () => {
             </p>
           </div>
         </div>
-
-        {/* ───────────────────────────── */}
-        {/* LOCATION TAG */}
-        {/* ───────────────────────────── */}
         <p className="text-[11px] tracking-[0.2em] font-medium uppercase text-gray-500">
           Based in India
         </p>
 
-        {/* ───────────────────────────── */}
-        {/* MAIN HEADLINE */}
-        {/* ───────────────────────────── */}
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-[1.15]">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-[1.15] mt-[-16px]">
           Innovating{" "}
           <span className="text-blue-400 font-semibold">through code</span>,
           <br />
@@ -60,11 +58,7 @@ const Hero = () => {
           I build for the web — turning creative ideas into smooth, functional,
           and meaningful digital experiences.
         </p>
-
-        {/* ───────────────────────────── */}
-        {/* BUTTONS */}
-        {/* ───────────────────────────── */}
-        <div className="flex flex-col sm:flex-row gap-4 mt-4">
+        <div className="flex flex-col sm:flex-row gap-4 -mt-4">
           <style>{`
             @keyframes shine {
               0% { left: -100%; }
@@ -98,10 +92,33 @@ const Hero = () => {
             transition duration-400 flex items-center gap-3 font-medium text-lg overflow-hidden"
           >
             View CV
-            <FileText size={20} strokeWidth="1.5" />
+            <Send size={20} strokeWidth="1.5" />
           </Link>
         </div>
       </div>
+
+      <div className="flex items-center gap-4 mt-4">
+        <a href="https://x.com/Bh20291Kartikey" target="_blank">
+          <Twitter className={iconClasses} />
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/kartikey-bhatnagar-2702a4337"
+          target="_blank"
+        >
+          <Linkedin className={iconClasses} />
+        </a>
+
+        <a href="https://github.com/kartikey2004-git" target="_blank">
+          <Github className={iconClasses} />
+        </a>
+
+        <a href="https://www.instagram.com/k4rtik.exe" target="_blank">
+          <Instagram className={iconClasses} />
+        </a>
+      </div>
+
+      <LastPlayedCard />
     </section>
   );
 };

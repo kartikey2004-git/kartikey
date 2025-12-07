@@ -1,5 +1,7 @@
+import Footer from "@/components/Footer";
 import Github from "@/components/Github";
 import Hero from "@/components/Hero";
+import AboutMeSection from "@/components/Me";
 import Projects from "@/components/Projects";
 import TechStack from "@/components/TechStack";
 
@@ -10,8 +12,9 @@ export default function Home() {
       <Hero />
       <TechStack />
       <Projects />
+      <AboutMeSection />
       <Github />
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }
