@@ -23,9 +23,9 @@ export async function GET() {
         body: JSON.stringify({
           items: [
             {
-              op: "update",
-              key: "visitor_count",
-              value: newCount,
+              operation: "upsert",
+              key: "spotifyEmbed",
+              value: "your-embed-code-here",
             },
           ],
         }),
