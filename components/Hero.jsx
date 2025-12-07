@@ -22,21 +22,10 @@ const Hero = () => {
           {/* Avatar Wrapper */}
           <div className="relative w-16 h-16">
             {/* Halo ring */}
-            {/* <div className="absolute inset-0 rounded-full bg-white/5 blur-md" />
+            <div className="absolute inset-0 rounded-full bg-white/5 blur-md" />
 
-            <img
-              src="/your-avatar.png"
-              alt="avatar"
-              className="relative w-16 h-16 rounded-full border border-white/10"
-            />
-
-            {/* Cute Sticker */}
-            <img
-              src="/sticker.png"
-              alt="sticker"
-              className="absolute -top-2 left-1/2 -translate-x-1/2 w-6 h-6 animate-bounce"
-            />
-          </div> */}
+          
+          </div>
 
           {/* Name intro */}
           <div>
