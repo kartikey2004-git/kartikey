@@ -79,7 +79,7 @@
 }
 
 .dark {
-  --background: hsl(0 0% 8%);
+  --background: hsla(0, 0%, 0%, 0.922);
   --foreground: hsl(0 0% 95%);
   --card: hsl(0 0% 10%);
   --card-foreground: hsl(0 0% 95%);
@@ -197,16 +197,24 @@
   display: none; /* Chrome, Safari */
 }
 
-
-.thin-scroll::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+/* Thin scrollbar ONLY for heatmap (class: thin-scrollbar) */
+.thin-scrollbar::-webkit-scrollbar {
+  height: 4px;        /* thin horizontal bar */
 }
 
-.thin-scroll::-webkit-scrollbar-thumb {
-  background: #3a3a3a;
-  border-radius: 8px;
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: #0d0d0d;
 }
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
 
 @keyframes slideDownSmooth {
   0% {

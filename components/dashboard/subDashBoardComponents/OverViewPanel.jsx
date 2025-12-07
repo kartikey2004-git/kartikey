@@ -6,7 +6,7 @@ export default function OverviewPanel({ data }) {
   const { profile, user } = data;
 
   return (
-    <div className="p-5  bg-[#0d0d0d] border border-[#1a1a1a]">
+    <div className="p-5">
       <div className="w-full overflow-x-auto">
         <div className="flex items-center gap-5 min-w-max">
           <img

@@ -193,34 +193,38 @@ const TechStack = () => {
   );
 
   return (
-    <div className="min-h-[90vh] bg-black/60 flex flex-col items-center justify-center px-4 sm:px-6 py-6" id="skills">
-      <div className="max-w-6xl w-full">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-2 tracking-tight text-left">
+    <div
+      id="skills"
+      className="min-h-[90vh] bg-black/60 flex flex-col items-center justify-center px-4 sm:px-6 py-10"
+    >
+      <div className="max-w-6xl w-full mb-6">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-2 tracking-tight text-left">
           Current Technologies
-        </h1>
-        <p className="text-gray-400 mb-6 max-w-3xl text-sm sm:text-base md:text-lg leading-snug text-left">
-          I'm proficient in modern technologies that empower me to build
+        </h2>
+        <p className="text-gray-400 max-w-3xl text-sm sm:text-base md:text-lg leading-snug text-left">
+          I&apos;m proficient in modern technologies that empower me to build
           functional solutions. These are some of my main technologies.
         </p>
       </div>
 
       <div className="max-w-6xl w-full">
-        {/* Grid of tech items */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 justify-items-center">
           {currentItems.map((tech, idx) => (
             <div
               key={idx}
-              className="p-3 rounded-lg text-white flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 shadow-md hover:shadow-lg hover:bg-white/10 transition-all duration-300 w-full max-w-xs"
+              className="w-full max-w-xs p-3 rounded-sm text-white flex items-start gap-3 bg-white/5 backdrop-blur-sm border border-white/10 shadow-md hover:shadow-lg hover:bg-white/10 transition-all duration-300"
             >
-              {/* Icon */}
-              <img src={tech.icon} alt={tech.iconname} className="w-7 h-7" />
+              <img
+                src={tech.icon}
+                alt={tech.iconname}
+                className="w-7 h-7 shrink-0"
+              />
 
-              {/* Name + Description */}
               <div className="flex flex-col">
                 <h3 className="font-semibold text-sm sm:text-base">
                   {tech.iconname}
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-300">
+                <p className="text-sm sm:text-xs text-gray-300">
                   {tech.description}
                 </p>
               </div>
@@ -228,8 +232,7 @@ const TechStack = () => {
           ))}
         </div>
 
-        {/* Pagination */}
-        <div className="flex justify-center mt-5">
+        <div className="flex justify-center mt-6">
           <Pagination>
             <PaginationContent>
               <PaginationItem>
@@ -243,7 +246,7 @@ const TechStack = () => {
               </PaginationItem>
 
               {Array.from({ length: totalPages }, (_, i) => (
-                <PaginationItem key={i}>
+                <PaginationItem key={i} className="rounded-sm">
                   <PaginationLink
                     href="#"
                     isActive={currentPage === i + 1}

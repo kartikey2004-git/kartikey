@@ -1,71 +1,115 @@
-"use client"; 
+"use client";
 
 import React from "react";
-import { ChevronRight, Download, FileText } from "lucide-react";
-import { AnimatedTooltip } from "./ui/animated-tooltip";
-import { people } from "@/app/data";
-import Link from "next/link"
+import { ChevronRight, FileText } from "lucide-react";
+import Link from "next/link";
 
 const Hero = () => {
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-black/60"
       id="hero"
+      className="relative min-h-screen flex flex-col justify-center px-6 lg:px-10 bg-black"
     >
-      <div className="absolute  inset-0 grid-background pointer-events-none z-0" />
+      {/* Background Grid */}
+      <div className="absolute inset-0 grid-background opacity-[0.12] pointer-events-none" />
 
-      <div className="text-sm tracking-widest font-semibold uppercase mb-10 text-gray-400 z-10">
-        Based in India
-      </div>
 
-      <div className="max-w-5xl text-center z-10">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl  leading-tighter mb-6 tracking-tighter text-white">
-          Innovating{" "}
-          <span className="text-blue-500">
-            through code
-            <br />
-            shaping
-          </span>{" "}
-          tomorrow's tech.
-        </h1>
+      <div className="relative z-10 max-w-4xl mx-auto flex flex-col gap-10 -ml-2">
+        {/* ───────────────────────────── */}
+        {/* TOP INTRO ROW */}
+        {/* ───────────────────────────── */}
+        <div className="flex items-center gap-6">
+          {/* Avatar Wrapper */}
+          <div className="relative w-16 h-16">
+            {/* Halo ring */}
+            {/* <div className="absolute inset-0 rounded-full bg-white/5 blur-md" />
 
-        <p className="text-base sm:text-md lg:text-lg text-gray-300 mb-12 max-w-3xl mx-auto tracking-tight">
-          Hi, I’m Kartikey. I build for the web, turning ideas into seamless
-          experiences.
+            <img
+              src="/your-avatar.png"
+              alt="avatar"
+              className="relative w-16 h-16 rounded-full border border-white/10"
+            />
+
+            {/* Cute Sticker */}
+            <img
+              src="/sticker.png"
+              alt="sticker"
+              className="absolute -top-2 left-1/2 -translate-x-1/2 w-6 h-6 animate-bounce"
+            />
+          </div> */}
+
+          {/* Name intro */}
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-semibold text-white leading-tight">
+              Hi, I’m <span className="font-semibold">Kartikey</span>
+            </h1>
+            <p className="text-gray-400 text-sm sm:text-base">
+              A Full Stack Web Developer
+            </p>
+          </div>
+        </div>
+
+        {/* ───────────────────────────── */}
+        {/* LOCATION TAG */}
+        {/* ───────────────────────────── */}
+        <p className="text-[11px] tracking-[0.2em] font-medium uppercase text-gray-500">
+          Based in India
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12">
+        {/* ───────────────────────────── */}
+        {/* MAIN HEADLINE */}
+        {/* ───────────────────────────── */}
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-[1.15]">
+          Innovating{" "}
+          <span className="text-blue-400 font-semibold">through code</span>,
+          <br />
+          shaping tomorrow’s tech.
+        </h2>
+
+        {/* SUBTEXT DESCRIPTION */}
+        <p className="text-gray-300 text-base sm:text-lg max-w-xl leading-relaxed">
+          I build for the web — turning creative ideas into smooth, functional,
+          and meaningful digital experiences.
+        </p>
+
+        {/* ───────────────────────────── */}
+        {/* BUTTONS */}
+        {/* ───────────────────────────── */}
+        <div className="flex flex-col sm:flex-row gap-4 mt-4">
           <style>{`
             @keyframes shine {
               0% { left: -100%; }
-              100% { left: 200%; }
+              100% { left: 150%; }
             }
-            .animate-shine { animation: shine 3s infinite; }
+            .animate-shine { animation: shine 2.8s infinite; }
           `}</style>
 
+          {/* WORK BUTTON */}
           <button
             onClick={() => {
               const section = document.getElementById("projects");
-              if (section) {
-                section.scrollIntoView({ behavior: "smooth" });
-              }
+              if (section) section.scrollIntoView({ behavior: "smooth" });
             }}
-            className="group relative px-6 py-3 bg-white/5 backdrop-blur-xl text-white rounded-md border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all duration-500 flex items-center gap-3 font-medium text-lg shadow-2xl overflow-hidden"
+            className="group relative px-6 py-3 bg-white/5 backdrop-blur-xl text-white rounded-md 
+            border border-white/10 hover:bg-white/10 hover:border-white/20 
+            transition duration-400 flex items-center gap-3 font-medium text-lg overflow-hidden"
           >
             <span className="relative z-10">See My Work</span>
-            <ChevronRight />
-            <div className="absolute inset-0 w-1/12 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 animate-shine"></div>
+            <ChevronRight size={20} />
+
+            <div className="absolute inset-0 w-[18%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 animate-shine"></div>
           </button>
 
+          {/* CV BUTTON */}
           <Link
             href="https://drive.google.com/file/d/1bNGxElcMYck4L2CN9uu5hbYXMH04iDj6/view?usp=sharing"
             target="_blank"
-            className="group relative px-11 py-3 bg-white/5 backdrop-blur-xl text-white rounded-md border border-white/20 hover:bg-white/10 hover:border-white/30 transition-all duration-500 flex items-center gap-6 font-medium text-lg shadow-2xl overflow-hidden"
+            className="relative px-10 py-3 bg-white/5 backdrop-blur-xl text-white rounded-md 
+            border border-white/10 hover:bg-white/10 hover:border-white/20 
+            transition duration-400 flex items-center gap-3 font-medium text-lg overflow-hidden"
           >
-            <span className="font-medium flex items-center gap-2">
-              View CV
-              <FileText strokeWidth="1.5" />
-            </span>
+            View CV
+            <FileText size={20} strokeWidth="1.5" />
           </Link>
         </div>
       </div>
