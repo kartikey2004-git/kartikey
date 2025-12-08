@@ -3,10 +3,9 @@
 import { useMemo } from "react";
 import Image from "next/image";
 import { Dancing_Script } from "next/font/google";
-import { ArrowRight, ArrowUpRight, Github, Globe } from "lucide-react";
+import { Github, Globe } from "lucide-react";
 import { projects } from "@/app/data";
 import Link from "next/link";
-import { IconWorldWww } from "@tabler/icons-react";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -14,13 +13,13 @@ const dancingScript = Dancing_Script({
   variable: "--font-dancing",
 });
 
-export default function ProjectsSection() {
-  const sortedProjects = useMemo(() => [...projects].reverse().slice(0, 4), []);
+export default function Projects() {
+  const sortedProjects = useMemo(() => [...projects].reverse(), []);
 
   return (
     <section
       id="projects"
-      className="relative bg-black/60 text-white py-20 px-6 sm:px-10 overflow-hidden"
+      className="relative bg-black/60 text-white py-20 px-6 sm:px-10 overflow-hidden pt-36"
     >
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}

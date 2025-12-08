@@ -3,7 +3,7 @@ import qs from "qs";
 
 export async function GET() {
   try {
-    // 1. Exchange refresh token → access token
+    // Refresh → Access Token
     const tokenRes = await fetch("https://accounts.spotify.com/api/token", {
       method: "POST",
       headers: {
@@ -20,33 +20,50 @@ export async function GET() {
         grant_type: "refresh_token",
         refresh_token: process.env.SPOTIFY_REFRESH_TOKEN,
       }),
+      cache: "no-store",
     });
 
-    const { access_token } = await tokenRes.json();
+    const tJSON = await tokenRes.json();
+    const access_token = tJSON.access_token;
 
-    // 2. Fetch LAST PLAYED SONG
+    if (!access_token) {
+      return NextResponse.json(
+        { error: "Failed to refresh token" },
+        { status: 500 }
+      );
+    }
+
+    // Fetch Last Played Track
     const recentRes = await fetch(
       "https://api.spotify.com/v1/me/player/recently-played?limit=1",
       {
         headers: {
           Authorization: `Bearer ${access_token}`,
         },
+        cache: "no-store",
       }
     );
 
     const recent = await recentRes.json();
     const item = recent?.items?.[0]?.track;
 
+    if (!item) {
+      return NextResponse.json({
+        song: null,
+        message: "No recently played track found",
+      });
+    }
+
     return NextResponse.json({
       song: item?.name,
       artist: item?.artists?.map((a) => a.name).join(", "),
       albumImage: item?.album?.images?.[0]?.url,
       link: item?.external_urls?.spotify,
-      trackId: item?.id, // ADD THIS
+      trackId: item?.id,
+      previewUrl: item?.preview_url,
       playedAt: recent?.items?.[0]?.played_at,
     });
-
   } catch (e) {
-    return NextResponse.json({ error: e.message });
+    return NextResponse.json({ error: e.message }, { status: 500 });
   }
 }

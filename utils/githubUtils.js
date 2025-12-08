@@ -1,9 +1,9 @@
 export const GITHUB_PALETTE = [
-  "bg-[#161616]", // empty
-  "bg-[#1f1f1f]", // light gray
-  "bg-[#2a2a2a]", // medium gray
-  "bg-[#3a3a3a]", // darker gray
-  "bg-[#4a4a4a]", // highest level
+  "bg-[#161b22]", // empty
+  "bg-[#0e4429]", // level 1
+  "bg-[#006d32]", // level 2
+  "bg-[#26a641]", // level 3
+  "bg-[#39d353]", // level 4
 ];
 
 export const getContributionLevel = (count) => {

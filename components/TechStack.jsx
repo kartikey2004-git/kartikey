@@ -8,7 +8,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const TechStack = () => {
   const technologies = [
@@ -182,8 +182,24 @@ const TechStack = () => {
     },
   ];
 
+  const useIsSmallScreen = () => {
+    if (typeof window === "undefined") return false;
+    const [isSmall, setIsSmall] = useState(false);
+
+    useEffect(() => {
+      const check = () => setIsSmall(window.innerWidth < 640); // sm breakpoint
+      check();
+      window.addEventListener("resize", check);
+      return () => window.removeEventListener("resize", check);
+    }, []);
+
+    return isSmall;
+  };
+
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+
+  const isSmall = useIsSmallScreen();
+  const itemsPerPage = isSmall ? 5 : 12;
 
   const totalPages = Math.ceil(technologies.length / itemsPerPage);
 
@@ -199,11 +215,10 @@ const TechStack = () => {
     >
       <div className="max-w-6xl w-full mb-6">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-2 tracking-tight text-left">
-          Current Technologies
+          Here’s
         </h2>
         <p className="text-gray-400 max-w-3xl text-sm sm:text-base md:text-lg leading-snug text-left">
-          I&apos;m proficient in modern technologies that empower me to build
-          functional solutions. These are some of my main technologies.
+          what I build with
         </p>
       </div>
 

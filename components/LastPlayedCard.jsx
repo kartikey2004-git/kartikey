@@ -1,36 +1,49 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Play } from "lucide-react";
+import { Play, Loader2 } from "lucide-react";
 
 export default function LastPlayedCard() {
   const [data, setData] = useState(null);
-  const [showPlayer, setShowPlayer] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/spotify/last-played")
       .then((res) => res.json())
-      .then((d) => setData(d));
+      .then((d) => {
+        setData(d);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, []);
 
-  if (!data)
+  if (loading) {
     return (
-      <div className="w-full max-w-4xl mx-auto p-4 bg-[#121212] rounded-xl text-white mt-8">
-        Loading…
+      <div className="w-full max-w-4xl mx-auto p-5 bg-[#111] rounded-xl text-white mt-8 flex items-center gap-3">
+        <Loader2 className="animate-spin" size={20} />
+        Fetching last played song…
       </div>
     );
+  }
+
+  if (!data?.song) {
+    return (
+      <div className="w-full max-w-4xl mx-auto p-5 bg-[#111] rounded-xl text-white mt-8 text-center">
+        No recently played song found.
+      </div>
+    );
+  }
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-8 bg-[#111] rounded-xl p-4 shadow border border-white/5">
-      {/* Top Row */}
+    <div className="w-full max-w-4xl mx-auto mt-8 bg-[#111] rounded-md p-4 shadow border border-white/5 transition">
       <div className="flex items-center gap-4">
-        {/* Album */}
+        {/* Album Image */}
         <img
           src={data.albumImage}
           className="w-16 h-16 rounded-md object-cover"
         />
 
-        {/* Text */}
+        {/* Song Info */}
         <div className="flex flex-col flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <img
@@ -44,27 +57,19 @@ export default function LastPlayedCard() {
           <p className="text-white/50 text-sm truncate">by {data.artist}</p>
         </div>
 
-        {/* Play button triggers internal player */}
+        {/* Play button → REDIRECT TO SPOTIFY */}
         <button
-          onClick={() => setShowPlayer(!showPlayer)}
-          className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 hover:bg-white/10 transition border border-white/10"
+          onClick={() => {
+            if (data.link) {
+              window.open(data.link, "_blank");
+            }
+          }}
+          className="w-10 h-10 rounded-md flex items-center justify-center 
+          bg-white/5 hover:bg-white/10 transition border border-white/10"
         >
           <Play size={18} className="text-white" />
         </button>
       </div>
-
-      {/* Hidden Spotify Player — appears inside the card */}
-      {showPlayer && (
-        <div className="mt-4 overflow-hidden rounded-lg">
-          <iframe
-            src={`https://open.spotify.com/embed/track/${data.trackId}`}
-            width="100%"
-            height="80"
-            allow="encrypted-media"
-            className="rounded-lg border-none"
-          ></iframe>
-        </div>
-      )}
     </div>
   );
 }

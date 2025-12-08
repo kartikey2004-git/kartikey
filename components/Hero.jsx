@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { ChevronRight, FileText, Send } from "lucide-react";
 import Link from "next/link";
 import SpotifyCard from "./Spotify-Card";
@@ -9,6 +9,19 @@ import { Twitter, Linkedin, Github, Youtube, Instagram } from "lucide-react";
 
 const Hero = () => {
   const iconClasses = "w-5 h-5 text-gray-400 hover:text-white transition";
+
+  useEffect(() => {
+    const load = () => {
+      fetch("/api/spotify/last-played")
+        .then((res) => res.json())
+        .then((d) => setData(d));
+    };
+
+    load();
+    const interval = setInterval(load, 1000 * 60 * 2); // every 2 min
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section
@@ -42,11 +55,12 @@ const Hero = () => {
             </p>
           </div>
         </div>
+
         <p className="text-[11px] tracking-[0.2em] font-medium uppercase text-gray-500">
           Based in India
         </p>
 
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-[1.15] mt-[-16px]">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-[1.15] mt-[-20px]">
           Innovating{" "}
           <span className="text-blue-400 font-semibold">through code</span>,
           <br />
@@ -54,18 +68,21 @@ const Hero = () => {
         </h2>
 
         {/* SUBTEXT DESCRIPTION */}
-        <p className="text-gray-300 text-base sm:text-lg max-w-xl leading-relaxed">
+        <p className="text-gray-400 text-base sm:text-lg max-w-xl leading-relaxed -mt-4 pb">
           I build for the web — turning creative ideas into smooth, functional,
           and meaningful digital experiences.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 -mt-4">
+
+        <div className="flex w-full gap-3 sm:gap-4 -mt-6 sm:mt-0">
           <style>{`
-            @keyframes shine {
-              0% { left: -100%; }
-              100% { left: 150%; }
-            }
-            .animate-shine { animation: shine 2.8s infinite; }
-          `}</style>
+    @keyframes shine {
+      0% { left: -120%; }
+      100% { left: 140%; }
+    }
+    .animate-shine { 
+      animation: shine 2.6s ease-in-out infinite; 
+    }
+  `}</style>
 
           {/* WORK BUTTON */}
           <button
@@ -73,26 +90,41 @@ const Hero = () => {
               const section = document.getElementById("projects");
               if (section) section.scrollIntoView({ behavior: "smooth" });
             }}
-            className="group relative px-6 py-3 bg-white/5 backdrop-blur-xl text-white rounded-md 
-            border border-white/10 hover:bg-white/10 hover:border-white/20 
-            transition duration-400 flex items-center gap-3 font-medium text-lg overflow-hidden"
+            className="group relative px-4 sm:px-6 py-3 
+    w-1/2 sm:w-auto flex items-center justify-center gap-2
+    bg-white/5 backdrop-blur-xl text-white rounded-md 
+    border border-white/10 hover:bg-white/10 hover:border-white/20 
+    transition-all duration-300 font-medium text-sm sm:text-lg 
+    overflow-hidden active:scale-[0.97]"
           >
             <span className="relative z-10">See My Work</span>
-            <ChevronRight size={20} />
+            <ChevronRight size={18} className="relative z-10 sm:w-5 sm:h-5" />
 
-            <div className="absolute inset-0 w-[18%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 animate-shine"></div>
+            <div
+              className="absolute inset-0 w-[22%] h-full 
+    bg-gradient-to-r from-transparent via-white/20 to-transparent 
+    skew-x-12 animate-shine pointer-events-none 
+    opacity-0 group-hover:opacity-100 transition-opacity"
+            ></div>
           </button>
 
           {/* CV BUTTON */}
           <Link
-            href="https://drive.google.com/file/d/1bNGxElcMYck4L2CN9uu5hbYXMH04iDj6/view?usp=sharing"
+            href="https://drive.google.com/file/d/1YoRs3yremp0lwZ52Bs6E7nt77yOXEhvq/view?usp=sharing"
             target="_blank"
-            className="relative px-10 py-3 bg-white/5 backdrop-blur-xl text-white rounded-md 
-            border border-white/10 hover:bg-white/10 hover:border-white/20 
-            transition duration-400 flex items-center gap-3 font-medium text-lg overflow-hidden"
+            className="relative px-4 sm:px-6 py-3 
+    w-1/2 sm:w-auto flex items-center justify-center gap-2
+    bg-white/5 backdrop-blur-xl text-white rounded-md 
+    border border-white/10 hover:bg-white/10 hover:border-white/20 
+    transition-all duration-300 font-medium text-sm sm:text-lg 
+    overflow-hidden active:scale-[0.97]"
           >
-            View CV
-            <Send size={20} strokeWidth="1.5" />
+            <span>View CV</span>
+            <Send
+              size={18}
+              strokeWidth="1.5"
+              className="relative z-10 sm:w-5 sm:h-5"
+            />
           </Link>
         </div>
       </div>

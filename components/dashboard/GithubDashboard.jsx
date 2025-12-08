@@ -5,6 +5,7 @@ import ContributionHeatmap from "./subDashBoardComponents/ContributionHeatMap";
 import GithubAnalyticsPanel from "./subDashBoardComponents/GithubAnalyticsPanel";
 import GithubStreakCard from "./subDashBoardComponents/GithubStreakCard";
 import OverviewPanel from "./subDashBoardComponents/OverViewPanel";
+import { Loader2 } from "lucide-react";
 
 export default function GithubDashboard({ username = "kartikey2004-git" }) {
   const [data, setData] = useState(null);
@@ -22,8 +23,9 @@ export default function GithubDashboard({ username = "kartikey2004-git" }) {
 
   if (!data) {
     return (
-      <div className="text-gray-400 text-sm tracking-tight">
-        Loading GitHub data…
+      <div className="w-full max-w-4xl mx-auto p-5 bg-[#111] rounded-xl text-white mt-8 flex items-center gap-3">
+        <Loader2 className="animate-spin" size={20} />
+        Fetching Github data…
       </div>
     );
   }
