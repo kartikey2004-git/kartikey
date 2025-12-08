@@ -14,8 +14,8 @@ export default function AboutMeSection() {
         {/* Avatar */}
         <Image
           src="/hi.png" // your pixel avatar
-          width={260}
-          height={260}
+          width={220}
+          height={220}
           alt="Kartikey Avatar"
           className="object-cover flex-shrink-0"
         />
@@ -29,45 +29,39 @@ export default function AboutMeSection() {
 
           {/* Your Text */}
           <p className="text-gray-300 leading-relaxed max-w-xl">
-            I'm a Full Stack Web Developer who loves building clean, meaningful,
-            and practical digital experiences. I enjoy turning ideas into fast,
-            functional, and well-designed web apps. I specialize in creating
-            MVPs and production-ready systems using modern web technologies.
+            I'm a Full Stack Web Developer who enjoys turning ideas into fast,
+            functional, and well-designed web apps—building clean, practical
+            digital experiences and production-ready systems with modern tech.
           </p>
 
           {/* Skills Label */}
           <h2 className="mt-3 font-semibold text-white">Skills</h2>
 
           {/* Skills Row */}
-          <div className="flex flex-wrap items-center gap-3 mt-2">
+          <div className="flex items-center gap-3 mt-2">
+            <img src="/svgs/React.svg" alt="React" className="w-6 h-6" />
             <img
-              src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
-              alt="React"
-            />
-            <img
-              src="https://img.shields.io/badge/JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=000"
+              src="/svgs/Javascript.svg"
               alt="JavaScript"
+              className="w-6 h-6"
             />
             <img
-              src="https://img.shields.io/badge/TypeScript-3178c6?style=for-the-badge&logo=typescript&logoColor=white"
+              src="/svgs/TypeScript.svg"
               alt="TypeScript"
+              className="w-6 h-6"
             />
+            <img src="/svgs/Node.js.svg" alt="Node.js" className="w-6 h-6" />
             <img
-              src="https://img.shields.io/badge/Node.js-3C873A?style=for-the-badge&logo=node.js&logoColor=white"
-              alt="Node.js"
-            />
-            <img
-              src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white"
+              src="/svgs/nextjs.svg"
               alt="Next.js"
+              className="w-6 h-6 bg-white rounded-full border-black"
             />
             <img
-              src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white"
+              src="/svgs/PostgresSQL.svg"
               alt="PostgreSQL"
+              className="w-6 h-6"
             />
-            <img
-              src="https://img.shields.io/badge/MongoDB-4ea94b?style=for-the-badge&logo=mongodb&logoColor=white"
-              alt="MongoDB"
-            />
+            <img src="/svgs/MongoDB.svg" alt="MongoDB" className="w-6 h-6" />
           </div>
         </div>
       </div>
