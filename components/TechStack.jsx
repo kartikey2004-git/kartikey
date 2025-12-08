@@ -223,23 +223,27 @@ const TechStack = () => {
       </div>
 
       <div className="max-w-6xl w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 justify-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 justify-items-center cursor-pointer">
           {currentItems.map((tech, idx) => (
             <div
               key={idx}
-              className="w-full max-w-xs p-3 rounded-sm text-white flex items-start gap-3 bg-white/5 backdrop-blur-sm border border-white/10 shadow-md hover:shadow-lg hover:bg-white/10 transition-all duration-300"
+              className="w-full max-w-xs p-3 rounded-sm text-white flex items-start gap-3 
+    bg-white/5 backdrop-blur-sm border border-white/10 shadow-md 
+    hover:shadow-xl hover:bg-white/10 hover:border-white/20 
+    transition-all duration-300 ease-out hover:-translate-y-[3px]"
             >
               <img
                 src={tech.icon}
                 alt={tech.iconname}
-                className="w-7 h-7 shrink-0"
+                className="w-7 h-7 shrink-0 transition-transform duration-300 
+      group-hover:scale-[1.12]"
               />
 
-              <div className="flex flex-col">
-                <h3 className="font-semibold text-sm sm:text-base">
+              <div className="flex flex-col transition-all duration-300">
+                <h3 className="font-semibold text-sm sm:text-base group-hover:text-white transition-colors">
                   {tech.iconname}
                 </h3>
-                <p className="text-sm sm:text-xs text-gray-300">
+                <p className="text-sm sm:text-xs text-gray-300 group-hover:text-gray-200 transition-colors">
                   {tech.description}
                 </p>
               </div>

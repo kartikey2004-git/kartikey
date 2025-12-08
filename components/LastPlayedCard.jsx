@@ -35,12 +35,17 @@ export default function LastPlayedCard() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-8 bg-[#111] rounded-md p-4 shadow border border-white/5 transition">
+    <div
+      className="w-full max-w-4xl mx-auto mt-8 bg-[#111] rounded-md p-4 shadow 
+  border border-white/5 transition-all duration-300 
+  hover:shadow-lg hover:shadow-black/40 hover:-translate-y-[2px]"
+    >
       <div className="flex items-center gap-4">
         {/* Album Image */}
         <img
           src={data.albumImage}
-          className="w-16 h-16 rounded-md object-cover"
+          className="w-16 h-16 rounded-md object-cover transition-all duration-300 
+      hover:scale-[1.05]"
         />
 
         {/* Song Info */}
@@ -53,22 +58,16 @@ export default function LastPlayedCard() {
             <span className="text-xs text-white/60">Last played</span>
           </div>
 
-          <p className="text-white font-semibold truncate">{data.song}</p>
+          <p
+            className="text-white font-semibold truncate cursor-pointer hover:underline"
+            onClick={() => {
+              if (data.link) window.open(data.link, "_blank");
+            }}
+          >
+            {data.song}
+          </p>
           <p className="text-white/50 text-sm truncate">by {data.artist}</p>
         </div>
-
-        {/* Play button → REDIRECT TO SPOTIFY */}
-        <button
-          onClick={() => {
-            if (data.link) {
-              window.open(data.link, "_blank");
-            }
-          }}
-          className="w-10 h-10 rounded-md flex items-center justify-center 
-          bg-white/5 hover:bg-white/10 transition border border-white/10"
-        >
-          <Play size={18} className="text-white" />
-        </button>
       </div>
     </div>
   );
