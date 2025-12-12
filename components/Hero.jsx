@@ -44,7 +44,7 @@ const Hero = () => {
           <div className="relative w-16 h-16">
             <div className="absolute inset-0 rounded-full bg-white/5 blur-md" />
             <img
-              src="/hi.png"
+              src="/hi.webp"
               alt="Kartikey Avatar"
               className="w-full h-full object-cover rounded-full relative z-10"
             />

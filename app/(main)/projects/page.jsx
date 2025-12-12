@@ -52,7 +52,7 @@ export default function Projects() {
             <article
               key={index}
               className="group relative overflow-hidden bg-white/5 backdrop-blur-lg border border-white/10 
-          transition-all duration-300 hover:shadow-sm hover:shadow-white/5 rounded-md"
+          transition-all duration-300 hover:shadow-sm hover:shadow-white/5 rounded-sm"
             >
               <div className="relative w-full h-44 md:h-40 lg:h-44 overflow-hidden rounded-t-md">
                 <Image
@@ -105,18 +105,6 @@ export default function Projects() {
             </article>
           ))}
         </div>
-      </div>
-
-      {/* Bottom "All Projects" button centered */}
-      <div className="w-full flex justify-center mt-10">
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 px-5 py-2.5 border border-white/20
-    text-xs sm:text-sm font-medium backdrop-blur-md bg-white/5 hover:scale-105
-    transition-all rounded-md"
-        >
-          Show All Projects
-        </Link>
       </div>
     </section>
   );

@@ -53,7 +53,7 @@ export default function ProjectsSection() {
             <article
               key={index}
               className="group relative overflow-hidden bg-white/5 backdrop-blur-lg border border-white/10 
-          transition-all duration-300 hover:shadow-sm hover:shadow-white/10 rounded-md 
+          transition-all duration-300 hover:shadow-sm hover:shadow-white/10 rounded-sm 
           hover:-translate-y-[4px] opacity-0 animate-fadeUp"
               style={{ animationDelay: `${0.2 + index * 0.1}s` }}
             >
@@ -70,7 +70,7 @@ export default function ProjectsSection() {
 
               <div className="p-5 flex flex-col gap-3">
                 <div>
-                  <h3 className="text-lg sm:text-xl font-semibold mb-1 group-hover:text-blue-300 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-1  transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-sm text-white/70 group-hover:text-white/80 transition-colors line-clamp-3">

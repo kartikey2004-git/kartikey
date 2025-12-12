@@ -40,7 +40,7 @@ export const projects = [
       "Clerk",
       "Shadcn UI",
     ],
-    image: "/connect.png",
+    image: "/connect.webp",
     features: [
       "Create and customize event types with your availability.",
       "Share booking links for quick and easy scheduling.",
@@ -61,7 +61,7 @@ export const projects = [
       "Cron Jobs",
       "Charts.js",
     ],
-    image: "/rankbit.png",
+    image: "/rankbit.webp",
     features: [
       "Add domains and track keywords with individual keyword detail pages.",
       "Fetch Google search rankings using Bright Data and store historical results.",
@@ -84,7 +84,7 @@ export const projects = [
       "Redis",
       "AWS",
     ],
-    image: "/Vartax.png",
+    image: "/Vartax.webp",
     features: [
       "Send and receive messages instantly with live delivery status.",
       "Share files, images, and media during chats.",
@@ -106,7 +106,7 @@ export const projects = [
       "TypeScript",
       "NeonDB",
     ],
-    image: "/routex.png",
+    image: "/routex.webp",
     features: [
       "Send and inspect REST requests with params, headers, and a full JSON editor.",
       "Use built-in WebSocket client to send messages and track real-time events.",
@@ -132,7 +132,7 @@ export const projects = [
       "Zod",
       "Vercel AI SDK",
     ],
-    image: "/kairo.png",
+    image: "/kairo.webp",
     features: [
       "Chat with AI and pull live web results without leaving the terminal.",
       "Turn simple prompts into complete applications or useful code.",
@@ -152,7 +152,7 @@ export const projects = [
       "Audio Transcription",
       "Search Engine",
     ],
-    image: "/code.png",
+    image: "/code.webp",
     features: [
       "Generate clear, automatic documentation for any part of the codebase.",
       "Search through files, functions, and context-aware results instantly.",

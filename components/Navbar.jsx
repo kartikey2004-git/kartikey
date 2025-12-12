@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { navLinks } from "@/lib/navLinks";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export function NavbarDemo() {
   return (
@@ -38,10 +39,12 @@ function Navbar({ className }) {
       <div className="hidden md:inline-flex items-center justify-center bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-full px-8 py-3 space-x-8">
         <div className="relative w-11 h-11">
           <Link href="/">
-            <img
-              src="/hi.png"
+            <Image
+              src="/hi.webp"
               alt="Kartikey Avatar"
               className="w-full h-full object-cover rounded-full cursor-pointer"
+              width={60}
+              height={60}
             />
           </Link>
         </div>
@@ -71,10 +74,12 @@ function Navbar({ className }) {
       >
         <div className="flex items-center gap-2">
           <Link href="/" className="block w-11 h-11">
-            <img
-              src="/hi.png"
+            <Image
+              src="/hi.webp"
               alt="Kartikey Avatar"
               className="w-full h-full object-cover rounded-full cursor-pointer"
+              width={60}
+              height={60}
             />
           </Link>
 

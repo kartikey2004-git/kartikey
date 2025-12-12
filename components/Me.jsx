@@ -34,7 +34,7 @@ export default function AboutMeSection() {
           <div className="absolute inset-0 rounded-xl bg-white/5 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
           <Image
-            src="/hi.png"
+            src="/hi.webp"
             width={230}
             height={230}
             alt="Kartikey Avatar"
