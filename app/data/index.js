@@ -1,10 +1,11 @@
 export const projects = [
   {
     title: "ShortenX",
+    slug: "shorten-x",
     description:
       "A fast, minimal tool that turns long URLs into clean short links with simple analytics and an easy dashboard.",
     tech: ["React.js (Vite)", "Tailwind CSS", "Supabase"],
-    image: "/url.webp",
+    image: "/url.png",
     features: [
       "Shorten links instantly.",
       "Check click counts and insights.",
@@ -12,13 +13,16 @@ export const projects = [
       "Edit or delete links anytime.",
     ],
     projectLink: "https://github.com/kartikey2004-git/URL-Shortener",
+    liveLink: "https://clippyurl.vercel.app",
+    currentlyBuilding: false,
   },
   {
     title: "JobConnect",
+    slug: "jobconnect",
     description:
       "A straightforward job portal where candidates apply and track progress while recruiters post openings and update statuses.",
     tech: ["React.js (Vite)", "Tailwind CSS", "Supabase"],
-    image: "/job.webp",
+    image: "/job.png",
     features: [
       "Role-based access for candidates and recruiters.",
       "Post and manage job listings easily.",
@@ -26,9 +30,12 @@ export const projects = [
       "Track and update application stages.",
     ],
     projectLink: "https://github.com/kartikey2004-git/JobPortal",
+    liveLink: "https://jobconnectx.vercel.app",
+    currentlyBuilding: false,
   },
   {
-    title: "Schedulerr",
+    title: "Connectify",
+    slug: "connectify",
     description:
       "A smooth scheduling tool where users set up event types, share booking links, and handle meetings through an organized dashboard.",
     tech: [
@@ -40,38 +47,20 @@ export const projects = [
       "Clerk",
       "Shadcn UI",
     ],
-    image: "/connect.webp",
+    image: "/connect.png",
     features: [
       "Create and customize event types with your availability.",
       "Share booking links for quick and easy scheduling.",
       "View and manage all upcoming and past meetings.",
       "Smart calendar integration",
     ],
-    demoLink: "https://github.com/kartikey2004-git/Connectify",
-  },
-  {
-    title: "RankBit",
-    description:
-      "A simple SEO tracking tool that lets users monitor keyword rankings, manage domains, and view progress through clean charts.",
-    tech: [
-      "Next.js",
-      "NextAuth",
-      "MongoDB",
-      "Bright Data",
-      "Cron Jobs",
-      "Charts.js",
-    ],
-    image: "/rankbit.webp",
-    features: [
-      "Add domains and track keywords with individual keyword detail pages.",
-      "Fetch Google search rankings using Bright Data and store historical results.",
-      "View ranking trends through interactive charts and daily updates.",
-      "Secure login with NextAuth and automated nightly checks via cron jobs.",
-    ],
-    demoLink: "https://github.com/kartikey2004-git/Rankbit",
+    projectLink: "https://github.com/kartikey2004-git/Connectify",
+    liveLink: "https://connectify-space.vercel.app",
+    currentlyBuilding: false,
   },
   {
     title: "VartaX",
+    slug: "vartax",
     description:
       "A smooth, fast chat app where conversations, status updates, and sharing stay reliable even under heavy load.",
     tech: [
@@ -92,9 +81,12 @@ export const projects = [
       "Secure OTP login and stable performance backed by a scalable backend.",
     ],
     projectLink: "https://github.com/kartikey2004-git/vartaX",
+    liveLink: "https://varta-x.vercel.app",
+    currentlyBuilding: false,
   },
   {
     title: "RouteX",
+    slug: "routex",
     description:
       "An AI-assisted platform for designing, testing, and inspecting APIs with real-time collaboration, smart tooling, and a clean developer-first interface.",
     tech: [
@@ -106,17 +98,20 @@ export const projects = [
       "TypeScript",
       "NeonDB",
     ],
-    image: "/routex.webp",
+    image: "/routex.png",
     features: [
       "Send and inspect REST requests with params, headers, and a full JSON editor.",
       "Use built-in WebSocket client to send messages and track real-time events.",
       "Organize work in shared workspaces with teammates in realtime.",
       "Generate full API requests and names instantly using built-in AI helpers.",
     ],
-    demoLink: "https://github.com/kartikey2004-git/routeX",
+    projectLink: "https://github.com/kartikey2004-git/routeX",
+    liveLink: "https://route-x-seven.vercel.app",
+    currentlyBuilding: false,
   },
   {
     title: "Kairo",
+    slug: "kairo",
     description:
       "A powerful AI-driven CLI that chats, searches, builds apps, and runs tasks on its own, all wrapped in a smooth command-line workflow.",
     tech: [
@@ -140,9 +135,12 @@ export const projects = [
       "Secure your sessions and store conversation history",
     ],
     projectLink: "https://github.com/kartikey2004-git/Kairo",
+    liveLink: "",
+    currentlyBuilding: true,
   },
   {
     title: "CodeSense AI",
+    slug: "codesense-ai",
     description:
       "A collaboration tool that helps teams understand code faster, stay aligned, and work with greater clarity across the entire codebase.",
     tech: [
@@ -160,6 +158,8 @@ export const projects = [
       "Transcribe meetings and search past discussions with real-time context.",
     ],
     projectLink: "https://github.com/kartikey2004-git/CodeSense-AI",
+    liveLink: "",
+    currentlyBuilding: true,
   },
 ];
 
