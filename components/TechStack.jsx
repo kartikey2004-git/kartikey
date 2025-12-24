@@ -15,7 +15,7 @@ const TechStack = () => {
     {
       iconname: "JavaScript",
       description: "Web scripting language",
-      icon: "/svgs/Javascript.svg",
+      icon: "/svgs/javascript.svg",
       bgColor: "bg-yellow-500",
     },
     {
