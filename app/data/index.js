@@ -228,7 +228,7 @@ export const technologies = [
   {
     iconname: "JavaScript",
     description: "Web scripting language",
-    icon: "/svgs/javascript.svg",
+    icon: "/svgs/js.svg",
     bgColor: "bg-yellow-500",
   },
   {
@@ -397,7 +397,7 @@ export const technologies = [
 
 export const skills = [
   { src: "/svgs/React.svg", label: "React" },
-  { src: "/svgs/Javascript.svg", label: "JavaScript" },
+  { src: "/svgs/js.svg", label: "JavaScript" },
   { src: "/svgs/TypeScript.svg", label: "TypeScript" },
   { src: "/svgs/Node.js.svg", label: "Node.js" },
   { src: "/svgs/PostgresSQL.svg", label: "PostgreSQL" },
