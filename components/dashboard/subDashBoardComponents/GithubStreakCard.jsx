@@ -10,18 +10,14 @@ export default function GithubStreakCard({ data }) {
 
   return (
     <div className="p-4">
-      {/* Title + Badge */}
       <div className="flex items-center gap-2 mb-3">
         <h3 className="text-base font-semibold text-white tracking-tight">
           Contribution Streaks
         </h3>
       </div>
 
-      {/* Stats */}
       <div className="flex flex-col gap-4 text-left">
-        {/* Total Contributions */}
         <div className="flex items-center gap-2">
-        
           <div>
             <p className="text-xl font-semibold text-white">
               <CountUp start={0} end={user.totalContribution} duration={1.4} />
@@ -32,7 +28,6 @@ export default function GithubStreakCard({ data }) {
 
         <div className="border-t border-white/10" />
 
-        {/* Current Streak */}
         <div className="flex items-center gap-2">
           <div>
             <p className="text-xl font-semibold text-white">
@@ -44,7 +39,6 @@ export default function GithubStreakCard({ data }) {
 
         <div className="border-t border-white/10" />
 
-        {/* Longest Streak */}
         <div className="flex items-center gap-2">
           <div>
             <p className="text-xl font-semibold text-white">

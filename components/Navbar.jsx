@@ -1,20 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
-import { navLinks } from "@/lib/navLinks";
+
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { navLinks } from "@/app/data";
 
-export function NavbarDemo() {
+export function Navbar() {
   return (
     <div className="relative w-full flex items-center justify-center">
-      <Navbar className="top-4" />
+      <NavbarComponent className="top-4" />
     </div>
   );
 }
 
-function Navbar({ className }) {
+function NavbarComponent({ className }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleClick = (e, href) => {
@@ -35,7 +36,6 @@ function Navbar({ className }) {
         className
       )}
     >
-      {/* Navbar container */}
       <div className="hidden md:inline-flex items-center justify-center bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-full px-8 py-3 space-x-8">
         <div className="relative w-11 h-11">
           <Link href="/">
@@ -57,7 +57,7 @@ function Navbar({ className }) {
             download={link.download ? true : undefined}
             onClick={(e) => handleClick(e, link.href)}
             className="relative text-white text-base font-medium transition-colors duration-200 
-              after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 
+              after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 
               after:bg-white after:rounded-full after:transition-all after:duration-300 
               hover:after:w-full"
           >
@@ -66,7 +66,6 @@ function Navbar({ className }) {
         ))}
       </div>
 
-      {/* Mobile menu button */}
       <div
         className="md:hidden fixed top-0 left-0 right-0 z-50
      flex justify-between items-center px-4 py-2
@@ -91,7 +90,6 @@ function Navbar({ className }) {
         </button>
       </div>
 
-      {/* Mobile dropdown */}
       {menuOpen && (
         <div
           className="md:hidden fixed top-10 left-0 right-0 z-40
@@ -111,7 +109,7 @@ function Navbar({ className }) {
                 onClick={(e) => handleClick(e, link.href)}
                 className="flex items-center space-x-3 text-white text-base transition-colors duration-200"
               >
-                <span className="flex-shrink-0">{link.icon}</span>
+                <span className="shrink-0">{link.icon}</span>
                 <span>{link.title}</span>
               </a>
 

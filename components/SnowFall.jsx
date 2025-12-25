@@ -7,9 +7,9 @@ const Snowfall = dynamic(() => import("react-snowfall"), {
 });
 
 export default function GlobalSnowfall() {
-  const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
+  const month = new Date().getMonth();
 
-  if (month !== 11) return null; 
+  if (month !== 11) return null;
 
   return (
     <Snowfall

@@ -5,7 +5,6 @@ import AboutMeSection from "@/components/Me";
 import ProjectsSection from "@/components/Projects";
 import TechStack from "@/components/TechStack";
 
-
 export default function Home() {
   return (
     <main className="bg-black/70">

@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import ContributionHeatmap from "./subDashBoardComponents/ContributionHeatMap";
 import GithubAnalyticsPanel from "./subDashBoardComponents/GithubAnalyticsPanel";
-import GithubStreakCard from "./subDashBoardComponents/GithubStreakCard";
 import OverviewPanel from "./subDashBoardComponents/OverViewPanel";
 import { Loader2 } from "lucide-react";
 
@@ -32,29 +31,20 @@ export default function GithubDashboard({ username = "kartikey2004-git" }) {
 
   return (
     <div className="flex flex-col">
-      {/* Overview */}
-      <div className="">
+      <div>
         <div className="w-full overflow-x-auto">
           <OverviewPanel data={data} />
         </div>
       </div>
 
-      {/* Analytics */}
-      <div className="">
+      <div>
         <div className="w-full overflow-x-auto">
           <GithubAnalyticsPanel data={data} />
         </div>
       </div>
 
-      {/* Heatmap + Streak */}
       <div className="grid grid-cols-1">
-        <div className="bg-[#0c0c0c]">
-          <div className="w-full overflow-x-auto">
-            {/* <GithubStreakCard data={data} /> */}
-          </div>
-        </div>
-
-        <div className="">
+        <div>
           <div className="w-full overflow-x-auto">
             <ContributionHeatmap data={data} />
           </div>

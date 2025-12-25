@@ -1,14 +1,12 @@
 import { get } from "@vercel/edge-config";
 
-export const runtime = "nodejs"; // ensures it runs on Node environment
+export const runtime = "nodejs";
 
 export async function GET() {
   try {
-    // 1. Read current value
     const current = (await get("visitor_count")) ?? 0;
     const newCount = current + 1;
 
-    // 2. Update using Vercel REST API (Edge Config editing)
     const edgeConfigId = process.env.EDGE_CONFIG_ID;
     const apiToken = process.env.VERCEL_API_TOKEN;
 

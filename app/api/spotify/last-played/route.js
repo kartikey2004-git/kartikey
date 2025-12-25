@@ -3,7 +3,6 @@ import qs from "qs";
 
 export async function GET() {
   try {
-    // 1. Refresh → Access Token
     const tokenRes = await fetch("https://accounts.spotify.com/api/token", {
       method: "POST",
       headers: {
@@ -33,7 +32,6 @@ export async function GET() {
       );
     }
 
-    // 2. Fetch Last Played Track
     const recentRes = await fetch(
       "https://api.spotify.com/v1/me/player/recently-played?limit=1",
       {
@@ -55,7 +53,6 @@ export async function GET() {
       });
     }
 
-    // 3. Extract "played from" context
     const playedFrom = itemWrapper?.context?.type || "unknown";
 
     return NextResponse.json({

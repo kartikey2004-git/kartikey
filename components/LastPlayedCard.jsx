@@ -35,20 +35,14 @@ export default function LastPlayedCard() {
   }
 
   return (
-    <div
-      className="w-full max-w-4xl mx-auto mt-8 bg-[#111] rounded-md p-4 shadow 
-  border border-white/5 transition-all duration-300 
-  hover:shadow-lg hover:shadow-black/40 hover:-translate-y-[2px]"
-    >
+    <div className="w-full max-w-4xl mx-auto mt-8 bg-[#111] rounded-md p-4 shadow border border-white/5 transition-all duration-300 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-0.5">
       <div className="flex items-center gap-4">
-        {/* Album Image */}
         <img
           src={data.albumImage}
           className="w-16 h-16 rounded-md object-cover transition-all duration-300 
       hover:scale-[1.05]"
         />
 
-        {/* Song Info */}
         <div className="flex flex-col flex-1 min-w-0">
           <div className="flex items-center gap-2">
             <img

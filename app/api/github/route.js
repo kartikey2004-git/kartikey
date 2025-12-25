@@ -17,7 +17,6 @@ export async function GET(request) {
   }
 
   try {
-    // GraphQL: Fetch avatar, followers, following, repos, stars, languages, contributions
     const query = `
       query($username: String!) {
         user(login: $username) {
@@ -64,7 +63,6 @@ export async function GET(request) {
     const response = await octokit.graphql(query, { username });
     const user = response.user;
 
-    // Flatten contribution days
     const calendar = user.contributionsCollection.contributionCalendar;
     const contributions = calendar.weeks.flatMap((week) =>
       week.contributionDays.map((day) => ({
@@ -73,7 +71,6 @@ export async function GET(request) {
       }))
     );
 
-    // Calculate top languages
     let langStats = {};
 
     user.repositories.nodes.forEach((repo) => {
@@ -112,7 +109,6 @@ export async function GET(request) {
         totalContribution: calendar.totalContributions,
       },
     });
-
   } catch (error) {
     console.error("GITHUB API ERROR", error);
     return NextResponse.json(

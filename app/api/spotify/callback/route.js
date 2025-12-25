@@ -28,10 +28,6 @@ export async function GET(req) {
 
   const tokens = await tokenRes.json();
 
-  console.log("\n🔥 SAVE THIS REFRESH TOKEN IN .env.local:\n");
-  console.log("SPOTIFY_REFRESH_TOKEN=" + tokens.refresh_token);
-  console.log("\n-----------------------------------------\n");
-
   return NextResponse.json({
     message: "Refresh token generated. Check your terminal!",
     refresh_token: tokens.refresh_token,

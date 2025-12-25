@@ -13,19 +13,17 @@ import {
 import { Progress } from "@/components/ui/progress";
 
 export default function GithubAnalyticsPanel({ data }) {
-  const { profile, contributions } = data;
+  const { contributions } = data;
 
-  // Last 30 days contributions
   const last30 = contributions.slice(-180);
 
-  // Convert data for Recharts
   const chartData = useMemo(() => {
     return last30.map((d) => {
       const date = new Date(d.date);
       const formatted = date.toLocaleDateString("en-US", {
         day: "2-digit",
         month: "short",
-      }); // "20 Nov"
+      });
 
       return {
         date: formatted,
@@ -47,13 +45,11 @@ export default function GithubAnalyticsPanel({ data }) {
 
   return (
     <div className="p-5">
-      {/* Title */}
       <h3 className="text-lg font-semibold text-white mb-4 tracking-tight">
         Analytics Overview
       </h3>
 
       <div className="space-y-6">
-        {/* Sparkline */}
         <div>
           <p className="text-sm text-gray-400 mb-2">
             Contributions (Last 30 Days)
@@ -65,27 +61,21 @@ export default function GithubAnalyticsPanel({ data }) {
                 data={chartData}
                 margin={{ left: 0, right: 0, top: 10, bottom: 0 }}
               >
-                {/* Subtle box grid */}
                 <CartesianGrid
                   stroke="#1b1b1b"
                   strokeWidth={1}
                   strokeDasharray="0"
                   vertical={true}
                   horizontal={true}
-                  opacity={0.52} // soft, gentle
+                  opacity={0.52}
                 />
 
-                {/* Moderate number of boxes */}
-                <XAxis
-                  dataKey="date"
-                  hide
-                  interval={5} // less vertical boxes
-                />
+                <XAxis dataKey="date" hide interval={5} />
 
                 <YAxis
                   hide
                   domain={["dataMin - 1", "dataMax + 1"]}
-                  tickCount={90} // fewer horizontal lines
+                  tickCount={90} 
                 />
 
                 <Tooltip

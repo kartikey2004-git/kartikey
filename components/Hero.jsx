@@ -60,7 +60,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <p className="text-[11px] tracking-[0.2em] font-medium uppercase text-gray-500 mt-[-16px]">
+        <p className="text-[11px] tracking-[0.2em] font-medium uppercase text-gray-500 -mt-4">
           Based in India
         </p>
 
@@ -103,7 +103,7 @@ const Hero = () => {
 
             <div
               className="absolute inset-0 w-[22%] h-full 
-              bg-gradient-to-r from-transparent via-white/20 to-transparent 
+              bg-linear-to-r from-transparent via-white/20 to-transparent 
               skew-x-12 animate-shine pointer-events-none 
               opacity-0 group-hover:opacity-100 transition-opacity"
             />

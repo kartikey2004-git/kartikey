@@ -5,9 +5,6 @@ import GithubDashboard from "./dashboard/GithubDashboard";
 const GithubSection = () => {
   return (
     <section className="w-full bg-black/60 px-6 md:px-12 lg:px-12">
-      {/* Heading */}
-
-      {/* Card Wrapper */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

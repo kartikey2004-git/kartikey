@@ -15,31 +15,18 @@ export default function ProjectDetailPage({ params }) {
   return (
     <section className="min-h-screen bg-black text-white px-6 py-24">
       <div className="max-w-5xl mx-auto space-y-14">
-        {/* PREVIEW IMAGE */}
-
-        <div
-          className="
-    relative w-full aspect-[16/9] overflow-hidden
-    rounded-md sm:rounded-lg lg:rounded-sm
-  "
-        >
+        <div className="relative w-full aspect-video overflow-hidden rounded-md sm:rounded-lg lg:rounded-sm">
           <Image
             src={project.image}
             alt={project.title}
             fill
             priority
-            sizes="
-      (max-width: 640px) 100vw,
-      (max-width: 1024px) 70vw,
-      50vw
-    "
+            sizes="(max-width: 640px) 100vw,(max-width: 1024px) 70vw,50vw"
             className="object-cover"
           />
         </div>
 
-        {/* HERO */}
         <div className="space-y-6">
-          {/* STATUS */}
           <div>
             {project.currentlyBuilding ? (
               <span
@@ -60,17 +47,14 @@ export default function ProjectDetailPage({ params }) {
             )}
           </div>
 
-          {/* TITLE */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight">
             {project.title}
           </h1>
 
-          {/* DESCRIPTION */}
           <p className="max-w-3xl text-white/70 text-base sm:text-lg leading-relaxed">
             {project.description}
           </p>
 
-          {/* ACTIONS */}
           <div className="flex flex-wrap gap-3 pt-2">
             {project.liveLink && (
               <a
@@ -102,9 +86,7 @@ export default function ProjectDetailPage({ params }) {
 
         <div className="my-10 h-px w-full bg-white/10" />
 
-        {/* DETAILS GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* LEFT — FEATURES */}
           <div className="md:col-span-2 space-y-6">
             <h2 className="text-xl font-semibold">Key Features</h2>
 
@@ -118,7 +100,6 @@ export default function ProjectDetailPage({ params }) {
             </ul>
           </div>
 
-          {/* RIGHT — TECH STACK */}
           <div className="space-y-6">
             <h2 className="text-xl font-semibold">Tech Stack</h2>
 

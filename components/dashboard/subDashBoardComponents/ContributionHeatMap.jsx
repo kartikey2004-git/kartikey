@@ -20,13 +20,11 @@ export default function ContributionHeatmap({ data }) {
   const weeks = chunkWeeks(contributions);
   const streaks = computeStreaks(contributions);
 
-  // Total yearly contributions
   const total = useMemo(
     () => contributions.reduce((s, d) => s + d.count, 0),
     [contributions]
   );
 
-  // Month labels (first week of each month)
   const monthLabels = useMemo(() => {
     return weeks.map((week, i) => {
       const firstValid = week.find((d) => !d.pad);
@@ -46,15 +44,12 @@ export default function ContributionHeatmap({ data }) {
         Contribution Activity
       </h3>
 
-      {/* SUMMARY SECTION */}
       <div className="grid grid-cols-3 gap-4 text-center text-xs text-gray-400 mb-4 sm:text-sm">
-        {/* Total contributions */}
         <div className="px-3 py-2 bg-[#111] border border-[#1f1f1f]">
           <p className="text-white font-semibold text-base">{total}</p>
           <p className="text-[10px] mt-1">Total Contributions</p>
         </div>
 
-        {/* Current streak */}
         <div className="px-3 py-2 bg-[#111] border border-[#1f1f1f]">
           <p className="text-white font-semibold text-base">
             {streaks.currentStreak}
@@ -62,7 +57,6 @@ export default function ContributionHeatmap({ data }) {
           <p className="text-[10px] mt-1">Current Streak (Days)</p>
         </div>
 
-        {/* Longest streak */}
         <div className="px-3 py-2 bg-[#111] border border-[#1f1f1f]">
           <p className="text-white font-semibold text-base">
             {streaks.longestStreak}
@@ -72,27 +66,24 @@ export default function ContributionHeatmap({ data }) {
       </div>
 
       <div className="flex gap-3 sm:gap-3">
-        {/* GRAPH */}
         <div className="overflow-x-auto pb-2 sm:pb-2 hide-scrollbar">
           <TooltipProvider>
-            {/* MONTH LABELS */}
             <div className="flex ml-1 mb-1">
               {monthLabels.map((m, i) => (
                 <div
                   key={i}
-                  className="text-[10px] text-gray-500 text-left sm:w-4 w-3 mx-[1px]"
+                  className="text-[10px] text-gray-500 text-left sm:w-4 w-3 mx-px"
                 >
                   {i === 0 || m !== monthLabels[i - 1] ? m : ""}
                 </div>
               ))}
             </div>
 
-            {/* HEATMAP GRID */}
-            <div className="flex gap-[2px] sm:gap-[3px]">
+            <div className="flex gap-0.5 sm:gap-0.75">
               {weeks.map((week, wIdx) => (
                 <div
                   key={wIdx}
-                  className="grid grid-rows-7 gap-[2px] sm:gap-[3px]"
+                  className="grid grid-rows-7 gap-0.5 sm:gap-0.75"
                 >
                   {week.map((day, dIdx) => {
                     if (day.pad) {
@@ -135,13 +126,12 @@ export default function ContributionHeatmap({ data }) {
               ))}
             </div>
 
-            {/* STREAK LINE */}
             {streaks.currentStreak > 0 && (
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: streaks.currentStreak * 4 }}
                 transition={{ duration: 0.3 }}
-                className="h-[2px] bg-white/50 rounded-full sm:mt-3 mt-2"
+                className="h-0.5 bg-white/50 rounded-full sm:mt-3 mt-2"
               />
             )}
           </TooltipProvider>

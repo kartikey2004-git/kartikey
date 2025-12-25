@@ -1,3 +1,12 @@
+import { FiFolder, FiBookOpen } from "react-icons/fi";
+import {
+  IconHome,
+  IconMail,
+  IconBrandLinkedin,
+  IconBrandX,
+  IconBrandGithub,
+} from "@tabler/icons-react";
+
 export const projects = [
   {
     title: "ShortenX",
@@ -12,6 +21,7 @@ export const projects = [
       "Manage all saved URLs after login.",
       "Edit or delete links anytime.",
     ],
+    bg: "shortenx",
     projectLink: "https://github.com/kartikey2004-git/URL-Shortener",
     liveLink: "https://clippyurl.vercel.app",
     currentlyBuilding: false,
@@ -29,6 +39,7 @@ export const projects = [
       "Apply to jobs from a personal dashboard.",
       "Track and update application stages.",
     ],
+    bg: "jobconnect",
     projectLink: "https://github.com/kartikey2004-git/JobPortal",
     liveLink: "https://jobconnectx.vercel.app",
     currentlyBuilding: false,
@@ -54,6 +65,7 @@ export const projects = [
       "View and manage all upcoming and past meetings.",
       "Smart calendar integration",
     ],
+    bg: "connectify",
     projectLink: "https://github.com/kartikey2004-git/Connectify",
     liveLink: "https://connectify-space.vercel.app",
     currentlyBuilding: false,
@@ -80,6 +92,7 @@ export const projects = [
       "See online/offline presence and realtime status updates.",
       "Secure OTP login and stable performance backed by a scalable backend.",
     ],
+    bg: "vartax",
     projectLink: "https://github.com/kartikey2004-git/vartaX",
     liveLink: "https://varta-x.vercel.app",
     currentlyBuilding: false,
@@ -98,6 +111,7 @@ export const projects = [
       "TypeScript",
       "NeonDB",
     ],
+    bg: "routex",
     image: "/routex.png",
     features: [
       "Send and inspect REST requests with params, headers, and a full JSON editor.",
@@ -127,13 +141,14 @@ export const projects = [
       "Zod",
       "Vercel AI SDK",
     ],
-    image: "/kairo.webp",
+    image: "/projects/kairo.png",
     features: [
       "Chat with AI and pull live web results without leaving the terminal.",
       "Turn simple prompts into complete applications or useful code.",
       "Let the built-in agent run tools, execute code, and solve tasks independently.",
       "Secure your sessions and store conversation history",
     ],
+    bg: "kairo",
     projectLink: "https://github.com/kartikey2004-git/Kairo",
     liveLink: "",
     currentlyBuilding: true,
@@ -150,13 +165,14 @@ export const projects = [
       "Audio Transcription",
       "Search Engine",
     ],
-    image: "/code.webp",
+    image: "/projects/codesense.png",
     features: [
       "Generate clear, automatic documentation for any part of the codebase.",
       "Search through files, functions, and context-aware results instantly.",
       "Get AI-generated summaries for commit messages and project activity.",
       "Transcribe meetings and search past discussions with real-time context.",
     ],
+    bg: "codesense",
     projectLink: "https://github.com/kartikey2004-git/CodeSense-AI",
     liveLink: "",
     currentlyBuilding: true,
@@ -205,5 +221,370 @@ export const people = [
     designation: "The Explorer",
     image:
       "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
+  },
+];
+
+export const technologies = [
+  {
+    iconname: "JavaScript",
+    description: "Web scripting language",
+    icon: "/svgs/javascript.svg",
+    bgColor: "bg-yellow-500",
+  },
+  {
+    iconname: "TypeScript",
+    description: "Typed JS superset",
+    icon: "/svgs/TypeScript.svg",
+    bgColor: "bg-blue-600",
+  },
+  {
+    iconname: "React",
+    description: "UI library",
+    icon: "/svgs/React.svg",
+    bgColor: "bg-cyan-500",
+  },
+  {
+    iconname: "Next.js",
+    description: "React framework",
+    icon: "/svgs/nextjs.svg",
+    bgColor: "bg-gray-800",
+  },
+  {
+    iconname: "Tailwind CSS",
+    description: "Utility CSS",
+    icon: "/svgs/Tailwind-CSS.svg",
+    bgColor: "bg-teal-500",
+  },
+  {
+    iconname: "Node.js",
+    description: "Backend runtime",
+    icon: "/svgs/Node.js.svg",
+    bgColor: "bg-green-700",
+  },
+  {
+    iconname: "Express",
+    description: "Node.js framework",
+    icon: "/svgs/Express.svg",
+    bgColor: "bg-gray-700",
+  },
+  {
+    iconname: "Prisma",
+    description: "Node ORM",
+    icon: "/svgs/prisma.svg",
+    bgColor: "bg-indigo-400",
+  },
+  {
+    iconname: "MongoDB",
+    description: "NoSQL database",
+    icon: "/svgs/MongoDB.svg",
+    bgColor: "bg-green-600",
+  },
+  {
+    iconname: "PostgreSQL",
+    description: "Relational database",
+    icon: "/svgs/PostgresSQL.svg",
+    bgColor: "bg-blue-700",
+  },
+  {
+    iconname: "SQL",
+    description: "Database queries",
+    icon: "/svgs/MySQL.svg",
+    bgColor: "bg-indigo-500",
+  },
+  {
+    iconname: "Vercel",
+    description: "Frontend deployment",
+    icon: "/svgs/Vercel.svg",
+    bgColor: "bg-white/80",
+  },
+  {
+    iconname: "Netlify",
+    description: "Static hosting",
+    icon: "/svgs/netlify.svg",
+    bgColor: "bg-green-500",
+  },
+  {
+    iconname: "Render",
+    description: "Cloud hosting",
+    icon: "/svgs/render.png",
+    bgColor: "bg-purple-400",
+  },
+  {
+    iconname: "Git",
+    description: "Version control",
+    icon: "/svgs/Git.svg",
+    bgColor: "bg-red-500",
+  },
+  {
+    iconname: "Firebase",
+    description: "App backend",
+    icon: "/svgs/Firebase.svg",
+    bgColor: "bg-orange-500",
+  },
+  {
+    iconname: "Supabase",
+    description: "Open-source backend",
+    icon: "/svgs/supabase.png",
+    bgColor: "bg-sky-500",
+  },
+  {
+    iconname: "Appwrite",
+    description: "Backend platform",
+    icon: "/svgs/Appwrite.svg",
+    bgColor: "bg-red-500",
+  },
+  {
+    iconname: "Redis",
+    description: "In-memory DB",
+    icon: "/svgs/Redis.svg",
+    bgColor: "bg-red-600",
+  },
+  {
+    iconname: "RabbitMQ",
+    description: "Message broker",
+    icon: "/svgs/RabbitMQ.svg",
+    bgColor: "bg-pink-500",
+  },
+  {
+    iconname: "ShadCN",
+    description: "UI components",
+    icon: "/svgs/shadcn.png",
+    bgColor: "bg-indigo-400",
+  },
+  {
+    iconname: "Framer Motion",
+    description: "Animations",
+    icon: "/svgs/framer.svg",
+    bgColor: "bg-pink-500",
+  },
+  {
+    iconname: "Clerk",
+    description: "Authentication",
+    icon: "/svgs/clerkk.png",
+    bgColor: "bg-orange-500",
+  },
+  {
+    iconname: "Postman",
+    description: "API testing",
+    icon: "/svgs/Postman.svg",
+    bgColor: "bg-orange-400",
+  },
+  {
+    iconname: "HTML",
+    description: "Markup language",
+    icon: "/svgs/HTML5.svg",
+    bgColor: "bg-orange-500",
+  },
+  {
+    iconname: "CSS",
+    description: "Styling language",
+    icon: "/svgs/CSS3.svg",
+    bgColor: "bg-blue-500",
+  },
+  {
+    iconname: "C++",
+    description: "High-performance language",
+    icon: "/svgs/C++.svg",
+    bgColor: "bg-purple-700",
+  },
+  {
+    iconname: "Python",
+    description: "Versatile programming",
+    icon: "/svgs/Python.svg",
+    bgColor: "bg-green-500",
+  },
+];
+
+export const skills = [
+  { src: "/svgs/React.svg", label: "React" },
+  { src: "/svgs/Javascript.svg", label: "JavaScript" },
+  { src: "/svgs/TypeScript.svg", label: "TypeScript" },
+  { src: "/svgs/Node.js.svg", label: "Node.js" },
+  { src: "/svgs/PostgresSQL.svg", label: "PostgreSQL" },
+  { src: "/svgs/MongoDB.svg", label: "MongoDB" },
+];
+
+export const gradientMap = {
+  codesense: "bg-[#F2F2F2]",
+  routex: "bg-white/90",
+  kairo: "bg-[#212326]",
+  vartax: "bg-[#101218]",
+  connectify: "bg-[#F2F2F2]",
+  shortenx: "bg-[#F2F2F2]",
+  jobconnect: "bg-white/90",
+};
+
+export const testimonials = [
+  {
+    quote:
+      "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
+    name: "Sarah Chen",
+    designation: "Product Manager at TechFlow",
+    src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    quote:
+      "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+    name: "Michael Rodriguez",
+    designation: "CTO at InnovateSphere",
+    src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    quote:
+      "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
+    name: "Emily Watson",
+    designation: "Operations Director at CloudScale",
+    src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    quote:
+      "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
+    name: "James Kim",
+    designation: "Engineering Lead at DataPro",
+    src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    quote:
+      "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+    name: "Lisa Thompson",
+    designation: "VP of Technology at FutureNet",
+    src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+];
+
+export const products = [
+  {
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail: "/b.webp",
+  },
+  {
+    title: "Shadcn UI",
+    link: "https://ui.shadcn.com",
+    thumbnail: "/shadcn.png",
+  },
+  {
+    title: "Hero UI",
+    link: "https://heroui.com",
+    thumbnail: "/hero.png",
+  },
+  {
+    title: "Chakra UI",
+    link: "https://chakra-ui.com",
+    thumbnail: "https://chakra-ui.com/og-image.png",
+  },
+  {
+    title: "Reactbits.dev",
+    link: "https://reactbits.dev",
+    thumbnail: "/a.webp",
+  },
+  {
+    title: "Motion Primitives",
+    link: "https://motion-primitives.com",
+    thumbnail: "/motion-primitives.png",
+  },
+  {
+    title: "21st.dev",
+    link: "https://21st.dev",
+    thumbnail: "/21st-dev.png",
+  },
+
+  {
+    title: "Hero UI",
+    link: "https://heroui.com",
+    thumbnail: "/hero.png",
+  },
+  {
+    title: "Chakra UI",
+    link: "https://chakra-ui.com",
+    thumbnail: "https://chakra-ui.com/og-image.png",
+  },
+  {
+    title: "Reactbits.dev",
+    link: "https://reactbits.dev",
+    thumbnail: "/a.webp",
+  },
+  {
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail: "/b.webp",
+  },
+  {
+    title: "Shadcn UI",
+    link: "https://ui.shadcn.com",
+    thumbnail: "/shadcn.png",
+  },
+  {
+    title: "Motion Primitives",
+    link: "https://motion-primitives.com",
+    thumbnail: "/motion-primitives.png",
+  },
+  {
+    title: "21st.dev",
+    link: "https://21st.dev",
+    thumbnail: "/21st-dev.png",
+  },
+];
+
+export const navLinks = [
+  {
+    title: "Home",
+    description: "Back to the main section",
+    icon: (
+      <IconHome className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "#hero",
+  },
+  {
+    title: "Skills",
+    description: "What I’m good at and tools I use",
+    icon: (
+      <FiBookOpen className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "#skills",
+  },
+  {
+    title: "Projects",
+    description: "Some of my recent work and experiments",
+    icon: (
+      <FiFolder className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "#projects",
+  },
+  {
+    title: "Email",
+    description: "Get in touch with me directly",
+    icon: (
+      <IconMail className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=kartikeybhatnagar247@gmail.com",
+    external: true,
+  },
+  {
+    title: "LinkedIn",
+    description: "Let’s connect professionally",
+    icon: (
+      <IconBrandLinkedin className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "https://www.linkedin.com/in/kartikey-bhatnagar-2702a4337",
+    external: true,
+  },
+  {
+    title: "Twitter",
+    description: "Where I share thoughts and updates",
+    icon: (
+      <IconBrandX className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "https://x.com/Bh20291Kartikey",
+    external: true,
+  },
+  {
+    title: "GitHub",
+    description: "Explore my code and open-source projects",
+    icon: (
+      <IconBrandGithub className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "https://github.com/kartikey2004-git",
+    external: true,
   },
 ];

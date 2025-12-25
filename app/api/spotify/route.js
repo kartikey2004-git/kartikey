@@ -3,7 +3,6 @@ import qs from "qs";
 
 export async function GET() {
   try {
-    // 1. Refresh access token
     const tokenReq = await fetch("https://accounts.spotify.com/api/token", {
       method: "POST",
       headers: {
@@ -24,7 +23,6 @@ export async function GET() {
 
     const { access_token } = await tokenReq.json();
 
-    // 2. Call Spotify NOW PLAYING
     const nowReq = await fetch(
       "https://api.spotify.com/v1/me/player/currently-playing",
       {

@@ -7,29 +7,18 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { skills } from "@/app/data";
 
 export default function AboutMeSection() {
-  const skills = [
-    { src: "/svgs/React.svg", label: "React" },
-    { src: "/svgs/Javascript.svg", label: "JavaScript" },
-    { src: "/svgs/TypeScript.svg", label: "TypeScript" },
-    { src: "/svgs/Node.js.svg", label: "Node.js" },
-    { src: "/svgs/PostgresSQL.svg", label: "PostgreSQL" },
-    { src: "/svgs/MongoDB.svg", label: "MongoDB" },
-  ];
-
   return (
     <section className="w-full max-w-4xl mx-auto mt-12 px-4 pb-28 opacity-0 animate-fadeUp">
-      {/* Section Title */}
       <h2 className="text-gray-400 text-sm ml-7">About</h2>
       <h1 className="text-3xl font-semibold text-white mb-6 ml-6">Me</h1>
 
-      {/* Main Card */}
       <div
         className="flex flex-col sm:flex-row items-start gap-8 p-6 rounded-lg 
         transition-all duration-300 hover:shadow-xl hover:shadow-black/40"
       >
-        {/* Avatar */}
         <div className="relative group transition-all">
           <div className="absolute inset-0 rounded-xl bg-white/5 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
 
@@ -38,12 +27,11 @@ export default function AboutMeSection() {
             width={230}
             height={230}
             alt="Kartikey Avatar"
-            className="object-cover flex-shrink-0 relative z-10 
+            className="object-cover shrink-0 relative z-10 
             transition-transform duration-500 group-hover:scale-[1.03]"
           />
         </div>
 
-        {/* Content */}
         <div className="flex flex-col gap-3">
           <h1 className="text-2xl sm:text-3xl font-semibold text-white">
             Kartikey Bhatnagar
@@ -57,7 +45,6 @@ export default function AboutMeSection() {
 
           <h2 className="mt-3 font-semibold text-white">Skills</h2>
 
-          {/* Skills Row with tooltip interaction */}
           <TooltipProvider delayDuration={100}>
             <div className="flex items-center gap-3 mt-2">
               {skills.map((skill, i) => (
@@ -65,7 +52,7 @@ export default function AboutMeSection() {
                   <TooltipTrigger asChild>
                     <div
                       className="p-1 rounded-md transition-all duration-300
-                      hover:scale-110 hover:shadow-md hover:-translate-y-[2px] cursor-pointer"
+                      hover:scale-110 hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
                     >
                       <img
                         src={skill.src}
@@ -80,14 +67,13 @@ export default function AboutMeSection() {
                 </Tooltip>
               ))}
 
-              {/* Next.js icon separately */}
               <Tooltip>
                 <TooltipTrigger asChild>
                   <img
                     src="/svgs/nextjs.svg"
                     alt="Next.js"
                     className="w-6 h-6 bg-white rounded-full border-black transition-all duration-300
-                    hover:scale-110 hover:shadow-md hover:-translate-y-[2px] cursor-pointer"
+                    hover:scale-110 hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
                   />
                 </TooltipTrigger>
                 <TooltipContent>

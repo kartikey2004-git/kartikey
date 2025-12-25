@@ -1,4 +1,5 @@
 "use client";
+import { technologies } from "@/app/data";
 import {
   Pagination,
   PaginationContent,
@@ -11,176 +12,6 @@ import {
 import { useEffect, useState } from "react";
 
 const TechStack = () => {
-  const technologies = [
-    {
-      iconname: "JavaScript",
-      description: "Web scripting language",
-      icon: "/svgs/javascript.svg",
-      bgColor: "bg-yellow-500",
-    },
-    {
-      iconname: "TypeScript",
-      description: "Typed JS superset",
-      icon: "/svgs/TypeScript.svg",
-      bgColor: "bg-blue-600",
-    },
-    {
-      iconname: "React",
-      description: "UI library",
-      icon: "/svgs/React.svg",
-      bgColor: "bg-cyan-500",
-    },
-    {
-      iconname: "Next.js",
-      description: "React framework",
-      icon: "/svgs/nextjs.svg",
-      bgColor: "bg-gray-800",
-    },
-    {
-      iconname: "Tailwind CSS",
-      description: "Utility CSS",
-      icon: "/svgs/Tailwind-CSS.svg",
-      bgColor: "bg-teal-500",
-    },
-    {
-      iconname: "Node.js",
-      description: "Backend runtime",
-      icon: "/svgs/Node.js.svg",
-      bgColor: "bg-green-700",
-    },
-    {
-      iconname: "Express",
-      description: "Node.js framework",
-      icon: "/svgs/Express.svg",
-      bgColor: "bg-gray-700",
-    },
-    {
-      iconname: "Prisma",
-      description: "Node ORM",
-      icon: "/svgs/prisma.svg",
-      bgColor: "bg-indigo-400",
-    },
-    {
-      iconname: "MongoDB",
-      description: "NoSQL database",
-      icon: "/svgs/MongoDB.svg",
-      bgColor: "bg-green-600",
-    },
-    {
-      iconname: "PostgreSQL",
-      description: "Relational database",
-      icon: "/svgs/PostgresSQL.svg",
-      bgColor: "bg-blue-700",
-    },
-    {
-      iconname: "SQL",
-      description: "Database queries",
-      icon: "/svgs/MySQL.svg",
-      bgColor: "bg-indigo-500",
-    },
-    {
-      iconname: "Vercel",
-      description: "Frontend deployment",
-      icon: "/svgs/Vercel.svg",
-      bgColor: "bg-white/80",
-    },
-    {
-      iconname: "Netlify",
-      description: "Static hosting",
-      icon: "/svgs/netlify.svg",
-      bgColor: "bg-green-500",
-    },
-    {
-      iconname: "Render",
-      description: "Cloud hosting",
-      icon: "/svgs/render.png",
-      bgColor: "bg-purple-400",
-    },
-    {
-      iconname: "Git",
-      description: "Version control",
-      icon: "/svgs/Git.svg",
-      bgColor: "bg-red-500",
-    },
-    {
-      iconname: "Firebase",
-      description: "App backend",
-      icon: "/svgs/Firebase.svg",
-      bgColor: "bg-orange-500",
-    },
-    {
-      iconname: "Supabase",
-      description: "Open-source backend",
-      icon: "/svgs/supabase.png",
-      bgColor: "bg-sky-500",
-    },
-    {
-      iconname: "Appwrite",
-      description: "Backend platform",
-      icon: "/svgs/Appwrite.svg",
-      bgColor: "bg-red-500",
-    },
-    {
-      iconname: "Redis",
-      description: "In-memory DB",
-      icon: "/svgs/Redis.svg",
-      bgColor: "bg-red-600",
-    },
-    {
-      iconname: "RabbitMQ",
-      description: "Message broker",
-      icon: "/svgs/RabbitMQ.svg",
-      bgColor: "bg-pink-500",
-    },
-    {
-      iconname: "ShadCN",
-      description: "UI components",
-      icon: "/svgs/shadcn.png",
-      bgColor: "bg-indigo-400",
-    },
-    {
-      iconname: "Framer Motion",
-      description: "Animations",
-      icon: "/svgs/framer.svg",
-      bgColor: "bg-pink-500",
-    },
-    {
-      iconname: "Clerk",
-      description: "Authentication",
-      icon: "/svgs/clerkk.png",
-      bgColor: "bg-orange-500",
-    },
-    {
-      iconname: "Postman",
-      description: "API testing",
-      icon: "/svgs/Postman.svg",
-      bgColor: "bg-orange-400",
-    },
-    {
-      iconname: "HTML",
-      description: "Markup language",
-      icon: "/svgs/HTML5.svg",
-      bgColor: "bg-orange-500",
-    },
-    {
-      iconname: "CSS",
-      description: "Styling language",
-      icon: "/svgs/CSS3.svg",
-      bgColor: "bg-blue-500",
-    },
-    {
-      iconname: "C++",
-      description: "High-performance language",
-      icon: "/svgs/C++.svg",
-      bgColor: "bg-purple-700",
-    },
-    {
-      iconname: "Python",
-      description: "Versatile programming",
-      icon: "/svgs/Python.svg",
-      bgColor: "bg-green-500",
-    },
-  ];
 
   const useIsSmallScreen = () => {
     if (typeof window === "undefined") return false;
@@ -230,7 +61,7 @@ const TechStack = () => {
               className="w-full max-w-xs p-3 rounded-sm text-white flex items-start gap-3 
     bg-white/5 backdrop-blur-sm border border-white/10 shadow-md 
     hover:shadow-xl hover:bg-white/10 hover:border-white/20 
-    transition-all duration-300 ease-out hover:-translate-y-[3px]"
+    transition-all duration-300 ease-out hover:-translate-y-0.75"
             >
               <img
                 src={tech.icon}
