@@ -1,134 +1,95 @@
 "use client";
+
+import { useEffect, useState } from "react";
 import { technologies } from "@/app/data";
 import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
-import { useEffect, useState } from "react";
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const TechStack = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [page, setPage] = useState(1);
 
-  const useIsSmallScreen = () => {
-    if (typeof window === "undefined") return false;
-    const [isSmall, setIsSmall] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
-    useEffect(() => {
-      const check = () => setIsSmall(window.innerWidth < 640); // sm breakpoint
-      check();
-      window.addEventListener("resize", check);
-      return () => window.removeEventListener("resize", check);
-    }, []);
+  const firstPageCount = 16;
+  const secondPageCount = 12;
 
-    return isSmall;
-  };
-
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const isSmall = useIsSmallScreen();
-  const itemsPerPage = isSmall ? 5 : 12;
-
-  const totalPages = Math.ceil(technologies.length / itemsPerPage);
-
-  const currentItems = technologies.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const visibleTech = isMobile
+    ? page === 1
+      ? technologies.slice(0, firstPageCount)
+      : technologies.slice(firstPageCount, firstPageCount + secondPageCount)
+    : technologies;
 
   return (
     <div
       id="skills"
-      className="min-h-[90vh] bg-black/60 flex flex-col items-center justify-center px-4 sm:px-6 py-10"
+      className="min-h-[90vh] bg-black/60 flex flex-col items-center justify-center px-4 sm:px-6 py-10 md:mt-0 mt-36"
     >
       <div className="max-w-6xl w-full mb-6">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-2 tracking-tight text-left">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-2">
           Here’s
         </h2>
-        <p className="text-gray-400 max-w-3xl text-sm sm:text-base md:text-lg leading-snug text-left">
+        <p className="text-gray-400 max-w-3xl text-sm sm:text-base">
           what I build with
         </p>
       </div>
 
-      <div className="max-w-6xl w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5 justify-items-center cursor-pointer">
-          {currentItems.map((tech, idx) => (
-            <div
-              key={idx}
-              className="w-full max-w-xs p-3 rounded-sm text-white flex items-start gap-3 
-    bg-white/5 backdrop-blur-sm border border-white/10 shadow-md 
-    hover:shadow-xl hover:bg-white/10 hover:border-white/20 
-    transition-all duration-300 ease-out hover:-translate-y-0.75"
-            >
-              <img
-                src={tech.icon}
-                alt={tech.iconname}
-                className="w-7 h-7 shrink-0 transition-transform duration-300 
-      group-hover:scale-[1.12]"
-              />
+      <TooltipProvider delayDuration={100}>
+        <div className="max-w-6xl w-full grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-6 place-items-center">
+          {visibleTech.map((tech, idx) => (
+            <Tooltip key={idx}>
+              <TooltipTrigger asChild>
+                <div
+                  className="
+                    group relative w-14 h-14 rounded-md
+                    flex items-center justify-center
+                    transition-all duration-300
+                    hover:scale-110 hover:-translate-y-1
+                    cursor-pointer
+                  "
+                >
+                  <img
+                    src={tech.icon}
+                    alt={tech.iconname}
+                    className="w-10 h-10 opacity-90 group-hover:opacity-100"
+                  />
+                </div>
+              </TooltipTrigger>
 
-              <div className="flex flex-col transition-all duration-300">
-                <h3 className="font-semibold text-sm sm:text-base group-hover:text-white transition-colors">
-                  {tech.iconname}
-                </h3>
-                <p className="text-sm sm:text-xs text-gray-300 group-hover:text-gray-200 transition-colors">
-                  {tech.description}
-                </p>
-              </div>
-            </div>
+              <TooltipContent side="top" className="text-sm">
+                {tech.iconname}
+              </TooltipContent>
+            </Tooltip>
           ))}
         </div>
+      </TooltipProvider>
 
-        <div className="flex justify-center mt-6">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setCurrentPage((prev) => Math.max(prev - 1, 1));
-                  }}
-                />
-              </PaginationItem>
-
-              {Array.from({ length: totalPages }, (_, i) => (
-                <PaginationItem key={i} className="rounded-sm">
-                  <PaginationLink
-                    href="#"
-                    isActive={currentPage === i + 1}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setCurrentPage(i + 1);
-                    }}
-                  >
-                    {i + 1}
-                  </PaginationLink>
-                </PaginationItem>
-              ))}
-
-              {totalPages > 5 && (
-                <PaginationItem>
-                  <PaginationEllipsis />
-                </PaginationItem>
-              )}
-
-              <PaginationItem>
-                <PaginationNext
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-                  }}
-                />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
+      
+      {isMobile && (
+        <div className="flex gap-3 mt-8">
+          <button
+            onClick={() => setPage(1)}
+            className={`w-2.5 h-2.5 rounded-full transition ${
+              page === 1 ? "bg-white" : "bg-white/30"
+            }`}
+          />
+          <button
+            onClick={() => setPage(2)}
+            className={`w-2.5 h-2.5 rounded-full transition ${
+              page === 2 ? "bg-white" : "bg-white/30"
+            }`}
+          />
         </div>
-      </div>
+      )}
     </div>
   );
 };

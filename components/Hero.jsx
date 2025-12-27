@@ -24,7 +24,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-start pt-28 px-6 lg:px-10 bg-black"
+      className="relative min-h-screen flex flex-col justify-start pt-40 px-6  lg:px-10 -mb-36 bg-black"
     >
       <div className="absolute inset-0 grid-background opacity-[0.12] pointer-events-none" />
       <div className="relative z-10 max-w-4xl mx-auto flex flex-col gap-10 ml-1">

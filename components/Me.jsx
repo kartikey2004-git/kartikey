@@ -11,53 +11,74 @@ import { skills } from "@/app/data";
 
 export default function AboutMeSection() {
   return (
-    <section className="w-full max-w-4xl mx-auto mt-12 px-4 pb-28 opacity-0 animate-fadeUp">
-      <h2 className="text-gray-400 text-sm ml-7">About</h2>
-      <h1 className="text-3xl font-semibold text-white mb-6 ml-6">Me</h1>
+    <section className="w-full max-w-4xl mx-auto mt-10 px-4 pb-20 animate-fadeUp">
+      <h2 className="text-gray-400 text-xs sm:text-sm ml-1">About</h2>
+      <h1 className="text-2xl sm:text-3xl font-semibold text-white mb-4 ml-1">
+        Me
+      </h1>
 
       <div
-        className="flex flex-col sm:flex-row items-start gap-8 p-6 rounded-lg 
-        transition-all duration-300 hover:shadow-xl hover:shadow-black/40"
+        className="
+          flex flex-col sm:flex-row
+          items-start gap-5 sm:gap-8
+          p-4 sm:p-6
+          rounded-lg
+          transition-all duration-300
+          hover:shadow-xl hover:shadow-black/40
+        "
       >
-        <div className="relative group transition-all">
-          <div className="absolute inset-0 rounded-xl bg-white/5 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+        {/* Avatar */}
+        <div className="relative group">
+          <div className="absolute inset-0 rounded-xl bg-white/5 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
           <Image
             src="/hi.webp"
-            width={230}
-            height={230}
+            width={180}
+            height={180}
             alt="Kartikey Avatar"
-            className="object-cover shrink-0 relative z-10 
-            transition-transform duration-500 group-hover:scale-[1.03]"
+            className="
+              object-cover rounded-md
+              w-35 h-35
+              sm:w-50 sm:h-50
+              transition-transform duration-500
+              group-hover:scale-[1.03]
+            "
           />
         </div>
 
+        {/* Content */}
         <div className="flex flex-col gap-3">
-          <h1 className="text-2xl sm:text-3xl font-semibold text-white">
+          <h1 className="text-xl sm:text-2xl font-semibold text-white">
             Kartikey Bhatnagar
           </h1>
 
-          <p className="text-gray-300 leading-relaxed max-w-xl">
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-xl">
             I'm a Full Stack Web Developer who enjoys turning ideas into fast,
-            functional, and well-designed web apps—building clean, practical
-            digital experiences and production-ready systems with modern tech.
+            functional, and well-designed web apps — building clean,
+            production-ready systems.
           </p>
 
-          <h2 className="mt-3 font-semibold text-white">Skills</h2>
+          <h2 className="mt-2 text-sm sm:text-base font-semibold text-white">
+            Skills
+          </h2>
 
           <TooltipProvider delayDuration={100}>
-            <div className="flex items-center gap-3 mt-2">
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
               {skills.map((skill, i) => (
                 <Tooltip key={i}>
                   <TooltipTrigger asChild>
                     <div
-                      className="p-1 rounded-md transition-all duration-300
-                      hover:scale-110 hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
+                      className="
+                        p-1 rounded-md
+                        transition-all duration-300
+                        hover:scale-110 hover:-translate-y-0.5
+                        cursor-pointer
+                      "
                     >
                       <img
                         src={skill.src}
                         alt={skill.label}
-                        className="w-6 h-6"
+                        className="w-5 h-5 sm:w-6 sm:h-6"
                       />
                     </div>
                   </TooltipTrigger>
@@ -67,13 +88,13 @@ export default function AboutMeSection() {
                 </Tooltip>
               ))}
 
+          
               <Tooltip>
                 <TooltipTrigger asChild>
                   <img
                     src="/svgs/nextjs.svg"
                     alt="Next.js"
-                    className="w-6 h-6 bg-white rounded-full border-black transition-all duration-300
-                    hover:scale-110 hover:shadow-md hover:-translate-y-0.5 cursor-pointer"
+                    className="w-5 h-5 sm:w-6 sm:h-6 cursor-pointer transition hover:scale-110"
                   />
                 </TooltipTrigger>
                 <TooltipContent>
