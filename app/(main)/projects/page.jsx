@@ -16,83 +16,84 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative bg-black/60 text-white py-20 px-6 sm:px-10 overflow-hidden pt-36"
+      className="bg-black/60 text-white py-28 px-4 sm:px-6 lg:px-10"
     >
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="flex justify-between items-start mb-12">
-          <div className="flex flex-col items-start gap-1">
-            <h2 className="text-gray-400 max-w-3xl text-sm sm:text-base md:text-lg leading-snug text-left">
-              Featured
-            </h2>
-            <p className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-2 tracking-tight text-left">
-              Projects
-            </p>
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <p className="text-gray-400 text-xs sm:text-sm">Featured</p>
+            <h2 className="text-xl sm:text-3xl font-semibold">Projects</h2>
           </div>
 
           <a
             href="https://github.com/kartikey2004-git"
             target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2.5 border border-white/20 text-xs sm:text-sm font-medium backdrop-blur-md bg-white/5 hover:bg-white/10 transition-all inline-flex items-center gap-2 rounded-md"
+            className="hidden sm:flex items-center gap-2 px-4 py-2
+              border border-white/20 rounded-md
+              bg-white/5 hover:bg-white/10 transition"
           >
             Github <Github className="w-4 h-4" />
           </a>
+
+          <a
+            href="https://github.com/kartikey2004-git"
+            target="_blank"
+            className="flex md:hidden items-center gap-2 px-4 py-2
+              border border-white/20 rounded-md
+              bg-white/5 hover:bg-white/10 transition"
+          >
+            <Github className="w-4 h-4" />
+          </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-7">
           {sortedProjects.map((project, index) => (
             <article
               key={index}
-              className="group relative overflow-hidden bg-white/5 backdrop-blur-lg border border-white/10 
-          transition-all duration-300 hover:shadow-sm hover:shadow-white/5 rounded-sm"
+              className="bg-white/5 border border-white/10 rounded-md overflow-hidden
+              transition hover:shadow-lg hover:-translate-y-0.5"
             >
-              <div className="relative w-full h-50 overflow-hidden">
+              {/* Image */}
+              <div className="relative h-40 sm:h-55 overflow-hidden">
                 <div
                   className={`absolute inset-0 ${gradientMap[project.bg]}`}
                 />
 
-                <div className="absolute inset-0 flex items-center justify-end pr-10 perspective-[1400px]">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="
-                      w-full
-                      rounded-t-lg
-                      transform-gpu
-                      translate-x-10
-                      transition-transform duration-700
-                      mt-20 -mr-4
-                    "
-                  />
-                </div>
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="
+                    w-full h-full object-contain
+                    translate-x-4 sm:translate-x-8
+                    translate-y-6
+                    transition-transform duration-700
+                  "
+                />
               </div>
 
-              <div className="p-5 flex flex-col gap-3">
-                <div className="flex items-start justify-between gap-3">
-                  <h3 className="text-lg sm:text-xl font-semibold">
+              {/* Content */}
+              <div className="p-4 sm:p-5 flex flex-col gap-3">
+                <div className="flex justify-between items-start gap-3">
+                  <h3 className="text-base sm:text-lg font-semibold">
                     {project.title}
                   </h3>
 
                   <TooltipProvider delayDuration={150}>
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex gap-2">
                       {project.liveLink && (
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <a
                               href={project.liveLink}
                               target="_blank"
-                              rel="noopener noreferrer"
-                              className="p-2 rounded-md
-              bg-white/5 border border-white/10
-              text-white/70 transition
-              hover:text-white hover:bg-white/10"
+                              className="p-2 rounded-md bg-white/5 border border-white/10"
                             >
-                              <Globe className="w-5 h-5" />
+                              <Globe className="w-4 h-4" />
                             </a>
                           </TooltipTrigger>
-                          <TooltipContent side="top">
-                            <span className="text-xs">Live Project</span>
-                          </TooltipContent>
+                          <TooltipContent>Live</TooltipContent>
                         </Tooltip>
                       )}
 
@@ -101,78 +102,61 @@ export default function Projects() {
                           <a
                             href={project.projectLink}
                             target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 rounded-md
-            bg-white/5 border border-white/10
-            text-white/70 transition
-            hover:text-white hover:bg-white/10"
+                            className="p-2 rounded-md bg-white/5 border border-white/10"
                           >
-                            <Github className="w-5 h-5" />
+                            <Github className="w-4 h-4" />
                           </a>
                         </TooltipTrigger>
-                        <TooltipContent side="top">
-                          <span className="text-xs">Source Code</span>
-                        </TooltipContent>
+                        <TooltipContent>Code</TooltipContent>
                       </Tooltip>
                     </div>
                   </TooltipProvider>
                 </div>
 
-                <p className="text-sm text-gray-400/90">
+                <p className="text-sm text-gray-400 leading-relaxed">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5 mt-2">
+                {/* Tech stack */}
+                <div className="flex flex-wrap gap-1.5">
                   {project.tech.slice(0, 5).map((tech, i) => (
                     <span
                       key={i}
-                      className="text-[10px] sm:text-xs px-2 py-1 border border-white/10 bg-white/5 text-white/80 rounded-md"
+                      className="text-[10px] px-2 py-1 rounded-md
+                        bg-white/5 border border-white/10"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.tech.length > 5 && (
-                    <span className="text-[10px] sm:text-xs px-2 py-1 bg-white/5 text-white/60 rounded-md">
-                      +{project.tech.length - 5} more
+                    <span className="text-[10px] px-2 py-1 rounded-md bg-white/5 text-white/60">
+                      +{project.tech.length - 5}
                     </span>
                   )}
                 </div>
 
-                <div className="mt-4 flex items-center justify-between gap-4">
-                  {project.currentlyBuilding ? (
-                    <span
-                      className="inline-flex items-center gap-2
-      px-4 py-2 text-sm font-medium rounded-full
-      bg-red-500/10 text-red-400 border border-red-500/20
-      shadow-[0_0_18px_-10px_rgba(239,68,68,0.6)]"
-                    >
-                      <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
-                      Building
-                    </span>
-                  ) : (
-                    <span
-                      className="inline-flex items-center gap-2
-      px-4 py-2 text-sm font-medium rounded-full
-      bg-green-500/10 text-green-400 border border-green-500/20
-      shadow-[0_0_18px_-10px_rgba(34,197,94,0.6)]"
-                    >
-                      <span className="w-2.5 h-2.5 rounded-full bg-green-500" />
-                      All Systems Operational
-                    </span>
-                  )}
+                {/* Footer */}
+                <div className="flex justify-between items-center pt-2">
+                  <span
+                    className={`px-3 py-1 text-xs rounded-full
+                      ${
+                        project.currentlyBuilding
+                          ? "bg-red-500/10 text-red-400 border border-red-500/20"
+                          : "bg-green-500/10 text-green-400 border border-green-500/20"
+                      }
+                    `}
+                  >
+                    {project.currentlyBuilding ? "Building" : "Live"}
+                  </span>
 
                   <Link
                     href={`/projects/${
                       project.slug ??
                       project.title.toLowerCase().replace(/\s+/g, "-")
                     }`}
-                    className="group inline-flex items-center gap-1.5
-      text-sm text-white/60 hover:text-white transition hover:underline"
+                    className="flex items-center gap-1 text-xs text-white/70 hover:text-white"
                   >
-                    View Details
-                    <span className="inline-block transition-transform group-hover:translate-x-1">
-                      <ArrowRight className="w-4 h-4" />
-                    </span>
+                    View <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
