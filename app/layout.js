@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col max-w-4xl mx-auto px-4`}
       >
         <Navbar />
-        <GlobalSnowfall />
+        {/* <GlobalSnowfall /> */}
         <Providers>{children}</Providers>
       </body>
     </html>

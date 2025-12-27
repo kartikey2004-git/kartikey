@@ -21,18 +21,6 @@ import LastPlayedCard from "./LastPlayedCard";
 const Hero = () => {
   const iconClasses = "w-5 h-5 text-gray-400 hover:text-white transition";
 
-  useEffect(() => {
-    const load = () => {
-      fetch("/api/spotify/last-played")
-        .then((res) => res.json())
-        .then((d) => setData(d));
-    };
-
-    load();
-    const interval = setInterval(load, 1000 * 60 * 2);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section
       id="hero"
@@ -177,7 +165,7 @@ const Hero = () => {
           </Tooltip>
         </TooltipProvider>
       </div>
-      <LastPlayedCard />
+      {/* <LastPlayedCard /> */}
     </section>
   );
 };
