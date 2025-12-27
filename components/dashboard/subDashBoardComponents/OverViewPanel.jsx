@@ -1,38 +1,42 @@
 "use client";
 
-import React from "react";
-
 export default function OverviewPanel({ data }) {
-  const { profile, user } = data;
+  const { profile } = data;
 
   return (
-    <div className="p-5">
-      <div className="w-full overflow-x-auto">
-        <div className="flex items-center gap-5 min-w-max">
-          <img
-            src={profile.avatarUrl}
-            alt="avatar"
-            className="w-16 h-16 rounded-full object-cover border border-white/10"
-          />
+    <div className="p-4 sm:p-5">
+      <div className="flex items-start gap-4 sm:gap-5">
+        {/* Avatar */}
+        <img
+          src={profile.avatarUrl}
+          alt="avatar"
+          className="
+            w-12 h-12
+            sm:w-14 sm:h-14
+            rounded-full
+            object-cover
+            border border-white/10
+            shrink-0
+          "
+        />
 
-          <div className="flex flex-col">
-            <h2 className="text-lg font-semibold text-white tracking-tight">
-              {profile.name}
-            </h2>
+        {/* Info */}
+        <div className="flex flex-col gap-1 min-w-0">
+          <h2 className="text-base sm:text-lg font-semibold text-white truncate">
+            {profile.name}
+          </h2>
 
-            <p className="text-[10px] md:text-sm text-gray-400 mt-0.5 line-clamp-none md:line-clamp-2">
-              {profile.bio}
-            </p>
+          <p className="text-xs sm:text-sm text-gray-400 leading-relaxed line-clamp-2">
+            {profile.bio}
+          </p>
 
-            <div className="flex flex-col sm:flex-row md:gap-4 sm:gap-2 mt-3 text-xs text-gray-300">
-              <span className="px-2 py-0.5 rounded-md md:bg-white/5 md:border md:border-white/10">
-                Repos: {profile.totalRepos}
-              </span>
-
-              <span className="px-2 py-0.5 rounded-md md:bg-white/5 md:border md:border-white/10">
-                Followers: {profile.followers}
-              </span>
-            </div>
+          <div className="flex flex-wrap gap-2 mt-2 text-xs">
+            <span className="px-2 py-1 rounded-md bg-white/5 border border-white/10">
+              Repos: {profile.totalRepos}
+            </span>
+            <span className="px-2 py-1 rounded-md bg-white/5 border border-white/10">
+              Followers: {profile.followers}
+            </span>
           </div>
         </div>
       </div>

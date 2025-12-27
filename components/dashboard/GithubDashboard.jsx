@@ -30,26 +30,10 @@ export default function GithubDashboard({ username = "kartikey2004-git" }) {
   }
 
   return (
-    <div className="flex flex-col">
-      <div>
-        <div className="w-full overflow-x-auto">
-          <OverviewPanel data={data} />
-        </div>
-      </div>
-
-      <div>
-        <div className="w-full overflow-x-auto">
-          <GithubAnalyticsPanel data={data} />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1">
-        <div>
-          <div className="w-full overflow-x-auto">
-            <ContributionHeatmap data={data} />
-          </div>
-        </div>
-      </div>
+    <div className="flex flex-col gap-6">
+      <OverviewPanel data={data} />
+      <GithubAnalyticsPanel data={data} />
+      <ContributionHeatmap data={data} />
     </div>
   );
 }
