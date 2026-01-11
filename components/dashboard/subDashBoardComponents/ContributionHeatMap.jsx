@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   Tooltip,
@@ -7,62 +8,61 @@ import {
   TooltipContent,
   TooltipProvider,
 } from "@/components/ui/tooltip";
-import {
-  chunkWeeks,
-  getContributionLevel,
-  computeStreaks,
-} from "@/utils/githubUtils";
+import { chunkWeeks, getContributionLevel } from "@/utils/githubUtils";
 
-export default function ContributionHeatmap({ data }) {
-  const { contributions } = data;
+export default function ContributionHeatmap({ contributions, year}) {
+  // 🔹 memoize everything expensive
+  const { weeks, monthLabels, total, today } = useMemo(() => {
+    if (!contributions?.length) {
+      return {
+        weeks: [],
+        monthLabels: [],
+        total: 0,
+        today: null,
+      };
+    }
 
-  const weeks = chunkWeeks(contributions);
-  const streaks = computeStreaks(contributions);
+    const weeks = chunkWeeks(contributions);
 
-  const total = contributions.reduce((s, d) => s + d.count, 0);
-  const today = contributions[contributions.length - 1].date;
-
-  const monthLabels = weeks.map((week, i) => {
-    const firstValid = week.find((d) => !d.pad);
-    if (!firstValid) return "";
-    return new Date(firstValid.date).toLocaleString("en-US", {
-      month: "short",
+    const monthLabels = weeks.map((week, i) => {
+      const firstValid = week.find((d) => !d.pad);
+      if (!firstValid) return "";
+      return new Date(firstValid.date).toLocaleString("en-US", {
+        month: "short",
+      });
     });
-  });
+
+    return {
+      weeks,
+      monthLabels,
+      total: contributions.reduce((s, d) => s + d.count, 0),
+      today: contributions[contributions.length - 1].date,
+    };
+  }, [contributions]);
+
+  if (!weeks.length) return null;
 
   return (
     <div className="p-4 sm:p-5">
-      <h3 className="text-lg font-semibold text-white mb-4">
-        Contribution Activity
+      <h3 className="text-sm font-semibold text-white mb-4 tracking-tight">
+        Contribution Activity · {year}
       </h3>
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center text-xs text-gray-400 mb-4">
-        <div className="px-3 py-2 bg-[#111] border border-[#1f1f1f]">
-          <p className="text-white font-semibold text-base">{total}</p>
-          <p className="text-[10px] mt-1 -ml-2 sm:ml-0">Total Contributions</p>
-        </div>
-
-        <div className="px-3 py-2 bg-[#111] border border-[#1f1f1f]">
-          <p className="text-white font-semibold text-base">
-            {streaks.currentStreak}
-          </p>
-          <p className="text-[10px] mt-1">Current Streak</p>
-        </div>
-
-        <div className="px-3 py-2 bg-[#111] border border-[#1f1f1f]">
-          <p className="text-white font-semibold text-base">
-            {streaks.longestStreak}
-          </p>
-          <p className="text-[10px] mt-1">Longest Streak</p>
-        </div>
+        <Stat label="Total" value={total} />
+        <Stat label="Current Year" value={year} />
+        <Stat
+          label="Days Active"
+          value={contributions.filter((d) => d.count > 0).length}
+        />
       </div>
 
       {/* Heatmap */}
       <div className="overflow-x-auto pb-2 hide-scrollbar">
         <TooltipProvider>
           {/* Month labels */}
-          <div className="md:flex hidden ml-1 mb-1">
+          <div className="hidden md:flex ml-1 mb-1">
             {monthLabels.map((m, i) => (
               <div key={i} className="text-[10px] text-gray-500 w-3 mr-0.5">
                 {i === 0 || m !== monthLabels[i - 1] ? m : ""}
@@ -86,22 +86,22 @@ export default function ContributionHeatmap({ data }) {
                     <Tooltip key={dIdx}>
                       <TooltipTrigger asChild>
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.7 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.12 }}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ duration: 0.08 }}
                           className={`w-2.5 h-2.5 rounded-[2px] border
                             ${isToday ? "border-white/80" : "border-black/20"}
                             ${intensity}`}
                         />
                       </TooltipTrigger>
 
-                      <TooltipContent className="px-3 py-1.5 rounded-md bg-white text-black text-xs">
-                        <p className="font-semibold">
+                      <TooltipContent className="px-3 py-1.5  bg-[#111] border border-white/10 text-white text-xs">
+                        <p className="font-medium">
                           {day.count === 0
                             ? "No contributions"
                             : `${day.count} contributions`}
                         </p>
-                        <p className="text-[10px] opacity-70">{day.date}</p>
+                        <p className="text-[10px] text-gray-400">{day.date}</p>
                       </TooltipContent>
                     </Tooltip>
                   );
@@ -111,6 +111,16 @@ export default function ContributionHeatmap({ data }) {
           </div>
         </TooltipProvider>
       </div>
+    </div>
+  );
+}
+
+
+function Stat({ label, value }) {
+  return (
+    <div className="px-3 py-2 bg-[#0f0f0f] border border-white/10 rounded-md">
+      <p className="text-white font-semibold text-sm">{value}</p>
+      <p className="text-[10px] mt-1">{label}</p>
     </div>
   );
 }

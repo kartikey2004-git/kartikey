@@ -5,19 +5,26 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN,
 });
 
+function getYearRange(year) {
+  const from = `${year}-01-01T00:00:00Z`;
+  const to = `${year}-12-31T23:59:59Z`;
+  return { from, to };
+}
+
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const username = searchParams.get("username");
+  const yearParam = searchParams.get("year"); // optional
 
   if (!username) {
     return NextResponse.json(
-      { error: "Username is Required" },
-      { status: 401 }
+      { error: "Username is required" },
+      { status: 400 }
     );
   }
 
   try {
-    const query = `
+    const baseQuery = `
       query($username: String!) {
         user(login: $username) {
           avatarUrl
@@ -27,13 +34,9 @@ export async function GET(request) {
           followers { totalCount }
           following { totalCount }
           starredRepositories { totalCount }
-          repositories(first: 100, orderBy: { field: UPDATED_AT, direction: DESC }) {
+          repositories(first: 100, ownerAffiliations: OWNER) {
             totalCount
             nodes {
-              primaryLanguage {
-                name
-                color
-              }
               languages(first: 10) {
                 edges {
                   size
@@ -45,46 +48,21 @@ export async function GET(request) {
               }
             }
           }
-          contributionsCollection {
-            contributionCalendar {
-              totalContributions
-              weeks {
-                contributionDays {
-                  contributionCount
-                  date
-                }
-              }
-            }
-          }
         }
       }
     `;
 
-    const response = await octokit.graphql(query, { username });
-    const user = response.user;
+    const baseRes = await octokit.graphql(baseQuery, { username });
+    const user = baseRes.user;
 
-    const calendar = user.contributionsCollection.contributionCalendar;
-    const contributions = calendar.weeks.flatMap((week) =>
-      week.contributionDays.map((day) => ({
-        count: day.contributionCount,
-        date: day.date,
-      }))
-    );
-
-    let langStats = {};
+    // 2️⃣ Language aggregation (unchanged but optimized)
+    const langStats = {};
 
     user.repositories.nodes.forEach((repo) => {
-      if (!repo.languages) return;
-
-      repo.languages.edges.forEach((edge) => {
+      repo.languages?.edges.forEach((edge) => {
         const lang = edge.node.name;
-        const size = edge.size;
-
-        if (!langStats[lang]) {
-          langStats[lang] = { name: lang, size, color: edge.node.color };
-        } else {
-          langStats[lang].size += size;
-        }
+        langStats[lang] ??= { name: lang, size: 0, color: edge.node.color };
+        langStats[lang].size += edge.size;
       });
     });
 
@@ -92,6 +70,60 @@ export async function GET(request) {
       .sort((a, b) => b.size - a.size)
       .slice(0, 5);
 
+    // 3️⃣ Decide years
+    const currentYear = new Date().getFullYear();
+    const years =
+      yearParam === "all"
+        ? Array.from({ length: 5 }, (_, i) => currentYear - i)
+        : yearParam
+        ? [Number(yearParam)]
+        : [currentYear];
+
+    // 4️⃣ Fetch contributions YEAR-WISE
+    const contributionsByYear = {};
+
+    for (const year of years) {
+      const { from, to } = getYearRange(year);
+
+      const contribQuery = `
+        query($username: String!, $from: DateTime!, $to: DateTime!) {
+          user(login: $username) {
+            contributionsCollection(from: $from, to: $to) {
+              contributionCalendar {
+                totalContributions
+                weeks {
+                  contributionDays {
+                    date
+                    contributionCount
+                  }
+                }
+              }
+            }
+          }
+        }
+      `;
+
+      const contribRes = await octokit.graphql(contribQuery, {
+        username,
+        from,
+        to,
+      });
+
+      const calendar =
+        contribRes.user.contributionsCollection.contributionCalendar;
+
+      contributionsByYear[year] = {
+        totalContributions: calendar.totalContributions,
+        contributions: calendar.weeks.flatMap((week) =>
+          week.contributionDays.map((day) => ({
+            date: day.date,
+            count: day.contributionCount,
+          }))
+        ),
+      };
+    }
+
+    // 5️⃣ Final response (frontend-friendly)
     return NextResponse.json({
       profile: {
         username: user.login,
@@ -102,17 +134,14 @@ export async function GET(request) {
         following: user.following.totalCount,
         stars: user.starredRepositories.totalCount,
         totalRepos: user.repositories.totalCount,
-        languages,
       },
-      contributions,
-      user: {
-        totalContribution: calendar.totalContributions,
-      },
+      languages,
+      contributionsByYear,
     });
   } catch (error) {
-    console.error("GITHUB API ERROR", error);
+    console.error("GITHUB API ERROR:", error);
     return NextResponse.json(
-      { error: "Failed to fetch GitHub Data" },
+      { error: "Failed to fetch GitHub data" },
       { status: 500 }
     );
   }
