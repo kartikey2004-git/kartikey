@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Loader2 } from "lucide-react";
 
 import OverviewPanel from "./subDashBoardComponents/OverViewPanel";
-import GithubStreakCard from "./subDashBoardComponents/GithubStreakCard";
 import GithubAnalyticsPanel from "./subDashBoardComponents/GithubAnalyticsPanel";
 import ContributionHeatmap from "./subDashBoardComponents/ContributionHeatMap";
 
@@ -40,7 +39,7 @@ export default function GithubDashboard({ username = "kartikey2004-git" }) {
 
   if (!data || !yearData) {
     return (
-      <div className="w-full max-w-5xl mx-auto mt-8 rounded-xl bg-[#111] p-6 text-white flex items-center gap-3">
+      <div className="w-full mt-8 rounded-xl bg-[#111] p-6 text-white flex items-center gap-3">
         <Loader2 className="animate-spin" size={18} />
         Fetching GitHub data…
       </div>
@@ -48,7 +47,8 @@ export default function GithubDashboard({ username = "kartikey2004-git" }) {
   }
 
   return (
-    <div className="w-full max-w-5xl mx-auto flex flex-col gap-6">
+    <div className="w-full flex flex-col gap-6">
+      {/* Year selector */}
       <div className="flex gap-2 flex-wrap">
         {Object.keys(data.contributionsByYear)
           .sort((a, b) => b - a)
@@ -57,27 +57,22 @@ export default function GithubDashboard({ username = "kartikey2004-git" }) {
               key={year}
               onClick={() => setSelectedYear(Number(year))}
               className={`px-3 py-1 rounded-sm text-sm transition
-                ${
-                  selectedYear === Number(year)
-                    ? "bg-white text-black"
-                    : "bg-[#0f0f0f] text-zinc-300 hover:bg-zinc-950"
-                }`}
+            ${
+              selectedYear === Number(year)
+                ? "bg-white text-black"
+                : "bg-[#0f0f0f] text-zinc-300 hover:bg-[#0f0f0f]/90"
+            }`}
             >
               {year}
             </button>
           ))}
       </div>
 
-      <div className="bg-[#111]  rounded-lg">
+      <div className="w-full bg-white/5 rounded-lg p-4 sm:p-6 flex flex-col gap-6">
         <OverviewPanel
           profile={data.profile}
           year={selectedYear}
           totalContributions={yearData.totalContributions}
-        />
-
-        <GithubStreakCard
-          contributions={yearData.contributions}
-          year={selectedYear}
         />
 
         <GithubAnalyticsPanel

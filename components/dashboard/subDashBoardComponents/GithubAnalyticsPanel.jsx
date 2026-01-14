@@ -12,30 +12,34 @@ import {
 } from "recharts";
 
 export default function GithubAnalyticsPanel({ contributions, year }) {
-  const last30Days = useMemo(() => {
+  const yearData = useMemo(() => {
     if (!contributions?.length) return [];
-    return contributions.slice(-180);
-  }, [contributions]);
+
+    return contributions.filter((d) => {
+      const date = new Date(d.date);
+      return date.getFullYear() === year;
+    });
+  }, [contributions, year]);
 
   const chartData = useMemo(() => {
-    return last30Days.map((d) => {
+    return yearData.map((d) => {
       const date = new Date(d.date);
       return {
         label: date.toLocaleDateString("en-US", {
-          day: "2-digit",
           month: "short",
+          day: "2-digit",
         }),
         value: d.count,
       };
     });
-  }, [last30Days]);
+  }, [yearData]);
 
   if (!chartData.length) return null;
 
   return (
     <div className="p-5">
-      <h3 className="text-sm font-semibold text-white mb-4 tracking-tight">
-        Analytics · Last 180 Days ({year})
+      <h3 className="text-md font-semibold text-white mb-4 tracking-tight">
+        Analytics · 365 Days ({year})
       </h3>
 
       <div className="w-full h-28">

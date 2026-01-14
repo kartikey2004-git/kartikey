@@ -1,125 +1,113 @@
 "use client";
-import React, { useState } from "react";
-import { cn } from "@/lib/utils";
 
-import { Menu, X } from "lucide-react";
+import React, { useState } from "react";
+import { Menu, X, Moon } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import { navLinks } from "@/app/data";
+import { IconBrandX, IconBrandGithub } from "@tabler/icons-react";
+import { FaLinkedinIn } from "react-icons/fa6";
 
 export function Navbar() {
-  return (
-    <div className="relative w-full flex items-center justify-center">
-      <NavbarComponent className="top-4" />
-    </div>
-  );
-}
-
-function NavbarComponent({ className }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleClick = (e, href) => {
     if (href.startsWith("#")) {
       e.preventDefault();
       const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
+      if (target) target.scrollIntoView({ behavior: "smooth" });
       setMenuOpen(false);
     }
   };
 
   return (
-    <div
-      className={cn(
-        "fixed inset-x-0 top-4 z-50 mx-auto flex flex-col items-center",
-        className
-      )}
-    >
-      <div className="hidden md:inline-flex items-center justify-center bg-neutral-900/50 backdrop-blur-md border border-white/10 rounded-full px-8 py-3 space-x-8">
-        <div className="relative w-11 h-11">
-          <Link href="/">
-            <Image
-              src="/hi.webp"
-              alt="Kartikey Avatar"
-              className="w-full h-full object-cover rounded-full cursor-pointer"
-              width={60}
-              height={60}
-            />
-          </Link>
-        </div>
-
-        {navLinks.map((link) => (
-          <a
-            key={link.title}
-            href={link.href}
-            target={link.external ? "_blank" : "_self"}
-            download={link.download ? true : undefined}
-            onClick={(e) => handleClick(e, link.href)}
-            className="relative text-white text-base font-medium transition-colors duration-200 
-              after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 
-              after:bg-white after:rounded-full after:transition-all after:duration-300 
-              hover:after:w-full"
-          >
-            {link.title}
-          </a>
-        ))}
-      </div>
-
-      <div
-        className="md:hidden fixed top-0 left-0 right-0 z-50
-     flex justify-between items-center px-4 py-2
-     bg-neutral-900/40 backdrop-blur-lg border-b border-white/10"
-      >
-        <div className="flex items-center gap-2">
-          <Link href="/" className="block w-11 h-11">
-            <Image
-              src="/hi.webp"
-              alt="Kartikey Avatar"
-              className="w-full h-full object-cover rounded-full cursor-pointer"
-              width={60}
-              height={60}
-            />
+    <header className="sticky top-0 z-50 w-full">
+      <div className="w-full bg-neutral-900/70 backdrop-blur-lg border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 h-14 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2">
+            <span className="font-mono text-white font-semibold text-2xl">
+              {"<KB />"}
+            </span>
           </Link>
 
-          <span className="text-white font-semibold">Menu</span>
-        </div>
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.title}
+                href={link.href}
+                onClick={(e) => handleClick(e, link.href)}
+                className="relative text-neutral-400 hover:text-white text-md transition
+                  after:absolute after:left-0 after:-bottom-1 after:h-0.5
+                  after:w-0 after:bg-white after:rounded-full
+                  after:transition-all after:duration-300
+                  hover:after:w-full
+                "
+              >
+                {link.title}
+              </a>
+            ))}
+          </nav>
 
-        <button className="text-white" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          <div className="flex items-center gap-4 text-neutral-400">
+            <a
+              href="https://github.com/kartikey2004-git"
+              target="_blank"
+              className="hover:text-white transition"
+            >
+              <IconBrandGithub className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/kartikey-bhatnagar-2702a4337"
+              target="_blank"
+              className="hover:text-white transition"
+            >
+              <FaLinkedinIn className="w-5 h-5" />
+            </a>
+            <a
+              href="https://x.com/Bh20291Kartikey"
+              target="_blank"
+              className="hover:text-white transition"
+            >
+              <IconBrandX className="w-5 h-5" />
+            </a>
+
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden text-white"
+            >
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
       </div>
 
       {menuOpen && (
         <div
-          className="md:hidden fixed top-10 left-0 right-0 z-40
-    flex flex-col space-y-4 
-    bg-neutral-900/80 backdrop-blur-xl
-    border-b border-white/10 
-    px-6 py-4
-
-    animate-slideDownSmooth"
+          className="
+            md:hidden w-full
+            bg-neutral-900/70 sm:bg-neutral-900/60
+            backdrop-blur-xl
+            border-b border-white/10
+          "
         >
-          {navLinks.map((link) => (
-            <div key={link.title} className="flex flex-col">
-              <a
-                href={link.href}
-                target={link.external ? "_blank" : "_self"}
-                download={link.download ? true : undefined}
-                onClick={(e) => handleClick(e, link.href)}
-                className="flex items-center space-x-3 text-white text-base transition-colors duration-200"
-              >
-                <span className="shrink-0">{link.icon}</span>
-                <span>{link.title}</span>
-              </a>
-
-              <span className="text-sm text-neutral-400 pl-8">
-                {link.description}
-              </span>
-            </div>
-          ))}
+          <div className="px-6 py-4 space-y-4">
+            {navLinks.map((link) => (
+              <div key={link.title}>
+                <a
+                  href={link.href}
+                  onClick={(e) => handleClick(e, link.href)}
+                  className="flex items-center gap-3 text-white text-base"
+                >
+                  {link.icon}
+                  {link.title}
+                </a>
+                <p className="text-xs text-neutral-400 ml-7">
+                  {link.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }

@@ -1,4 +1,4 @@
-import { FiFolder, FiBookOpen } from "react-icons/fi";
+import { FiFolder, FiBookOpen, FiMail } from "react-icons/fi";
 import {
   IconHome,
   IconMail,
@@ -536,14 +536,6 @@ export const navLinks = [
     href: "#hero",
   },
   {
-    title: "Skills",
-    description: "What I’m good at and tools I use",
-    icon: (
-      <FiBookOpen className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "#skills",
-  },
-  {
     title: "Projects",
     description: "Some of my recent work and experiments",
     icon: (
@@ -552,31 +544,18 @@ export const navLinks = [
     href: "#projects",
   },
   {
-    title: "Email",
-    description: "Get in touch with me directly",
+    title: "How I Build",
+    description: "What I’m good at and tools I use",
     icon: (
-      <IconMail className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+      <FiBookOpen className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
-    href: "https://mail.google.com/mail/?view=cm&fs=1&to=kartikeybhatnagar247@gmail.com",
-    external: true,
+    href: "#how-i-build",
   },
   {
-    title: "LinkedIn",
-    description: "Let’s connect professionally",
-    icon: (
-      <IconBrandLinkedin className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "https://www.linkedin.com/in/kartikey-bhatnagar-2702a4337",
-    external: true,
-  },
-  {
-    title: "Twitter",
-    description: "Where I share thoughts and updates",
-    icon: (
-      <IconBrandX className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "https://x.com/Bh20291Kartikey",
-    external: true,
+    title: "Get in Touch",
+    description: "Let’s talk ideas, work, or collaboration",
+    icon: <FiMail className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />,
+    href: "#contact",
   },
   {
     title: "GitHub",
@@ -584,7 +563,6 @@ export const navLinks = [
     icon: (
       <IconBrandGithub className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
-    href: "https://github.com/kartikey2004-git",
-    external: true,
+    href: "#github",
   },
 ];

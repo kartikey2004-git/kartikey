@@ -7,6 +7,10 @@ import {
   Linkedin,
   Github,
   Instagram,
+  Rocket,
+  Code,
+  Coffee,
+  Bug,
 } from "lucide-react";
 import Link from "next/link";
 import {
@@ -22,12 +26,11 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen bg-black px-4 sm:px-8 pt-28 sm:pt-40 pb-20"
+      className="relative min-h-screen bg-black px-4 sm:px-8 lg:px-16 pt-16 sm:pt-24 pb-20 w-full"
     >
       <div className="absolute inset-0 grid-background opacity-[0.12]" />
 
-      <div className="relative z-10 max-w-4xl mx-auto flex flex-col gap-7">
-        {/* Avatar + Name */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-7">
         <div className="flex items-center gap-4">
           <div className="relative w-14 h-14 sm:w-16 sm:h-16">
             <div className="absolute inset-0 rounded-full bg-white/5 blur-md" />
@@ -48,12 +51,10 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Location */}
         <p className="text-[11px] tracking-[0.2em] uppercase text-gray-500">
           Based in India
         </p>
 
-        {/* Heading */}
         <h2 className="text-xl sm:text-3xl lg:text-4xl font-medium leading-tight text-white">
           Innovating{" "}
           <span className="text-blue-400 font-semibold">through code</span>
@@ -61,13 +62,11 @@ const Hero = () => {
           shaping tomorrow’s tech.
         </h2>
 
-        {/* Description */}
         <p className="text-gray-400 text-sm sm:text-lg max-w-xl leading-relaxed">
           I build modern web experiences — clean, fast and production-ready
           interfaces with solid backend logic.
         </p>
 
-        {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
           <button
             onClick={() =>
@@ -105,7 +104,6 @@ const Hero = () => {
           </Link>
         </div>
 
-        {/* Socials */}
         <div className="flex items-center gap-5 mt-4">
           <TooltipProvider delayDuration={100}>
             {[
@@ -140,6 +138,42 @@ const Hero = () => {
               </Tooltip>
             ))}
           </TooltipProvider>
+        </div>
+
+        <div className="mt-4 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6">
+          {[
+            {
+              Icon: Rocket,
+              value: "7+",
+              label: "Projects Shipped",
+            },
+            {
+              Icon: Code,
+              value: "50K+",
+              label: "Lines of Code",
+            },
+            {
+              Icon: Coffee,
+              value: "∞",
+              label: "Coffee Consumed",
+            },
+            {
+              Icon: Bug,
+              value: "Too many",
+              label: "Bugs Fixed",
+            },
+          ].map(({ Icon, value, label }, idx) => (
+            <div key={idx} className="flex flex-col gap-1">
+              <div className="flex items-center gap-2">
+                <Icon className="h-6 w-6 text-white/80" />
+                <span className="text-2xl sm:text-3xl font-bold text-white leading-none">
+                  {value}
+                </span>
+              </div>
+
+              <p className="text-xs sm:text-sm text-gray-400">{label}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

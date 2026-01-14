@@ -23,11 +23,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col max-w-4xl mx-auto px-4`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
-        {/* <GlobalSnowfall /> */}
-        <Providers>{children}</Providers>
+        <Providers>
+          <div className="max-w-7xl min-h-screen flex flex-col mx-auto">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );

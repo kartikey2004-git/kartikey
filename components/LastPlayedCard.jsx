@@ -19,7 +19,7 @@ export default function LastPlayedCard() {
 
   if (loading) {
     return (
-      <div className="w-full max-w-4xl mx-auto p-5 bg-[#111] rounded-xl text-white mt-8 flex items-center gap-3">
+      <div className="max-w-7xl mx-auto w-full p-5 bg-[#111] rounded-xl text-white mt-8 flex items-center gap-3">
         <Loader2 className="animate-spin" size={20} />
         Fetching last played song…
       </div>
@@ -28,14 +28,14 @@ export default function LastPlayedCard() {
 
   if (!data?.song) {
     return (
-      <div className="w-full max-w-4xl mx-auto p-5 bg-[#111] rounded-xl text-white mt-8 text-center">
+      <div className="max-w-7xl mx-auto w-full p-5 bg-[#111] rounded-xl text-white mt-8 text-center">
         No recently played song found.
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-8 bg-[#111] rounded-md p-4 shadow border border-white/5 transition-all duration-300 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-0.5">
+    <div className="max-w-7xl mx-auto w-full mt-8 bg-[#111] rounded-md p-4 shadow border border-white/5 transition-all duration-300 hover:shadow-lg hover:shadow-black/40 hover:-translate-y-0.5">
       <div className="flex items-center gap-4">
         <img
           src={data.albumImage}

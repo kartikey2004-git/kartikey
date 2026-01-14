@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Github, Globe } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Github, Globe } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
@@ -16,40 +16,41 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="bg-black/60 text-white py-12 px-4 sm:px-6 lg:px-10"
+      className="bg-black/60 text-white py-16 px-4 sm:px-8 lg:px-16 w-full"
     >
-      <div className="max-w-368 mx-auto">
-        {/* Header */}
-        <header className="flex items-center justify-between mb-8">
-          <div>
-            <p className="text-gray-400 text-xs sm:text-sm">Featured</p>
-            <h2 className="text-xl sm:text-3xl font-semibold">Projects</h2>
-          </div>
+      <div className="max-w-7xl mx-auto w-full">
+        <header className="mb-12">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+              Things I've Built
+            </h2>
 
-          <a
-            href="https://github.com/kartikey2004-git"
-            target="_blank"
-            className="hidden sm:flex items-center gap-2 px-4 py-2
-              border border-white/20 rounded-md
-              bg-white/5 hover:bg-white/10 transition"
-          >
-            Github <Github className="w-4 h-4" />
-          </a>
+            <a
+              href="https://github.com/kartikey2004-git"
+              target="_blank"
+              className="hidden sm:flex items-center gap-2 px-4 py-2
+                border border-white/20 rounded-md
+                bg-white/5 hover:bg-white/10 transition"
+            >
+              All Projects <Github className="w-4 h-4" />
+            </a>
+          </div>
+          <p className="text-gray-400 text-sm mt-2">
+            Real projects. Real users. Real code.
+          </p>
         </header>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-7">
           {visibleProjects.map((project, i) => (
             <article
               key={i}
               className="
-                bg-white/5 border border-white/10 rounded-lg
+                bg-white/5 border border-white/10 rounded-md
                 overflow-hidden
                 transition-all duration-300
                 hover:-translate-y-1 hover:shadow-lg
               "
             >
-              {/* Image */}
               <div className="relative h-42.5 sm:h-55 lg:h-65 overflow-hidden">
                 <div
                   className={`absolute inset-0 ${gradientMap[project.bg]}`}
@@ -67,7 +68,6 @@ export default function ProjectsSection() {
                 />
               </div>
 
-              {/* Content */}
               <div className="p-4 sm:p-5 flex flex-col gap-3">
                 <div className="flex justify-between items-start gap-3">
                   <h3 className="text-base sm:text-lg font-semibold leading-tight">
@@ -111,41 +111,50 @@ export default function ProjectsSection() {
                   {project.description}
                 </p>
 
-                {/* Tech stack */}
                 <div className="flex flex-wrap gap-1.5">
                   {project.tech.slice(0, 5).map((tech, i) => (
                     <span
                       key={i}
-                      className="text-[11px] px-2 py-1 rounded
+                      className="text-[13px] px-2 py-1 rounded
                         bg-white/5 border border-white/10"
                     >
                       {tech}
                     </span>
                   ))}
+
                   {project.tech.length > 5 && (
-                    <span className="text-[11px] px-2 py-1 rounded bg-white/5 text-white/60">
+                    <span className="text-[13px] px-2 py-1 rounded bg-white/5 text-white/60">
                       +{project.tech.length - 5}
                     </span>
                   )}
                 </div>
 
-                {/* Footer */}
                 <div className="flex justify-between items-center pt-2">
                   <span
-                    className={`text-[11px] px-2 py-1 rounded-full ${
+                    className={`inline-flex items-center gap-2 text-[13px] px-2 py-1 rounded-full ${
                       project.currentlyBuilding
                         ? "bg-red-500/15 text-red-400"
                         : "bg-green-500/15 text-green-400"
                     }`}
                   >
-                    {project.currentlyBuilding ? "Building" : "Live"}
+                    <span
+                      className={`h-2 w-2 rounded-full ${
+                        project.currentlyBuilding
+                          ? "bg-red-400"
+                          : "bg-green-400"
+                      }`}
+                    />
+
+                    {project.currentlyBuilding
+                      ? "Building"
+                      : "All Systems Operational"}
                   </span>
 
                   <Link
                     href={`/projects/${project.slug}`}
-                    className="text-xs text-white/70 hover:text-white flex items-center gap-1"
+                    className="text-sm text-white/70 hover:text-white flex items-center gap-1"
                   >
-                    View <ArrowRight className="w-3 h-3" />
+                    View <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -153,15 +162,22 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="flex justify-center mt-10">
           <Link
             href="/projects"
-            className="px-5 py-2 text-sm rounded-md
-              border border-white/20 bg-white/5
-              hover:bg-white/10 transition"
+            className="
+      inline-flex items-center gap-2
+      px-5 py-2 text-sm font-medium
+      rounded-md
+      border border-white/20
+      bg-white/5
+      text-white
+      hover:bg-white/10
+      transition
+    "
           >
-            Show All Projects
+            View All Projects
+            <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
