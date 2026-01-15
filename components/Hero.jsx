@@ -88,7 +88,7 @@ const Hero = () => {
           </button>
 
           <Link
-            href="https://drive.google.com/file/d/1YoRs3yremp0lwZ52Bs6E7nt77yOXEhvq/view"
+            href="https://drive.google.com/file/d/1eyrmowrL6wTZLZEx5cpDHqG20rK9nGnc/view?usp=sharing"
             target="_blank"
             className="
       flex items-center justify-center gap-2
