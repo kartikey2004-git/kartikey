@@ -26,12 +26,12 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen bg-black px-4 sm:px-8 lg:px-16 pt-16 sm:pt-24 pb-20 w-full"
+      className="relative min-h-screen bg-black px-4 sm:px-8 lg:px-16 pt-16 sm:pt-24 pb-20 w-full overflow-x-hidden"
     >
       <div className="absolute inset-0 grid-background opacity-[0.12]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-7">
-        <div className="flex items-center gap-4">
+      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col gap-4 sm:gap-7">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
           <div className="relative w-14 h-14 sm:w-16 sm:h-16">
             <div className="absolute inset-0 rounded-full bg-white/5 blur-md" />
             <img
@@ -41,9 +41,9 @@ const Hero = () => {
             />
           </div>
 
-          <div>
+          <div className="w-full sm:w-auto">
             <h1 className="text-xl sm:text-3xl font-semibold text-white">
-              Hi, I’m Kartikey
+              Hi, I'm Kartikey
             </h1>
             <p className="text-gray-400 text-sm sm:text-base">
               Full Stack Web Developer
@@ -55,19 +55,21 @@ const Hero = () => {
           Based in India
         </p>
 
-        <h2 className="text-xl sm:text-3xl lg:text-4xl font-medium leading-tight text-white">
+        <h2 className="text-xl sm:text-3xl lg:text-4xl font-medium leading-tight text-white break-words">
           Innovating{" "}
-          <span className="text-blue-400 font-semibold">through code</span>
+          <span className="bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent transition-all duration-500 font-semibold">
+            through code
+          </span>
           ,<br />
           shaping tomorrow’s tech.
         </h2>
 
-        <p className="text-gray-400 text-sm sm:text-lg max-w-xl leading-relaxed">
+        <p className="text-gray-400 text-sm sm:text-lg max-w-full sm:max-w-xl leading-relaxed">
           I build modern web experiences — clean, fast and production-ready
           interfaces with solid backend logic.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-full">
           <button
             onClick={() =>
               document
@@ -104,7 +106,7 @@ const Hero = () => {
           </Link>
         </div>
 
-        <div className="flex items-center gap-5 mt-4">
+        <div className="flex items-center gap-3 sm:gap-5 mt-4 flex-wrap">
           <TooltipProvider delayDuration={100}>
             {[
               {
@@ -140,7 +142,7 @@ const Hero = () => {
           </TooltipProvider>
         </div>
 
-        <div className="mt-4 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="mt-4 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {[
             {
               Icon: Rocket,
@@ -166,7 +168,7 @@ const Hero = () => {
             <div key={idx} className="flex flex-col gap-1">
               <div className="flex items-center gap-2">
                 <Icon className="h-6 w-6 text-white/80" />
-                <span className="text-2xl sm:text-3xl font-bold text-white leading-none">
+                <span className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-none">
                   {value}
                 </span>
               </div>

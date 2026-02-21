@@ -1,20 +1,20 @@
 import Footer from "@/components/Footer";
-import Github from "@/components/Github";
 import Hero from "@/components/Hero";
 import ProjectsSection from "@/components/Projects";
 import TechStack from "@/components/TechStack";
-import Contact from "@/components/Contact";
-import WhoAmI from "@/components/WhoAmI";
+
+import GithubSection from "@/components/Github";
+
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
-    <main className="bg-black/70">
+    <main className="bg-black/70 overflow-x-hidden">
       <Hero />
       <ProjectsSection />
-      <WhoAmI />
       <TechStack />
-      <Github />
-      <Contact />
+      <GithubSection />
+      <Testimonials />
       <Footer />
     </main>
   );

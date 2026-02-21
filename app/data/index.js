@@ -1,11 +1,6 @@
 import { FiFolder, FiBookOpen, FiMail } from "react-icons/fi";
-import {
-  IconHome,
-  IconMail,
-  IconBrandLinkedin,
-  IconBrandX,
-  IconBrandGithub,
-} from "@tabler/icons-react";
+import { IconHome, IconBrandGithub } from "@tabler/icons-react";
+import { Cpu, Server, Zap, Brain } from "lucide-react";
 
 export const projects = [
   {
@@ -414,44 +409,6 @@ export const gradientMap = {
   jobconnect: "bg-white/90",
 };
 
-export const testimonials = [
-  {
-    quote:
-      "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-    name: "Sarah Chen",
-    designation: "Product Manager at TechFlow",
-    src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    quote:
-      "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
-    name: "Michael Rodriguez",
-    designation: "CTO at InnovateSphere",
-    src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    quote:
-      "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
-    name: "Emily Watson",
-    designation: "Operations Director at CloudScale",
-    src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    quote:
-      "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
-    name: "James Kim",
-    designation: "Engineering Lead at DataPro",
-    src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-  {
-    quote:
-      "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
-    name: "Lisa Thompson",
-    designation: "VP of Technology at FutureNet",
-    src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  },
-];
-
 export const products = [
   {
     title: "Aceternity UI",
@@ -552,10 +509,10 @@ export const navLinks = [
     href: "#how-i-build",
   },
   {
-    title: "Get in Touch",
-    description: "Let’s talk ideas, work, or collaboration",
+    title: "Testimonials",
+    description: "What people say about my work",
     icon: <FiMail className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />,
-    href: "#contact",
+    href: "#testimonials",
   },
   {
     title: "GitHub",
@@ -564,5 +521,67 @@ export const navLinks = [
       <IconBrandGithub className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
     href: "#github",
+  },
+];
+
+export const highlights = [
+  {
+    Icon: Server,
+    text: "Full-stack architecture",
+  },
+  {
+    Icon: Zap,
+    text: "Real-time systems",
+  },
+  {
+    Icon: Cpu,
+    text: "Performance-first backend",
+  },
+  {
+    Icon: Brain,
+    text: "Practical AI integration",
+  },
+];
+
+export const highlightsData = [
+  {
+    heading: "Who Am I?",
+    text:
+      "I architect full-stack applications that don't fall apart at 3 AM. " +
+      "React, Node.js, real-time systems, and the occasional AI integration " +
+      "when it actually makes sense (not everything needs GPT-5). " +
+      "Currently building tools that developers actually want to use.",
+    subheading:
+      "“If you're scared to deploy on Friday, that's an architecture problem.”",
+  },
+];
+
+export const testimonials = [
+  {
+    name: "Dewank Rastogi",
+    role: "Core Contributor",
+    company: "Elixir Tech Community",
+    content:
+      "Kartikey's leadership on the Elixir Tech website redesign was exceptional. His full-stack expertise and attention to performance optimization helped us achieve 40% faster load times.",
+    avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Dewank Rastogi",
+    metric: "40%",
+  },
+  {
+    name: "Granth Agarwal",
+    role: "GFGX Elixir Lead",
+    company: "GFG ABESEC Chapter",
+    content:
+      "Working with Kartikey on the GFGX Elixir platform was incredible. His technical vision and ability to deliver complex features under tight deadlines made our community platform a huge success.",
+    avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Granth Agarwal",
+    metric: "3x",
+  },
+  {
+    name: "Vaibhav Tripathi",
+    role: "Project Contributor",
+    company: "GFG ABESEC Chapter",
+    content:
+      "Kartikey's architectural decisions on our community projects were spot-on. The real-time features he built for our platforms have significantly improved user engagement.",
+    avatar: "https://api.dicebear.com/7.x/initials/svg?seed=Vaibhav Tripathi",
+    metric: "60%",
   },
 ];

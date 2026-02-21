@@ -117,7 +117,10 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }
 
@@ -148,7 +151,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  background: 
+  background:
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 30px 30px;
@@ -160,7 +163,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.0001) 0%, transparent 80%);
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.0001) 0%,
+    transparent 80%
+  );
   pointer-events: none;
   z-index: 1;
 }
@@ -168,11 +175,8 @@
 .grid-background {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.08) 1px,
-      transparent 1px
-    ),
+  background:
+    linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
@@ -199,7 +203,7 @@
 
 /* Thin scrollbar ONLY for heatmap (class: thin-scrollbar) */
 .thin-scrollbar::-webkit-scrollbar {
-  height: 4px;        /* thin horizontal bar */
+  height: 4px; /* thin horizontal bar */
 }
 
 .thin-scrollbar::-webkit-scrollbar-track {
@@ -214,7 +218,6 @@
 .thin-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #444;
 }
-
 
 @keyframes slideDownSmooth {
   0% {
@@ -250,7 +253,6 @@
   animation: fadeUp 0.6s ease-out forwards;
 }
 
-
 .hero-wrapper {
   perspective: 1200px; /* controls depth */
   display: flex;
@@ -263,10 +265,7 @@
   width: 1100px;
   border-radius: 18px;
 
-  transform:
-    rotateY(-18deg)
-    rotateX(6deg)
-    translateZ(0);
+  transform: rotateY(-18deg) rotateX(6deg) translateZ(0);
 
   box-shadow:
     0 40px 80px rgba(0, 0, 0, 0.6),
