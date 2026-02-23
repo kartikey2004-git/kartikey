@@ -16,32 +16,32 @@ const Testimonials = () => {
   return (
     <section
       id="testimonials"
-      className="bg-black/60 px-4 sm:px-8 lg:px-16 py-16 sm:py-20 overflow-x-hidden"
+      className="overflow-x-hidden border-b border-border bg-background py-14 sm:py-16"
     >
-      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 border-b border-white/10">
+      <div className="grid grid-cols-1 overflow-hidden rounded-lg border border-border md:grid-cols-1 lg:grid-cols-3">
         {/* LEFT AVATAR */}
-        <div className="border-b lg:border-b-0 lg:border-r border-white/10 p-6 sm:p-8 lg:p-12 flex flex-col items-start justify-center text-start bg-gradient-to-br from-white/[0.02] to-white/[0.01]">
-          <h3 className="text-white/90 text-lg sm:text-xl font-medium">
+        <div className="flex flex-col items-start justify-center border-b border-border bg-card p-6 text-start sm:p-8 lg:border-r lg:border-b-0 lg:p-10">
+          <h3 className="text-lg font-medium text-foreground sm:text-xl">
             What People Say
           </h3>
 
-          <p className="text-sm text-white/50 mt-2 max-w-xs leading-relaxed">
+          <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Real experiences from teammates, collaborators, and people I’ve
             built alongside.
           </p>
         </div>
 
         {/* CENTER QUOTE */}
-        <div className="p-6 sm:p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-center transition-all duration-500 ease-in-out">
-          <div className="text-white/90 leading-relaxed text-base sm:text-lg mb-6 sm:mb-8 transition-opacity duration-500">
+        <div className="flex flex-col justify-center border-b border-border p-6 transition-all duration-500 ease-in-out sm:p-8 lg:border-r lg:border-b-0 lg:p-10">
+          <div className="mb-6 text-base leading-relaxed text-foreground transition-opacity duration-500 sm:mb-8 sm:text-lg">
             &ldquo;{testimonials[currentTestimonial].content}&rdquo;
           </div>
 
           <div className="space-y-2">
-            <p className="font-semibold text-white text-sm sm:text-base">
+            <p className="text-sm font-semibold text-foreground sm:text-base">
               {testimonials[currentTestimonial].name}
             </p>
-            <p className="text-white/60 text-xs sm:text-sm">
+            <p className="text-xs text-muted-foreground sm:text-sm">
               {testimonials[currentTestimonial].role} at{" "}
               {testimonials[currentTestimonial].company}
             </p>
@@ -55,8 +55,8 @@ const Testimonials = () => {
                 onClick={() => setCurrentTestimonial(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   index === currentTestimonial
-                    ? "bg-red-500 w-4 sm:w-6"
-                    : "bg-white/20 hover:bg-white/40"
+                    ? "w-4 bg-foreground sm:w-6"
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -65,12 +65,12 @@ const Testimonials = () => {
         </div>
 
         {/* RIGHT METRIC */}
-        <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center items-start sm:items-end bg-gradient-to-br from-white/[0.02] to-transparent">
+        <div className="flex flex-col items-start justify-center bg-card p-6 sm:items-end sm:p-8 lg:p-10">
           <div className="text-left sm:text-right w-full">
-            <div className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-2 bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent transition-all duration-500">
+            <div className="mb-2 text-4xl font-normal text-foreground transition-all duration-500 sm:text-5xl lg:text-6xl xl:text-7xl">
               {testimonials[currentTestimonial].metric}
             </div>
-            <p className="text-white/60 text-xs sm:text-sm uppercase tracking-wider">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground sm:text-sm">
               {currentTestimonial === 0
                 ? "Load Time Improvement"
                 : currentTestimonial === 1

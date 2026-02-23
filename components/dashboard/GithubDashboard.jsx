@@ -15,7 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
 import {
   Tooltip,
   TooltipContent,
@@ -23,8 +22,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useState, useEffect } from "react";
-
-const maxLevel = 4;
 
 const GithubDashboard = () => {
   const [data, setData] = useState([]);
@@ -74,15 +71,23 @@ const GithubDashboard = () => {
   }, [selectedYear, allData]);
 
   if (loading) {
-    return <div className="p-4">Loading contributions...</div>;
+    return (
+      <div className="rounded-md border border-border bg-card p-4 text-sm text-muted-foreground">
+        Loading contributions...
+      </div>
+    );
   }
 
   if (data.length === 0) {
-    return <div className="p-4">No contribution data available</div>;
+    return (
+      <div className="rounded-md border border-border bg-card p-4 text-sm text-muted-foreground">
+        No contribution data available
+      </div>
+    );
   }
 
   return (
-    <div className="space-y-4 w-full min-w-0">
+    <div className="w-full min-w-0 space-y-4 rounded-lg border border-border bg-card p-4 sm:p-5">
       {/* Year Selector */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h3 className="text-lg font-semibold text-foreground">
@@ -92,7 +97,7 @@ const GithubDashboard = () => {
           value={selectedYear.toString()}
           onValueChange={(value) => setSelectedYear(parseInt(value))}
         >
-          <SelectTrigger className="w-full sm:w-[120px]">
+          <SelectTrigger className="w-full sm:w-30">
             <SelectValue placeholder="Select year" />
           </SelectTrigger>
           <SelectContent>
@@ -107,7 +112,7 @@ const GithubDashboard = () => {
 
       {/* Contribution Graph */}
       <TooltipProvider>
-        <div className="min-w-5xl overflow-x-auto thin-scrollbar">
+        <div className="thin-scrollbar overflow-x-auto rounded-md border border-border bg-background p-3 sm:p-4">
           <ContributionGraph data={data}>
             <ContributionGraphCalendar>
               {({ activity, dayIndex, weekIndex }) => (
@@ -116,13 +121,7 @@ const GithubDashboard = () => {
                     <g>
                       <ContributionGraphBlock
                         activity={activity}
-                        className={cn(
-                          'data-[level="0"]:fill-[#ebedf0] dark:data-[level="0"]:fill-[#161b22]',
-                          'data-[level="1"]:fill-[#9be9a8] dark:data-[level="1"]:fill-[#0e4429]',
-                          'data-[level="2"]:fill-[#40c463] dark:data-[level="2"]:fill-[#006d32]',
-                          'data-[level="3"]:fill-[#30a14e] dark:data-[level="3"]:fill-[#26a641]',
-                          'data-[level="4"]:fill-[#216e39] dark:data-[level="4"]:fill-[#39d353]',
-                        )}
+                        className="data-[level='0']:fill-muted data-[level='1']:fill-muted-foreground/25 data-[level='2']:fill-muted-foreground/45 data-[level='3']:fill-muted-foreground/65 data-[level='4']:fill-foreground/85"
                         dayIndex={dayIndex}
                         weekIndex={weekIndex}
                       />

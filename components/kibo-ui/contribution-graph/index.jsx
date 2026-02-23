@@ -367,7 +367,7 @@ export const ContributionGraphLegend = ({ className, children, ...props }) => {
 
   return (
     <div
-      className={cn("ml-auto flex items-center gap-[3px]", className)}
+      className={cn("ml-auto flex items-center gap-0.75", className)}
       {...props}
     >
       <span className="mr-1 text-muted-foreground">
@@ -382,11 +382,11 @@ export const ContributionGraphLegend = ({ className, children, ...props }) => {
             <rect
               className={cn(
                 "stroke-[1px] stroke-border",
-                'data-[level="0"]:fill-[#ebedf0] dark:data-[level="0"]:fill-[#161b22]',
-                'data-[level="1"]:fill-[#9be9a8] dark:data-[level="1"]:fill-[#0e4429]',
-                'data-[level="2"]:fill-[#40c463] dark:data-[level="2"]:fill-[#006d32]',
-                'data-[level="3"]:fill-[#30a14e] dark:data-[level="3"]:fill-[#26a641]',
-                'data-[level="4"]:fill-[#216e39] dark:data-[level="4"]:fill-[#39d353]',
+                'data-[level="0"]:fill-muted',
+                'data-[level="1"]:fill-muted-foreground/25',
+                'data-[level="2"]:fill-muted-foreground/45',
+                'data-[level="3"]:fill-muted-foreground/65',
+                'data-[level="4"]:fill-foreground/85',
               )}
               data-level={level}
               height={blockSize}

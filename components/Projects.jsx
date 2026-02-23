@@ -1,14 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Github, Globe } from "lucide-react";
+import { Github, Globe } from "lucide-react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { projects, gradientMap } from "@/app/data";
+import { projects } from "@/app/data";
 
 export default function ProjectsSection() {
   const visibleProjects = [...projects].reverse();
@@ -16,21 +15,21 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="bg-black/60 text-white py-16 px-4 sm:px-8 lg:px-16 w-full overflow-x-hidden"
+      className="w-full overflow-x-hidden border-b border-border bg-background py-14 sm:py-16"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="mx-auto w-full max-w-7xl">
         <header className="mb-8 sm:mb-12">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">
+            <h2 className="text-2xl font-semibold text-foreground sm:text-3xl lg:text-4xl">
               Things I've Built
             </h2>
           </div>
-          <p className="text-gray-400 text-sm mt-2">
+          <p className="mt-2 text-sm text-muted-foreground">
             Real projects. Real users. Real code.
           </p>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-white/10">
+        <div className="grid grid-cols-1 gap-0 rounded-lg border border-border md:grid-cols-2">
           {visibleProjects.map((project, i) => {
             const isRight = (i + 1) % 2 === 0;
             const isLastRow = i >= visibleProjects.length - 2;
@@ -39,33 +38,33 @@ export default function ProjectsSection() {
                 key={i}
                 className={`
     p-4 sm:p-5 md:p-6
-    transition-all duration-300 hover:bg-white/5 cursor-pointer
-    ${isRight && !isLastRow ? "md:border-l border-l border-white/10" : ""}
-    ${!isLastRow ? "border-b border-white/10" : ""}
-    ${isRight && isLastRow ? "md:border-l border-l border-t border-white/10" : ""}
-    ${!isRight && isLastRow ? "border-t border-white/10" : ""}
+    cursor-pointer transition-colors duration-300 hover:bg-accent/60
+    ${isRight && !isLastRow ? "border-l border-border md:border-l" : ""}
+    ${!isLastRow ? "border-b border-border" : ""}
+    ${isRight && isLastRow ? "border-l border-t border-border md:border-l" : ""}
+    ${!isRight && isLastRow ? "border-t border-border" : ""}
   `}
               >
                 <div className="flex flex-col gap-4">
                   <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
                     <div className="w-full sm:w-auto">
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-semibold leading-tight mb-2 break-words">
+                      <h3 className="mb-2 text-lg font-semibold leading-tight wrap-break-word sm:text-xl md:text-2xl">
                         {project.title}
                       </h3>
-                      <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
+                      <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                         {project.description}
                       </p>
                     </div>
 
                     <TooltipProvider delayDuration={120}>
-                      <div className="flex gap-2 flex-shrink-0">
+                      <div className="flex shrink-0 gap-2">
                         {project.liveLink && (
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <a
                                 href={project.liveLink}
                                 target="_blank"
-                                className="p-2 rounded-md bg-white/5 border border-white/10 hover:bg-white/10 transition"
+                                className="rounded-md border border-border bg-card p-2 transition hover:bg-accent"
                               >
                                 <Globe className="w-4 h-4" />
                               </a>
@@ -79,7 +78,7 @@ export default function ProjectsSection() {
                             <a
                               href={project.projectLink}
                               target="_blank"
-                              className="p-2 rounded-md bg-white/5 border border-white/10 hover:bg-white/10 transition"
+                              className="rounded-md border border-border bg-card p-2 transition hover:bg-accent"
                             >
                               <Github className="w-4 h-4" />
                             </a>
@@ -94,8 +93,7 @@ export default function ProjectsSection() {
                     {project.tech.map((tech, i) => (
                       <span
                         key={i}
-                        className="text-xs sm:text-sm px-2 sm:px-3 py-1.5 rounded-full
-                        bg-white/5 border border-white/10 whitespace-nowrap"
+                        className="whitespace-nowrap rounded-md border border-border bg-card px-2 py-1.5 text-xs sm:px-3 sm:text-sm"
                       >
                         {tech}
                       </span>
@@ -103,16 +101,16 @@ export default function ProjectsSection() {
                   </div>
 
                   <div className="pt-3 sm:pt-4">
-                    <h4 className="text-sm font-medium text-white mb-2 sm:mb-3">
+                    <h4 className="mb-2 text-sm font-medium text-foreground sm:mb-3">
                       Key Features
                     </h4>
                     <ul className="space-y-2">
                       {project.features.map((feature, idx) => (
                         <li
                           key={idx}
-                          className="flex items-start gap-2 text-xs sm:text-sm text-gray-300"
+                          className="flex items-start gap-2 text-xs text-muted-foreground sm:text-sm"
                         >
-                          <span className="w-1.5 h-1.5 rounded-full bg-white/40 mt-2 flex-shrink-0" />
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40" />
                           {feature}
                         </li>
                       ))}

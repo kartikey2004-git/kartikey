@@ -5,8 +5,11 @@ import GithubDashboard from "./dashboard/GithubDashboard";
 
 const GithubSection = () => {
   return (
-    <section className="w-full bg-black/60 py-12 overflow-x-hidden" id="github">
-      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16">
+    <section
+      className="w-full overflow-x-hidden border-b border-border bg-background py-12 sm:py-14"
+      id="github"
+    >
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

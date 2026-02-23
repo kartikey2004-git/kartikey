@@ -9,7 +9,7 @@ import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
-    <main className="bg-black/70 overflow-x-hidden">
+    <main className="flex-1 overflow-x-hidden bg-background text-foreground">
       <Hero />
       <ProjectsSection />
       <TechStack />
