@@ -16,7 +16,6 @@ export const data = {
       { name: "Home", href: "#hero" },
       { name: "Projects", href: "#projects" },
       { name: "How I Build", href: "#how-i-build" },
-      { name: "Testimonials", href: "#testimonials" },
       { name: "GitHub", href: "#github" },
     ],
     company: [
@@ -129,7 +128,7 @@ export default function FooterStandard() {
           </div>
 
           {/* RIGHT NAV */}
-          <div className="lg:col-span-3 grid sm:grid-cols-3 gap-10">
+          <div className="lg:col-span-3 grid grid-cols-3 gap-10">
             {["sections", "company", "social"].map((section) => (
               <div key={section}>
                 <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
