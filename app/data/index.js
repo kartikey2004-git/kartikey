@@ -1,6 +1,15 @@
-import { FiFolder, FiBookOpen, FiMail } from "react-icons/fi";
-import { IconHome, IconBrandGithub } from "@tabler/icons-react";
-import { Cpu, Server, Zap, Brain } from "lucide-react";
+import {
+  CiFolderOn,
+  FiBookOpen,
+  IoMailOutline,
+  FiServer,
+  FiZap,
+  FiCpu,
+  IoHomeOutline,
+  IoLogoGithub,
+  BsLightningCharge,
+  FaGear,
+} from "@/lib/icons";
 
 export const projects = [
   {
@@ -488,7 +497,7 @@ export const navLinks = [
     title: "Home",
     description: "Back to the main section",
     icon: (
-      <IconHome className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+      <IoHomeOutline className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
     href: "#hero",
   },
@@ -496,13 +505,13 @@ export const navLinks = [
     title: "Projects",
     description: "Some of my recent work and experiments",
     icon: (
-      <FiFolder className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+      <CiFolderOn className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
     href: "#projects",
   },
   {
     title: "How I Build",
-    description: "What I’m good at and tools I use",
+    description: "What I'm good at and tools I use",
     icon: (
       <FiBookOpen className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
@@ -511,14 +520,16 @@ export const navLinks = [
   {
     title: "Testimonials",
     description: "What people say about my work",
-    icon: <FiMail className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />,
+    icon: (
+      <IoMailOutline className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+    ),
     href: "#testimonials",
   },
   {
     title: "GitHub",
     description: "Explore my code and open-source projects",
     icon: (
-      <IconBrandGithub className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+      <IoLogoGithub className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
     href: "#github",
   },
@@ -526,19 +537,19 @@ export const navLinks = [
 
 export const highlights = [
   {
-    Icon: Server,
+    Icon: FiServer,
     text: "Full-stack architecture",
   },
   {
-    Icon: Zap,
+    Icon: FiZap,
     text: "Real-time systems",
   },
   {
-    Icon: Cpu,
+    Icon: FiCpu,
     text: "Performance-first backend",
   },
   {
-    Icon: Brain,
+    Icon: FaGear,
     text: "Practical AI integration",
   },
 ];

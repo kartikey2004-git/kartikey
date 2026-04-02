@@ -72,7 +72,7 @@ const GithubDashboard = () => {
 
   if (loading) {
     return (
-      <div className="rounded-md border border-border bg-card p-4 text-sm text-muted-foreground">
+      <div className="border border-border bg-card p-4 text-sm text-muted-foreground">
         Loading contributions...
       </div>
     );
@@ -80,14 +80,14 @@ const GithubDashboard = () => {
 
   if (data.length === 0) {
     return (
-      <div className="rounded-md border border-border bg-card p-4 text-sm text-muted-foreground">
+      <div className="border border-border bg-card p-4 text-sm text-muted-foreground">
         No contribution data available
       </div>
     );
   }
 
   return (
-    <div className="w-full min-w-0 space-y-4 rounded-lg border border-border bg-card p-4 sm:p-5">
+    <div className="w-full min-w-0 space-y-4 border border-border bg-card p-4 sm:p-5">
       {/* Year Selector */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <h3 className="text-lg font-semibold text-foreground">
@@ -97,7 +97,7 @@ const GithubDashboard = () => {
           value={selectedYear.toString()}
           onValueChange={(value) => setSelectedYear(parseInt(value))}
         >
-          <SelectTrigger className="w-full sm:w-30">
+          <SelectTrigger className="w-full sm:w-30 border border-border">
             <SelectValue placeholder="Select year" />
           </SelectTrigger>
           <SelectContent>
@@ -112,7 +112,7 @@ const GithubDashboard = () => {
 
       {/* Contribution Graph */}
       <TooltipProvider>
-        <div className="thin-scrollbar overflow-x-auto rounded-md border border-border bg-background p-3 sm:p-4">
+        <div className="thin-scrollbar overflow-x-auto border border-border bg-background p-3 sm:p-4">
           <ContributionGraph data={data}>
             <ContributionGraphCalendar>
               {({ activity, dayIndex, weekIndex }) => (
@@ -121,7 +121,7 @@ const GithubDashboard = () => {
                     <g>
                       <ContributionGraphBlock
                         activity={activity}
-                        className="data-[level='0']:fill-muted data-[level='1']:fill-muted-foreground/25 data-[level='2']:fill-muted-foreground/45 data-[level='3']:fill-muted-foreground/65 data-[level='4']:fill-foreground/85"
+                        className="dark:data-[level='0']:fill-[#161b22] dark:data-[level='1']:fill-[#0e4429] dark:data-[level='2']:fill-[#006d32] dark:data-[level='3']:fill-[#26a641] dark:data-[level='4']:fill-[#39d353] data-[level='0']:fill-[#ebedf0] data-[level='1']:fill-[#9be9a8] data-[level='2']:fill-[#40c463] data-[level='3']:fill-[#30a14e] data-[level='4']:fill-[#216e39]"
                         dayIndex={dayIndex}
                         weekIndex={weekIndex}
                       />

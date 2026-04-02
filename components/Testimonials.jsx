@@ -18,7 +18,7 @@ const Testimonials = () => {
       id="testimonials"
       className="overflow-x-hidden border-b border-border bg-background py-14 sm:py-16"
     >
-      <div className="grid grid-cols-1 overflow-hidden rounded-lg border border-border md:grid-cols-1 lg:grid-cols-3">
+      <div className="grid grid-cols-1 overflow-hidden border border-border md:grid-cols-1 lg:grid-cols-3">
         {/* LEFT AVATAR */}
         <div className="flex flex-col items-start justify-center border-b border-border bg-card p-6 text-start sm:p-8 lg:border-r lg:border-b-0 lg:p-10">
           <h3 className="text-lg font-medium text-foreground sm:text-xl">
@@ -53,7 +53,7 @@ const Testimonials = () => {
               <button
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 transition-all duration-300 ${
                   index === currentTestimonial
                     ? "w-4 bg-foreground sm:w-6"
                     : "bg-muted-foreground/30 hover:bg-muted-foreground/60"

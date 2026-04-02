@@ -1,17 +1,18 @@
 "use client";
 
 import {
-  ChevronRight,
-  Send,
-  Twitter,
-  Linkedin,
-  Github,
-  Instagram,
-  Rocket,
-  Code,
-  Coffee,
-  Bug,
-} from "lucide-react";
+  BsChevronRight,
+  BsSend,
+  FaXTwitter,
+  BsLinkedin,
+  BsGithub,
+  BsInstagram,
+  BsRocket,
+  BsCodeSlash,
+  BsCupHot,
+  BsBug,
+} from "react-icons/bs";
+import { FaXTwitter as FaXTwitterIcon } from "react-icons/fa6";
 import Link from "next/link";
 import {
   Tooltip,
@@ -21,7 +22,8 @@ import {
 } from "@/components/ui/tooltip";
 
 const Hero = () => {
-  const iconClasses = "h-5 w-5 text-muted-foreground transition hover:text-foreground";
+  const iconClasses =
+    "h-5 w-5 text-muted-foreground transition hover:text-foreground";
 
   return (
     <section
@@ -31,11 +33,11 @@ const Hero = () => {
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-6 sm:gap-8">
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
           <div className="relative w-14 h-14 sm:w-16 sm:h-16">
-            <div className="absolute inset-0 rounded-full bg-accent blur-md" />
+            <div className="absolute inset-0 rounded-none" />
             <img
               src="/hi.webp"
               alt="Kartikey"
-              className="relative z-10 h-full w-full rounded-md object-cover ring-1 ring-border"
+              className="relative z-10 h-full w-full object-cover ring-1 ring-border rounded-none"
             />
           </div>
 
@@ -55,9 +57,7 @@ const Hero = () => {
 
         <h2 className="max-w-3xl wrap-break-word text-2xl font-semibold leading-tight text-foreground sm:text-3xl lg:text-4xl">
           Innovating{" "}
-          <span className="font-semibold text-foreground">
-            through code
-          </span>
+          <span className="font-semibold text-foreground">through code</span>
           ,<br />
           shaping tomorrow’s tech.
         </h2>
@@ -78,13 +78,12 @@ const Hero = () => {
       group flex items-center justify-center gap-2
       w-full sm:w-auto
       px-4 sm:px-6 py-3
-          bg-card border border-border rounded-md
-          text-sm sm:text-base text-foreground
+          bg-card border border-border text-sm sm:text-base text-foreground
           hover:bg-accent transition
     "
           >
             See My Work
-            <ChevronRight className="w-4 h-4" />
+            <BsChevronRight className="w-4 h-4" />
           </button>
 
           <Link
@@ -94,13 +93,12 @@ const Hero = () => {
       flex items-center justify-center gap-2
       w-full sm:w-auto
       px-4 sm:px-6 py-3
-          bg-card border border-border rounded-md
-          text-sm sm:text-base text-foreground
+          bg-card border border-border text-sm sm:text-base text-foreground
           hover:bg-accent transition
     "
           >
             View Resume
-            <Send className="w-4 h-4" />
+            <BsSend className="w-4 h-4" />
           </Link>
         </div>
 
@@ -108,22 +106,22 @@ const Hero = () => {
           <TooltipProvider delayDuration={100}>
             {[
               {
-                icon: <Twitter className={iconClasses} />,
-                link: "https://x.com/Bh20291Kartikey",
+                icon: <FaXTwitterIcon className={iconClasses} />,
+                link: "https://x.com/kartikeybuilds",
                 label: "Twitter",
               },
               {
-                icon: <Linkedin className={iconClasses} />,
+                icon: <BsLinkedin className={iconClasses} />,
                 link: "https://www.linkedin.com/in/kartikey-bhatnagar-2702a4337",
                 label: "LinkedIn",
               },
               {
-                icon: <Github className={iconClasses} />,
+                icon: <BsGithub className={iconClasses} />,
                 link: "https://github.com/kartikey2004-git",
                 label: "GitHub",
               },
               {
-                icon: <Instagram className={iconClasses} />,
+                icon: <BsInstagram className={iconClasses} />,
                 link: "https://www.instagram.com/k4rtik.exe",
                 label: "Instagram",
               },
@@ -143,30 +141,27 @@ const Hero = () => {
         <div className="mt-2 grid grid-cols-2 gap-4 border-t border-border pt-6 sm:gap-6 md:grid-cols-4">
           {[
             {
-              Icon: Rocket,
+              Icon: BsRocket,
               value: "7+",
               label: "Projects Shipped",
             },
             {
-              Icon: Code,
+              Icon: BsCodeSlash,
               value: "50K+",
               label: "Lines of Code",
             },
             {
-              Icon: Coffee,
+              Icon: BsCupHot,
               value: "∞",
               label: "Coffee Consumed",
             },
             {
-              Icon: Bug,
+              Icon: BsBug,
               value: "Too many",
               label: "Bugs Fixed",
             },
           ].map(({ Icon, value, label }, idx) => (
-            <div
-              key={idx}
-              className="rounded-lg border border-border bg-card p-3 sm:p-4"
-            >
+            <div key={idx} className="border border-border bg-card p-3 sm:p-4">
               <div className="flex items-center gap-2">
                 <Icon className="h-5 w-5 text-muted-foreground sm:h-6 sm:w-6" />
                 <span className="text-xl font-bold leading-none text-foreground sm:text-2xl md:text-3xl">

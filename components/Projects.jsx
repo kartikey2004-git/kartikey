@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Globe } from "lucide-react";
+import { IoLogoGithub, IoGlobe } from "@/lib/icons";
 import {
   Tooltip,
   TooltipContent,
@@ -29,7 +29,7 @@ export default function ProjectsSection() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-0 rounded-lg border border-border md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-0 border border-border md:grid-cols-2">
           {visibleProjects.map((project, i) => {
             const isRight = (i + 1) % 2 === 0;
             const isLastRow = i >= visibleProjects.length - 2;
@@ -38,7 +38,6 @@ export default function ProjectsSection() {
                 key={i}
                 className={`
     p-4 sm:p-5 md:p-6
-    cursor-pointer transition-colors duration-300 hover:bg-accent/60
     ${isRight && !isLastRow ? "border-l border-border md:border-l" : ""}
     ${!isLastRow ? "border-b border-border" : ""}
     ${isRight && isLastRow ? "border-l border-t border-border md:border-l" : ""}
@@ -64,9 +63,9 @@ export default function ProjectsSection() {
                               <a
                                 href={project.liveLink}
                                 target="_blank"
-                                className="rounded-md border border-border bg-card p-2 transition hover:bg-accent"
+                                className="border border-border bg-card p-2 transition hover:bg-accent"
                               >
-                                <Globe className="w-4 h-4" />
+                                <IoGlobe className="w-4 h-4" />
                               </a>
                             </TooltipTrigger>
                             <TooltipContent>Live Demo</TooltipContent>
@@ -78,9 +77,9 @@ export default function ProjectsSection() {
                             <a
                               href={project.projectLink}
                               target="_blank"
-                              className="rounded-md border border-border bg-card p-2 transition hover:bg-accent"
+                              className="border border-border bg-card p-2 transition hover:bg-accent"
                             >
-                              <Github className="w-4 h-4" />
+                              <IoLogoGithub className="w-4 h-4" />
                             </a>
                           </TooltipTrigger>
                           <TooltipContent>Source Code</TooltipContent>
@@ -93,7 +92,7 @@ export default function ProjectsSection() {
                     {project.tech.map((tech, i) => (
                       <span
                         key={i}
-                        className="whitespace-nowrap rounded-md border border-border bg-card px-2 py-1.5 text-xs sm:px-3 sm:text-sm"
+                        className="whitespace-nowrap border border-border bg-card px-2 py-1.5 text-xs sm:px-3 sm:text-sm"
                       >
                         {tech}
                       </span>
@@ -110,7 +109,7 @@ export default function ProjectsSection() {
                           key={idx}
                           className="flex items-start gap-2 text-xs text-muted-foreground sm:text-sm"
                         >
-                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/40" />
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-foreground/40" />
                           {feature}
                         </li>
                       ))}

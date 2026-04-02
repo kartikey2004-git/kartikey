@@ -1,7 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, Github, Linkedin, Twitter, Moon, Sun } from "lucide-react";
+import {
+  BsList,
+  BsX,
+  BsGithub,
+  BsLinkedin,
+  BsMoon,
+  BsSun,
+} from "react-icons/bs";
+import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import { navLinks } from "@/app/data";
 import {
@@ -68,16 +76,20 @@ export function Navbar() {
 
   const socialLinks = [
     {
-      icon: Github,
+      icon: BsGithub,
       href: "https://github.com/kartikey2004-git",
       label: "GitHub",
     },
     {
-      icon: Linkedin,
+      icon: BsLinkedin,
       href: "https://www.linkedin.com/in/kartikey-bhatnagar-2702a4337",
       label: "LinkedIn",
     },
-    { icon: Twitter, href: "https://x.com/Bh20291Kartikey", label: "Twitter" },
+    {
+      icon: FaXTwitter,
+      href: "https://x.com/kartikeybuilds",
+      label: "Twitter",
+    },
   ];
 
   return (
@@ -109,12 +121,11 @@ export function Navbar() {
                 key={link.title}
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className="relative text-foreground/75 text-sm font-medium transition-all duration-300 py-2
-                  after:absolute after:left-0 after:-bottom-1 after:h-0.5
+                className="relative text-foreground/75 text-sm font-normal transition-all duration-300 py-2
+                  after:absolute after:left-0 after:-bottom-1 after:h-0.25
                   after:w-0 after:bg-foreground
-                  after:rounded-full after:transition-all after:duration-300 ease-out
-                  hover:after:w-full
-                  hover:scale-105
+                  after:transition-all after:duration-200 ease-out
+                  hover:scale-100 hover:after:w-[80%]
                 "
                 style={{
                   animationDelay: `${index * 50}ms`,
@@ -130,13 +141,13 @@ export function Navbar() {
               <button
                 ref={themeToggleRef}
                 onClick={handleThemeToggle}
-                className="p-2 rounded-md text-foreground/70 hover:text-foreground hover:bg-accent transition-all duration-300 border border-border"
+                className="p-2 text-foreground/70 hover:text-foreground hover:bg-accent transition-all duration-300 border border-border"
                 aria-label="Toggle theme"
               >
                 {resolvedTheme === "dark" ? (
-                  <Sun className="w-4 h-4" />
+                  <BsSun className="w-4 h-4" />
                 ) : (
-                  <Moon className="w-4 h-4" />
+                  <BsMoon className="w-4 h-4" />
                 )}
               </button>
             )}
@@ -148,7 +159,7 @@ export function Navbar() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-md text-foreground/60 hover:text-foreground hover:bg-accent transition-all duration-300 hover:scale-105 border border-border"
+                  className="p-2 text-foreground/60 hover:text-foreground hover:bg-accent transition-all duration-300 hover:scale-105 border border-border"
                   aria-label={label}
                   style={{
                     animationDelay: `${index * 100}ms`,
@@ -161,17 +172,17 @@ export function Navbar() {
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden p-2 rounded-md text-foreground/70 hover:text-foreground hover:bg-accent transition-all duration-300 border border-border"
+              className="lg:hidden p-2 text-foreground/70 hover:text-foreground hover:bg-accent transition-all duration-300 border border-border"
               aria-label="Toggle menu"
             >
               <div className="relative w-5 h-5 flex items-center justify-center">
                 {menuOpen ? (
-                  <X
+                  <BsX
                     size={20}
                     className="absolute transition-all duration-300 rotate-0"
                   />
                 ) : (
-                  <Menu
+                  <BsList
                     size={20}
                     className="absolute transition-all duration-300"
                   />
@@ -190,7 +201,7 @@ export function Navbar() {
                 <a
                   href={link.href}
                   onClick={(e) => handleClick(e, link.href)}
-                  className="flex items-center gap-3 text-foreground text-base font-medium py-3 px-4 rounded-md hover:bg-accent transition-all duration-300 hover:translate-x-1 border border-transparent hover:border-border"
+                  className="flex items-center gap-3 text-foreground py-3 px-4 hover:bg-accent transition-all duration-300 hover:translate-x-1 border border-transparent hover:border-border"
                   style={{
                     animationDelay: `${index * 50}ms`,
                   }}
@@ -198,7 +209,7 @@ export function Navbar() {
                   <div className="text-foreground/60 group-hover:text-foreground transition-colors duration-300">
                     {link.icon}
                   </div>
-                  <span className="font-medium">{link.title}</span>
+                  <span className="font-normal">{link.title}</span>
                 </a>
               </div>
             ))}
@@ -210,7 +221,7 @@ export function Navbar() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-md text-foreground/60 hover:text-foreground hover:bg-accent transition-all duration-300 hover:scale-105 border border-border"
+                  className="p-2 text-foreground/60 hover:text-foreground hover:bg-accent transition-all duration-300 hover:scale-105 border border-border"
                   aria-label={label}
                   style={{
                     animationDelay: `${index * 100}ms`,
