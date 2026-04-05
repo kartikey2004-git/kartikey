@@ -2,6 +2,7 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./provider";
 import { Navbar } from "@/components/Navbar";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         className={`${inter.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
       >
         <Navbar />
+        <Analytics />
         <Providers>
           <div className="mx-auto flex min-h-[calc(100dvh-4rem)] w-full max-w-7xl flex-col px-4 sm:px-6 lg:px-8">
             {children}
