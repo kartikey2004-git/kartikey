@@ -74,7 +74,7 @@ export const projects = [
     ],
     bg: "markstack",
     projectLink: "https://github.com/kartikey2004-git/<your-repo>",
-    liveLink: "<your-live-url>",
+    liveLink: "https://markstack-app.vercel.app",
     currentlyBuilding: true,
   },
   {
