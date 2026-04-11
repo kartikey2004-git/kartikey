@@ -95,13 +95,13 @@ export function Navbar() {
           : "bg-background/80 border-border"
           }`}
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-5 lg:px-8 h-16 flex items-center justify-between">
+        <div className="max-w-4xl mx-auto px-3 sm:px-5 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <div className="relative">
-              <span className="font-mono text-foreground font-semibold text-lg sm:text-xl lg:text-2xl transition-all duration-300 group-hover:scale-105 block">
+              <span className="font-mono text-foreground font-semibold text-base sm:text-xl lg:text-2xl transition-all duration-300 group-hover:scale-105 block">
                 {"<KB />"}
               </span>
-              <div className="absolute inset-0 font-mono text-foreground/20 font-semibold text-lg sm:text-xl lg:text-2xl">
+              <div className="absolute inset-0 font-mono text-foreground/20 font-semibold text-base sm:text-xl lg:text-2xl">
                 {"<KB />"}
               </div>
             </div>
@@ -113,7 +113,7 @@ export function Navbar() {
                 key={link.title}
                 href={link.href}
                 onClick={handleClick}
-                className="relative text-foreground/75 text-xs sm:text-sm font-normal transition-all duration-300 py-2
+                className="relative text-foreground/75 text-[10px] sm:text-sm font-normal transition-all duration-300 py-2
                   after:absolute after:left-0 after:-bottom-1 after:h-0.25
                   after:w-0 after:bg-foreground
                   after:transition-all after:duration-200 ease-out
@@ -133,13 +133,13 @@ export function Navbar() {
               <button
                 ref={themeToggleRef}
                 onClick={handleThemeToggle}
-                className="p-2 text-foreground/70 hover:text-foreground hover:bg-accent transition-all duration-300 rounded-sm"
+                className="p-1.5 text-foreground/70 hover:text-foreground hover:bg-accent transition-all duration-300 rounded-sm"
                 aria-label="Toggle theme"
               >
                 {resolvedTheme === "dark" ? (
-                  <BsSun className="w-4 h-4" />
+                  <BsSun className="w-3 h-3" />
                 ) : (
-                  <BsMoon className="w-4 h-4" />
+                  <BsMoon className="w-3 h-3" />
                 )}
               </button>
             )}
@@ -151,31 +151,31 @@ export function Navbar() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-foreground/60 hover:text-foreground hover:bg-accent transition-all duration-300 hover:scale-105  rounded-sm"
+                  className="p-1.5 text-foreground/60 hover:text-foreground hover:bg-accent transition-all duration-300 hover:scale-105  rounded-sm"
                   aria-label={label}
                   style={{
                     animationDelay: `${index * 100}ms`,
                   }}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3 h-3" />
                 </a>
               ))}
             </div>
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="md:hidden p-2 text-foreground/70 hover:text-foreground hover:bg-accent transition-all duration-300 rounded-sm"
+              className="md:hidden p-1.5 text-foreground/70 hover:text-foreground hover:bg-accent transition-all duration-300 rounded-sm"
               aria-label="Toggle menu"
             >
               <div className="relative w-5 h-5 flex items-center justify-center">
                 {menuOpen ? (
                   <BsX
-                    size={20}
+                    size={18}
                     className="absolute transition-all duration-300 rotate-0"
                   />
                 ) : (
                   <BsList
-                    size={20}
+                    size={18}
                     className="absolute transition-all duration-300"
                   />
                 )}
@@ -187,13 +187,13 @@ export function Navbar() {
 
       {menuOpen && (
         <div className="md:hidden w-full bg-background animate-in slide-in-from-top duration-300 shadow-sm">
-          <div className="max-w-4xl mx-auto px-4 sm:px-5 lg:px-8 py-4 space-y-1">
+          <div className="max-w-4xl mx-auto px-3 sm:px-5 lg:px-8 py-3 space-y-1">
             {navLinks.map((link, index) => (
               <div key={link.title} className="group">
                 <Link
                   href={link.href}
                   onClick={handleClick}
-                  className="flex items-center gap-3 text-foreground py-3 px-4 hover:bg-accent transition-all duration-300 hover:translate-x-1 hover:border-border rounded-sm"
+                  className="flex items-center gap-3 text-foreground py-2 px-3 hover:bg-accent transition-all duration-300 hover:translate-x-1 hover:border-border rounded-sm"
                   style={{
                     animationDelay: `${index * 50}ms`,
                   }}
@@ -206,20 +206,20 @@ export function Navbar() {
               </div>
             ))}
 
-            <div className="flex items-center gap-2 pt-4 px-4 border-t border-border">
+            <div className="flex items-center gap-2 pt-3 px-3 border-t border-border">
               {socialLinks.map(({ icon: Icon, href, label }, index) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-foreground/60 hover:text-foreground hover:bg-accent transition-all duration-300 hover:scale-105 rounded-sm"
+                  className="p-1.5 text-foreground/60 hover:text-foreground hover:bg-accent transition-all duration-300 hover:scale-105 rounded-sm"
                   aria-label={label}
                   style={{
                     animationDelay: `${index * 100}ms`,
                   }}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3 h-3" />
                 </a>
               ))}
             </div>

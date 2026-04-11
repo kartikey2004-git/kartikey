@@ -87,17 +87,17 @@ const GithubDashboard = () => {
   }
 
   return (
-    <div className="w-full min-w-0 space-y-4 bg-transparent">
+    <div className="w-full min-w-0 space-y-3 bg-transparent">
       {/* Year Selector */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h3 className="text-lg font-semibold text-foreground sm:text-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <h3 className="text-base font-semibold text-foreground sm:text-xl">
           GitHub Contributions
         </h3>
         <Select
           value={selectedYear.toString()}
           onValueChange={(value) => setSelectedYear(parseInt(value))}
         >
-          <SelectTrigger className="w-full sm:w-28 border border-border rounded-sm">
+          <SelectTrigger className="w-full sm:w-28 border border-border rounded-sm text-xs">
             <SelectValue placeholder="Select year" />
           </SelectTrigger>
           <SelectContent>
@@ -115,13 +115,13 @@ const GithubDashboard = () => {
         <div className="w-full overflow-hidden">
           <ContributionGraph
             data={data}
-            blockSize={10}
-            blockMargin={3}
+            blockSize={8}
+            blockMargin={2}
             style={{
-              '--block-size': '10px',
-              '--block-margin': '3px'
+              '--block-size': '8px',
+              '--block-margin': '2px'
             }}
-            className="sm:[--block-size:12px] sm:[--block-margin:2.5px] lg:[--block-size:14px]"
+            className="[--block-size:8px] [--block-margin:2px] sm:[--block-size:12px] sm:[--block-margin:2.5px] lg:[--block-size:14px]"
           >
             <ContributionGraphCalendar>
               {({ activity, dayIndex, weekIndex }) => (

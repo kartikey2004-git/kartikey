@@ -121,10 +121,10 @@ export default function ProjectsSection() {
         <div className="mt-6 sm:mt-8 text-center">
           <Link
             href="/projects"
-            className="inline-flex items-center justify-center rounded-md px-4 sm:px-5 lg:px-6 py-2 text-base sm:text-lg font-medium text-foreground shadow transition-colors"
+            className="inline-flex items-center justify-center rounded-md px-4 sm:px-5 lg:px-6 py-2 text-base sm:text-lg font-semibold text-foreground shadow transition-colors"
           >
             View all projects
-            <FaChevronRight className="ml-2 sm:ml-3 w-4 h-4 sm:w-5 sm:h-5" />
+            <FaChevronRight className="ml-2 sm:ml-3 w-4 h-4" />
           </Link>
         </div>
       </div>

@@ -27,14 +27,14 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative w-full border-b border-border bg-background py-10 sm:py-12 md:py-14"
+      className="relative w-full border-b border-border bg-background py-6 sm:py-12 md:py-14"
     >
-      <div className="mx-auto w-full max-w-4xl px-4 sm:px-5">
-        <div className="flex flex-col gap-5 sm:gap-6 text-left">
+      <div className="mx-auto w-full max-w-4xl px-3 sm:px-5">
+        <div className="flex flex-col gap-4 sm:gap-6 text-left">
 
           {/* profile */}
           <div className="flex items-center gap-3">
-            <div className="relative h-14 w-14 sm:h-16 sm:w-16">
+            <div className="relative h-12 w-12 sm:h-16 sm:w-16">
               <img
                 src="/hi.webp"
                 alt="Kartikey"
@@ -43,22 +43,22 @@ const Hero = () => {
             </div>
 
             <div className="min-w-0">
-              <h1 className="text-lg sm:text-xl font-semibold truncate">
+              <h1 className="text-base sm:text-xl font-semibold truncate">
                 Hi, I'm Kartikey
               </h1>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs text-muted-foreground">
                 Full Stack Web Developer
               </p>
             </div>
           </div>
 
           {/* location */}
-          <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+          <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
             Based in India
           </p>
 
           {/* heading */}
-          <h2 className="max-w-3xl text-lg sm:text-xl md:text-2xl font-semibold leading-tight">
+          <h2 className="max-w-3xl text-base sm:text-xl md:text-2xl font-semibold leading-tight">
             Innovating{" "}
             <span className="font-semibold">through code</span>,
             <br />
@@ -66,7 +66,7 @@ const Hero = () => {
           </h2>
 
           {/* description */}
-          <p className="max-w-2xl text-sm sm:text-base text-muted-foreground leading-relaxed">
+          <p className="max-w-2xl text-xs sm:text-base text-muted-foreground leading-relaxed">
             I build modern web experiences — clean, fast and production-ready
             interfaces with solid backend logic.
           </p>
@@ -96,7 +96,7 @@ const Hero = () => {
           </div>
 
           {/* socials */}
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-4 flex-wrap">
             <TooltipProvider delayDuration={100}>
               {[
                 {
@@ -133,7 +133,7 @@ const Hero = () => {
           </div>
 
           {/* stats single line responsive */}
-          <div className="mt-2 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="mt-1 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-2 sm:gap-4">
             {[
               { Icon: BsRocket, value: "7+", label: "Projects Shipped" },
               { Icon: BsCodeSlash, value: "50K+", label: "Lines of Code" },
@@ -142,13 +142,13 @@ const Hero = () => {
             ].map(({ Icon, value, label }, idx) => (
               <div key={idx} className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground shrink-0" />
-                  <span className="text-base sm:text-lg font-semibold leading-none truncate">
+                  <Icon className="h-3 w-3 sm:h-5 sm:w-5 text-muted-foreground shrink-0" />
+                  <span className="text-sm sm:text-lg font-semibold leading-none truncate">
                     {value}
                   </span>
                 </div>
 
-                <p className="mt-1 text-[11px] sm:text-xs text-muted-foreground leading-tight truncate">
+                <p className="mt-1 text-[10px] sm:text-xs text-muted-foreground leading-tight truncate">
                   {label}
                 </p>
               </div>

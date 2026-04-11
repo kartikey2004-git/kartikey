@@ -6,12 +6,26 @@ import Link from "next/link";
 
 export default function BlogsClient() {
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/blogs")
       .then((res) => res.json())
-      .then(setBlogs);
+      .then((data) => {
+        setBlogs(data);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="p-4 text-sm text-muted-foreground rounded-md">
+        Loading Blogs...
+      </div>
+    );
+  }
+
+  if (!blogs?.length) return null;
 
   // Format date function
   const formatDate = (dateString) => {
@@ -27,8 +41,8 @@ export default function BlogsClient() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-4xl px-4 sm:px-5 py-16">
         <div className="mb-12">
-          <h1 className="text-4xl font-semibold tracking-tight">Blogs</h1>
-          <p className="mt-2 text-lg text-muted-foreground">
+          <h1 className="text-3xl font-semibold tracking-tight">Blogs</h1>
+          <p className="mt-2 text-md text-muted-foreground">
             Thoughts, ideas, and tutorials on web development and technology.
           </p>
         </div>
@@ -44,11 +58,11 @@ export default function BlogsClient() {
             {blogs.map((blog) => (
               <Card
                 key={blog.slug}
-                className="bg-transparent border-none p-4 sm:p-5 lg:p-6 shadow-sm rounded-md"
+                className="bg-transparent border-none p-3 sm:p-4 lg:p-5 shadow-sm rounded-md"
               >
-                <article className="space-y-4 ">
+                <article className="space-y-2">
                   <div className="space-y-2">
-                    <h2 className="text-2xl font-semibold text-foreground">
+                    <h2 className="text-xl font-semibold text-foreground">
                       <Link
                         href={`https://markstack-app.vercel.app/blogs/${blog.slug}`}
                         target="_blank"
@@ -64,7 +78,7 @@ export default function BlogsClient() {
                     </time>
                   </div>
 
-                  <p className="text-muted-foreground leading-relaxed text-lg">
+                  <p className="text-muted-foreground leading-relaxed text-base">
                     {blog.description}
                   </p>
 
