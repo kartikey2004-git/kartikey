@@ -133,7 +133,7 @@ const Hero = () => {
           </div>
 
           {/* stats single line responsive */}
-          <div className="mt-2 grid grid-cols-4 gap-3 sm:gap-4">
+          <div className="mt-2 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4">
             {[
               { Icon: BsRocket, value: "7+", label: "Projects Shipped" },
               { Icon: BsCodeSlash, value: "50K+", label: "Lines of Code" },

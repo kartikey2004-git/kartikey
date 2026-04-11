@@ -42,9 +42,9 @@ export default function ProjectsSection() {
   `}
               >
                 <div className="flex flex-col gap-4">
-                  <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-                    <div className="w-full sm:w-auto">
-                      <h3 className="mb-2 text-lg font-semibold leading-tight break-words sm:text-xl">
+                  <div className="flex flex-row justify-between items-start gap-4">
+                    <div className="flex-1 pr-4">
+                      <h3 className="mb-2 text-lg font-semibold leading-tight break-words sm:text-xl mb-2">
                         {project.title}
                       </h3>
                       <p className="text-sm text-muted-foreground leading-relaxed">

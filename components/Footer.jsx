@@ -117,7 +117,7 @@ export default function FooterStandard() {
             <div className="flex mt-4 -mb-6">
               <TooltipProvider delayDuration={100}>
                 {data.socialLinks.map(({ icon: Icon, label, href }) => (
-                  <Tooltip>
+                  <Tooltip key={label}>
                     <TooltipTrigger asChild>
                       <Button
                         key={label}
