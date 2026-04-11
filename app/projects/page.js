@@ -1,4 +1,4 @@
-import { IoLogoGithub, IoGlobe, FaChevronRight } from "@/lib/icons";
+import { IoLogoGithub, IoGlobe } from "@/lib/icons";
 import Link from "next/link";
 import {
   Tooltip,
@@ -37,18 +37,17 @@ export default function ProjectsPage() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-4xl px-4 sm:px-5 py-16">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold tracking-tight">Projects</h1>
+          <h1 className="text-4xl font-semibold tracking-tight">Projects</h1>
           <p className="mt-2 text-lg text-muted-foreground">
-            Real projects. Real users. Real code. Explore my complete portfolio
-            of work.
+            Real projects. Real users. Real code.
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-8 md:-ml-6 -ml-4">
           {allProjects.map((project, i) => (
             <article
               key={i}
-              className="border border-border bg-card p-6 sm:p-8 shadow-sm"
+              className={`p-6 sm:p-8 shadow-sm ${i !== allProjects.length - 1 ? "border-b border-border" : ""}}`}
             >
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
@@ -66,15 +65,13 @@ export default function ProjectsPage() {
                       {project.liveLink && (
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <Link
-                              href={`https://markstack-app.vercel.app/blogs/${project.slug}`}
+                            <a
+                              href={project.liveLink}
                               target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                              className="border border-border bg-card p-1.5 sm:p-2 transition hover:bg-accent rounded-sm"
                             >
-                              Read more
-                              <FaChevronRight className="w-4 h-4" />
-                            </Link>
+                              <IoGlobe className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                            </a>
                           </TooltipTrigger>
                           <TooltipContent>Live Demo</TooltipContent>
                         </Tooltip>
@@ -85,9 +82,9 @@ export default function ProjectsPage() {
                           <a
                             href={project.projectLink}
                             target="_blank"
-                            className="border border-border bg-card p-2 transition hover:bg-accent"
+                            className="border border-border bg-card p-1.5 sm:p-2 transition hover:bg-accent rounded-sm"
                           >
-                            <IoLogoGithub className="w-4 h-4" />
+                            <IoLogoGithub className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                           </a>
                         </TooltipTrigger>
                         <TooltipContent>Source Code</TooltipContent>

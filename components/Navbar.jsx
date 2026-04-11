@@ -63,15 +63,8 @@ export function Navbar() {
     await toggleSwitchTheme();
   };
 
-  const handleClick = (e, href) => {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-      setMenuOpen(false);
-    }
+  const handleClick = () => {
+    setMenuOpen(false);
   };
 
   const socialLinks = [
@@ -98,17 +91,17 @@ export function Navbar() {
     >
       <div
         className={`w-full backdrop-blur-xl border-b transition-all duration-500 ease-out ${scrolled
-            ? "bg-background/95 border-border shadow-sm"
-            : "bg-background/80 border-border"
+          ? "bg-background/95 border-border shadow-sm"
+          : "bg-background/80 border-border"
           }`}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-5 lg:px-8 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <div className="relative">
-              <span className="font-mono text-foreground font-bold text-lg sm:text-xl lg:text-2xl transition-all duration-300 group-hover:scale-105 block">
+              <span className="font-mono text-foreground font-semibold text-lg sm:text-xl lg:text-2xl transition-all duration-300 group-hover:scale-105 block">
                 {"<KB />"}
               </span>
-              <div className="absolute inset-0 font-mono text-foreground/20 font-bold text-lg sm:text-xl lg:text-2xl">
+              <div className="absolute inset-0 font-mono text-foreground/20 font-semibold text-lg sm:text-xl lg:text-2xl">
                 {"<KB />"}
               </div>
             </div>
@@ -116,10 +109,10 @@ export function Navbar() {
 
           <nav className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
             {navLinks.map((link, index) => (
-              <a
+              <Link
                 key={link.title}
                 href={link.href}
-                onClick={(e) => handleClick(e, link.href)}
+                onClick={handleClick}
                 className="relative text-foreground/75 text-xs sm:text-sm font-normal transition-all duration-300 py-2
                   after:absolute after:left-0 after:-bottom-1 after:h-0.25
                   after:w-0 after:bg-foreground
@@ -131,7 +124,7 @@ export function Navbar() {
                 }}
               >
                 <span className="relative z-10">{link.title}</span>
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -197,9 +190,9 @@ export function Navbar() {
           <div className="max-w-4xl mx-auto px-4 sm:px-5 lg:px-8 py-4 space-y-1">
             {navLinks.map((link, index) => (
               <div key={link.title} className="group">
-                <a
+                <Link
                   href={link.href}
-                  onClick={(e) => handleClick(e, link.href)}
+                  onClick={handleClick}
                   className="flex items-center gap-3 text-foreground py-3 px-4 hover:bg-accent transition-all duration-300 hover:translate-x-1 hover:border-border rounded-sm"
                   style={{
                     animationDelay: `${index * 50}ms`,
@@ -209,7 +202,7 @@ export function Navbar() {
                     {link.icon}
                   </div>
                   <span className="font-normal">{link.title}</span>
-                </a>
+                </Link>
               </div>
             ))}
 

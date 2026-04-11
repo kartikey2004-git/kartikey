@@ -528,7 +528,7 @@ export const navLinks = [
     icon: (
       <IoHomeOutline className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
-    href: "#hero",
+    href: "/",
   },
   {
     title: "Projects",
@@ -536,31 +536,15 @@ export const navLinks = [
     icon: (
       <CiFolderOn className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
-    href: "#projects",
+    href: "/projects",
   },
   {
-    title: "How I Build",
-    description: "What I'm good at and tools I use",
+    title: "Blogs",
+    description: "Thoughts, ideas, and tutorials",
     icon: (
       <FiBookOpen className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
-    href: "#how-i-build",
-  },
-  {
-    title: "Testimonials",
-    description: "What people say about my work",
-    icon: (
-      <IoMailOutline className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "#testimonials",
-  },
-  {
-    title: "GitHub",
-    description: "Explore my code and open-source projects",
-    icon: (
-      <IoLogoGithub className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
-    ),
-    href: "#github",
+    href: "/blogs",
   },
 ];
 
