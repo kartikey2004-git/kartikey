@@ -355,8 +355,8 @@ export const ContributionGraphTotalCount = ({
     <div className={cn("text-muted-foreground", className)} {...props}>
       {labels.totalCount
         ? labels.totalCount
-            .replace("{{count}}", String(totalCount))
-            .replace("{{year}}", String(year))
+          .replace("{{count}}", String(totalCount))
+          .replace("{{year}}", String(year))
         : `${totalCount} activities in ${year}`}
     </div>
   );
@@ -382,11 +382,7 @@ export const ContributionGraphLegend = ({ className, children, ...props }) => {
             <rect
               className={cn(
                 "stroke-[1px] stroke-border",
-                'data-[level="0"]:fill-muted',
-                'data-[level="1"]:fill-muted-foreground/25',
-                'data-[level="2"]:fill-muted-foreground/45',
-                'data-[level="3"]:fill-muted-foreground/65',
-                'data-[level="4"]:fill-foreground/85',
+                'dark:data-[level="0"]:fill-[#161b22] dark:data-[level="1"]:fill-[#0e4429] dark:data-[level="2"]:fill-[#006d32] dark:data-[level="3"]:fill-[#26a641] dark:data-[level="4"]:fill-[#39d353] data-[level="0"]:fill-[#ebedf0] data-[level="1"]:fill-[#9be9a8] data-[level="2"]:fill-[#40c463] data-[level="3"]:fill-[#30a14e] data-[level="4"]:fill-[#216e39]',
               )}
               data-level={level}
               height={blockSize}

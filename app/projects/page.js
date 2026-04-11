@@ -1,5 +1,3 @@
-"use client";
-
 import { IoLogoGithub, IoGlobe, FaChevronRight } from "@/lib/icons";
 import Link from "next/link";
 import {

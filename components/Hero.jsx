@@ -79,7 +79,7 @@ const Hero = () => {
                   .getElementById("projects")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="flex items-center justify-center gap-2 border border-border/20 px-4 py-2.5 text-sm rounded-sm"
+              className="flex items-center justify-center gap-2 border border-border px-4 py-2.5 text-sm rounded-sm"
             >
               See My Work
               <BsChevronRight className="w-4 h-4" />
@@ -88,7 +88,7 @@ const Hero = () => {
             <Link
               href="https://drive.google.com/file/d/1eyrmowrL6wTZLZEx5cpDHqG20rK9nGnc/view"
               target="_blank"
-              className="flex items-center justify-center gap-2 border border-border/20 px-4 py-2.5 text-sm rounded-sm"
+              className="flex items-center justify-center gap-2 border border-border px-4 py-2.5 text-sm rounded-sm"
             >
               View Resume
               <BsSend className="w-4 h-4" />
