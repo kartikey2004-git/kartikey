@@ -72,7 +72,7 @@ const GithubDashboard = () => {
 
   if (loading) {
     return (
-      <div className="border border-border bg-card p-4 text-sm text-muted-foreground">
+      <div className="p-4 text-sm text-muted-foreground rounded-md">
         Loading contributions...
       </div>
     );
@@ -80,24 +80,24 @@ const GithubDashboard = () => {
 
   if (data.length === 0) {
     return (
-      <div className="border border-border bg-card p-4 text-sm text-muted-foreground">
+      <div className="border border-border bg-card p-4 text-sm text-muted-foreground rounded-md">
         No contribution data available
       </div>
     );
   }
 
   return (
-    <div className="w-full min-w-0 space-y-4 border border-border bg-card p-4 sm:p-5">
+    <div className="w-full min-w-0 space-y-4 bg-transparent">
       {/* Year Selector */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h3 className="text-lg font-semibold text-foreground">
+        <h3 className="text-lg font-semibold text-foreground sm:text-xl">
           GitHub Contributions
         </h3>
         <Select
           value={selectedYear.toString()}
           onValueChange={(value) => setSelectedYear(parseInt(value))}
         >
-          <SelectTrigger className="w-full sm:w-30 border border-border">
+          <SelectTrigger className="w-full sm:w-28 border border-border rounded-sm">
             <SelectValue placeholder="Select year" />
           </SelectTrigger>
           <SelectContent>
@@ -112,8 +112,17 @@ const GithubDashboard = () => {
 
       {/* Contribution Graph */}
       <TooltipProvider>
-        <div className="thin-scrollbar overflow-x-auto border border-border bg-background p-3 sm:p-4">
-          <ContributionGraph data={data}>
+        <div className="w-full overflow-hidden">
+          <ContributionGraph
+            data={data}
+            blockSize={10}
+            blockMargin={3}
+            style={{
+              '--block-size': '10px',
+              '--block-margin': '3px'
+            }}
+            className="sm:[--block-size:12px] sm:[--block-margin:2.5px] lg:[--block-size:14px]"
+          >
             <ContributionGraphCalendar>
               {({ activity, dayIndex, weekIndex }) => (
                 <Tooltip>

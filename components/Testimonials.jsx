@@ -16,48 +16,47 @@ const Testimonials = () => {
   return (
     <section
       id="testimonials"
-      className="overflow-x-hidden border-b border-border bg-background py-14 sm:py-16"
+      className="overflow-x-hidden border-b border-border bg-background py-8 sm:py-10 md:py-12 lg:py-14 border-t border-border"
     >
-      <div className="grid grid-cols-1 overflow-hidden border border-border md:grid-cols-1 lg:grid-cols-3">
+      <div className="mx-auto max-w-4xl px-4 sm:px-5 lg:px-8 grid grid-cols-1 overflow-hidden sm:grid-cols-1">
         {/* LEFT AVATAR */}
-        <div className="flex flex-col items-start justify-center border-b border-border bg-card p-6 text-start sm:p-8 lg:border-r lg:border-b-0 lg:p-10">
-          <h3 className="text-lg font-medium text-foreground sm:text-xl">
+        <div className="flex flex-col items-start justify-center text-start">
+          <h3 className="text-lg font-semibold text-foreground sm:text-xl">
             What People Say
           </h3>
 
-          <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-2 max-w-xs text-sm text-muted-foreground leading-relaxed mb-4">
             Real experiences from teammates, collaborators, and people I’ve
             built alongside.
           </p>
         </div>
 
         {/* CENTER QUOTE */}
-        <div className="flex flex-col justify-center border-b border-border p-6 transition-all duration-500 ease-in-out sm:p-8 lg:border-r lg:border-b-0 lg:p-10">
-          <div className="mb-6 text-base leading-relaxed text-foreground transition-opacity duration-500 sm:mb-8 sm:text-lg">
+        <div className="flex flex-col justify-center border-border transition-all duration-500 ease-in-out">
+          <div className="mb-4 sm:mb-6 lg:mb-8 text-lg leading-relaxed text-foreground transition-opacity duration-500 sm:text-xl">
             &ldquo;{testimonials[currentTestimonial].content}&rdquo;
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-2 sm:mb-3 md:mb-0">
             <p className="text-sm font-semibold text-foreground sm:text-base">
               {testimonials[currentTestimonial].name}
             </p>
-            <p className="text-xs text-muted-foreground sm:text-sm">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               {testimonials[currentTestimonial].role} at{" "}
               {testimonials[currentTestimonial].company}
             </p>
           </div>
 
           {/* Testimonial dots */}
-          <div className="flex gap-2 mt-4 sm:mt-6">
+          <div className="flex gap-1.5 sm:gap-2 mt-3 sm:mt-4 lg:mt-6 sm:mb-3 md:mb-0">
             {testimonials.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
-                className={`w-2 h-2 transition-all duration-300 ${
-                  index === currentTestimonial
-                    ? "w-4 bg-foreground sm:w-6"
-                    : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
-                }`}
+                className={`w-1.5 h-1.5 sm:w-2 sm:h-2 transition-all duration-300 rounded-sm ${index === currentTestimonial
+                  ? "w-3 sm:w-4 lg:w-6 bg-foreground"
+                  : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
+                  }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
             ))}
@@ -65,12 +64,12 @@ const Testimonials = () => {
         </div>
 
         {/* RIGHT METRIC */}
-        <div className="flex flex-col items-start justify-center bg-card p-6 sm:items-end sm:p-8 lg:p-10">
+        <div className="flex flex-col items-start justify-center sm:items-end mt-3">
           <div className="text-left sm:text-right w-full">
-            <div className="mb-2 text-4xl font-normal text-foreground transition-all duration-500 sm:text-5xl lg:text-6xl xl:text-7xl">
+            <div className="mb-2 text-2xl font-normal text-foreground transition-all duration-500 sm:text-4xl lg:text-5xl xl:text-6xl">
               {testimonials[currentTestimonial].metric}
             </div>
-            <p className="text-xs uppercase tracking-wider text-muted-foreground sm:text-sm">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">
               {currentTestimonial === 0
                 ? "Load Time Improvement"
                 : currentTestimonial === 1

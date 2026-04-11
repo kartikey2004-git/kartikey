@@ -3,6 +3,12 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
   FaXTwitter,
   IoLogoGithub,
   FaLinkedinIn,
@@ -14,10 +20,14 @@ export const data = {
   navigation: {
     sections: [
       { name: "Home", href: "#hero" },
+
       { name: "Projects", href: "#projects" },
+
       { name: "How I Build", href: "#how-i-build" },
+
       { name: "GitHub", href: "#github" },
     ],
+
     company: [
       { name: "About", href: "#how-i-build" },
       { name: "Blog", href: "/blog" },
@@ -27,6 +37,7 @@ export const data = {
       },
       { name: "Contact", href: "#hero" },
     ],
+
     social: [
       { name: "Twitter", href: "https://x.com/kartikeybuilds" },
       { name: "GitHub", href: "https://github.com/kartikey2004-git" },
@@ -44,17 +55,25 @@ export const data = {
   socialLinks: [
     {
       icon: FaXTwitter,
+
       label: "Twitter",
+
       href: "https://x.com/kartikeybuilds",
     },
+
     {
       icon: IoLogoGithub,
+
       label: "GitHub",
+
       href: "https://github.com/kartikey2004-git",
     },
+
     {
       icon: FaLinkedinIn,
+
       label: "LinkedIn",
+
       href: "https://www.linkedin.com/in/kartikey-bhatnagar-2702a4337",
     },
     {
@@ -66,72 +85,77 @@ export const data = {
 
   bottomLinks: [
     { href: "/privacy", label: "Privacy Policy" },
+
     { href: "/terms", label: "Terms of Service" },
+
     { href: "/cookies", label: "Cookie Policy" },
   ],
 };
 
 export default function FooterStandard() {
   const currentYear = new Date().getFullYear();
-
-  // ✅ helper (cleaner)
   const isExternal = (href) => href.startsWith("http");
 
   return (
     <footer className="w-full border-t border-border bg-background">
-      <div className="container mx-auto py-16">
+      <div className="mx-auto max-w-4xl px-4 sm:px-5 lg:px-8 py-12 sm:py-14 lg:py-16">
         {/* TOP GRID */}
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-8 sm:gap-12 sm:grid-cols-2">
           {/* LEFT (Brand + CTA) */}
-          <div className="lg:col-span-2 flex flex-col justify-between">
+          <div className="sm:col-span-2 flex flex-col justify-between -mb-4">
             <div>
-              <h1 className="text-5xl sm:text-6xl font-semibold tracking-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight">
                 Kartikey
               </h1>
 
-              <p className="mt-4 text-muted-foreground max-w-md">
+              <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-md">
                 Building reliable, scalable systems with clean architecture and
                 performance in mind.
               </p>
             </div>
 
-            {/* Social */}
-            <div className="flex gap-3 mt-8">
-              {data.socialLinks.map(({ icon: Icon, label, href }) => (
-                <Button
-                  key={label}
-                  size="icon"
-                  variant="ghost"
-                  asChild
-                  className="h-10 w-10 border border-border hover:bg-accent transition"
-                >
-                  <Link
-                    href={href}
-                    target={isExternal(href) ? "_blank" : "_self"}
-                    rel={isExternal(href) ? "noopener noreferrer" : ""}
-                  >
-                    <Icon className="h-4 w-4" />
-                  </Link>
-                </Button>
-              ))}
+            <div className="flex mt-4 -mb-6">
+              <TooltipProvider delayDuration={100}>
+                {data.socialLinks.map(({ icon: Icon, label, href }) => (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        key={label}
+                        size="icon"
+                        variant="ghost"
+                        asChild
+                        className="h-10 w-10 rounded-sm"
+                      >
+                        <Link
+                          href={href}
+                          target={isExternal(href) ? "_blank" : "_self"}
+                          rel={isExternal(href) ? "noopener noreferrer" : ""}
+                        >
+                          <Icon className="h-6 w-6" />
+                        </Link>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>{label}</TooltipContent>
+                  </Tooltip>
+                ))}
+              </TooltipProvider>
             </div>
 
-            {/* Status */}
-            <div className="mt-8 border border-border p-4">
-              <p className="text-sm">
+            <div className="mt-8 rounded-sm">
+              <p className="text-lg sm:text-xl">
                 <span className="font-medium">Status:</span> Available for work
               </p>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-base sm:text-lg text-muted-foreground mt-1">
                 Usually replies within 24 hours
               </p>
             </div>
           </div>
 
           {/* RIGHT NAV */}
-          <div className="lg:col-span-3 grid grid-cols-3 gap-10">
+          <div className="sm:col-span-2 grid grid-cols-3 gap-6 sm:gap-8">
             {["sections", "company", "social"].map((section) => (
               <div key={section}>
-                <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
+                <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-3 sm:mb-4">
                   {section === "sections"
                     ? "Navigation"
                     : section.charAt(0).toUpperCase() + section.slice(1)}
@@ -144,9 +168,10 @@ export default function FooterStandard() {
                         href={item.href}
                         target={isExternal(item.href) ? "_blank" : "_self"}
                         rel={isExternal(item.href) ? "noopener noreferrer" : ""}
-                        className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition"
+                        className="group flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-foreground transition"
                       >
                         <GoArrowDownLeft className="opacity-30 group-hover:opacity-100 transition" />
+
                         {item.name}
                       </Link>
                     </li>
@@ -158,16 +183,18 @@ export default function FooterStandard() {
         </div>
 
         {/* DIVIDER */}
-        <div className="mt-16 border-t border-border pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground gap-4">
+        <div className="mt-12 sm:mt-16 border-t border-border pt-4 sm:pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground gap-4">
           <p>© {currentYear} Kartikey. All rights reserved.</p>
 
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-foreground transition">
               Privacy
             </Link>
+
             <Link href="/terms" className="hover:text-foreground transition">
               Terms
             </Link>
+
             <Link href="/cookies" className="hover:text-foreground transition">
               Cookies
             </Link>

@@ -169,9 +169,9 @@ const getMonthLabels = (weeks, monthNames = DEFAULT_MONTH_LABELS) => {
 
 export const ContributionGraph = ({
   data,
-  blockMargin = 4,
+  blockMargin = 3,
   blockRadius = 2,
-  blockSize = 12,
+  blockSize = 10,
   fontSize = 14,
   labels: labelsProp = undefined,
   maxLevel: maxLevelProp = 4,
