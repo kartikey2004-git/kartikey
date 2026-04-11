@@ -114,7 +114,7 @@ export default function FooterStandard() {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 mt-4 -mb-6 max-w-xs">
+            <div className="flex mt-4 -mb-6 gap-3">
               <TooltipProvider delayDuration={100}>
                 {data.socialLinks.map(({ icon: Icon, label, href }) => (
                   <Tooltip key={label}>
@@ -124,7 +124,7 @@ export default function FooterStandard() {
                         size="icon"
                         variant="ghost"
                         asChild
-                        className="h-8 w-8 sm:h-8 sm:w-8 rounded-sm justify-self-center"
+                        className="h-8 w-8 sm:h-8 sm:w-8 rounded-sm"
                       >
                         <Link
                           href={href}
@@ -152,7 +152,7 @@ export default function FooterStandard() {
           </div>
 
           {/* RIGHT NAV */}
-          <div className="sm:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+          <div className="sm:col-span-2 grid grid-cols-3 gap-6 sm:gap-8">
             {["sections", "company", "social"].map((section) => (
               <div key={section}>
                 <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-3 sm:mb-4">
