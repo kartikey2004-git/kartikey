@@ -33,7 +33,7 @@ const Testimonials = () => {
 
         {/* CENTER QUOTE */}
         <div className="flex flex-col justify-center border-border transition-all duration-500 ease-in-out">
-          <div className="mb-4 sm:mb-6 lg:mb-8 text-lg leading-relaxed text-foreground transition-opacity duration-500 sm:text-xl">
+          <div className="mb-4 sm:mb-6 lg:mb-8 text-md leading-relaxed text-foreground transition-opacity duration-500 sm:text-lg">
             &ldquo;{testimonials[currentTestimonial].content}&rdquo;
           </div>
 

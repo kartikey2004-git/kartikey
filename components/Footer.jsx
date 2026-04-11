@@ -114,7 +114,7 @@ export default function FooterStandard() {
               </p>
             </div>
 
-            <div className="flex mt-4 -mb-6 gap-3">
+            <div className="grid grid-cols-3 gap-3 mt-4 -mb-6 max-w-xs">
               <TooltipProvider delayDuration={100}>
                 {data.socialLinks.map(({ icon: Icon, label, href }) => (
                   <Tooltip key={label}>
@@ -124,7 +124,7 @@ export default function FooterStandard() {
                         size="icon"
                         variant="ghost"
                         asChild
-                        className="h-8 w-8 sm:h-8 sm:w-8 rounded-sm"
+                        className="h-8 w-8 sm:h-8 sm:w-8 rounded-sm justify-self-center"
                       >
                         <Link
                           href={href}

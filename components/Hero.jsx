@@ -142,13 +142,13 @@ const Hero = () => {
             ].map(({ Icon, value, label }, idx) => (
               <div key={idx} className="min-w-0">
                 <div className="flex items-center gap-2">
-                  <Icon className="h-3 w-3 sm:h-5 sm:w-5 text-muted-foreground shrink-0" />
-                  <span className="text-sm sm:text-lg font-semibold leading-none truncate">
+                  <Icon className="h-4 w-4 sm:h-6 sm:w-6 text-muted-foreground shrink-0" />
+                  <span className="text-md sm:text-xl font-semibold leading-none truncate">
                     {value}
                   </span>
                 </div>
 
-                <p className="mt-1 text-[10px] sm:text-xs text-muted-foreground leading-tight truncate">
+                <p className="mt-1 text-[12px] sm:text-sm text-muted-foreground leading-tight truncate">
                   {label}
                 </p>
               </div>
