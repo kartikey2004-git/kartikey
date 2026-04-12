@@ -37,13 +37,13 @@ export default function ProjectsPage() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-4xl px-4 sm:px-5 py-16">
         <div className="mb-12">
-          <h1 className="text-4xl font-semibold tracking-tight">Projects</h1>
-          <p className="mt-2 text-lg text-muted-foreground">
+          <h1 className="text-3xl font-semibold tracking-tight">Projects</h1>
+          <p className="mt-2 text-md text-muted-foreground">
             Real projects. Real users. Real code.
           </p>
         </div>
 
-        <div className="space-y-8 md:-ml-6 -ml-4">
+        <div className="space-y-8 md:-ml-7 -ml-5">
           {allProjects.map((project, i) => (
             <article
               key={i}
@@ -52,10 +52,10 @@ export default function ProjectsPage() {
               <div className="flex flex-col gap-6">
                 <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
                   <div className="w-full sm:w-auto">
-                    <h3 className="mb-3 text-2xl font-semibold leading-tight text-foreground">
+                    <h3 className="mb-3 text-xl font-semibold leading-tight text-foreground">
                       {project.title}
                     </h3>
-                    <p className="text-base leading-relaxed text-muted-foreground">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
                       {project.description}
                     </p>
                   </div>
@@ -97,7 +97,7 @@ export default function ProjectsPage() {
                   {project.tech.map((tech, i) => (
                     <span
                       key={i}
-                      className="whitespace-nowrap border border-border bg-card px-3 py-1.5 text-sm rounded-sm"
+                      className="whitespace-nowrap border border-border bg-card px-3 py-1.5 text-xs lg:text-sm rounded-sm"
                     >
                       {tech}
                     </span>
@@ -105,16 +105,16 @@ export default function ProjectsPage() {
                 </div>
 
                 <div className="pt-2">
-                  <h4 className="mb-3 text-base font-medium text-foreground">
+                  <h4 className="mb-3 font-medium text-foreground text-xs sm:text-sm">
                     Key Features
                   </h4>
                   <ul className="space-y-2">
                     {project.features.map((feature, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-2 text-sm text-muted-foreground"
+                        className="flex items-start gap-2 text-muted-foreground sm:text-sm lg:text-base rounded-lg"
                       >
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-foreground/40" />
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-foreground/40  rounded-lg" />
                         {feature}
                       </li>
                     ))}
