@@ -1,13 +1,7 @@
 "use client";
 
 import { IoRocket } from "@/lib/icons";
-
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Badge } from "@/components/ui/badge";
 
 import { technologies, highlightsData, highlights } from "@/app/data";
 
@@ -20,35 +14,34 @@ export default function AboutMeSection() {
       className="w-full overflow-x-hidden border-b border-border bg-background py-12 sm:py-14 lg:py-16"
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-5 lg:px-8">
-        <div className="space-y-8 mb-4">
+        <div className="space-y-8 mb-6">
           <h2 className="text-xl font-semibold rounded-sm sm:text-3xl">
             Tech Stack
           </h2>
         </div>
 
         <div className="space-y-12">
-          {/* Technologies Section */}
-          <div className="space-y-4 w-full md:-ml-5">
-            <TooltipProvider delayDuration={100}>
-              <div className="grid grid-cols-8 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 justify-items-center w-full">
-                {visibleTech.map((tech, idx) => (
-                  <Tooltip key={idx}>
-                    <TooltipTrigger asChild>
-                      <div className="flex h-12 w-12 cursor-pointer items-center justify-center bg-transparent transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent sm:h-14 sm:w-14 lg:h-16 lg:w-16 rounded-sm">
-                        <img
-                          src={tech.icon}
-                          alt={tech.iconname}
-                          className="h-6 w-6 opacity-90 hover:opacity-100 sm:h-8 sm:w-8 lg:h-9 lg:w-9"
-                        />
-                      </div>
-                    </TooltipTrigger>
-                    <TooltipContent side="top" className="text-xs">
-                      {tech.iconname}
-                    </TooltipContent>
-                  </Tooltip>
-                ))}
-              </div>
-            </TooltipProvider>
+          {/* Skills Section */}
+          <div className="space-y-4 w-full">
+
+            <div className="flex flex-wrap gap-3">
+              {visibleTech.map((skill, idx) => (
+                <Badge
+                  key={idx}
+                  variant="outline"
+                  className="border-dashed border-2 bg-transparent px-4 py-2 text-sm"
+                >
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={skill.icon}
+                      alt={skill.iconname}
+                      className="h-4 w-4"
+                    />
+                    <span className="font-mono">{skill.iconname}</span>
+                  </div>
+                </Badge>
+              ))}
+            </div>
           </div>
 
           {/* Who Am I Section */}

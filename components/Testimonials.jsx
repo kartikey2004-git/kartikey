@@ -33,12 +33,12 @@ const Testimonials = () => {
 
         {/* CENTER QUOTE */}
         <div className="flex flex-col justify-center border-border transition-all duration-500 ease-in-out">
-          <div className="mb-4 sm:mb-6 lg:mb-8 text-md leading-relaxed text-foreground transition-opacity duration-500 sm:text-lg">
+          <div className="mb-5 sm:mb-7 lg:mb-9 mt-4 text-sm leading-relaxed text-foreground transition-opacity duration-500 sm:text-md">
             &ldquo;{testimonials[currentTestimonial].content}&rdquo;
           </div>
 
-          <div className="space-y-2 sm:mb-3 md:mb-0">
-            <p className="text-sm font-semibold text-foreground sm:text-base">
+          <div className="space-y-2 sm:mb-5 md:mb-0">
+            <p className="text-sm text-foreground sm:text-base">
               {testimonials[currentTestimonial].name}
             </p>
             <p className="text-xs sm:text-sm text-muted-foreground">
@@ -48,7 +48,7 @@ const Testimonials = () => {
           </div>
 
           {/* Testimonial dots */}
-          <div className="flex gap-1.5 sm:gap-2 mt-3 sm:mt-4 lg:mt-6 sm:mb-3 md:mb-0">
+          <div className="flex gap-1.5 sm:gap-2 mt-7 sm:mt-10 lg:mt-13 sm:mb-3 md:mb-0">
             {testimonials.map((_, index) => (
               <button
                 key={index}

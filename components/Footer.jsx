@@ -141,7 +141,7 @@ export default function FooterStandard() {
               </TooltipProvider>
             </div>
 
-            <div className="mt-6 rounded-sm">
+            <div className="mt-10 rounded-sm">
               <p className="text-sm sm:text-xl">
                 <span className="font-medium">Status :</span> Available for work
               </p>

@@ -115,13 +115,21 @@ const GithubDashboard = () => {
         <div className="w-full overflow-hidden">
           <ContributionGraph
             data={data}
-            blockSize={8}
+            blockSize={10}
             blockMargin={2}
             style={{
-              '--block-size': '8px',
+              '--block-size': '10px',
               '--block-margin': '2px'
             }}
-            className="[--block-size:8px] [--block-margin:2px] sm:[--block-size:12px] sm:[--block-margin:2.5px] lg:[--block-size:14px]"
+            className="
+              [--block-size:10px] [--block-margin:2px] 
+              xs:[--block-size:11px] xs:[--block-margin:2.2px] 
+              sm:[--block-size:13px] sm:[--block-margin:2.5px] 
+              md:[--block-size:15px] md:[--block-margin:3px] 
+              lg:[--block-size:17px] lg:[--block-margin:3.5px] 
+              xl:[--block-size:19px] xl:[--block-margin:4px]
+              2xl:[--block-size:21px] 2xl:[--block-margin:4.5px]
+            "
           >
             <ContributionGraphCalendar>
               {({ activity, dayIndex, weekIndex }) => (

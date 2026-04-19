@@ -55,7 +55,7 @@ export default function ProjectsPage() {
                     <h3 className="mb-3 text-xl font-semibold leading-tight text-foreground">
                       {project.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-muted-foreground sm:text-sm lg:text-base leading-relaxed text-muted-foreground">
                       {project.description}
                     </p>
                   </div>
@@ -93,32 +93,32 @@ export default function ProjectsPage() {
                   </TooltipProvider>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="whitespace-nowrap border border-border bg-card px-3 py-1.5 text-xs lg:text-sm rounded-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
                 <div className="pt-2">
-                  <h4 className="mb-3 font-medium text-foreground text-xs sm:text-sm">
+                  <h4 className="mb-3 text-foreground text-xs sm:text-sm">
                     Key Features
                   </h4>
                   <ul className="space-y-2">
                     {project.features.map((feature, idx) => (
                       <li
                         key={idx}
-                        className="flex items-start gap-2 text-muted-foreground sm:text-sm lg:text-base rounded-lg"
+                        className="flex items-start gap-2 text-muted-foreground sm:text-sm lg:text-sm rounded-lg"
                       >
                         <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-foreground/40  rounded-lg" />
                         {feature}
                       </li>
                     ))}
                   </ul>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="whitespace-nowrap px-3 py-1.5 text-xs lg:text-sm rounded-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
               </div>
             </article>
