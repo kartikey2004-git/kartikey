@@ -114,7 +114,7 @@ export function Navbar() {
                 key={link.title}
                 href={link.href}
                 onClick={handleClick}
-                className="relative text-foreground/75 text-[10px] sm:text-sm font-normal transition-all duration-300 py-2
+                className="relative text-foreground/75 text-[14px] sm:text-md font-normal transition-all duration-300 py-2
                   after:absolute after:left-0 after:-bottom-1 after:h-0.25
                   after:w-0 after:bg-foreground
                   after:transition-all after:duration-200 ease-out

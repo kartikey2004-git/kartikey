@@ -3,10 +3,13 @@
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { useClickSound } from "@/hooks/useClickSound";
 
 export default function BlogsClient() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const playNavigateSound = useClickSound("navigate");
 
   useEffect(() => {
     fetch("/api/blogs")
@@ -68,6 +71,7 @@ export default function BlogsClient() {
                       href={`https://markstack-app.vercel.app/blogs/${blog.slug}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={playNavigateSound}
                       className="hover:text-primary transition-colors"
                     >
                       {blog.title}
@@ -87,9 +91,11 @@ export default function BlogsClient() {
                       href={`https://markstack-app.vercel.app/blogs/${blog.slug}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[10px] sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                      onClick={playNavigateSound}
+                      className="text-[10px] sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1"
                     >
                       Read more
+                      <ArrowRight className="w-3 h-3" />
                     </Link>
                   </div>
                 </div>

@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { FaChevronRight } from "@/lib/icons";
+import { ArrowRight } from "lucide-react";
+import { useClickSound } from "@/hooks/useClickSound";
 
 export default function BlogSection() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const playNavigateSound = useClickSound('navigate');
 
   useEffect(() => {
     fetch("/api/blogs")
@@ -67,9 +70,11 @@ export default function BlogSection() {
                     href={`https://markstack-app.vercel.app/blogs/${blog.slug}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[10px] sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                    onClick={playNavigateSound}
+                    className="text-[10px] sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1"
                   >
-                    Read more →
+                    Read more
+                    <ArrowRight className="w-3 h-3" />
                   </Link>
                 </div>
               </div>
@@ -80,10 +85,11 @@ export default function BlogSection() {
         <div className="mt-4 sm:mt-8 text-center">
           <Link
             href="/blogs"
+            onClick={playNavigateSound}
             className="inline-flex items-center justify-center rounded-md px-3 sm:px-5 lg:px-6 py-1.5 text-base sm:text-lg font-medium text-foreground shadow transition-colors"
           >
             View all Blogs
-            <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3" />
           </Link>
         </div>
       </div>

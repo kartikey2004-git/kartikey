@@ -1,7 +1,7 @@
 "use client";
 
 import { FaChevronRight, FaChevronDown } from "@/lib/icons";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import Link from "next/link";
 import {
@@ -13,14 +13,25 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { projects } from "@/app/data";
 import { useState } from "react";
+import { useClickSound } from "@/hooks/useClickSound";
 
 export default function ProjectsPage() {
   const allProjects = [...projects].reverse();
   const [expandedProjects, setExpandedProjects] = useState(
     allProjects.map((_, i) => i),
   ); // Initially all projects open
+  const playOpenSound = useClickSound("open");
+  const playCloseSound = useClickSound("close");
+  const playNavigateSound = useClickSound("navigate");
 
   const toggleProject = (index) => {
+    const isCurrentlyExpanded = expandedProjects.includes(index);
+    if (isCurrentlyExpanded) {
+      playCloseSound();
+    } else {
+      playOpenSound();
+    }
+
     setExpandedProjects((prev) => {
       if (prev.includes(index)) {
         // Remove this project from expanded list
@@ -73,7 +84,10 @@ export default function ProjectsPage() {
                             <a
                               href={project.liveLink}
                               target="_blank"
-                              onClick={(e) => e.stopPropagation()}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                playNavigateSound();
+                              }}
                               className="p-2"
                             >
                               <ArrowUpRight className="w-4 h-4" />
@@ -88,7 +102,10 @@ export default function ProjectsPage() {
                           <a
                             href={project.projectLink}
                             target="_blank"
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              playNavigateSound();
+                            }}
                             className="p-2"
                           >
                             <FiGithub className="w-4 h-4" />

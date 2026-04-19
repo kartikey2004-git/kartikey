@@ -1,7 +1,7 @@
 "use client";
 
 import { FaChevronRight, FaChevronDown } from "@/lib/icons";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import {
   Tooltip,
@@ -13,12 +13,23 @@ import { Badge } from "@/components/ui/badge";
 import { projects } from "@/app/data";
 import Link from "next/link";
 import { useState } from "react";
+import { useClickSound } from "@/hooks/useClickSound";
 
 export default function ProjectsSection() {
   const visibleProjects = [...projects].reverse().slice(0, 4);
-  const [expandedProjects, setExpandedProjects] = useState([0, 1, 2, 3]); 
+  const [expandedProjects, setExpandedProjects] = useState([0, 1, 2, 3]);
+  const playOpenSound = useClickSound('open');
+  const playCloseSound = useClickSound('close');
+  const playNavigateSound = useClickSound('navigate');
 
   const toggleProject = (index) => {
+    const isCurrentlyExpanded = expandedProjects.includes(index);
+    if (isCurrentlyExpanded) {
+      playCloseSound();
+    } else {
+      playOpenSound();
+    }
+
     setExpandedProjects(prev => {
       if (prev.includes(index)) {
         // Remove this project from expanded list
@@ -73,7 +84,10 @@ export default function ProjectsSection() {
                             <a
                               href={project.liveLink}
                               target="_blank"
-                              onClick={(e) => e.stopPropagation()}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                playNavigateSound();
+                              }}
                               className="p-2"
                             >
                               <ArrowUpRight className="w-4 h-4" />
@@ -88,7 +102,10 @@ export default function ProjectsSection() {
                           <a
                             href={project.projectLink}
                             target="_blank"
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              playNavigateSound();
+                            }}
                             className="p-2"
                           >
                             <FiGithub className="w-4 h-4" />
@@ -143,10 +160,11 @@ export default function ProjectsSection() {
         <div className="mt-6 sm:mt-8 text-center">
           <Link
             href="/projects"
+            onClick={playNavigateSound}
             className="inline-flex items-center justify-center rounded-md px-4 sm:px-5 lg:px-6 py-2 sm:text-lg text-md font-semibold text-foreground shadow transition-colors"
           >
             View all projects
-            <ArrowUpRight className="ml-1 sm:ml-1 w-6 h-6" />
+            <ArrowRight className="ml-1 sm:ml-1 w-6 h-6" />
           </Link>
         </div>
       </div>
