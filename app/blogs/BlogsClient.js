@@ -39,9 +39,11 @@ export default function BlogsClient() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-4xl px-4 sm:px-5 py-16">
+      <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8 py-16">
         <div className="mb-12">
-          <h1 className="text-3xl font-semibold tracking-tight">Blogs</h1>
+          <h1 className="text-lg font-semibold rounded-sm sm:text-3xl">
+            Blogs
+          </h1>
           <p className="mt-2 text-md text-muted-foreground">
             Thoughts, ideas, and tutorials on web development and technology.
           </p>
@@ -54,45 +56,43 @@ export default function BlogsClient() {
             </p>
           </div>
         ) : (
-          <div className="space-y-8 md:-ml-6 -ml-4">
+          <div className="space-y-4 md:-ml-5 -ml-3">
             {blogs.map((blog) => (
               <Card
                 key={blog.slug}
-                className="bg-transparent border-none p-3 sm:p-4 lg:p-5 shadow-sm rounded-md"
+                className="bg-transparent border-none p-3 sm:p-5 lg:p-6 shadow-sm rounded-md"
               >
-                <article className="space-y-2">
-                  <div className="space-y-2">
-                    <h2 className="text-xl font-semibold text-foreground">
-                      <Link
-                        href={`https://markstack-app.vercel.app/blogs/${blog.slug}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-primary transition-colors"
-                      >
-                        {blog.title}
-                      </Link>
-                    </h2>
-
-                    <time className="text-sm text-muted-foreground">
-                      {formatDate(blog.publishedAt || blog.createdAt)}
-                    </time>
-                  </div>
-
-                  <p className="text-muted-foreground leading-relaxed text-base">
-                    {blog.description}
-                  </p>
-
-                  <div className="pt-2">
+                <div className="flex flex-col space-y-2">
+                  <h3 className="text-base font-semibold text-foreground sm:text-xl">
                     <Link
                       href={`https://markstack-app.vercel.app/blogs/${blog.slug}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                      className="hover:text-primary transition-colors"
                     >
-                      Read more →
+                      {blog.title}
+                    </Link>
+                  </h3>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {blog.description}
+                  </p>
+
+                  <div className="flex items-center justify-between">
+                    <time className="text-[10px] text-muted-foreground sm:text-sm">
+                      {formatDate(blog.publishedAt || blog.createdAt)}
+                    </time>
+
+                    <Link
+                      href={`https://markstack-app.vercel.app/blogs/${blog.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[10px] sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                    >
+                      Read more
                     </Link>
                   </div>
-                </article>
+                </div>
               </Card>
             ))}
           </div>

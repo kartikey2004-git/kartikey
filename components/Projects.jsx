@@ -16,10 +16,18 @@ import { useState } from "react";
 
 export default function ProjectsSection() {
   const visibleProjects = [...projects].reverse().slice(0, 4);
-  const [expandedProject, setExpandedProject] = useState("all");
+  const [expandedProjects, setExpandedProjects] = useState([0, 1, 2, 3]); 
 
-  const toggleProject = () => {
-    setExpandedProject(expandedProject === "all" ? null : "all");
+  const toggleProject = (index) => {
+    setExpandedProjects(prev => {
+      if (prev.includes(index)) {
+        // Remove this project from expanded list
+        return prev.filter(i => i !== index);
+      } else {
+        // Add this project to expanded list
+        return [...prev, index];
+      }
+    });
   };
 
   return (
@@ -38,13 +46,13 @@ export default function ProjectsSection() {
 
         <div className="space-y-3 -ml-5">
           {visibleProjects.map((project, i) => {
-            const isExpanded = expandedProject === "all" || expandedProject === i;
+            const isExpanded = expandedProjects.includes(i);
             return (
               <div key={i} className="rounded-lg overflow-hidden">
                 {/* Project Header */}
                 <div
                   className="flex items-center justify-between p-4 cursor-pointer "
-                  onClick={() => toggleProject()}
+                  onClick={() => toggleProject(i)}
                 >
                   <div className="flex items-center gap-3">
                     <button className="text-muted-foreground hover:text-foreground transition-colors">

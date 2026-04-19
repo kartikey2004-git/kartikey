@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: {
-    default: "Kartikey - Full Stack Web Developer",
+    default: "Kartikey | Developer",
     template: "%s | Kartikey",
   },
   description:

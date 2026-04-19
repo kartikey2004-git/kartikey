@@ -1,4 +1,8 @@
-import { IoLogoGithub, IoGlobe } from "@/lib/icons";
+"use client";
+
+import { FaChevronRight, FaChevronDown } from "@/lib/icons";
+import { ArrowUpRight } from "lucide-react";
+import { FiGithub } from "react-icons/fi";
 import Link from "next/link";
 import {
   Tooltip,
@@ -6,32 +10,27 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Badge } from "@/components/ui/badge";
 import { projects } from "@/app/data";
-
-export const metadata = {
-  title: "Projects",
-  description:
-    "Explore my complete portfolio of work. Real projects, real users, real code built with modern web technologies.",
-  keywords: [
-    "portfolio",
-    "projects",
-    "web development",
-    "full stack",
-    "react",
-    "next.js",
-    "javascript",
-    "typescript",
-  ],
-  openGraph: {
-    title: "Projects | Kartikey",
-    description:
-      "Explore my complete portfolio of work. Real projects, real users, real code built with modern web technologies.",
-    url: "https://kartikcodes.vercel.app/projects",
-  },
-};
+import { useState } from "react";
 
 export default function ProjectsPage() {
   const allProjects = [...projects].reverse();
+  const [expandedProjects, setExpandedProjects] = useState(
+    allProjects.map((_, i) => i),
+  ); // Initially all projects open
+
+  const toggleProject = (index) => {
+    setExpandedProjects((prev) => {
+      if (prev.includes(index)) {
+        // Remove this project from expanded list
+        return prev.filter((i) => i !== index);
+      } else {
+        // Add this project to expanded list
+        return [...prev, index];
+      }
+    });
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -43,21 +42,27 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        <div className="space-y-8 md:-ml-7 -ml-5">
-          {allProjects.map((project, i) => (
-            <article
-              key={i}
-              className={`p-6 sm:p-8 shadow-sm ${i !== allProjects.length - 1 ? "border-b border-border" : ""}}`}
-            >
-              <div className="flex flex-col gap-6">
-                <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-                  <div className="w-full sm:w-auto">
-                    <h3 className="mb-3 text-xl font-semibold leading-tight text-foreground">
+        <div className="space-y-3 -ml-5">
+          {allProjects.map((project, i) => {
+            const isExpanded = expandedProjects.includes(i);
+            return (
+              <div key={i} className="rounded-lg overflow-hidden">
+                {/* Project Header */}
+                <div
+                  className="flex items-center justify-between p-4 cursor-pointer"
+                  onClick={() => toggleProject(i)}
+                >
+                  <div className="flex items-center gap-3">
+                    <button className="text-muted-foreground hover:text-foreground transition-colors">
+                      {isExpanded ? (
+                        <FaChevronDown className="w-4 h-4" />
+                      ) : (
+                        <FaChevronRight className="w-4 h-4" />
+                      )}
+                    </button>
+                    <h3 className="sm:text-lg text-md font-semibold">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground sm:text-sm lg:text-base leading-relaxed text-muted-foreground">
-                      {project.description}
-                    </p>
                   </div>
 
                   <TooltipProvider delayDuration={120}>
@@ -68,9 +73,10 @@ export default function ProjectsPage() {
                             <a
                               href={project.liveLink}
                               target="_blank"
-                              className="border border-border bg-card p-1.5 sm:p-2 transition hover:bg-accent rounded-sm"
+                              onClick={(e) => e.stopPropagation()}
+                              className="p-2"
                             >
-                              <IoGlobe className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                              <ArrowUpRight className="w-4 h-4" />
                             </a>
                           </TooltipTrigger>
                           <TooltipContent>Live Demo</TooltipContent>
@@ -82,9 +88,10 @@ export default function ProjectsPage() {
                           <a
                             href={project.projectLink}
                             target="_blank"
-                            className="border border-border bg-card p-1.5 sm:p-2 transition hover:bg-accent rounded-sm"
+                            onClick={(e) => e.stopPropagation()}
+                            className="p-2"
                           >
-                            <IoLogoGithub className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                            <FiGithub className="w-4 h-4" />
                           </a>
                         </TooltipTrigger>
                         <TooltipContent>Source Code</TooltipContent>
@@ -93,36 +100,45 @@ export default function ProjectsPage() {
                   </TooltipProvider>
                 </div>
 
-                <div className="pt-2">
-                  <h4 className="mb-3 text-foreground text-xs sm:text-sm">
-                    Key Features
-                  </h4>
-                  <ul className="space-y-2">
-                    {project.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-2 text-muted-foreground sm:text-sm lg:text-sm rounded-lg"
-                      >
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-foreground/40  rounded-lg" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {isExpanded && (
+                  <div className="px-4 pb-4">
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mt-2 mb-4">
+                      {project.description}
+                    </p>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="whitespace-nowrap px-3 py-1.5 text-xs lg:text-sm rounded-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                    <div className="mb-4">
+                      <h4 className="mb-3 text-foreground text-xs sm:text-sm">
+                        Key Features
+                      </h4>
+                      <ul className="space-y-1">
+                        {project.features.map((feature, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start gap-2 text-sm sm:text-lg md:text-sm text-muted-foreground"
+                          >
+                            <span className="mt-2.5 sm:mt-3 h-1 w-1 shrink-0 bg-foreground/40 rounded-full" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech, i) => (
+                        <Badge
+                          key={i}
+                          variant="secondary"
+                          className="text-[12px] px-2 py-1 bg-transparent font-mono"
+                        >
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
