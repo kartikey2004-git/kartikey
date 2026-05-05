@@ -609,3 +609,164 @@ export const testimonials = [
     metric: "60%",
   },
 ];
+
+export const listen = [
+  {
+    id: "1",
+    title: "Tere Bina",
+    artist: "A.R. Rahman, Chinmayi, Murtuza Khan, Qadir Khan",
+    duration: "5:09",
+    url: "https://open.spotify.com/track/4FeczSomVWVyU4FW7xDeAI",
+  },
+  {
+    id: "2",
+    title: "Ishq de Fanniyar - Female Version",
+    artist: "Jyotica Tangri, Kumaar",
+    duration: "2:57",
+    url: "https://open.spotify.com/track/6JARNpkUypyzQEltxZM95O",
+  },
+  {
+    id: "3",
+    title: "bargad",
+    artist: "sufr, Arpit Bala, toorjo dey",
+    duration: "2:55",
+    url: "https://open.spotify.com/track/0Q9rHyEG7lME4y2Fqtuxgl",
+  },
+  {
+    id: "4",
+    title: "Sahiba",
+    artist: "Aditya Rikhari",
+    duration: "3:10",
+    url: "https://open.spotify.com/track/0eLtIxPRNJfsmehITZ1qaJ",
+  },
+  {
+    id: "5",
+    title: "Ik Kudi",
+    artist: "wolf.cryman, Arpit Bala",
+    duration: "3:51",
+    url: "https://open.spotify.com/track/7h79u6jChrCZfnwCnt20LF",
+  },
+];
+
+export const movies = [
+  {
+    id: "1",
+    title: "Project Hail Mary",
+    year: "2026",
+    genre: ["sci-fi", "space"],
+    note: "hard sci-fi + problem solving + survival in space",
+  },
+  {
+    id: "2",
+    title: "Interstellar",
+    year: "2014",
+    genre: ["sci-fi", "space", "drama"],
+    note: "time dilation, relativity, emotional storytelling",
+  },
+  {
+    id: "3",
+    title: "The Martian",
+    year: "2015",
+    genre: ["sci-fi", "survival"],
+    note: "engineering mindset + problem solving under constraints",
+  },
+  {
+    id: "4",
+    title: "Inception",
+    year: "2010",
+    genre: ["sci-fi", "thriller"],
+    note: "layered systems, recursion, mental models",
+  },
+  {
+    id: "5",
+    title: "Oppenheimer",
+    year: "2023",
+    genre: ["biography", "drama"],
+    note: "engineering, consequences, real-world impact",
+  },
+];
+
+export const moviesMeta = {
+  identity: ["kartikey.dev", "watchlist.log"],
+  headline: "Systems, Space, and Stories that make you think",
+  subtext:
+    "A curated list of movies that align with how I think — problem solving, systems, and human decisions under pressure.",
+  tags: ["sci-fi", "engineering", "systems thinking"],
+  quote:
+    '"The universe is under no obligation to make sense to you." — Neil deGrasse Tyson',
+};
+
+export const listenMeta = {
+  identity: ["kartikey.dev", "listening.log"],
+
+  headline: "What's playing while the build runs",
+
+  subtext:
+    "A rotating stack of tracks for when the code needs company late nights, long diffs, and everything in between.",
+
+  persona: [
+    "in the zone",
+    "3am compiler",
+    "bug hunting",
+    "one more commit",
+    "shipping anyway",
+    "refactor mode",
+  ],
+
+  tags: ["flow state", "headphones on", "do not disturb", "caffeine + bpm"],
+
+  quote:
+    '"Music is the compiler flag that makes everything run faster." — me, justifying my setup',
+};
+
+export const gear = {
+  tools: [
+    {
+      category: "development",
+      items: ["VS Code", "Cursor", "Zed", "Windsurf"],
+    },
+    {
+      category: "terminal",
+      items: ["PowerShell", "Git Bash", "Windows Terminal"],
+    },
+  ],
+
+  system: {
+    processor: "Intel i3-1115G4",
+    ram: "8GB",
+    graphics: "Intel UHD",
+    storage: "477GB SSD",
+  },
+
+  extensions: [
+    "Prettier",
+    "ESLint",
+    "Tailwind CSS IntelliSense",
+    "Git Graph",
+    "Thunder Client",
+    "Prisma",
+    "MongoDB",
+    "Live Server",
+    "Material Icon Theme",
+    "WakaTime",
+  ],
+
+  mobile: {
+    name: "realme C67 5G",
+    ui: "realme UI 6.0",
+    processor: "MediaTek Dimensity 6100+",
+    ram: "6GB (+4GB virtual)",
+    storage: "128GB (103GB used)",
+    battery: "5000 mAh",
+    camera: "50MP + 2MP (rear), 8MP (front)",
+  },
+};
+
+export const gearMeta = {
+  identity: ["kartikey.dev", "tools.log"],
+  headline: "Tools I use to build and ship",
+  subtext:
+    "A snapshot of my daily development environment — optimized for speed, debugging, and iteration.",
+  tags: ["dev stack", "workflow", "windows"],
+  quote: '"Good tools make hard problems easier."',
+};
