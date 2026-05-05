@@ -174,7 +174,7 @@ export default function Listen() {
         {/* ───── QUOTE ───── */}
         <footer clCardame="mt-20 pt-8 border-t border-border/20">
           <p className="text-sm italic text-muted-foreground/60 leading-relaxed">
-            "{listenMeta.quote.split(" — ")[0]}"
+            &ldquo;{listenMeta.quote.split(" — ")[0]}&rdquo;
           </p>
           <p className="text-[10px] font-mono text-muted-foreground/30 mt-2 tracking-wider">
             — {listenMeta.quote.split(" — ")[1]}
