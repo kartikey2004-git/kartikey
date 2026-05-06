@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useClickSound } from "@/hooks/useClickSound";
+import PathnameDisplay from "@/components/PathnameDisplay";
 
 export default function BlogsClient() {
   const [blogs, setBlogs] = useState([]);
@@ -44,6 +45,7 @@ export default function BlogsClient() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8 py-16">
         <div className="mb-12">
+            <PathnameDisplay />
           <h1 className="text-lg font-semibold rounded-sm sm:text-3xl">
             Blogs
           </h1>

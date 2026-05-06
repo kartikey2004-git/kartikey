@@ -1,6 +1,7 @@
 "use client";
 
 import { gear, gearMeta } from "@/app/data/index.js";
+import PathnameDisplay from "@/components/PathnameDisplay";
 
 export default function GearClient() {
   return (
@@ -9,10 +10,7 @@ export default function GearClient() {
         {/* Header */}
         <div className="mb-12">
           <div className="space-y-2">
-            {/* Identity */}
-            <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
-              {gearMeta.identity.join(" / ")}
-            </div>
+            <PathnameDisplay />
 
             {/* Headline */}
             <h1 className="text-lg font-semibold rounded-sm sm:text-3xl">

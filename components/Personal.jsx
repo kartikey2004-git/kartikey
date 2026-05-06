@@ -34,11 +34,11 @@ export default function PersonalSection() {
       <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8">
         <h2 className="mb-4 sm:mb-8 text-lg font-semibold rounded-sm sm:text-3xl">Personal</h2>
 
-        <div className="space-y-4 md:-ml-5 -ml-3">
+        <div className="space-y-2 md:-ml-5 -ml-3">
           {personalItems.map((item) => (
             <Card
               key={item.href}
-              className="bg-transparent p-4 sm:p-6"
+              className="bg-transparent p-4 sm:p-6 border-0"
             >
               <Link
                 href={item.href}

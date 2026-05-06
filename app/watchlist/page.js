@@ -1,4 +1,5 @@
 import { movies, moviesMeta } from "@/app/data";
+import PathnameDisplay from "@/components/PathnameDisplay";
 
 export const metadata = {
   title: "Movies",
@@ -27,9 +28,7 @@ export default function MoviesPage() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8 py-16">
         <header className="mb-12">
-          <p className="text-[10px] font-mono text-muted-foreground/50 tracking-[0.2em] uppercase mb-4">
-            {moviesMeta.identity.join(" · ")}
-          </p>
+          <PathnameDisplay />
 
           <h1 className="text-lg font-semibold rounded-sm sm:text-3xl">
             {moviesMeta.headline}
@@ -53,10 +52,7 @@ export default function MoviesPage() {
 
         <div className="space-y-4 md:-ml-5 -ml-3">
           {movies.map((movie, index) => (
-            <div
-              key={movie.id}
-              className="p-3 sm:p-5 lg:p-6"
-            >
+            <div key={movie.id} className="p-3 sm:p-5 lg:p-6">
               <div className="flex flex-col space-y-2">
                 <div className="flex items-start gap-4">
                   <span className="text-[10px] font-mono text-muted-foreground/50 mt-1">

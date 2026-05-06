@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { projects } from "@/app/data";
 import { useState } from "react";
 import { useClickSound } from "@/hooks/useClickSound";
+import PathnameDisplay from "@/components/PathnameDisplay";
 
 export default function ProjectsPage() {
   const allProjects = [...projects].reverse();
@@ -47,6 +48,7 @@ export default function ProjectsPage() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-4xl px-4 sm:px-5 py-16">
         <div className="mb-12">
+          <PathnameDisplay />
           <h1 className="text-3xl font-semibold tracking-tight">Projects</h1>
           <p className="mt-2 text-md text-muted-foreground">
             Real projects. Real users. Real code.

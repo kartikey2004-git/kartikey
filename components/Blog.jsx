@@ -23,8 +23,10 @@ export default function BlogSection() {
 
   if (loading) {
     return (
-      <div className="p-4 text-sm text-muted-foreground rounded-md">
-        Loading Blogs...
+      <div className="flex items-center justify-center h-screen -mt-30 border-b border-border">
+        <div className="text-sm text-muted-foreground rounded-md animate-pulse">
+          Loading blog posts...
+        </div>
       </div>
     );
   }
@@ -42,7 +44,7 @@ export default function BlogSection() {
   };
 
   return (
-    <section className="py-8 sm:py-14 lg:py-16">
+    <section className="py-8 sm:py-14 lg:py-16 border-b border-border">
       <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8">
         <h2 className="mb-4 sm:mb-8 text-lg font-semibold rounded-sm sm:text-3xl">Blogs</h2>
 

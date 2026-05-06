@@ -5,6 +5,7 @@ import { listen, listenMeta } from "@/app/data";
 import { SiSpotify } from "react-icons/si";
 import { Play, Music2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import PathnameDisplay from "@/components/PathnameDisplay";
 
 function getTrackId(url) {
   return url.split("/track/")[1]?.split("?")[0];
@@ -22,6 +23,7 @@ export default function Listen() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8 py-16">
         <header className="mb-12">
+          <PathnameDisplay />
           <h1 className="text-lg font-semibold rounded-sm sm:text-3xl">
             {listenMeta.headline}
           </h1>
