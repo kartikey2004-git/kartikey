@@ -207,8 +207,8 @@ export const projects = [
     ],
     bg: "codesense",
     projectLink: "https://github.com/kartikey2004-git/CodeSense-AI",
-    liveLink: "https://ai-code-review-sandy.vercel.app",
-    currentlyBuilding: false,
+    liveLink: "",
+    currentlyBuilding: true,
   },
 ];
 
