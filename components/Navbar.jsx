@@ -16,32 +16,20 @@ import {
   ThemeAnimationType,
   useModeAnimation,
 } from "react-theme-switch-animation";
+import { useTheme } from "next-themes";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [resolvedTheme, setResolvedTheme] = useState(() => {
-    if (typeof window === "undefined") {
-      return "light";
-    }
-
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark" || savedTheme === "light") {
-      return savedTheme;
-    }
-
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  });
+  const { resolvedTheme, setTheme } = useTheme();
 
   const { ref: themeToggleRef, toggleSwitchTheme } = useModeAnimation({
     animationType: ThemeAnimationType.CIRCLE,
     duration: 650,
     isDarkMode: resolvedTheme === "dark",
     onDarkModeChange: (isDark) => {
-      setResolvedTheme(isDark ? "dark" : "light");
+      setTheme(isDark ? "dark" : "light");
     },
   });
 
