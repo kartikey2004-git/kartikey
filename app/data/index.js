@@ -210,6 +210,38 @@ export const projects = [
     liveLink: "",
     currentlyBuilding: true,
   },
+  {
+    title: "AI Code Review",
+    slug: "ai-code-review",
+    description:
+      "An AI-powered GitHub code review platform that analyzes pull requests, detects bugs, generates intelligent summaries, and provides contextual suggestions to help teams ship better code faster.",
+    tech: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Prisma",
+      "PostgreSQL",
+      "Better Auth",
+      "Shadcn UI",
+      "Octokit",
+      "Inngest",
+      "Pinecone",
+      "Google Gemini AI",
+      "React Query",
+    ],
+    image: "/ai-code-review.png",
+    features: [
+      "AI-generated pull request summaries for instant understanding of code changes.",
+      "Context-aware inline suggestions and automated review comments directly on PRs.",
+      "Automated bug and security vulnerability detection before code reaches production.",
+      "Semantic AI code analysis powered by vector search and background workflows for smarter reviews.",
+    ],
+    bg: "ai-code-review",
+    projectLink: "https://github.com/kartikey2004-git/AI-Code-Review",
+    liveLink: "https://ai-code-review-sandy.vercel.app",
+    currentlyBuilding: false,
+  },
 ];
 
 export const people = [
