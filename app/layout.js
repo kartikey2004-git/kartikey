@@ -72,10 +72,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
       >
-        {/* <Navbar /> */}
         <Analytics />
         <Providers>
-          <div className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-4xl w-full flex-col px-3 sm:px-5 lg:px-8 overflow-x-hidden">
+          <div className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-4xl w-full flex-col overflow-x-hidden">
             {children}
           </div>
         </Providers>

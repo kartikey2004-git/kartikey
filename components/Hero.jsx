@@ -74,39 +74,37 @@ const Hero = () => {
   ];
 
   return (
-    <section
-      id="hero"
-      className="relative w-full  border-border bg-background"
-    >
-      <div className="relative overflow-hidden  border border-border/40">
-        <div className="relative min-h-[45dvh] sm:min-h-[50dvh]">
+    <section id="hero" className="relative w-full  border-border bg-background">
+      <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
+        <div className="relative min-h-[35dvh] sm:min-h-[45dvh] lg:min-h-[50dvh]">
           <Image
             src="/background.jpg"
             alt="Mountain landscape"
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-center"
           />
 
-          {/* overlay (premium contrast for light + dark) */}
+          {/* overlay */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/45 via-black/25 to-black/80 dark:from-black/55 dark:via-black/35 dark:to-black/85"
+            className="absolute inset-0 bg-linear-to-b from-black/40 via-black/20 to-black/80"
           />
 
-          {/* quote */}
-          <div className="relative flex min-h-[45dvh] sm:min-h-[50dvh] flex-col items-center justify-center px-4 sm:px-6 text-center">
+          {/* content */}
+          <div className="relative z-10 flex min-h-[35dvh] sm:min-h-[45dvh] lg:min-h-[50dvh] items-center justify-center px-4 text-center">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="max-w-2xl"
+              className="max-w-3xl"
             >
-              <blockquote className="text-sm sm:text-lg md:text-xl italic text-white leading-relaxed">
+              <blockquote className="text-sm sm:text-lg lg:text-3xl italic leading-relaxed text-white">
                 Build your own internal compass for navigating new territories.
               </blockquote>
-              <p className="mt-2 text-[10px] font-mono text-muted-foreground/30 tracking-wider">
+
+              <p className="mt-2 text-[10px] font-mono tracking-wider text-white/40">
                 — Kartikey
               </p>
             </motion.div>
@@ -152,7 +150,7 @@ const Hero = () => {
                       Ghaziabad, India
                     </span>
                     <span className="text-muted-foreground/20">/</span>
-                  
+
                     <span className="text-muted-foreground/60">
                       Engineer at caffeine
                     </span>
