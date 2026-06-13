@@ -31,7 +31,7 @@ export default function Home() {
       <ProjectsSection />
       <TechStack />
       <GithubSection />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <BlogSection />
       <PersonalSection />
       <Footer />

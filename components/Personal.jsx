@@ -30,11 +30,11 @@ export default function PersonalSection() {
   ];
 
   return (
-    <section className="py-8 sm:py-14 lg:py-16">
+    <section className="py-8 sm:py-14 lg:py-16 p-2">
       <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8">
         <h2 className="mb-4 sm:mb-8 text-lg font-semibold rounded-sm sm:text-3xl">Personal</h2>
 
-        <div className="space-y-2 md:-ml-5 -ml-3">
+        <div className="md:-ml-5 -ml-3">
           {personalItems.map((item) => (
             <Card
               key={item.href}

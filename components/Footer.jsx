@@ -97,7 +97,7 @@ export default function FooterStandard() {
   const isExternal = (href) => href.startsWith("http");
 
   return (
-    <footer className="w-full border-t border-border bg-background">
+    <footer className="w-full border-t border-border bg-background p-2">
       <div className="mx-auto max-w-4xl px-4 sm:px-5 lg:px-8 py-8 sm:py-14 lg:py-16">
         {/* TOP GRID */}
         <div className="grid gap-8 sm:gap-12 sm:grid-cols-2">

@@ -74,7 +74,7 @@ const Hero = () => {
   ];
 
   return (
-    <section id="hero" className="relative w-full  border-border bg-background">
+    <section id="hero" className="relative w-full bg-background border-b border-border ">
       <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
         <div className="relative min-h-[35dvh] sm:min-h-[45dvh] lg:min-h-[50dvh]">
           <Image
@@ -212,7 +212,7 @@ const Hero = () => {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4 border-t border-border/20 pt-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4 border-t border-border/20 pt-9">
                   {[
                     {
                       Icon: BsRocket,

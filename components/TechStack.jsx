@@ -11,7 +11,7 @@ export default function AboutMeSection() {
   return (
     <section
       id="how-i-build"
-      className="w-full overflow-x-hidden border-b border-border bg-background py-12 sm:py-14 lg:py-16"
+      className="w-full overflow-x-hidden border-b border-border bg-background py-12 sm:py-14 lg:py-16 p-2"
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-5 lg:px-8">
         <div className="space-y-8 mb-6">

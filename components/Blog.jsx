@@ -44,7 +44,7 @@ export default function BlogSection() {
   };
 
   return (
-    <section className="py-8 sm:py-14 lg:py-16 border-b border-border">
+    <section className="py-8 sm:py-14 lg:py-16 p-2 border-b border-border">
       <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8">
         <h2 className="mb-4 sm:mb-8 text-lg font-semibold rounded-sm sm:text-3xl">Blogs</h2>
 
@@ -59,12 +59,12 @@ export default function BlogSection() {
                   {blog.title}
                 </h3>
 
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {blog.description}
                 </p>
 
                 <div className="flex items-center justify-between">
-                  <time className="text-[10px] text-muted-foreground sm:text-sm">
+                  <time className="text-[13px] text-muted-foreground sm:text-sm">
                     {formatDate(blog.publishedAt || blog.createdAt)}
                   </time>
 
@@ -73,10 +73,10 @@ export default function BlogSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={playNavigateSound}
-                    className="text-[10px] sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1"
+                    className="text-[14px] sm:text-sm text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1 mt-1.5"
                   >
                     Read more
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-3 h-3 mt-1" />
                   </Link>
                 </div>
               </div>

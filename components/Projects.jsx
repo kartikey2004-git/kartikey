@@ -14,13 +14,15 @@ import { projects } from "@/app/data";
 import Link from "next/link";
 import { useState } from "react";
 import { useClickSound } from "@/hooks/useClickSound";
+import { Icon } from "@/components/ui/evervault-card";
+import Image from "next/image";
 
 export default function ProjectsSection() {
   const visibleProjects = [...projects].reverse().slice(0, 4);
   const [expandedProjects, setExpandedProjects] = useState([0, 1, 2, 3]);
-  const playOpenSound = useClickSound('open');
-  const playCloseSound = useClickSound('close');
-  const playNavigateSound = useClickSound('navigate');
+  const playOpenSound = useClickSound("open");
+  const playCloseSound = useClickSound("close");
+  const playNavigateSound = useClickSound("navigate");
 
   const toggleProject = (index) => {
     const isCurrentlyExpanded = expandedProjects.includes(index);
@@ -30,10 +32,10 @@ export default function ProjectsSection() {
       playOpenSound();
     }
 
-    setExpandedProjects(prev => {
+    setExpandedProjects((prev) => {
       if (prev.includes(index)) {
         // Remove this project from expanded list
-        return prev.filter(i => i !== index);
+        return prev.filter((i) => i !== index);
       } else {
         // Add this project to expanded list
         return [...prev, index];
@@ -44,10 +46,10 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="w-full overflow-x-hidden border-b border-border bg-background py-12 sm:py-14 lg:py-16"
+      className="w-full overflow-x-hidden border-b border-border bg-background py-12 p-3 ml-2 sm:py-14 lg:py-16"
     >
       <div className="mx-auto w-full max-w-4xl px-4 sm:px-5 lg:px-8">
-        <header className="mb-2 sm:mb-4 lg:mb-6">
+        <header className="mb-4 sm:mb-4 lg:mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <h2 className="text-xl font-semibold rounded-sm sm:text-3xl">
               Projects
@@ -55,34 +57,69 @@ export default function ProjectsSection() {
           </div>
         </header>
 
-        <div className="space-y-3 -ml-5">
+        <div className="space-y-8 -ml-5">
           {visibleProjects.map((project, i) => {
             const isExpanded = expandedProjects.includes(i);
             return (
-              <div key={i} className="rounded-lg overflow-hidden">
-                {/* Project Header */}
+              <>
                 <div
-                  className="flex items-center justify-between p-4 cursor-pointer "
-                  onClick={() => toggleProject(i)}
+                  key={i}
+                  className="border border-dashed border-black/20 dark:border-white/20 flex flex-col max-w-4xl w-full mx-auto p-6 relative"
                 >
-                  <div className="flex items-center gap-3">
-                    <button className="text-muted-foreground hover:text-foreground transition-colors">
-                      {isExpanded ? (
-                        <FaChevronDown className="w-4 h-4" />
-                      ) : (
-                        <FaChevronRight className="w-4 h-4" />
-                      )}
-                    </button>
-                    <h3 className="sm:text-lg text-md font-semibold">{project.title}</h3>
-                  </div>
+                  {/* Top Left */}
+                  <div className="absolute -top-px -left-px w-5 h-5 border-t-2 border-l-2 border-foreground" />
 
-                  <TooltipProvider delayDuration={120}>
-                    <div className="flex shrink-0 gap-2">
-                      {project.liveLink && (
+                  {/* Top Right */}
+                  <div className="absolute -top-px -right-px w-5 h-5 border-t-2 border-r-2 border-foreground" />
+
+                  {/* Bottom Left */}
+                  <div className="absolute -bottom-px -left-px w-5 h-5 border-b-2 border-l-2 border-foreground" />
+
+                  {/* Bottom Right */}
+                  <div className="absolute -bottom-px -right-px w-5 h-5 border-b-2 border-r-2 border-foreground" />
+
+                  <div
+                    className="flex items-center justify-between cursor-pointer"
+                    onClick={() => toggleProject(i)}
+                  >
+                    <div className="flex items-center gap-3">
+                      <button className="text-muted-foreground hover:text-foreground transition-colors">
+                        {isExpanded ? (
+                          <FaChevronDown className="w-4 h-4" />
+                        ) : (
+                          <FaChevronRight className="w-4 h-4" />
+                        )}
+                      </button>
+                      <h3 className="sm:text-lg text-md font-semibold">
+                        {project.title}
+                      </h3>
+                    </div>
+
+                    <TooltipProvider delayDuration={120}>
+                      <div className="flex shrink-0 gap-2">
+                        {project.liveLink && (
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <a
+                                href={project.liveLink}
+                                target="_blank"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  playNavigateSound();
+                                }}
+                                className="p-2"
+                              >
+                                <ArrowUpRight className="w-4 h-4" />
+                              </a>
+                            </TooltipTrigger>
+                            <TooltipContent>Live Demo</TooltipContent>
+                          </Tooltip>
+                        )}
+
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <a
-                              href={project.liveLink}
+                              href={project.projectLink}
                               target="_blank"
                               onClick={(e) => {
                                 e.stopPropagation();
@@ -90,69 +127,70 @@ export default function ProjectsSection() {
                               }}
                               className="p-2"
                             >
-                              <ArrowUpRight className="w-4 h-4" />
+                              <FiGithub className="w-4 h-4" />
                             </a>
                           </TooltipTrigger>
-                          <TooltipContent>Live Demo</TooltipContent>
+                          <TooltipContent>Source Code</TooltipContent>
                         </Tooltip>
-                      )}
-
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <a
-                            href={project.projectLink}
-                            target="_blank"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              playNavigateSound();
-                            }}
-                            className="p-2"
-                          >
-                            <FiGithub className="w-4 h-4" />
-                          </a>
-                        </TooltipTrigger>
-                        <TooltipContent>Source Code</TooltipContent>
-                      </Tooltip>
-                    </div>
-                  </TooltipProvider>
-                </div>
-
-                {isExpanded && (
-                  <div className="px-4 pb-4">
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mt-2 mb-4">
-                      {project.description}
-                    </p>
-
-                    <div className="mb-4">
-                      <ul className="space-y-1">
-                        {project.features.map((feature, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start gap-2 text-sm sm:text-lg md:text-sm text-muted-foreground"
-                          >
-                            <span className="mt-2.5 sm:mt-3 h-1 w-1 shrink-0 bg-foreground/40 rounded-full" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, i) => (
-                        <Badge
-                          key={i}
-                          variant="secondary"
-                          className="text-[12px] px-2 py-1 bg-transparent font-mono"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-
-
+                      </div>
+                    </TooltipProvider>
                   </div>
-                )}
-              </div>
+
+                  {isExpanded && (
+                    <div className="pt-6 space-y-6 animate-in fade-in duration-300">
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                        {project.description}
+                      </p>
+
+                      <div className="overflow-hidden  border border-border/50">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto object-cover"
+                        />
+                      </div>
+
+                      <div className="space-y-3">
+                        <h4 className="text-sm font-semibold tracking-wide uppercase text-foreground/80">
+                          Key Features
+                        </h4>
+
+                        <ul className="space-y-3">
+                          {project.features.map((feature, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-start gap-3 text-sm sm:text-base text-muted-foreground"
+                            >
+                              <div className="mt-2 h-1.75 w-1.75 rounded-full bg-primary shrink-0" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="space-y-3">
+                        <h4 className="text-sm font-semibold tracking-wide uppercase text-foreground/80">
+                          Tech Stack
+                        </h4>
+
+                        <div className="flex flex-wrap gap-2">
+                          {project.tech.map((techItem, idx) => (
+                            <Badge
+                              key={idx}
+                              variant="normal"
+                              className="font-mono text-xs px-2.5 py-1"
+                            >
+                              {techItem}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
             );
           })}
         </div>
@@ -171,4 +209,3 @@ export default function ProjectsSection() {
     </section>
   );
 }
-

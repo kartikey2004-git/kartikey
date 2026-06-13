@@ -6,7 +6,7 @@ import GithubDashboard from "./dashboard/GithubDashboard";
 const GithubSection = () => {
   return (
     <section
-      className="w-full overflow-x-hidden bg-transparent py-8 sm:py-14 lg:py-16"
+      className="w-full overflow-x-hidden bg-transparent py-8 sm:py-14 lg:py-16  border-b border-border p-2"
       id="github"
     >
       <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8">

@@ -15,6 +15,7 @@ import { projects } from "@/app/data";
 import { useState } from "react";
 import { useClickSound } from "@/hooks/useClickSound";
 import PathnameDisplay from "@/components/PathnameDisplay";
+import Image from "next/image";
 
 export default function ProjectsPage() {
   const allProjects = [...projects].reverse();
@@ -55,36 +56,69 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        <div className="space-y-3 -ml-5">
+        <div className="space-y-8 -ml-5">
           {allProjects.map((project, i) => {
             const isExpanded = expandedProjects.includes(i);
             return (
-              <div key={i} className="rounded-lg overflow-hidden">
-                {/* Project Header */}
+              <>
                 <div
-                  className="flex items-center justify-between p-4 cursor-pointer"
-                  onClick={() => toggleProject(i)}
+                  key={i}
+                  className="border border-dashed border-black/20 dark:border-white/20 flex flex-col max-w-4xl w-full mx-auto p-6 relative"
                 >
-                  <div className="flex items-center gap-3">
-                    <button className="text-muted-foreground hover:text-foreground transition-colors">
-                      {isExpanded ? (
-                        <FaChevronDown className="w-4 h-4" />
-                      ) : (
-                        <FaChevronRight className="w-4 h-4" />
-                      )}
-                    </button>
-                    <h3 className="sm:text-lg text-md font-semibold">
-                      {project.title}
-                    </h3>
-                  </div>
+                  {/* Top Left */}
+                  <div className="absolute -top-px -left-px w-5 h-5 border-t-2 border-l-2 border-foreground" />
 
-                  <TooltipProvider delayDuration={120}>
-                    <div className="flex shrink-0 gap-2">
-                      {project.liveLink && (
+                  {/* Top Right */}
+                  <div className="absolute -top-px -right-px w-5 h-5 border-t-2 border-r-2 border-foreground" />
+
+                  {/* Bottom Left */}
+                  <div className="absolute -bottom-px -left-px w-5 h-5 border-b-2 border-l-2 border-foreground" />
+
+                  {/* Bottom Right */}
+                  <div className="absolute -bottom-px -right-px w-5 h-5 border-b-2 border-r-2 border-foreground" />
+
+                  <div
+                    className="flex items-center justify-between cursor-pointer"
+                    onClick={() => toggleProject(i)}
+                  >
+                    <div className="flex items-center gap-3">
+                      <button className="text-muted-foreground hover:text-foreground transition-colors">
+                        {isExpanded ? (
+                          <FaChevronDown className="w-4 h-4" />
+                        ) : (
+                          <FaChevronRight className="w-4 h-4" />
+                        )}
+                      </button>
+                      <h3 className="sm:text-lg text-md font-semibold">
+                        {project.title}
+                      </h3>
+                    </div>
+
+                    <TooltipProvider delayDuration={120}>
+                      <div className="flex shrink-0 gap-2">
+                        {project.liveLink && (
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <a
+                                href={project.liveLink}
+                                target="_blank"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  playNavigateSound();
+                                }}
+                                className="p-2"
+                              >
+                                <ArrowUpRight className="w-4 h-4" />
+                              </a>
+                            </TooltipTrigger>
+                            <TooltipContent>Live Demo</TooltipContent>
+                          </Tooltip>
+                        )}
+
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <a
-                              href={project.liveLink}
+                              href={project.projectLink}
                               target="_blank"
                               onClick={(e) => {
                                 e.stopPropagation();
@@ -92,70 +126,70 @@ export default function ProjectsPage() {
                               }}
                               className="p-2"
                             >
-                              <ArrowUpRight className="w-4 h-4" />
+                              <FiGithub className="w-4 h-4" />
                             </a>
                           </TooltipTrigger>
-                          <TooltipContent>Live Demo</TooltipContent>
+                          <TooltipContent>Source Code</TooltipContent>
                         </Tooltip>
-                      )}
-
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <a
-                            href={project.projectLink}
-                            target="_blank"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              playNavigateSound();
-                            }}
-                            className="p-2"
-                          >
-                            <FiGithub className="w-4 h-4" />
-                          </a>
-                        </TooltipTrigger>
-                        <TooltipContent>Source Code</TooltipContent>
-                      </Tooltip>
-                    </div>
-                  </TooltipProvider>
-                </div>
-
-                {isExpanded && (
-                  <div className="px-4 pb-4">
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mt-2 mb-4">
-                      {project.description}
-                    </p>
-
-                    <div className="mb-4">
-                      <h4 className="mb-3 text-foreground text-xs sm:text-sm">
-                        Key Features
-                      </h4>
-                      <ul className="space-y-1">
-                        {project.features.map((feature, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start gap-2 text-sm sm:text-lg md:text-sm text-muted-foreground"
-                          >
-                            <span className="mt-2.5 sm:mt-3 h-1 w-1 shrink-0 bg-foreground/40 rounded-full" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, i) => (
-                        <Badge
-                          key={i}
-                          variant="secondary"
-                          className="text-[12px] px-2 py-1 bg-transparent font-mono"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
+                      </div>
+                    </TooltipProvider>
                   </div>
-                )}
-              </div>
+
+                  {isExpanded && (
+                    <div className="pt-6 space-y-6 animate-in fade-in duration-300">
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                        {project.description}
+                      </p>
+
+                      <div className="overflow-hidden  border border-border/50">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto object-cover"
+                        />
+                      </div>
+
+                      <div className="space-y-3">
+                        <h4 className="text-sm font-semibold tracking-wide uppercase text-foreground/80">
+                          Key Features
+                        </h4>
+
+                        <ul className="space-y-3">
+                          {project.features.map((feature, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-start gap-3 text-sm sm:text-base text-muted-foreground"
+                            >
+                              <div className="mt-2 h-1.75 w-1.75 rounded-full bg-primary shrink-0" />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div className="space-y-3">
+                        <h4 className="text-sm font-semibold tracking-wide uppercase text-foreground/80">
+                          Tech Stack
+                        </h4>
+
+                        <div className="flex flex-wrap gap-2">
+                          {project.tech.map((techItem, idx) => (
+                            <Badge
+                              key={idx}
+                              variant="normal"
+                              className="font-mono text-xs px-2.5 py-1"
+                            >
+                              {techItem}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
             );
           })}
         </div>
