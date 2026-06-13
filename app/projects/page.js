@@ -46,7 +46,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground ml-3 p-2">
       <div className="mx-auto max-w-4xl px-4 sm:px-5 py-16">
         <div className="mb-12">
           <PathnameDisplay />
