@@ -11,7 +11,7 @@ export default function AboutMeSection() {
   return (
     <section
       id="how-i-build"
-      className="w-full overflow-x-hidden border-b border-border bg-background py-12 sm:py-14 lg:py-16 p-2"
+      className="w-full overflow-x-hidden bg-background py-12 sm:py-14 lg:py-16 p-2"
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-5 lg:px-8">
         <div className="space-y-8 mb-6">
@@ -23,7 +23,6 @@ export default function AboutMeSection() {
         <div className="space-y-12">
           {/* Skills Section */}
           <div className="space-y-4 w-full">
-
             <div className="flex flex-wrap gap-3">
               {visibleTech.map((skill, idx) => (
                 <Badge
@@ -37,7 +36,10 @@ export default function AboutMeSection() {
                       alt={skill.iconname}
                       className="h-4 w-4"
                     />
-                    <span className="font-mono">{skill.iconname}</span>
+
+                    <span className="hidden sm:inline font-mono">
+                      {skill.iconname}
+                    </span>
                   </div>
                 </Badge>
               ))}
@@ -46,7 +48,6 @@ export default function AboutMeSection() {
 
           {/* Who Am I Section */}
           <div className="space-y-4 w-full">
-
             <div className="space-y-4">
               <div>
                 <h4 className="mb-2 text-lg font-semibold text-foreground sm:text-xl">

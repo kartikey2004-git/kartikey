@@ -57,39 +57,30 @@ export default function ProjectsPage() {
         </div>
 
         <div className="space-y-8 -ml-5">
-          {allProjects.map((project, i) => {
-            const isExpanded = expandedProjects.includes(i);
+          {allProjects.map((project, index) => {
             return (
-              <>
-                <div
-                  key={i}
-                  className="border border-dashed border-black/20 dark:border-white/20 flex flex-col max-w-4xl w-full mx-auto p-6 relative"
+              <div>
+                <article
+                  key={project.title}
+                  className={`relative bg-background p-5 sm:p-6 space-y-5 ${
+                    index !== allProjects.length - 1
+                      ? "border-b border-border/50"
+                      : ""
+                  }`}
                 >
-                  {/* Top Left */}
-                  <div className="absolute -top-px -left-px w-5 h-5 border-t-2 border-l-2 border-foreground" />
+                  <div className="overflow-hidden border border-border/50">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={1200}
+                      height={700}
+                      className="w-full h-auto object-cover transition-transform duration-500 hover:scale-[1.05]"
+                    />
+                  </div>
 
-                  {/* Top Right */}
-                  <div className="absolute -top-px -right-px w-5 h-5 border-t-2 border-r-2 border-foreground" />
-
-                  {/* Bottom Left */}
-                  <div className="absolute -bottom-px -left-px w-5 h-5 border-b-2 border-l-2 border-foreground" />
-
-                  {/* Bottom Right */}
-                  <div className="absolute -bottom-px -right-px w-5 h-5 border-b-2 border-r-2 border-foreground" />
-
-                  <div
-                    className="flex items-center justify-between cursor-pointer"
-                    onClick={() => toggleProject(i)}
-                  >
-                    <div className="flex items-center gap-3">
-                      <button className="text-muted-foreground hover:text-foreground transition-colors">
-                        {isExpanded ? (
-                          <FaChevronDown className="w-4 h-4" />
-                        ) : (
-                          <FaChevronRight className="w-4 h-4" />
-                        )}
-                      </button>
-                      <h3 className="sm:text-lg text-md font-semibold">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
                         {project.title}
                       </h3>
                     </div>
@@ -102,13 +93,11 @@ export default function ProjectsPage() {
                               <a
                                 href={project.liveLink}
                                 target="_blank"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  playNavigateSound();
-                                }}
-                                className="p-2"
+                                rel="noopener noreferrer"
+                                onClick={playNavigateSound}
+                                className="rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
                               >
-                                <ArrowUpRight className="w-4 h-4" />
+                                <ArrowUpRight className="h-4 w-4" />
                               </a>
                             </TooltipTrigger>
                             <TooltipContent>Live Demo</TooltipContent>
@@ -120,13 +109,11 @@ export default function ProjectsPage() {
                             <a
                               href={project.projectLink}
                               target="_blank"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                playNavigateSound();
-                              }}
-                              className="p-2"
+                              rel="noopener noreferrer"
+                              onClick={playNavigateSound}
+                              className="rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
                             >
-                              <FiGithub className="w-4 h-4" />
+                              <FiGithub className="h-4 w-4" />
                             </a>
                           </TooltipTrigger>
                           <TooltipContent>Source Code</TooltipContent>
@@ -135,61 +122,23 @@ export default function ProjectsPage() {
                     </TooltipProvider>
                   </div>
 
-                  {isExpanded && (
-                    <div className="pt-6 space-y-6 animate-in fade-in duration-300">
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                        {project.description}
-                      </p>
+                  <p className="text-sm sm:text-base leading-7 text-muted-foreground">
+                    {project.description}
+                  </p>
 
-                      <div className="overflow-hidden  border border-border/50">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          width={1200}
-                          height={800}
-                          className="w-full h-auto object-cover"
-                        />
-                      </div>
-
-                      <div className="space-y-3">
-                        <h4 className="text-sm font-semibold tracking-wide uppercase text-foreground/80">
-                          Key Features
-                        </h4>
-
-                        <ul className="space-y-3">
-                          {project.features.map((feature, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-start gap-3 text-sm sm:text-base text-muted-foreground"
-                            >
-                              <div className="mt-2 h-1.75 w-1.75 rounded-full bg-primary shrink-0" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="space-y-3">
-                        <h4 className="text-sm font-semibold tracking-wide uppercase text-foreground/80">
-                          Tech Stack
-                        </h4>
-
-                        <div className="flex flex-wrap gap-2">
-                          {project.tech.map((techItem, idx) => (
-                            <Badge
-                              key={idx}
-                              variant="normal"
-                              className="font-mono text-xs px-2.5 py-1"
-                            >
-                              {techItem}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, idx) => (
+                      <Badge
+                        key={idx}
+                        variant="normal"
+                        className="font-mono text-xs px-2.5 py-1"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </article>
+              </div>
             );
           })}
         </div>

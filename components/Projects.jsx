@@ -1,7 +1,6 @@
 "use client";
 
-import { FaChevronRight, FaChevronDown } from "@/lib/icons";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { FiGithub } from "react-icons/fi";
 import {
   Tooltip,
@@ -12,197 +11,116 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { projects } from "@/app/data";
 import Link from "next/link";
-import { useState } from "react";
 import { useClickSound } from "@/hooks/useClickSound";
-import { Icon } from "@/components/ui/evervault-card";
 import Image from "next/image";
 
 export default function ProjectsSection() {
   const visibleProjects = [...projects].reverse().slice(0, 4);
-  const [expandedProjects, setExpandedProjects] = useState([0, 1, 2, 3]);
-  const playOpenSound = useClickSound("open");
-  const playCloseSound = useClickSound("close");
+
   const playNavigateSound = useClickSound("navigate");
 
-  const toggleProject = (index) => {
-    const isCurrentlyExpanded = expandedProjects.includes(index);
-    if (isCurrentlyExpanded) {
-      playCloseSound();
-    } else {
-      playOpenSound();
-    }
-
-    setExpandedProjects((prev) => {
-      if (prev.includes(index)) {
-        // Remove this project from expanded list
-        return prev.filter((i) => i !== index);
-      } else {
-        // Add this project to expanded list
-        return [...prev, index];
-      }
-    });
-  };
-
   return (
-    <section
-      id="projects"
-      className="w-full overflow-x-hidden border-b border-border bg-background py-12 p-3 ml-2 sm:py-14 lg:py-16"
-    >
-      <div className="mx-auto w-full max-w-4xl px-4 sm:px-5 lg:px-8">
-        <header className="mb-4 sm:mb-4 lg:mb-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <h2 className="text-xl font-semibold rounded-sm sm:text-3xl">
-              Projects
-            </h2>
-          </div>
+    <section id="projects" className="w-full bg-background p-2">
+      <div className="mx-auto w-full max-w-4xl">
+        <header className="mb-8">
+          <h2 className="text-2xl ml-5 sm:text-3xl font-semibold tracking-tight">
+            Projects
+          </h2>
         </header>
 
-        <div className="space-y-8 -ml-5">
-          {visibleProjects.map((project, i) => {
-            const isExpanded = expandedProjects.includes(i);
-            return (
-              <>
-                <div
-                  key={i}
-                  className="border border-dashed border-black/20 dark:border-white/20 flex flex-col max-w-4xl w-full mx-auto p-6 relative"
-                >
-                  {/* Top Left */}
-                  <div className="absolute -top-px -left-px w-5 h-5 border-t-2 border-l-2 border-foreground" />
+        <div className="space-y-10">
+          {visibleProjects.map((project, index) => (
+            <article
+              key={project.title}
+              className={`relative bg-background p-5 sm:p-6 space-y-5 ${
+                index !== visibleProjects.length - 1
+                  ? "border-b border-border/50"
+                  : ""
+              }`}
+            >
+              <div className="overflow-hidden border border-border/50">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={1200}
+                  height={700}
+                  className="w-full h-auto object-cover transition-transform duration-500 hover:scale-[1.05]"
+                />
+              </div>
 
-                  {/* Top Right */}
-                  <div className="absolute -top-px -right-px w-5 h-5 border-t-2 border-r-2 border-foreground" />
-
-                  {/* Bottom Left */}
-                  <div className="absolute -bottom-px -left-px w-5 h-5 border-b-2 border-l-2 border-foreground" />
-
-                  {/* Bottom Right */}
-                  <div className="absolute -bottom-px -right-px w-5 h-5 border-b-2 border-r-2 border-foreground" />
-
-                  <div
-                    className="flex items-center justify-between cursor-pointer"
-                    onClick={() => toggleProject(i)}
-                  >
-                    <div className="flex items-center gap-3">
-                      <button className="text-muted-foreground hover:text-foreground transition-colors">
-                        {isExpanded ? (
-                          <FaChevronDown className="w-4 h-4" />
-                        ) : (
-                          <FaChevronRight className="w-4 h-4" />
-                        )}
-                      </button>
-                      <h3 className="sm:text-lg text-md font-semibold">
-                        {project.title}
-                      </h3>
-                    </div>
-
-                    <TooltipProvider delayDuration={120}>
-                      <div className="flex shrink-0 gap-2">
-                        {project.liveLink && (
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <a
-                                href={project.liveLink}
-                                target="_blank"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  playNavigateSound();
-                                }}
-                                className="p-2"
-                              >
-                                <ArrowUpRight className="w-4 h-4" />
-                              </a>
-                            </TooltipTrigger>
-                            <TooltipContent>Live Demo</TooltipContent>
-                          </Tooltip>
-                        )}
-
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <a
-                              href={project.projectLink}
-                              target="_blank"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                playNavigateSound();
-                              }}
-                              className="p-2"
-                            >
-                              <FiGithub className="w-4 h-4" />
-                            </a>
-                          </TooltipTrigger>
-                          <TooltipContent>Source Code</TooltipContent>
-                        </Tooltip>
-                      </div>
-                    </TooltipProvider>
-                  </div>
-
-                  {isExpanded && (
-                    <div className="pt-6 space-y-6 animate-in fade-in duration-300">
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                        {project.description}
-                      </p>
-
-                      <div className="overflow-hidden  border border-border/50">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          width={1200}
-                          height={800}
-                          className="w-full h-auto object-cover"
-                        />
-                      </div>
-
-                      <div className="space-y-3">
-                        <h4 className="text-sm font-semibold tracking-wide uppercase text-foreground/80">
-                          Key Features
-                        </h4>
-
-                        <ul className="space-y-3">
-                          {project.features.map((feature, idx) => (
-                            <li
-                              key={idx}
-                              className="flex items-start gap-3 text-sm sm:text-base text-muted-foreground"
-                            >
-                              <div className="mt-2 h-1.75 w-1.75 rounded-full bg-primary shrink-0" />
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="space-y-3">
-                        <h4 className="text-sm font-semibold tracking-wide uppercase text-foreground/80">
-                          Tech Stack
-                        </h4>
-
-                        <div className="flex flex-wrap gap-2">
-                          {project.tech.map((techItem, idx) => (
-                            <Badge
-                              key={idx}
-                              variant="normal"
-                              className="font-mono text-xs px-2.5 py-1"
-                            >
-                              {techItem}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
+                    {project.title}
+                  </h3>
                 </div>
-              </>
-            );
-          })}
+
+                <TooltipProvider delayDuration={120}>
+                  <div className="flex shrink-0 gap-2">
+                    {project.liveLink && (
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <a
+                            href={project.liveLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={playNavigateSound}
+                            className="rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
+                          >
+                            <ArrowUpRight className="h-4 w-4" />
+                          </a>
+                        </TooltipTrigger>
+                        <TooltipContent>Live Demo</TooltipContent>
+                      </Tooltip>
+                    )}
+
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <a
+                          href={project.projectLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={playNavigateSound}
+                          className="rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
+                        >
+                          <FiGithub className="h-4 w-4" />
+                        </a>
+                      </TooltipTrigger>
+                      <TooltipContent>Source Code</TooltipContent>
+                    </Tooltip>
+                  </div>
+                </TooltipProvider>
+              </div>
+
+          
+              <p className="text-sm sm:text-base leading-7 text-muted-foreground">
+                {project.description}
+              </p>
+
+        
+              <div className="flex flex-wrap gap-2">
+                {project.tech.map((tech, idx) => (
+                  <Badge
+                    key={idx}
+                    variant="normal"
+                    className="font-mono text-xs px-2.5 py-1"
+                  >
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            </article>
+          ))}
         </div>
 
-        <div className="mt-6 sm:mt-8 text-center">
+        <div className="mt-10 flex justify-center">
           <Link
             href="/projects"
             onClick={playNavigateSound}
-            className="inline-flex items-center justify-center rounded-md px-4 sm:px-5 lg:px-6 py-2 sm:text-lg text-md font-semibold text-foreground shadow transition-colors"
+            className="inline-flex items-center gap-2 text-base sm:text-lg font-semibold hover:text-muted-foreground transition-colors"
           >
             View all projects
-            <ArrowRight className="ml-1 sm:ml-1 w-6 h-6" />
+            <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
       </div>

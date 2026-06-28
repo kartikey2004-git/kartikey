@@ -44,7 +44,7 @@ export default function BlogSection() {
   };
 
   return (
-    <section className="py-8 sm:py-14 lg:py-16 p-2 border-b border-border">
+    <section className="py-8 p-2">
       <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8">
         <h2 className="mb-4 sm:mb-8 text-lg font-semibold rounded-sm sm:text-3xl">Blogs</h2>
 

@@ -74,46 +74,11 @@ const Hero = () => {
   ];
 
   return (
-    <section id="hero" className="relative w-full bg-background border-b border-border ">
-      <div className="relative left-1/2 right-1/2 w-screen -translate-x-1/2 overflow-hidden">
-        <div className="relative min-h-[35dvh] sm:min-h-[45dvh] lg:min-h-[50dvh]">
-          <Image
-            src="/background.jpg"
-            alt="Mountain landscape"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-
-          {/* overlay */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-linear-to-b from-black/40 via-black/20 to-black/80"
-          />
-
-          {/* content */}
-          <div className="relative z-10 flex min-h-[35dvh] sm:min-h-[45dvh] lg:min-h-[50dvh] items-center justify-center px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="max-w-3xl"
-            >
-              <blockquote className="text-sm sm:text-lg lg:text-3xl italic leading-relaxed text-white">
-                Build your own internal compass for navigating new territories.
-              </blockquote>
-
-              <p className="mt-2 text-[10px] font-mono tracking-wider text-white/40">
-                — Kartikey
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
-      {/* overlapping profile */}
-      <div className="relative -mt-10 sm:-mt-12 pb-8 sm:pb-12">
+    <section
+      id="hero"
+      className="relative w-full bg-background"
+    >
+      <div className="relative pb-8 sm:pb-12 mt-16 sm:mt-20">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -122,54 +87,50 @@ const Hero = () => {
           <div className=" bg-background">
             <div className="p-4 sm:p-6">
               <div className="flex flex-col gap-4 sm:gap-6">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                  <div className="flex items-end gap-3 sm:gap-4">
-                    {/* avatar (overlaps card edge) */}
-                    <div className="relative -mt-10 sm:-mt-12">
-                      <div className="absolute -inset-2 rounded-full" />
-                      <div className="relative h-16 w-16 -mt-4 overflow-hidden rounded-full ring-2 ring-background sm:h-20 sm:w-20 md:h-24 md:w-24">
-                        <Image
-                          src="/toji.png"
-                          alt="Kartikey"
-                          fill
-                          className="object-cover rounded-full"
-                          sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
-                        />
-                      </div>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                  <div className="shrink-0">
+                    <div className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 overflow-hidden rounded-full ring-2 ring-background">
+                      <Image
+                        src="/toji.png"
+                        alt="Kartikey"
+                        fill
+                        className="object-cover rounded-full"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+                      Hi, I'm Kartikey
+                    </h1>
+
+                    <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-mono uppercase tracking-[0.15em]">
+                      <span className="text-muted-foreground/60">
+                        Ghaziabad, India
+                      </span>
+
+                      <span className="text-muted-foreground/20">/</span>
+
+                      <span className="text-muted-foreground/60">
+                        Engineer at caffeine
+                      </span>
+                    </div>
+
+                    <div className="mt-2 flex items-center gap-2">
+                      <span className="text-sm uppercase text-muted-foreground">
+                        21,
+                      </span>
+
+                      <FlipWords
+                        words={roles}
+                        duration={2000}
+                        className="text-sm text-muted-foreground"
+                      />
                     </div>
                   </div>
                 </div>
 
-                <div className="min-w-0">
-                  <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight truncate">
-                    Hi, I'm Kartikey
-                  </h1>
-
-                  <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] font-mono uppercase tracking-[0.15em]">
-                    <span className="text-muted-foreground/60">
-                      Ghaziabad, India
-                    </span>
-                    <span className="text-muted-foreground/20">/</span>
-
-                    <span className="text-muted-foreground/60">
-                      Engineer at caffeine
-                    </span>
-                  </div>
-
-                  <div className="mt-2 flex items-center gap-2">
-                    <span className="text-sm sm:text-base uppercase tracking-tight text-muted-foreground">
-                      21,
-                    </span>
-                    <FlipWords
-                      words={roles}
-                      duration={2000}
-                      className="text-sm sm:text-base text-muted-foreground"
-                    />
-                  </div>
-                </div>
-
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                  {/* LEFT */}
                   <div className="flex items-center gap-2 flex-wrap">
                     <div className="flex items-center gap-1">
                       {socialLinks.map(({ icon: Icon, link, label }, index) => (
@@ -206,13 +167,12 @@ const Hero = () => {
                     )}
                   </div>
 
-                  {/* RIGHT */}
                   <p className="text-xs leading-relaxed text-muted-foreground sm:text-right sm:text-sm">
                     Learning | Building | Shipping
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4 border-t border-border/20 pt-9">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 border-t border-border/20 pt-7">
                   {[
                     {
                       Icon: BsRocket,
@@ -232,12 +192,12 @@ const Hero = () => {
                   ].map(({ Icon, value, label }) => (
                     <div key={value} className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <Icon className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground shrink-0" />
-                        <span className="text-base sm:text-lg md:text-xl font-semibold leading-none whitespace-nowrap">
+                        <Icon className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                        <span className="text-sm sm:text-base md:text-lg font-semibold leading-none">
                           {value}
                         </span>
                       </div>
-                      <p className="mt-1 text-[12px] sm:text-sm md:text-base text-muted-foreground leading-tight line-clamp-2">
+                      <p className="mt-1 text-[11px] sm:text-xs text-muted-foreground leading-snug">
                         {label}
                       </p>
                     </div>

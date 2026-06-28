@@ -74,7 +74,7 @@ export const projects = [
     liveLink: "https://connectify-space.vercel.app",
     currentlyBuilding: false,
   },
-    {
+  {
     title: "Kairo",
     slug: "kairo",
     description:
@@ -131,7 +131,7 @@ export const projects = [
     liveLink: "https://varta-x.vercel.app",
     currentlyBuilding: false,
   },
-    {
+  {
     title: "MarkStack",
     slug: "markstack",
     description:
@@ -156,7 +156,7 @@ export const projects = [
       "Built-in task planner with calendar view.",
     ],
     bg: "markstack",
-    projectLink: "https://github.com/kartikey2004-git/<your-repo>",
+    projectLink: "https://github.com/kartikey2004-git/markstack",
     liveLink: "https://markstack-app.vercel.app",
     currentlyBuilding: true,
   },
