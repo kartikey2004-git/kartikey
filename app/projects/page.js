@@ -19,31 +19,7 @@ import Image from "next/image";
 
 export default function ProjectsPage() {
   const allProjects = [...projects].reverse();
-  const [expandedProjects, setExpandedProjects] = useState(
-    allProjects.map((_, i) => i),
-  ); // Initially all projects open
-  const playOpenSound = useClickSound("open");
-  const playCloseSound = useClickSound("close");
   const playNavigateSound = useClickSound("navigate");
-
-  const toggleProject = (index) => {
-    const isCurrentlyExpanded = expandedProjects.includes(index);
-    if (isCurrentlyExpanded) {
-      playCloseSound();
-    } else {
-      playOpenSound();
-    }
-
-    setExpandedProjects((prev) => {
-      if (prev.includes(index)) {
-        // Remove this project from expanded list
-        return prev.filter((i) => i !== index);
-      } else {
-        // Add this project to expanded list
-        return [...prev, index];
-      }
-    });
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground ml-3 p-2">
@@ -59,8 +35,7 @@ export default function ProjectsPage() {
         <div className="space-y-8 -ml-5">
           {allProjects.map((project, index) => {
             return (
-              <div>
-                <article
+              <article
                   key={project.title}
                   className={`relative bg-background p-5 sm:p-6 space-y-5 ${
                     index !== allProjects.length - 1
@@ -138,7 +113,6 @@ export default function ProjectsPage() {
                     ))}
                   </div>
                 </article>
-              </div>
             );
           })}
         </div>
