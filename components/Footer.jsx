@@ -4,7 +4,7 @@ export default function FooterStandard() {
   return (
     <footer className="w-full bg-background -mt-10">
       <section className="py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-0">
+        <div className="mx-auto max-w-3xl px-6 sm:px-7 lg:px-0">
           <blockquote>
             <p className="max-w-2xl text-2xl sm:text-3xl leading-[1.45] tracking-tight text-foreground">
               &ldquo;Build your own internal compass for navigating new

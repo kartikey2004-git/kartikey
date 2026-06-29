@@ -27,7 +27,7 @@ export default function PersonalSection() {
 
   return (
     <section className="py-12 sm:py-16 -mt-8">
-      <div className="mx-auto max-w-4xl px-8 sm:px-10 lg:px-12">
+      <div className="mx-auto max-w-4xl px-5 sm:px-7 lg:px-9">
         <h2 className="mb-8 text-2xl sm:text-3xl font-semibold tracking-tight">
           Personal
         </h2>
