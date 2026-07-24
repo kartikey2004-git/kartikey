@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ArrowRight, Search, X } from "lucide-react";
 import { useClickSound } from "@/hooks/useClickSound";
 import PathnameDisplay from "@/components/PathnameDisplay";
+import { prepareBlogForSearch, searchBlogs } from "@/lib/search";
 
 export default function BlogsClient() {
   const [blogs, setBlogs] = useState([]);
@@ -22,22 +23,12 @@ export default function BlogsClient() {
     fetch("/api/blogs")
       .then((res) => res.json())
       .then((data) => {
-        setBlogs(data);
+        setBlogs(data.map(prepareBlogForSearch));
         setLoading(false);
       });
   }, []);
 
-  const filtered = useMemo(() => {
-    if (!query.trim()) return blogs;
-
-    const q = query.toLowerCase().trim();
-    return blogs.filter((blog) => {
-      return (
-        blog.title.toLowerCase().includes(q) ||
-        blog.description.toLowerCase().includes(q)
-      );
-    });
-  }, [query, blogs]);
+  const filtered = useMemo(() => searchBlogs(blogs, query), [query, blogs]);
 
   // Ctrl/Cmd + K to focus search
   useEffect(() => {
@@ -108,7 +99,7 @@ export default function BlogsClient() {
               onChange={(e) => setQuery(e.target.value)}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
-              placeholder="Search blogs by title or description..."
+              placeholder="Search blogs by title, description, or content..."
               className="h-auto flex-1 border-0 bg-transparent px-3 py-2.5 text-sm shadow-none placeholder:text-muted-foreground/50 focus-visible:ring-0"
             />
 
@@ -158,7 +149,7 @@ export default function BlogsClient() {
             {filtered.map((blog) => (
               <Card
                 key={blog.slug}
-                className="bg-transparent border-none p-3 sm:p-5 lg:p-6 shadow-sm rounded-md"
+                className="bg-transparent border-none p-3 sm:p-5 lg:p-6 shadow-none rounded-md"
               >
                 <div className="flex flex-col space-y-2">
                   <h3 className="text-base font-semibold text-foreground sm:text-xl">
@@ -174,6 +165,12 @@ export default function BlogsClient() {
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {blog.description}
                   </p>
+
+                  {isSearching && blog.snippet && (
+                    <p className="text-xs text-muted-foreground/70 italic leading-relaxed">
+                      {blog.snippet}
+                    </p>
+                  )}
 
                   <div className="flex items-center justify-between">
                     <time className="text-[10px] text-muted-foreground sm:text-sm">
