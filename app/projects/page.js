@@ -37,7 +37,8 @@ export default function ProjectsPage() {
             return (
               <article
                   key={project.title}
-                  className={`relative bg-background p-5 sm:p-6 space-y-5 ${
+                  id={project.slug}
+                  className={`relative bg-background p-5 sm:p-6 space-y-5 scroll-mt-20 ${
                     index !== allProjects.length - 1
                       ? "border-b border-border/50"
                       : ""

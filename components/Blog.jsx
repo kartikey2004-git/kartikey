@@ -52,7 +52,7 @@ export default function BlogSection() {
           {blogs.slice(0, 3).map((blog) => (
             <Card
               key={blog.slug}
-              className="bg-transparent border-none p-3 sm:p-5 lg:p-6 shadow-sm rounded-md"
+              className="bg-transparent border-none shadow-none p-3 sm:p-5 lg:p-6"
             >
               <div className="flex flex-col space-y-2">
                 <h3 className="text-base font-semibold text-foreground sm:text-xl">
@@ -69,9 +69,7 @@ export default function BlogSection() {
                   </time>
 
                   <Link
-                    href={`https://markstack-app.vercel.app/blogs/${blog.slug}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`/blogs/${blog.slug}`}
                     onClick={playNavigateSound}
                     className="text-[14px] sm:text-sm text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1 mt-1.5"
                   >
@@ -88,7 +86,7 @@ export default function BlogSection() {
           <Link
             href="/blogs"
             onClick={playNavigateSound}
-            className="inline-flex items-center justify-center rounded-md px-3 sm:px-5 lg:px-6 py-1.5 text-base sm:text-lg font-medium text-foreground shadow transition-colors"
+            className="inline-flex items-center gap-2 text-base sm:text-lg font-semibold hover:text-muted-foreground transition-colors"
           >
             View all Blogs
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3" />

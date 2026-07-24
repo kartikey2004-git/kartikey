@@ -78,7 +78,7 @@ const Hero = () => {
       id="hero"
       className="relative w-full bg-background"
     >
-      <div className="relative pb-8 sm:pb-12 mt-16 sm:mt-20">
+      <div className="relative pb-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}

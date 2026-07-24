@@ -74,6 +74,7 @@ export default function RootLayout({ children }) {
       >
         <Analytics />
         <Providers>
+          <Navbar />
           <div className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-4xl w-full flex-col overflow-x-hidden">
             {children}
           </div>

@@ -2,6 +2,8 @@
 
 import { useEffect, useState, useMemo, useRef } from "react";
 import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Search, X } from "lucide-react";
 import { useClickSound } from "@/hooks/useClickSound";
@@ -39,7 +41,7 @@ export default function BlogsClient() {
 
   // Ctrl/Cmd + K to focus search
   useEffect(() => {
-    const handleKey = () => {
+    const handleKey = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         inputRef.current?.focus();
@@ -99,7 +101,7 @@ export default function BlogsClient() {
           >
             <Search className="ml-3 h-4 w-4 shrink-0 text-muted-foreground" />
 
-            <input
+            <Input
               ref={inputRef}
               type="text"
               value={query}
@@ -107,16 +109,19 @@ export default function BlogsClient() {
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               placeholder="Search blogs by title or description..."
-              className="flex-1 bg-transparent px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none"
+              className="h-auto flex-1 border-0 bg-transparent px-3 py-2.5 text-sm shadow-none placeholder:text-muted-foreground/50 focus-visible:ring-0"
             />
 
             {isSearching && (
-              <button
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-sm"
                 onClick={() => setQuery("")}
-                className="mr-2 p-1 rounded-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="mr-1.5 text-muted-foreground hover:text-foreground"
               >
                 <X className="h-3.5 w-3.5" />
-              </button>
+              </Button>
             )}
           </div>
 
@@ -136,15 +141,17 @@ export default function BlogsClient() {
             <p className="text-sm text-muted-foreground">
               No posts match &quot;{query}&quot;
             </p>
-            <button
+            <Button
+              type="button"
+              variant="link"
               onClick={() => {
                 setQuery("");
                 inputRef.current?.focus();
               }}
-              className="mt-3 text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors"
+              className="mt-3 h-auto p-0 text-xs text-muted-foreground hover:text-foreground"
             >
               Clear search
-            </button>
+            </Button>
           </div>
         ) : (
           <div className="space-y-4 md:-ml-5 -ml-3">
@@ -156,9 +163,7 @@ export default function BlogsClient() {
                 <div className="flex flex-col space-y-2">
                   <h3 className="text-base font-semibold text-foreground sm:text-xl">
                     <Link
-                      href={`https://markstack-app.vercel.app/blogs/${blog.slug}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={`/blogs/${blog.slug}`}
                       onClick={playNavigateSound}
                       className="hover:text-primary transition-colors"
                     >
@@ -176,9 +181,7 @@ export default function BlogsClient() {
                     </time>
 
                     <Link
-                      href={`https://markstack-app.vercel.app/blogs/${blog.slug}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={`/blogs/${blog.slug}`}
                       onClick={playNavigateSound}
                       className="text-[10px] sm:text-sm font-medium text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1"
                     >

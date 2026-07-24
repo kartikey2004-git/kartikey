@@ -17,6 +17,7 @@ import {
   useModeAnimation,
 } from "react-theme-switch-animation";
 import { useTheme } from "next-themes";
+import GlobalSearch from "@/components/GlobalSearch";
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -118,6 +119,8 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <GlobalSearch />
+
             <div className="flex items-center gap-1">
               {socialLinks.map(({ icon: Icon, href, label }, index) => (
                 <a
