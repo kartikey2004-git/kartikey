@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Search, X } from "lucide-react";
+import { ArrowRight, Eye, Search, Users, X } from "lucide-react";
 import { useClickSound } from "@/hooks/useClickSound";
 import PathnameDisplay from "@/components/PathnameDisplay";
 import { prepareBlogForSearch, searchBlogs } from "@/lib/search";
@@ -15,6 +15,8 @@ export default function BlogsClient() {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
+  const [viewCounts, setViewCounts] = useState({});
+  const [siteVisitors, setSiteVisitors] = useState(null);
   const inputRef = useRef(null);
 
   const playNavigateSound = useClickSound("navigate");
@@ -26,6 +28,16 @@ export default function BlogsClient() {
         setBlogs(data.map(prepareBlogForSearch));
         setLoading(false);
       });
+
+    fetch("/api/blogs/views")
+      .then((res) => res.json())
+      .then(setViewCounts)
+      .catch(() => {});
+
+    fetch("/api/visitors/site")
+      .then((res) => res.json())
+      .then((data) => setSiteVisitors(data.uniqueVisitors))
+      .catch(() => {});
   }, []);
 
   const filtered = useMemo(() => searchBlogs(blogs, query), [query, blogs]);
@@ -79,6 +91,13 @@ export default function BlogsClient() {
           <p className="mt-2 text-md text-muted-foreground">
             Thoughts, ideas, and tutorials on web development and technology.
           </p>
+          {siteVisitors !== null && (
+            <p className="mt-3 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Users className="h-3 w-3" />
+              {siteVisitors.toLocaleString()} unique visitor
+              {siteVisitors !== 1 ? "s" : ""} to the site
+            </p>
+          )}
         </div>
 
         {/* Search */}
@@ -173,9 +192,17 @@ export default function BlogsClient() {
                   )}
 
                   <div className="flex items-center justify-between">
-                    <time className="text-[10px] text-muted-foreground sm:text-sm">
-                      {formatDate(blog.publishedAt || blog.createdAt)}
-                    </time>
+                    <div className="flex items-center gap-3">
+                      <time className="text-[10px] text-muted-foreground sm:text-sm">
+                        {formatDate(blog.publishedAt || blog.createdAt)}
+                      </time>
+                      {viewCounts[blog.slug] !== undefined && (
+                        <span className="inline-flex items-center gap-1 text-[10px] text-muted-foreground sm:text-sm">
+                          <Eye className="h-3 w-3" />
+                          {viewCounts[blog.slug].toLocaleString()}
+                        </span>
+                      )}
+                    </div>
 
                     <Link
                       href={`/blogs/${blog.slug}`}

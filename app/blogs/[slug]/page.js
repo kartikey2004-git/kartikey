@@ -4,6 +4,7 @@ import { ArrowLeft, Clock } from "lucide-react";
 import { getBlogBySlug, getBlogs } from "@/lib/blogs";
 import PathnameDisplay from "@/components/PathnameDisplay";
 import BlogContent from "@/components/BlogContent";
+import BlogViewTracker from "@/components/BlogViewTracker";
 
 export async function generateStaticParams() {
   const blogs = await getBlogs();
@@ -73,6 +74,7 @@ export default async function BlogPage({ params }) {
                   {blog.readTime} min read
                 </span>
               ) : null}
+              <BlogViewTracker slug={blog.slug} />
             </div>
           </header>
 
