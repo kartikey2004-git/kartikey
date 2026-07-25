@@ -3,6 +3,7 @@ import "./globals.css";
 import { Providers } from "./provider";
 import { Navbar } from "@/components/Navbar";
 import { Analytics } from "@vercel/analytics/react";
+import SiteVisitorTracker from "@/components/SiteVisitorTracker";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -73,6 +74,7 @@ export default function RootLayout({ children }) {
         className={`${inter.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
       >
         <Analytics />
+        <SiteVisitorTracker />
         <Providers>
           <Navbar />
           <div className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-4xl w-full flex-col overflow-x-hidden">
