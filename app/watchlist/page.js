@@ -26,7 +26,7 @@ export const metadata = {
 export default function MoviesPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8 py-16">
+      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8 py-16">
         <header className="mb-12">
           <PathnameDisplay />
 
@@ -42,7 +42,7 @@ export default function MoviesPage() {
             {moviesMeta.tags.map((tag, i) => (
               <span
                 key={i}
-                className="px-2 py-0.5 rounded-sm border border-border/30 text-muted-foreground/60 hover:text-foreground hover:border-border transition"
+                className="px-2 py-0.5 rounded-sm text-muted-foreground/60"
               >
                 {tag}
               </span>

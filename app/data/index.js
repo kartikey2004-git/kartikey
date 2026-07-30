@@ -1,13 +1,11 @@
 import {
   CiFolderOn,
   FiBookOpen,
-  IoMailOutline,
+  FiFileText,
   FiServer,
   FiZap,
   FiCpu,
   IoHomeOutline,
-  IoLogoGithub,
-  BsLightningCharge,
   FaGear,
 } from "@/lib/icons";
 
@@ -16,7 +14,7 @@ export const projects = [
     title: "ShortenX",
     slug: "shorten-x",
     description:
-      "A fast, minimal tool that turns long URLs into clean short links with simple analytics and an easy dashboard.",
+      "Turns long URLs into short, trackable links. Supabase handles auth and storage, and every link gets click analytics plus a dashboard to edit or kill it.",
     tech: ["React.js (Vite)", "Tailwind CSS", "Supabase"],
     image: "/shortener.png",
     features: [
@@ -34,7 +32,7 @@ export const projects = [
     title: "JobConnect",
     slug: "jobconnect",
     description:
-      "A straightforward job portal where candidates apply and track progress while recruiters post openings and update statuses.",
+      "A job portal with real role-based access: candidates apply and track status, recruiters post listings and move applicants through stages, all backed by Supabase.",
     tech: ["React.js (Vite)", "Tailwind CSS", "Supabase"],
     image: "/job-portal.png",
     features: [
@@ -52,7 +50,7 @@ export const projects = [
     title: "Connectify",
     slug: "connectify",
     description:
-      "A smooth scheduling tool where users set up event types, share booking links, and handle meetings through an organized dashboard.",
+      "Calendly-style scheduling: define event types, share a booking link, and manage meetings from one dashboard. Clerk handles auth, Prisma and Neon handle the data.",
     tech: [
       "Next.js",
       "React",
@@ -78,7 +76,7 @@ export const projects = [
     title: "Kairo",
     slug: "kairo",
     description:
-      "A powerful AI-driven CLI that chats, searches, builds apps, and runs tasks on its own, all wrapped in a smooth command-line workflow.",
+      "An AI-native CLI: chat, search the web, scaffold apps, and hand tasks to an agent that runs tools on its own, without leaving the terminal. OAuth device flow keeps sessions secure.",
     tech: [
       "Node.js",
       "Commander.js",
@@ -108,7 +106,7 @@ export const projects = [
     title: "VartaX",
     slug: "vartax",
     description:
-      "A smooth, fast chat app where conversations, status updates, and sharing stay reliable even under heavy load.",
+      "A real-time chat app built to survive load: Socket.IO for live delivery, RabbitMQ for message queuing, Redis for presence and caching, AWS behind file and media sharing.",
     tech: [
       "MongoDB",
       "Express",
@@ -135,9 +133,9 @@ export const projects = [
     title: "MarkStack",
     slug: "markstack",
     description:
-      "A unified creator workspace combining markdown editing, visual canvases, blog publishing, and task planning into one seamless platform for developers and creators.",
+      "One workspace for creators: an AI-assisted markdown editor with live preview, an Excalidraw canvas for diagrams, one-click blog publishing, and a built-in task planner.",
     tech: [
-      "Next.js (App Router)",
+      "Next.js",
       "React",
       "TypeScript",
       "Tailwind CSS",
@@ -164,7 +162,7 @@ export const projects = [
     title: "RouteX",
     slug: "routex",
     description:
-      "An AI-assisted platform for designing, testing, and inspecting APIs with real-time collaboration, smart tooling, and a clean developer-first interface.",
+      "A Postman alternative for API design and testing: REST requests, a WebSocket client for real-time events, shared workspaces for teams, and AI helpers that generate requests for you.",
     tech: [
       "Nextjs",
       "Better-Auth",
@@ -190,7 +188,7 @@ export const projects = [
     title: "CodeSense AI",
     slug: "codesense-ai",
     description:
-      "A collaboration tool that helps teams understand code faster, stay aligned, and work with greater clarity across the entire codebase.",
+      "Helps teams actually understand a codebase: auto-generated docs, context-aware code search, AI commit and activity summaries, and meeting transcripts with searchable context.",
     tech: [
       "Next.js",
       "React",
@@ -219,7 +217,7 @@ export const projects = [
     title: "AI Code Review",
     slug: "ai-code-review",
     description:
-      "An AI-powered GitHub code review platform that analyzes pull requests, detects bugs, generates intelligent summaries, and provides contextual suggestions to help teams ship better code faster.",
+      "Reviews GitHub pull requests automatically: AI-generated PR summaries, inline suggestions, bug and security detection, and semantic code search powered by Pinecone.",
     tech: [
       "Next.js",
       "React",
@@ -246,51 +244,6 @@ export const projects = [
     projectLink: "https://github.com/kartikey2004-git/AI-Code-Review",
     liveLink: "https://ai-code-review-sandy.vercel.app",
     currentlyBuilding: false,
-  },
-];
-
-export const people = [
-  {
-    id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    image:
-      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
-  },
-  {
-    id: 2,
-    name: "Robert Johnson",
-    designation: "Product Manager",
-    image:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 3,
-    name: "Jane Smith",
-    designation: "Data Scientist",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 4,
-    name: "Emily Davis",
-    designation: "UX Designer",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 5,
-    name: "Tyler Durden",
-    designation: "Soap Developer",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80",
-  },
-  {
-    id: 6,
-    name: "Dora",
-    designation: "The Explorer",
-    image:
-      "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
   },
 ];
 
@@ -465,99 +418,6 @@ export const technologies = [
   },
 ];
 
-export const skills = [
-  { src: "/svgs/React.svg", label: "React" },
-  { src: "/svgs/js.svg", label: "JavaScript" },
-  { src: "/svgs/TypeScript.svg", label: "TypeScript" },
-  { src: "/svgs/Node.js.svg", label: "Node.js" },
-  { src: "/svgs/PostgresSQL.svg", label: "PostgreSQL" },
-  { src: "/svgs/MongoDB.svg", label: "MongoDB" },
-];
-
-export const gradientMap = {
-  codesense: "bg-[#F2F2F2]",
-  routex: "bg-white/90",
-  kairo: "bg-[#212326]",
-  vartax: "bg-[#101218]",
-  connectify: "bg-[#F2F2F2]",
-  shortenx: "bg-[#F2F2F2]",
-  jobconnect: "bg-white/90",
-};
-
-export const products = [
-  {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail: "/b.webp",
-  },
-  {
-    title: "Shadcn UI",
-    link: "https://ui.shadcn.com",
-    thumbnail: "/shadcn.png",
-  },
-  {
-    title: "Hero UI",
-    link: "https://heroui.com",
-    thumbnail: "/hero.png",
-  },
-  {
-    title: "Chakra UI",
-    link: "https://chakra-ui.com",
-    thumbnail: "https://chakra-ui.com/og-image.png",
-  },
-  {
-    title: "Reactbits.dev",
-    link: "https://reactbits.dev",
-    thumbnail: "/a.webp",
-  },
-  {
-    title: "Motion Primitives",
-    link: "https://motion-primitives.com",
-    thumbnail: "/motion-primitives.png",
-  },
-  {
-    title: "21st.dev",
-    link: "https://21st.dev",
-    thumbnail: "/21st-dev.png",
-  },
-
-  {
-    title: "Hero UI",
-    link: "https://heroui.com",
-    thumbnail: "/hero.png",
-  },
-  {
-    title: "Chakra UI",
-    link: "https://chakra-ui.com",
-    thumbnail: "https://chakra-ui.com/og-image.png",
-  },
-  {
-    title: "Reactbits.dev",
-    link: "https://reactbits.dev",
-    thumbnail: "/a.webp",
-  },
-  {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail: "/b.webp",
-  },
-  {
-    title: "Shadcn UI",
-    link: "https://ui.shadcn.com",
-    thumbnail: "/shadcn.png",
-  },
-  {
-    title: "Motion Primitives",
-    link: "https://motion-primitives.com",
-    thumbnail: "/motion-primitives.png",
-  },
-  {
-    title: "21st.dev",
-    link: "https://21st.dev",
-    thumbnail: "/21st-dev.png",
-  },
-];
-
 export const navLinks = [
   {
     title: "Home",
@@ -582,6 +442,14 @@ export const navLinks = [
       <FiBookOpen className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
     ),
     href: "/blogs",
+  },
+  {
+    title: "Resume",
+    description: "Preview and download my resume",
+    icon: (
+      <FiFileText className="h-5 w-5 text-neutral-500 dark:text-neutral-300" />
+    ),
+    href: "/resume",
   },
 ];
 
@@ -727,7 +595,7 @@ export const moviesMeta = {
   identity: ["kartikey.dev", "watchlist.log"],
   headline: "Systems, Space, and Stories that make you think",
   subtext:
-    "A curated list of movies that align with how I think — problem solving, systems, and human decisions under pressure.",
+    "A curated list of movies that align with how I think problem solving, systems, and human decisions under pressure.",
   tags: ["sci-fi", "engineering", "systems thinking"],
   quote:
     '"The universe is under no obligation to make sense to you." — Neil deGrasse Tyson',
@@ -759,12 +627,32 @@ export const listenMeta = {
 export const gear = {
   tools: [
     {
-      category: "development",
-      items: ["VS Code", "Cursor", "Zed", "Windsurf"],
+      category: "editors & IDEs",
+      items: ["VS Code", "WebStorm", "PyCharm", "Zed", "Cursor"],
+    },
+    {
+      category: "AI coding agents",
+      items: ["Devin", "Trae", "Qoder", "Antigravity", "OpenCode", "LM Studio"],
     },
     {
       category: "terminal",
-      items: ["PowerShell", "Git Bash", "Windows Terminal"],
+      items: ["PowerShell", "Git Bash", "Windows Terminal", "Warp"],
+    },
+    {
+      category: "database",
+      items: ["Docker Desktop", "DBeaver", "MongoDB Compass", "MySQL Workbench"],
+    },
+    {
+      category: "API & testing",
+      items: ["Postman", "Insomnia", "Requestly"],
+    },
+    {
+      category: "productivity",
+      items: ["Wispr Flow", "Comet", "Loom", "OBS Studio", "MEGAsync"],
+    },
+    {
+      category: "communication",
+      items: ["Telegram", "Discord","X"],
     },
   ],
 

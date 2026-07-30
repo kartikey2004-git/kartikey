@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FaChevronRight } from "@/lib/icons";
 import { ArrowRight } from "lucide-react";
@@ -45,8 +46,22 @@ export default function BlogSection() {
 
   return (
     <section className="py-8 p-2">
-      <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8">
-        <h2 className="mb-4 sm:mb-8 text-lg font-semibold rounded-sm sm:text-3xl">Blogs</h2>
+      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8">
+        <div className="mb-4 sm:mb-8 flex items-center justify-between gap-4">
+          <h2 className="text-lg font-semibold rounded-sm sm:text-3xl">Blogs</h2>
+
+          <Button
+            asChild
+            variant="link"
+            size="sm"
+            className="group no-underline hover:no-underline"
+          >
+            <Link href="/blogs" onClick={playNavigateSound}>
+              View all blogs
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </Button>
+        </div>
 
         <div className="space-y-4 md:-ml-5 -ml-3">
           {blogs.slice(0, 3).map((blog) => (
@@ -80,17 +95,6 @@ export default function BlogSection() {
               </div>
             </Card>
           ))}
-        </div>
-
-        <div className="mt-4 sm:mt-8 text-center">
-          <Link
-            href="/blogs"
-            onClick={playNavigateSound}
-            className="inline-flex items-center gap-2 text-base sm:text-lg font-semibold hover:text-muted-foreground transition-colors"
-          >
-            View all Blogs
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3" />
-          </Link>
         </div>
       </div>
     </section>

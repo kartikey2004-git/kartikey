@@ -1,57 +1,68 @@
 "use client";
 
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import Link from "next/link";
 import { useClickSound } from "@/hooks/useClickSound";
+
+const personalItems = [
+  {
+    title: "Movies",
+    description:
+      "A curated watchlist of sci-fi and engineering stories, films that think about systems, problem-solving, and consequences the same way I do.",
+    href: "/watchlist",
+  },
+  {
+    title: "Gears",
+    description:
+      "The desk setup, keyboard, editors, and everyday development tools I actually use tuned for speed, focus, and shipping without friction.",
+    href: "/gears",
+  },
+  {
+    title: "Music",
+    description:
+      "The playlists that get me through long debugging sessions and late-night builds  coding tracks and favorites I keep coming back to.",
+    href: "/listen",
+  },
+];
 
 export default function PersonalSection() {
   const playNavigateSound = useClickSound("navigate");
 
-  const personalItems = [
-    {
-      title: "Movies",
-      description: "Sci-fi, engineering & systems thinking",
-      href: "/watchlist",
-    },
-    {
-      title: "Gears",
-      description: "Desk setup, keyboard & development tools",
-      href: "/gears",
-    },
-    {
-      title: "Music",
-      description: "Coding playlists and favorite tracks",
-      href: "/listen",
-    },
-  ];
-
   return (
-    <section className="py-12 sm:py-16 -mt-8">
-      <div className="mx-auto max-w-4xl px-5 sm:px-7 lg:px-9">
-        <h2 className="mb-8 text-2xl sm:text-3xl font-semibold tracking-tight">
+    <section className="py-8 p-2">
+      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8">
+        <h2 className="mb-4 sm:mb-8 text-lg font-semibold rounded-sm sm:text-3xl">
           Personal
         </h2>
 
-        <div className="divide-y divide-border">
-          {personalItems.map((item) => (
-            <Link
+        <div className="space-y-2 md:-ml-5 -ml-3">
+          {personalItems.map((item, index) => (
+            <Card
               key={item.href}
-              href={item.href}
-              onClick={playNavigateSound}
-              className="group flex items-center justify-between py-6 transition-colors"
+              className={`bg-transparent border-none shadow-none p-3 sm:p-5 lg:p-6 ${
+                index !== personalItems.length - 1
+                  ? "border-b border-border/50"
+                  : ""
+              }`}
             >
-              <div>
-                <h3 className="text-base sm:text-lg font-medium transition-colors group-hover:text-foreground">
-                  {item.title}
-                </h3>
+              <Link
+                href={item.href}
+                onClick={playNavigateSound}
+                className="group flex items-center justify-between gap-4"
+              >
+                <div>
+                  <h3 className="text-base font-semibold text-foreground sm:text-xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
 
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {item.description}
-                </p>
-              </div>
-
-              <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground" />
-            </Link>
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground" />
+              </Link>
+            </Card>
           ))}
         </div>
       </div>

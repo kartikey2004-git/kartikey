@@ -18,7 +18,7 @@ const Testimonials = () => {
       id="testimonials"
       className="overflow-x-hidden border-b border-border bg-background py-8 sm:py-10 md:py-12 lg:py-14 border-t border-border"
     >
-      <div className="mx-auto max-w-4xl px-4 sm:px-5 lg:px-8 grid grid-cols-1 overflow-hidden sm:grid-cols-1">
+      <div className="mx-auto max-w-3xl px-4 sm:px-5 lg:px-8 grid grid-cols-1 overflow-hidden sm:grid-cols-1">
         {/* LEFT AVATAR */}
         <div className="flex flex-col items-start justify-center text-start">
           <h3 className="text-lg font-semibold text-foreground sm:text-xl">

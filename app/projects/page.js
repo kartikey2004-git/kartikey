@@ -1,29 +1,20 @@
 "use client";
 
-import { FaChevronRight, FaChevronDown } from "@/lib/icons";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
-import { FiGithub } from "react-icons/fi";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { projects } from "@/app/data";
-import { useState } from "react";
 import { useClickSound } from "@/hooks/useClickSound";
 import PathnameDisplay from "@/components/PathnameDisplay";
-import Image from "next/image";
 
 export default function ProjectsPage() {
   const allProjects = [...projects].reverse();
   const playNavigateSound = useClickSound("navigate");
 
   return (
-    <div className="min-h-screen bg-background text-foreground ml-3 p-2">
-      <div className="mx-auto max-w-4xl px-4 sm:px-5 py-16">
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8 py-16">
         <div className="mb-12">
           <PathnameDisplay />
           <h1 className="text-3xl font-semibold tracking-tight">Projects</h1>
@@ -32,78 +23,34 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        <div className="space-y-8 -ml-5">
-          {allProjects.map((project, index) => {
-            return (
-              <article
-                  key={project.title}
-                  id={project.slug}
-                  className={`relative bg-background p-5 sm:p-6 space-y-5 scroll-mt-20 ${
-                    index !== allProjects.length - 1
-                      ? "border-b border-border/50"
-                      : ""
-                  }`}
-                >
-                  <div className="overflow-hidden border border-border/50">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      width={1200}
-                      height={700}
-                      className="w-full h-auto object-cover transition-transform duration-500 hover:scale-[1.05]"
-                    />
-                  </div>
+        <div className="space-y-2 md:-ml-5 -ml-3">
+          {allProjects.map((project, index) => (
+            <Card
+              key={project.title}
+              id={project.slug}
+              className={`bg-transparent border-none shadow-none p-3 sm:p-5 lg:p-6 scroll-mt-20 ${
+                index !== allProjects.length - 1
+                  ? "border-b border-border/50"
+                  : ""
+              }`}
+            >
+              <div className="flex flex-col space-y-2">
+                <h3 className="text-base font-semibold text-foreground sm:text-xl">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    onClick={playNavigateSound}
+                  >
+                    {project.title}
+                  </Link>
+                </h3>
 
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">
-                        {project.title}
-                      </h3>
-                    </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {project.description}
+                </p>
 
-                    <TooltipProvider delayDuration={120}>
-                      <div className="flex shrink-0 gap-2">
-                        {project.liveLink && (
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <a
-                                href={project.liveLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={playNavigateSound}
-                                className="rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
-                              >
-                                <ArrowUpRight className="h-4 w-4" />
-                              </a>
-                            </TooltipTrigger>
-                            <TooltipContent>Live Demo</TooltipContent>
-                          </Tooltip>
-                        )}
-
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <a
-                              href={project.projectLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={playNavigateSound}
-                              className="rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-foreground transition-colors"
-                            >
-                              <FiGithub className="h-4 w-4" />
-                            </a>
-                          </TooltipTrigger>
-                          <TooltipContent>Source Code</TooltipContent>
-                        </Tooltip>
-                      </div>
-                    </TooltipProvider>
-                  </div>
-
-                  <p className="text-sm sm:text-base leading-7 text-muted-foreground">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech, idx) => (
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex flex-wrap gap-2 -ml-1">
+                    {project.tech.slice(0, 4).map((tech, idx) => (
                       <Badge
                         key={idx}
                         variant="normal"
@@ -113,9 +60,19 @@ export default function ProjectsPage() {
                       </Badge>
                     ))}
                   </div>
-                </article>
-            );
-          })}
+
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    onClick={playNavigateSound}
+                    className="shrink-0 text-[14px] sm:text-sm text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1"
+                  >
+                    View
+                    <ArrowRight className="w-3 h-3 mt-1" />
+                  </Link>
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
       </div>
     </div>

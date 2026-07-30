@@ -6,7 +6,6 @@ import Hero from "@/components/Hero";
 import ProjectsSection from "@/components/Projects";
 import TechStack from "@/components/TechStack";
 import GithubSection from "@/components/Github";
-import Testimonials from "@/components/Testimonials";
 import BlogSection from "@/components/Blog";
 import PersonalSection from "@/components/Personal";
 
@@ -31,7 +30,6 @@ export default function Home() {
       <ProjectsSection />
       <TechStack />
       <GithubSection />
-      {/* <Testimonials /> */}
       <BlogSection />
       <PersonalSection />
       <Footer />

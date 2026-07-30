@@ -9,7 +9,7 @@ const GithubSection = () => {
       className="w-full overflow-x-hidden bg-transparent py-8 sm:py-14 lg:py-16 p-2"
       id="github"
     >
-      <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8">
+      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

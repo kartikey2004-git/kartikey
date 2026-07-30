@@ -6,7 +6,7 @@ import PathnameDisplay from "@/components/PathnameDisplay";
 export default function GearClient() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8 py-16">
+      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8 py-16">
         {/* Header */}
         <div className="mb-12">
           <div className="space-y-2">
@@ -27,7 +27,7 @@ export default function GearClient() {
               {gearMeta.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-2 py-1 text-xs font-mono bg-muted text-muted-foreground rounded-sm"
+                  className="px-2 py-1 text-xs font-mono text-muted-foreground"
                 >
                   {tag}
                 </span>
@@ -78,7 +78,6 @@ export default function GearClient() {
           </div>
         </div>
 
-        {/* ───────── MOBILE ───────── */}
         <div className="border-t border-border pt-8 mb-12">
           <h2 className="mb-4 text-xs font-mono uppercase tracking-widest text-muted-foreground">
             {gear.mobile.name}

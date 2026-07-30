@@ -13,7 +13,7 @@ export default function AboutMeSection() {
       id="how-i-build"
       className="w-full overflow-x-hidden bg-background py-12 sm:py-14 lg:py-16 p-2"
     >
-      <div className="mx-auto max-w-4xl px-4 sm:px-5 lg:px-8">
+      <div className="mx-auto max-w-3xl px-4 sm:px-5 lg:px-8">
         <div className="space-y-8 mb-6">
           <h2 className="text-xl font-semibold rounded-sm sm:text-3xl">
             Tech Stack

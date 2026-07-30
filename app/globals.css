@@ -3,6 +3,21 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Shrink the default type scale by one step app-wide (line-heights are
+   unitless ratios, so they stay proportional to the smaller sizes). */
+@theme {
+  --text-xs: 0.6875rem;
+  --text-sm: 0.75rem;
+  --text-base: 0.875rem;
+  --text-lg: 1rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.5rem;
+  --text-4xl: 1.875rem;
+  --text-5xl: 2.25rem;
+  --text-6xl: 3rem;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -46,7 +61,7 @@
 :root {
   --radius: 0.625rem;
   --background: #ffffff;
-  --foreground: #000000;
+  --foreground: #0f172a;
   --card: hsl(0 0% 98%);
   --card-foreground: #000000;
   --popover: hsl(0 0% 100%);
@@ -121,7 +136,7 @@
     min-height: 100%;
   }
   body {
-    @apply bg-background text-foreground overflow-x-hidden text-[15px] leading-6 sm:text-base sm:leading-7;
+    @apply bg-background text-foreground overflow-x-hidden text-sm leading-5 sm:text-base sm:leading-6 font-medium;
   }
   html {
     scroll-behavior: smooth;

@@ -89,7 +89,7 @@ const GithubDashboard = () => {
   return (
     <div className="w-full min-w-0 space-y-3 bg-transparent">
       {/* Year Selector */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-10">
         <h3 className="text-base font-semibold text-foreground sm:text-xl">
           GitHub Contributions
         </h3>

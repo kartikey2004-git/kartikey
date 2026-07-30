@@ -47,7 +47,7 @@ export default async function BlogPage({ params }) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8 py-16">
+      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8 py-16">
         <PathnameDisplay />
 
         <Link

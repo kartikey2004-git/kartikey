@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  BsList,
-  BsX,
-  BsGithub,
-  BsLinkedin,
-  BsMoon,
-  BsSun,
-} from "react-icons/bs";
-import { FaXTwitter } from "react-icons/fa6";
+import { BsMoon, BsSun } from "react-icons/bs";
 import Link from "next/link";
 import { navLinks } from "@/app/data";
 import {
@@ -78,7 +70,7 @@ export function Navbar() {
           : "bg-background/80"
           }`}
       >
-        <div className="max-w-4xl mx-auto px-3 sm:px-5 lg:px-8 h-16 flex items-center justify-between">
+        <div className="max-w-3xl mx-auto px-3 sm:px-5 lg:px-8 h-16 flex items-center justify-between">
           <nav className="flex items-center gap-4 lg:gap-6 xl:gap-8">
             {navLinks.map((link, index) => (
               <Link

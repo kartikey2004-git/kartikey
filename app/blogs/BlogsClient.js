@@ -82,7 +82,7 @@ export default function BlogsClient() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-4xl px-3 sm:px-5 lg:px-8 py-16">
+      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8 py-16">
         <div className="mb-12">
           <PathnameDisplay />
           <h1 className="text-lg font-semibold rounded-sm sm:text-3xl">
@@ -94,8 +94,8 @@ export default function BlogsClient() {
           {siteVisitors !== null && (
             <p className="mt-3 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
               <Users className="h-3 w-3" />
-              {siteVisitors.toLocaleString()} unique visitor
-              {siteVisitors !== 1 ? "s" : ""} to the site
+              {siteVisitors.toLocaleString()} visitor
+              {siteVisitors !== 1 ? "s" : ""}
             </p>
           )}
         </div>
@@ -119,7 +119,7 @@ export default function BlogsClient() {
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               placeholder="Search blogs by title, description, or content..."
-              className="h-auto flex-1 border-0 bg-transparent px-3 py-2.5 text-sm shadow-none placeholder:text-muted-foreground/50 focus-visible:ring-0"
+              className="h-auto flex-1 border-0 bg-transparent dark:bg-transparent px-3 py-2.5 text-sm shadow-none placeholder:text-muted-foreground/50 focus-visible:ring-0"
             />
 
             {isSearching && (
