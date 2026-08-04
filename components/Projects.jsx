@@ -60,7 +60,7 @@ export default function ProjectsSection() {
 
                 <div className="flex items-center justify-between gap-2">
                   <div className="flex flex-wrap gap-2 -ml-1">
-                    {project.tech.slice(0, 4).map((tech, idx) => (
+                    {project.tech.map((tech, idx) => (
                       <Badge
                         key={idx}
                         variant="normal"

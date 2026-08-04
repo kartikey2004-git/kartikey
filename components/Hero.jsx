@@ -27,7 +27,7 @@ const Hero = () => {
     },
     {
       icon: BsInstagram,
-      link: "https://www.instagram.com/_k4rtik.exe",
+      link: "https://www.instagram.com/k4rtikhuu",
       label: "Instagram",
     },
   ];
@@ -48,12 +48,12 @@ const Hero = () => {
               <div className="flex flex-col gap-4 sm:gap-6">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-5">
                   <div className="shrink-0">
-                    <div className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 overflow-hidden rounded-full ring-2 ring-background">
+                    <div className="relative h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 overflow-hidden">
                       <Image
-                        src="/toji.png"
+                        src="/svgs/me.png"
                         alt="Kartikey"
                         fill
-                        className="object-cover rounded-full"
+                        className="object-cover"
                       />
                     </div>
                   </div>

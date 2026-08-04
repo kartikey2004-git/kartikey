@@ -8,6 +8,7 @@ import TechStack from "@/components/TechStack";
 import GithubSection from "@/components/Github";
 import BlogSection from "@/components/Blog";
 import PersonalSection from "@/components/Personal";
+import GetInTouch from "@/components/GetInTouch";
 
 export default function Home() {
   useEffect(() => {
@@ -32,6 +33,7 @@ export default function Home() {
       <GithubSection />
       <BlogSection />
       <PersonalSection />
+      <GetInTouch />
       <Footer />
     </main>
   );

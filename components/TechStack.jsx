@@ -1,12 +1,25 @@
 "use client";
 
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+
 import { IoRocket } from "@/lib/icons";
 import { Badge } from "@/components/ui/badge";
 
-import { technologies, highlightsData, highlights } from "@/app/data";
+import {
+  technologies,
+  techCategories,
+  highlightsData,
+  highlights,
+} from "@/app/data";
 
 export default function AboutMeSection() {
-  const visibleTech = technologies;
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <section
@@ -22,28 +35,50 @@ export default function AboutMeSection() {
 
         <div className="space-y-12">
           {/* Skills Section */}
-          <div className="space-y-4 w-full">
-            <div className="flex flex-wrap gap-3">
-              {visibleTech.map((skill, idx) => (
-                <Badge
-                  key={idx}
-                  variant="outline"
-                  className="border-dashed border-2 bg-transparent px-4 py-2 text-sm"
-                >
-                  <div className="flex items-center gap-2">
-                    <img
-                      src={skill.icon}
-                      alt={skill.iconname}
-                      className="h-4 w-4"
-                    />
+          <div className="space-y-6 w-full">
+            {techCategories.map((category) => {
+              const categoryTech = technologies.filter(
+                (skill) => skill.category === category
+              );
 
-                    <span className="hidden sm:inline font-mono">
-                      {skill.iconname}
-                    </span>
+              if (categoryTech.length === 0) return null;
+
+              return (
+                <div key={category} className="space-y-3">
+                  <h3 className="text-xs font-mono uppercase tracking-[0.15em] text-muted-foreground/60">
+                    {category}
+                  </h3>
+
+                  <div className="flex flex-wrap gap-3">
+                    {categoryTech.map((skill, idx) => (
+                      <Badge
+                        key={idx}
+                        variant="outline"
+                        className="border-dashed border-2 bg-transparent px-4 py-2 text-sm"
+                      >
+                        <div className="flex items-center gap-2">
+                          <img
+                            src={
+                              mounted &&
+                              resolvedTheme === "light" &&
+                              skill.iconLight
+                                ? skill.iconLight
+                                : skill.icon
+                            }
+                            alt={skill.iconname}
+                            className="h-4 w-4"
+                          />
+
+                          <span className="hidden sm:inline font-mono">
+                            {skill.iconname}
+                          </span>
+                        </div>
+                      </Badge>
+                    ))}
                   </div>
-                </Badge>
-              ))}
-            </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Who Am I Section */}
@@ -54,11 +89,7 @@ export default function AboutMeSection() {
                   Kartikey Bhatnagar
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  I architect full-stack applications that don't fall apart at 3
-                  AM. React, Node.js, real-time systems, and the occasional AI
-                  integration when it actually makes sense (not everything needs
-                  GPT-5). Currently building tools that developers actually want
-                  to use.
+                  {highlightsData[0].text}
                 </p>
               </div>
 
