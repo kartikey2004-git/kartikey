@@ -2,6 +2,8 @@ import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./provider";
 import { Navbar } from "@/components/Navbar";
+import { AppShell } from "@/components/AppShell";
+import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
 import SiteVisitorTracker from "@/components/SiteVisitorTracker";
 
@@ -76,10 +78,9 @@ export default function RootLayout({ children }) {
         <Analytics />
         <SiteVisitorTracker />
         <Providers>
+          <Toaster />
           <Navbar />
-          <div className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-3xl w-full flex-col overflow-x-hidden">
-            {children}
-          </div>
+          <AppShell>{children}</AppShell>
         </Providers>
       </body>
     </html>

@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { BsMoon, BsSun } from "react-icons/bs";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useLocalStorage } from "usehooks-ts";
 import { navLinks } from "@/app/data";
 import {
   ThemeAnimationType,
@@ -10,12 +12,18 @@ import {
 } from "react-theme-switch-animation";
 import { useTheme } from "next-themes";
 import GlobalSearch from "@/components/GlobalSearch";
+import { FOCUS_MODE_KEY } from "@/lib/reading-storage";
+
+const BLOG_POST_PATTERN = /^\/blogs\/[^/]+$/;
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const pathname = usePathname();
+  const [focusMode] = useLocalStorage(FOCUS_MODE_KEY, false, { initializeWithValue: false });
+  const isHidden = BLOG_POST_PATTERN.test(pathname) && focusMode;
 
   const { ref: themeToggleRef, toggleSwitchTheme } = useModeAnimation({
     animationType: ThemeAnimationType.CIRCLE,
@@ -62,7 +70,8 @@ export function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full transition-all duration-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}
+      className={`sticky top-0 z-40 w-full transition-all duration-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"} ${isHidden ? "-translate-y-full h-0 overflow-hidden opacity-0 pointer-events-none" : ""}`}
+      suppressHydrationWarning
     >
       <div
         className={`w-full backdrop-blur-xl transition-all duration-500 ease-out ${scrolled

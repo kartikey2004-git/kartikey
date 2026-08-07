@@ -47,6 +47,7 @@
     "recharts": "^3.4.1",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.1",
+    "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "tsparticles": "^3.9.1",
     "usehooks-ts": "^3.1.1"
