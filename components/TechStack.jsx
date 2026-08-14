@@ -3,15 +3,9 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
-import { IoRocket } from "@/lib/icons";
 import { Badge } from "@/components/ui/badge";
 
-import {
-  technologies,
-  techCategories,
-  highlightsData,
-  highlights,
-} from "@/app/data";
+import { technologies, techCategories, highlightsData } from "@/app/data";
 
 export default function AboutMeSection() {
   const { resolvedTheme } = useTheme();
@@ -60,8 +54,8 @@ export default function AboutMeSection() {
                           <img
                             src={
                               mounted &&
-                              resolvedTheme === "light" &&
-                              skill.iconLight
+                                resolvedTheme === "light" &&
+                                skill.iconLight
                                 ? skill.iconLight
                                 : skill.icon
                             }
@@ -82,43 +76,25 @@ export default function AboutMeSection() {
           </div>
 
           {/* Who Am I Section */}
-          <div className="space-y-4 w-full">
-            <div className="space-y-4">
-              <div>
-                <h4 className="mb-2 text-lg font-semibold text-foreground sm:text-xl">
-                  Kartikey Bhatnagar
-                </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {highlightsData[0].text}
+          <div className="w-full space-y-5 border-t border-border/50 pt-8 sm:pt-10">
+            <div className="space-y-1">
+              <p className="text-xs font-mono uppercase tracking-[0.15em] text-muted-foreground/60">
+                Who Am I
+              </p>
+              <h4 className="text-xl font-semibold text-foreground sm:text-2xl">
+                Kartikey Bhatnagar
+              </h4>
+            </div>
+
+            <div className="space-y-4 border-l-4 border-foreground/70 pl-4 sm:pl-6">
+              {highlightsData[0].paragraphs.map((paragraph, idx) => (
+                <p
+                  key={idx}
+                  className="text-sm leading-relaxed text-muted-foreground sm:text-base"
+                >
+                  {paragraph}
                 </p>
-              </div>
-
-              <div className="space-y-3">
-                <div className="mt-6 sm:mt-8 flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-3">
-                  {highlights.map(({ Icon, text }, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-center gap-2 sm:gap-2.5 text-xs text-muted-foreground sm:text-sm"
-                    >
-                      <Icon className="h-3.5 w-3.5 text-foreground/70 flex-shrink-0 mt-0.5 sm:h-4 sm:w-4" />
-                      <span className="text-xs sm:text-sm leading-relaxed">
-                        {text}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="relative mt-6 sm:mt-8 max-w-full border border-border bg-card px-3 py-2.5 sm:mt-8 sm:max-w-none sm:px-4 sm:py-3 lg:px-5 lg:py-4">
-                  <span className="absolute left-0 top-0 h-full w-1 bg-foreground/60" />
-
-                  <div className="flex items-start gap-3 pl-3">
-                    <IoRocket className="mt-1 h-3.5 w-3.5 text-foreground/70 sm:h-4 sm:w-4" />
-                    <p className="text-xs italic text-muted-foreground sm:text-sm">
-                      {highlightsData[0].subheading}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

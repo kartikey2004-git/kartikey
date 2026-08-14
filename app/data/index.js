@@ -2,11 +2,7 @@ import {
   CiFolderOn,
   FiBookOpen,
   FiFileText,
-  FiServer,
-  FiZap,
-  FiCpu,
   IoHomeOutline,
-  FaGear,
 } from "@/lib/icons";
 
 export const projects = [
@@ -105,7 +101,7 @@ export const projects = [
       "Better Auth",
       "Next.js",
     ],
-    image: "/kairo.png",
+    image: "/kairoo.png",
     features: [
       "Chat with AI and pull live web results without leaving the terminal.",
       "Turn simple prompts into complete applications or useful code.",
@@ -115,7 +111,7 @@ export const projects = [
     bg: "kairo",
     projectLink: "https://github.com/kartikey2004-git/Kairo",
     liveLink: "",
-    currentlyBuilding: true,
+    currentlyBuilding: false,
   },
   {
     title: "VartaX",
@@ -169,7 +165,7 @@ export const projects = [
     bg: "markstack",
     projectLink: "https://github.com/kartikey2004-git/markstack",
     liveLink: "https://markstack-app.vercel.app",
-    currentlyBuilding: true,
+    currentlyBuilding: false,
   },
   {
     title: "RouteX",
@@ -223,34 +219,92 @@ export const projects = [
     bg: "codesense",
     projectLink: "https://github.com/kartikey2004-git/CodeSense-AI",
     liveLink: "",
-    currentlyBuilding: true,
+    currentlyBuilding: false,
   },
   {
-    title: "AI Code Review",
-    slug: "ai-code-review",
+    title: "SQLFlow",
+    slug: "sqlflow",
     description:
-      "Reviews GitHub pull requests automatically: AI-generated PR summaries, inline suggestions, bug and security detection, and semantic code search powered by Pinecone.",
+      "A multi-tenant SQL learning platform with isolated PostgreSQL sandboxes for executing and grading student queries. It separates assignment data from execution infrastructure while keeping user workloads isolated.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Express.js",
+      "PostgreSQL",
+      "MongoDB",
+      "Monaco Editor",
+    ],
+    image: "/sql.png",
+    features: [
+      "Isolated PostgreSQL sandbox for every user.",
+      "Dynamic database provisioning from assignment schemas.",
+      "Order-independent SQL result comparison and grading.",
+      "Separate MongoDB and PostgreSQL workloads with TTL-based audit logs.",
+    ],
+    bg: "sqlflow",
+    projectLink: "https://github.com/kartikey2004-git/SQLFlow",
+    liveLink: "",
+    currentlyBuilding: false,
+  },
+  {
+    title: "Kyron",
+    slug: "kyron",
+    description:
+      "An AI-powered code review system that understands a repository's structure, retrieves relevant code context, and automatically reviews GitHub pull requests for bugs, security issues, and code quality.",
     tech: [
       "TypeScript",
       "Next.js",
       "PostgreSQL",
       "Prisma",
-      "Docker",
+      "Inngest",
+      "Tree-sitter",
+      "pgvector",
+      "Gemini",
       "Redis",
-      "LLMs & RAG",
+      "Octokit",
+      "RAG",
       "OpenTelemetry",
     ],
     image: "/kryon.png",
     features: [
-      "AI-generated pull request summaries for instant understanding of code changes.",
-      "Context-aware inline suggestions and automated review comments directly on PRs.",
-      "Automated bug and security vulnerability detection before code reaches production.",
-      "Semantic AI code analysis powered by vector search and background workflows for smarter reviews.",
+      "AST-based repository indexing with Tree-sitter for structure-aware code analysis.",
+      "Semantic code retrieval using pgvector and HNSW to provide relevant context during PR reviews.",
+      "Incremental indexing that avoids re-processing unchanged code and reduces embedding costs.",
+      "Automated GitHub PR summaries, inline review suggestions, and bug and security vulnerability detection.",
+      "Durable background review workflows with crash recovery, retries, and rate-limit handling.",
     ],
-    bg: "ai-code-review",
+    bg: "kyron",
     projectLink: "https://github.com/kartikey2004-git/AI-Code-Review",
     liveLink: "https://ai-code-review-sandy.vercel.app",
     currentlyBuilding: false,
+  },
+  {
+    title: "YSync",
+    slug: "ysync",
+    description:
+      "A real-time collaborative text editor built from scratch around a custom sequence CRDT. It handles concurrent edits, offline changes, presence, and reconnects while keeping replicas conflict-free.",
+    tech: [
+      "TypeScript",
+      "Node.js",
+      "WebSockets",
+      "React",
+      "PostgreSQL",
+      "Redis",
+      "Prisma",
+      "IndexedDB",
+      "Sequence CRDT",
+    ],
+    image: "/ysync.png",
+    features: [
+      "Custom RGA-based sequence CRDT for conflict-free editing.",
+      "Real-time cursor and selection presence across clients.",
+      "Offline-first editing with CRDT-based merge on reconnect.",
+      "Persistent operation log with snapshots and tombstone garbage collection.",
+    ],
+    bg: "ysync",
+    projectLink: "https://github.com/kartikey2004-git/ysync",
+    liveLink: "https://ysync-web.kartikeybhatnagar247.workers.dev",
+    currentlyBuilding: true,
   },
 ];
 
@@ -571,36 +625,13 @@ export const navLinks = [
   },
 ];
 
-export const highlights = [
-  {
-    Icon: FiServer,
-    text: "Full-stack architecture",
-  },
-  {
-    Icon: FiZap,
-    text: "Real-time systems",
-  },
-  {
-    Icon: FiCpu,
-    text: "Observability-driven debugging",
-  },
-  {
-    Icon: FaGear,
-    text: "Practical AI integration",
-  },
-];
-
 export const highlightsData = [
   {
     heading: "Who Am I?",
-    text:
-      "I build full-stack products end to end | React and Next.js up front, " +
-      "Node.js and Express underneath, and enough of an observability stack " +
-      "(Prometheus, Grafana, Loki, Tempo) to know when something's actually " +
-      "broken instead of guessing. Currently building tools that developers " +
-      "actually want to use.",
-    subheading:
-      "If you can't see it failing, you don't actually own it.",
+    paragraphs: [
+      "I like building systems from the ground up and understanding the trade-offs behind them. Most of my time goes into figuring out what's happening underneath the abstractions especially when something breaks, needs to scale, or needs to be made more reliable and fault-tolerant. I enjoy building the infrastructure around products just as much as building the products themselves.",
+      "I'm usually building something, shipping it, breaking it, and figuring out why it broke. When I'm not coding, I'm probably reading an engineering article, scrolling through tech Twitter, or getting lost in a good sci-fi book. And when I've completely fucked up, you'll probably find me chilling with the homies.",
+    ],
   },
 ];
 

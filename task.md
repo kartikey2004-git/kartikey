@@ -1,226 +1,49 @@
-You are working on a production-grade Next.js blog application.
-
-implement all this on single blog page
-
-Implement the following reading experience features with clean, modular, maintainable code. Do not break existing functionality. Reuse existing components where possible and follow the current design system.
-
-## Requirements
-
-### 1. Reading Progress Bar
-- Thin progress bar fixed at the top.
-- Progress updates smoothly while scrolling.
-- Should be lightweight and performant (requestAnimationFrame/throttled if needed).
-
----
-
-### 2. Words Left Counter
-- Calculate total words in the article.
-- Estimate words remaining based on current scroll position.
-- Display:
-  - "423 words left"
-  - Hide when article is finished.
-
----
-
-### 3. Copy Code Button
-For **every** code block:
-- Add a copy button in the top-right.
-- Copy the raw code.
-- Show success feedback ("Copied!" or check icon).
-- Works for fenced code blocks (` ``` `) regardless of language.
-
-Also support copy for any custom/preformatted code blocks already used in the project.
-
----
-
-### 4. Clickable Keywords
-For every keyword/tag shown in the blog:
-- Clicking should open ChatGPT search for that keyword.
-- URL format:
-
-https://chatgpt.com/?q=<keyword>
-
-Open in a new tab.
-
----
-
-### 5. Scroll Milestone Messages
-While reading, show small toast messages such as:
-
-25%
-"You're getting into it 👀"
-
-50%
-"Halfway there."
-
-75%
-"Almost finished."
-
-100%
-"You made it 🎉"
-
-Requirements:
-- Trigger only once per article.
-- Smooth animation.
-- Non-intrusive.
-
----
-
-### 6. Keyboard Shortcuts
-
-Implement:
-
-J → next section
-
-K → previous section
-
-T → scroll to top
-
-F → toggle Focus Mode
-
-? → show shortcuts modal
-
-Do not trigger when typing inside inputs or textareas.
-
----
-
-### 7. Focus Mode
-Toggle a distraction-free reading mode.
-
-Requirements:
-- Hide unnecessary UI.
-- Maximize article width.
-- Hide sidebar/navbar if appropriate.
-- Persist preference.
-- Smooth transition.
-
----
-
-### 8. Adjustable Typography
-Reader controls:
-
-- Increase font size
-- Decrease font size
-- Reset
-
-Also allow:
-
-- Line height adjustment
-- Content width adjustment (optional)
-
-Persist settings using localStorage.
-
----
-
-### 9. Reading Streak (localStorage)
-Anonymous users only.
-
-Requirements:
-- Store last reading date.
-- Track consecutive reading days.
-- Display:
-
-🔥 5 day streak
-
-Reset streak if a day is skipped.
-
-No backend.
-
----
-
-### 10. Highlight-to-Save Notes (localStorage)
-
-When user selects text:
-
-Show small floating toolbar:
-- Save Note
-
-Saving should store:
-
-{
-  articleSlug,
-  selectedText,
-  createdAt
-}
-
-Persist in localStorage.
-
-Allow viewing saved highlights later.
-
-No backend.
-
----
-
-### 11. Resume Reading
-Save reading position automatically.
-
-Store:
-- article slug
-- scroll percentage
-- timestamp
-
-When reopening the article:
-- Ask:
-  "Resume where you left off?"
-- Restore scroll position if accepted.
-
-localStorage only.
-
----
-
-### 12. Reading Stats
-Display reader stats such as:
-
-- Reading time
-- Words
-- Characters
-- Paragraph count
-- Images
-- Code blocks
-
-Compute automatically from article content.
-
----
-
-### 13. Next Recommended Read
-At the end of every article:
-- Show 3 recommended posts.
-- Prefer:
-  - Same tags
-  - Same category
-  - Otherwise latest posts
-
-Include:
-- Cover image
-- Title
-- Reading time
-- Short description
-
----
-
-## Technical Requirements
-
-- Next.js App Router
-- TypeScript
-- React
-- TailwindCSS
-- shadcn/ui where appropriate
-- Use reusable hooks/components
-- Keep components small and composable.
-- Avoid unnecessary re-renders.
-- Use IntersectionObserver where beneficial.
-- Use requestAnimationFrame for scroll-heavy logic.
-- Store anonymous user data only in localStorage.
-- No backend/database changes.
-- No new heavy dependencies unless absolutely necessary.
-- Ensure accessibility (ARIA labels, keyboard navigation).
-- Mobile responsive.
-- Maintain current visual design and avoid layout shifts.
-
-## Deliverables
-
-1. Implement every feature completely.
-2. Create reusable hooks where appropriate.
-3. Keep the code production-ready.
-4. Explain any architectural decisions if significant changes are made.
-5. Ensure all features work together without conflicts.
+Implement a **responsive Projects carousel** for the **Projects section on the home page** using the existing **shadcn/ui Carousel** component and project data already present in the codebase.
+
+### Requirements
+
+* Use **shadcn/ui Carousel** rather than building a custom carousel from scratch.
+* First inspect the existing project structure, design system, components, spacing, typography, and project data. **Reuse existing components/styles wherever possible.**
+* Keep the current visual identity of the site intact—do not introduce an unrelated design language.
+* The carousel must be **fully responsive**:
+
+  * Mobile: 1 project card
+  * Small/tablet screens: 1–2 cards depending on available width
+  * Desktop: 2–3 cards depending on viewport width
+  * Large screens should use the available space without making cards excessively wide.
+* Use responsive `basis-*` classes or equivalent shadcn-friendly Tailwind patterns rather than hardcoded JavaScript breakpoints.
+* Add previous/next controls that remain usable on mobile and desktop.
+* Support touch/swipe gestures naturally on mobile.
+* Ensure cards have consistent heights and alignment even when project titles/descriptions differ.
+* Preserve existing project links, images, technologies, GitHub/demo buttons, and metadata.
+* Do not duplicate project data just for the carousel.
+* Handle an odd number of projects cleanly.
+* Make sure there is no horizontal page overflow at any breakpoint.
+* Ensure keyboard navigation and accessible carousel controls work correctly.
+* Add appropriate ARIA labels where needed.
+* Respect `prefers-reduced-motion` and avoid unnecessary animations.
+
+### Visual behavior
+
+The carousel should feel like a **premium portfolio section**, not a generic UI component.
+
+* Keep spacing consistent with the rest of the homepage.
+* Avoid excessive rounded containers, unnecessary borders, gradients, or decorative elements unless the existing design already uses them.
+* Cards should have clear visual hierarchy:
+  **project image → title → short description → tech stack → actions**
+* On smaller screens, prioritize readability and interaction over showing multiple cards.
+* On desktop, allow a subtle peek of the next card if it fits naturally, making it obvious that the section is horizontally scrollable.
+* Keep navigation controls visually subtle and aligned with the existing design.
+
+### Implementation constraints
+
+* Use the project's existing Tailwind/shadcn conventions.
+* Do not install another carousel library.
+* Do not rewrite unrelated components.
+* Do not introduce unnecessary abstractions.
+* Check the implementation at approximately:
+  `320px`, `375px`, `768px`, `1024px`, `1280px`, and `1440px`.
+* Fix any layout shifts, overflow, clipping, or awkward card sizing discovered during testing.
+* Keep the implementation clean, production-ready, and easy to maintain.
+
+Before coding, inspect the existing homepage and project components and determine the **best integration point**. Then implement the carousel with minimal changes to the existing architecture.
