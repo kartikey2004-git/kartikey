@@ -304,7 +304,7 @@ export const projects = [
     bg: "ysync",
     projectLink: "https://github.com/kartikey2004-git/ysync",
     liveLink: "https://ysync-web.kartikeybhatnagar247.workers.dev",
-    currentlyBuilding: true,
+    currentlyBuilding: false,
   },
 ];
 
@@ -818,19 +818,6 @@ export const gear = {
     storage: "477GB SSD",
   },
 
-  extensions: [
-    "Prettier",
-    "ESLint",
-    "Tailwind CSS IntelliSense",
-    "Git Graph",
-    "Thunder Client",
-    "Prisma",
-    "MongoDB",
-    "Live Server",
-    "Material Icon Theme",
-    "WakaTime",
-  ],
-
   mobile: {
     name: "realme C67 5G",
     ui: "realme UI 6.0",
@@ -846,7 +833,7 @@ export const gearMeta = {
   identity: ["kartikey.dev", "tools.log"],
   headline: "Tools I use to build and ship",
   subtext:
-    "A snapshot of my daily development environment — optimized for speed, debugging, and iteration.",
+    "A snapshot of my daily development environment, optimized for speed, debugging, and iteration.",
   tags: ["dev stack", "workflow", "windows"],
   quote: '"Good tools make hard problems easier."',
 };

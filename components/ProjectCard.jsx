@@ -10,17 +10,17 @@ import { Button } from "@/components/ui/button";
 
 export default function ProjectCard({ project, onNavigate }) {
   return (
-    <Card className="h-auto flex-col gap-0 overflow-hidden border-border/50 bg-transparent p-0 sm:h-72 sm:flex-row">
+    <Card className="h-auto flex-col gap-0 overflow-hidden border-border/50 bg-transparent p-0">
       <Link
         href={`/projects/${project.slug}`}
         onClick={onNavigate}
-        className="relative block h-40 w-full shrink-0 overflow-hidden border-b border-border/50 bg-white sm:h-auto sm:w-1/2 sm:border-b-0 sm:border-r"
+        className="relative block h-64 w-full shrink-0 overflow-hidden border-b border-border/50 bg-white sm:h-80"
       >
         <Image
           src={project.image}
           alt={project.title}
           fill
-          sizes="(min-width: 768px) 384px, 100vw"
+          sizes="(min-width: 640px) 720px, 100vw"
           className="object-contain"
         />
       </Link>

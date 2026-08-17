@@ -81,16 +81,22 @@ export default function AboutMeSection() {
               <p className="text-xs font-mono uppercase tracking-[0.15em] text-muted-foreground/60">
                 Who Am I
               </p>
-              <h4 className="text-xl font-semibold text-foreground sm:text-2xl">
-                Kartikey Bhatnagar
-              </h4>
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h4 className="text-xl font-semibold text-foreground sm:text-2xl">
+                  Kartikey Bhatnagar
+                </h4>
+              </div>
             </div>
 
-            <div className="space-y-4 border-l-4 border-foreground/70 pl-4 sm:pl-6">
+            <div className="space-y-5 border-l-2 border-foreground/30 pl-4 sm:pl-6">
               {highlightsData[0].paragraphs.map((paragraph, idx) => (
                 <p
                   key={idx}
-                  className="text-sm leading-relaxed text-muted-foreground sm:text-base"
+                  className={
+                    idx === 0
+                      ? "text-sm leading-relaxed text-foreground/90 sm:text-base"
+                      : "text-sm leading-relaxed text-muted-foreground sm:text-base"
+                  }
                 >
                   {paragraph}
                 </p>

@@ -2,8 +2,7 @@ import PathnameDisplay from "@/components/PathnameDisplay";
 
 const RESUME_URL =
   "https://drive.google.com/file/d/1eyrmowrL6wTZLZEx5cpDHqG20rK9nGnc/view";
-const RESUME_PREVIEW_URL =
-  "https://drive.google.com/file/d/1eyrmowrL6wTZLZEx5cpDHqG20rK9nGnc/preview";
+const RESUME_PDF_URL = "/resume.pdf";
 
 export const metadata = {
   title: "Resume",
@@ -25,7 +24,7 @@ export default function ResumePage() {
             <PathnameDisplay />
             <h1 className="text-lg font-semibold sm:text-3xl">Resume</h1>
             <p className="mt-2 text-md text-muted-foreground">
-              Preview it below, or open it in Google Drive.
+              Here’s my resume. You can also view it directly on Drive.
             </p>
           </div>
 
@@ -40,10 +39,11 @@ export default function ResumePage() {
         </header>
 
         <div className="overflow-hidden rounded-md border border-border/50">
-          <iframe
-            src={RESUME_PREVIEW_URL}
+          <embed
+            src={RESUME_PDF_URL}
+            type="application/pdf"
             title="Resume preview"
-            className="w-full h-[75vh]"
+            className="aspect-[1/1.414] w-full"
           />
         </div>
       </div>

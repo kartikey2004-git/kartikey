@@ -57,20 +57,7 @@ export default function ProjectsSection() {
                 className="basis-full pl-4"
               >
                 <Card className="h-auto flex-col gap-0 overflow-hidden border-border/50 bg-transparent p-0 sm:h-76 sm:flex-row">
-                  <Link
-                    href={`/projects/${project.slug}`}
-                    onClick={playNavigateSound}
-                    className="relative block h-40 w-full shrink-0 overflow-hidden border-b bg-white sm:h-auto sm:w-1/2 sm:border-b-0 sm:border-r"
-                  >
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(min-width: 768px) 384px, 100vw"
-                      className="object-contain"
-                    />
-                  </Link>
-
+                  
                   <div className="flex min-w-0 flex-1 flex-col gap-2 p-3 sm:p-4 mt-4">
                     <div className="flex items-start justify-between gap-2">
                       <h3 className="text-base font-semibold text-foreground sm:text-lg">
@@ -135,6 +122,20 @@ export default function ProjectsSection() {
                       )}
                     </div>
                   </div>
+
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    onClick={playNavigateSound}
+                    className="relative block h-40 w-full shrink-0 overflow-hidden border-b bg-white sm:h-auto sm:w-1/2 sm:border-b-0 sm:border-r"
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(min-width: 768px) 384px, 100vw"
+                      className="object-contain"
+                    />
+                  </Link>
                 </Card>
               </CarouselItem>
             ))}

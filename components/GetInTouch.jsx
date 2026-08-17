@@ -1,33 +1,131 @@
 "use client";
 
 import { FaXTwitter } from "react-icons/fa6";
+import { BsInstagram } from "react-icons/bs";
+import { Mail, ArrowUpRight } from "lucide-react";
+
+const EMAIL = "kartikeybhatnagar247@gmail.com";
+
+const EMAIL_SUBJECT = "Let's build something";
+const EMAIL_BODY =
+  "Hey Kartikey,\n\nI came across your work and wanted to reach out about a project / opportunity.\n\n\n";
+
+const GMAIL_COMPOSE_HREF = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+  EMAIL
+)}&su=${encodeURIComponent(EMAIL_SUBJECT)}&body=${encodeURIComponent(
+  EMAIL_BODY
+)}`;
+
+const X_RECIPIENT_ID = "2034691170979520512";
+const X_DM_TEXT = "Hey Kartikey! wassup";
+
+const X_DM_HREF = `https://x.com/messages/compose?recipient_id=${X_RECIPIENT_ID}&text=${encodeURIComponent(
+  X_DM_TEXT
+)}`;
+
+const contacts = [
+  {
+    key: "x",
+    icon: FaXTwitter,
+    label: "X",
+    description: "Let’s connect, slide into my DMs.",
+    href: X_DM_HREF,
+    external: true,
+  },
+  {
+    key: "email",
+    icon: Mail,
+    label: "Email",
+    description: "Got an idea, opportunity, or just wanna talk? Drop me a mail.",
+    href: GMAIL_COMPOSE_HREF,
+    external: true,
+  },
+];
 
 export default function GetInTouch() {
   return (
-    <section className="w-full overflow-x-hidden bg-background py-8 p-2">
+    <section className="w-full overflow-x-hidden bg-background py-12 sm:py-14 lg:py-16 px-2">
       <div className="mx-auto max-w-3xl px-4 sm:px-5 lg:px-8">
-        <div className="relative border border-border bg-card px-3 py-2.5 sm:px-4 sm:py-3 lg:px-5 lg:py-4">
-          <span className="absolute left-0 top-0 h-full w-1 bg-foreground/60" />
+        {/* Header */}
+        <div className="space-y-2">
+          <p className="text-xs font-mono uppercase tracking-[0.15em] text-muted-foreground/60">
+            Contact
+          </p>
 
-          <div className="space-y-3 pl-3">
-            <h4 className="text-lg font-semibold text-foreground sm:text-xl">
-              Let&apos;s Talk
-            </h4>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Got an opportunity, an idea worth discussing, or just want to
-              talk? Whether it&apos;s work, a collab, or just saying hi
-              as a fellow builder, drop a DM, I read all of them.
-            </p>
-            <a
-              href="https://x.com/kartikeybuilds"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-mono text-foreground md:hover:text-muted-foreground transition-colors"
-            >
-              <FaXTwitter className="h-3.5 w-3.5" />
-              DM me on X
-            </a>
-          </div>
+          <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            Let&apos;s build something worth shipping.
+          </h2>
+        </div>
+
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Good ideas, hard problems, weird experiments, I&apos;m always down
+          for the next one.
+        </p>
+
+        {/* Contact Links */}
+        <div className="mt-8 divide-y divide-border/50 border-y border-border/50">
+          {contacts.map(
+            ({
+              key,
+              icon: Icon,
+              label,
+              description,
+              href,
+              external,
+            }) => (
+              <a
+                key={key}
+                href={href}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                onClick={
+                  key === "x"
+                    ? () => {
+                        navigator.clipboard
+                          .writeText(X_DM_TEXT)
+                          .then(() =>
+                            toast("Message copied — paste it in the DM!")
+                          )
+                          .catch(() => {});
+                      }
+                    : undefined
+                }
+                className="group relative flex items-center gap-3 overflow-hidden px-1 py-4 transition-all duration-300 sm:gap-4 sm:px-2 md:hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                {/* Hover accent */}
+                <span className="absolute inset-y-0 left-0 w-px origin-bottom scale-y-0 bg-foreground transition-transform duration-300 group-hover:scale-y-100" />
+
+                {/* Icon */}
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-border text-foreground/70 transition-all duration-300 group-hover:scale-105 group-hover:border-foreground/50 group-hover:text-foreground sm:h-10 sm:w-10">
+                  <Icon className="h-4 w-4" />
+                </span>
+
+                {/* Content */}
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-medium text-foreground transition-colors duration-200 sm:text-base">
+                    {label}
+                  </span>
+
+                  <span className="block truncate text-xs text-muted-foreground transition-colors duration-200 sm:text-sm group-hover:text-foreground/80">
+                    {description}
+                  </span>
+                </span>
+
+                {/* Arrow */}
+                <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+              </a>
+            )
+          )}
+        </div>
+
+        {/* Availability */}
+        <div className="mt-6 flex items-center gap-2 text-xs font-mono uppercase tracking-[0.15em] text-muted-foreground/60">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-foreground/30" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-foreground/60" />
+          </span>
+
+          <span>Open to building cool things</span>
         </div>
       </div>
     </section>
