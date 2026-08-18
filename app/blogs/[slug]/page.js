@@ -7,7 +7,7 @@ import { countWords, computeReadingStats, extractKeywords, rankRelatedPosts } fr
 import PathnameDisplay from "@/components/PathnameDisplay";
 import BlogContent from "@/components/BlogContent";
 import BlogViewTracker from "@/components/BlogViewTracker";
-import { ReadingExperience, ArticleScrollBoundary } from "@/components/blog/ReadingExperience";
+import { ReadingExperience, ArticleScrollBoundary, BlogPostWidthWrapper } from "@/components/blog/ReadingExperience";
 import { ReadingProgressBar } from "@/components/blog/ReadingProgressBar";
 import { WordsLeftCounter } from "@/components/blog/WordsLeftCounter";
 import { MilestoneToasts } from "@/components/blog/MilestoneToasts";
@@ -72,7 +72,7 @@ export default async function BlogPage({ params }) {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8 py-16">
+      <BlogPostWidthWrapper>
         <PathnameDisplay />
 
         <ReadingExperience key={blog.slug} slug={blog.slug} totalWords={wordCount} headings={headings}>
@@ -123,7 +123,7 @@ export default async function BlogPage({ params }) {
           <HighlightToolbar />
           <ResumePrompt />
         </ReadingExperience>
-      </div>
+      </BlogPostWidthWrapper>
     </div>
   );
 }

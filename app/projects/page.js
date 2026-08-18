@@ -14,11 +14,11 @@ export default function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8 py-16">
+      <div className="mx-auto max-w-3xl py-16">
         <div className="mb-12">
           <PathnameDisplay />
-          <h1 className="text-3xl font-semibold tracking-tight">Projects</h1>
-          <p className="mt-2 text-md text-muted-foreground">
+          <h1 className="heading-lg">Projects</h1>
+          <p className="mt-2 body-text">
             Real projects. Real users. Real code.
           </p>
         </div>

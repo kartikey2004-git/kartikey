@@ -6,7 +6,7 @@ export default function PathnameDisplay() {
   const pathname = usePathname();
 
   return (
-    <p className="text-[10px] font-mono text-muted-foreground/50 tracking-[0.2em] uppercase mb-4">
+    <p className="eyebrow text-muted-foreground/50 mb-4">
       {pathname}
     </p>
   );

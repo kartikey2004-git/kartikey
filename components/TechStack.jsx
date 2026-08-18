@@ -20,9 +20,9 @@ export default function AboutMeSection() {
       id="how-i-build"
       className="w-full overflow-x-hidden bg-background py-12 sm:py-14 lg:py-16 p-2"
     >
-      <div className="mx-auto max-w-3xl px-4 sm:px-5 lg:px-8">
+      <div className="mx-auto max-w-3xl">
         <div className="space-y-8 mb-6">
-          <h2 className="text-xl font-semibold rounded-sm sm:text-3xl">
+          <h2 className="heading-lg">
             Tech Stack
           </h2>
         </div>
@@ -39,7 +39,7 @@ export default function AboutMeSection() {
 
               return (
                 <div key={category} className="space-y-3">
-                  <h3 className="text-xs font-mono uppercase tracking-[0.15em] text-muted-foreground/60">
+                  <h3 className="eyebrow">
                     {category}
                   </h3>
 
@@ -78,7 +78,7 @@ export default function AboutMeSection() {
           {/* Who Am I Section */}
           <div className="w-full space-y-5 border-t border-border/50 pt-8 sm:pt-10">
             <div className="space-y-1">
-              <p className="text-xs font-mono uppercase tracking-[0.15em] text-muted-foreground/60">
+              <p className="eyebrow">
                 Who Am I
               </p>
               <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">

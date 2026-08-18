@@ -1,7 +1,6 @@
 "use client";
 
 import { FaXTwitter } from "react-icons/fa6";
-import { BsInstagram } from "react-icons/bs";
 import { Mail, ArrowUpRight } from "lucide-react";
 
 const EMAIL = "kartikeybhatnagar247@gmail.com";
@@ -44,26 +43,26 @@ const contacts = [
 
 export default function GetInTouch() {
   return (
-    <section className="w-full overflow-x-hidden bg-background py-12 sm:py-14 lg:py-16 px-2">
-      <div className="mx-auto max-w-3xl px-4 sm:px-5 lg:px-8">
+    <section className="w-full overflow-x-hidden bg-background py-16 sm:py-20 lg:py-24 px-2">
+      <div className="mx-auto max-w-3xl">
         {/* Header */}
         <div className="space-y-2">
-          <p className="text-xs font-mono uppercase tracking-[0.15em] text-muted-foreground/60">
+          <p className="eyebrow">
             Contact
           </p>
 
-          <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-3xl">
+          <h2 className="heading-lg">
             Let&apos;s build something worth shipping.
           </h2>
         </div>
 
-        <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+        <p className="mt-4 max-w-xl body-text sm:text-base">
           Good ideas, hard problems, weird experiments, I&apos;m always down
           for the next one.
         </p>
 
         {/* Contact Links */}
-        <div className="mt-8 divide-y divide-border/50 border-y border-border/50">
+        <div className="mt-8 divide-y divide-border/50  border-border/50">
           {contacts.map(
             ({
               key,
@@ -96,7 +95,7 @@ export default function GetInTouch() {
                 <span className="absolute inset-y-0 left-0 w-px origin-bottom scale-y-0 bg-foreground transition-transform duration-300 group-hover:scale-y-100" />
 
                 {/* Icon */}
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-border text-foreground/70 transition-all duration-300 group-hover:scale-105 group-hover:border-foreground/50 group-hover:text-foreground sm:h-10 sm:w-10">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center text-foreground/70 transition-all duration-300 group-hover:scale-105 group-hover:border-foreground/50 group-hover:text-foreground sm:h-10 sm:w-10">
                   <Icon className="h-4 w-4" />
                 </span>
 
@@ -119,7 +118,7 @@ export default function GetInTouch() {
         </div>
 
         {/* Availability */}
-        <div className="mt-6 flex items-center gap-2 text-xs font-mono uppercase tracking-[0.15em] text-muted-foreground/60">
+        <div className="mt-6 flex items-center gap-2 eyebrow">
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-foreground/30" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-foreground/60" />

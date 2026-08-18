@@ -30,9 +30,9 @@ export default function PersonalSection() {
   const playNavigateSound = useClickSound("navigate");
 
   return (
-    <section className="py-8 p-2">
-      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8">
-        <h2 className="mb-4 sm:mb-8 text-lg font-semibold rounded-sm sm:text-3xl">
+    <section className="py-12 p-2 sm:py-14 lg:py-16">
+      <div className="mx-auto max-w-3xl">
+        <h2 className="mb-4 sm:mb-8 heading-lg">
           Personal
         </h2>
 
@@ -55,7 +55,7 @@ export default function PersonalSection() {
                   <h3 className="text-base font-semibold text-foreground sm:text-xl">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+                  <p className="mt-1 body-text">
                     {item.description}
                   </p>
                 </div>

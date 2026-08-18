@@ -21,6 +21,7 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
+import { EmptyState } from "@/components/ui/empty-state";
 import { projects } from "@/app/data";
 import { useClickSound } from "@/hooks/useClickSound";
 import { prepareBlogForSearch, searchBlogsGrouped } from "@/lib/search";
@@ -95,12 +96,12 @@ export default function GlobalSearch() {
   const query = search.trim().toLowerCase();
 
   const filteredPages = useMemo(() => {
-    if (!query) return pages;
+    if (!query) return [];
     return pages.filter((page) => page.title.toLowerCase().includes(query));
   }, [query]);
 
   const filteredProjects = useMemo(() => {
-    if (!query) return projects;
+    if (!query) return [];
     return projects.filter(
       (project) =>
         project.title.toLowerCase().includes(query) ||
@@ -109,13 +110,7 @@ export default function GlobalSearch() {
   }, [query]);
 
   const blogGroups = useMemo(() => {
-    if (!query) {
-      return blogs.slice(0, 8).map((blog) => ({
-        slug: blog.slug,
-        title: blog.title,
-        lines: [],
-      }));
-    }
+    if (!query) return [];
     return searchBlogsGrouped(blogs, query).slice(0, 6);
   }, [blogs, query]);
 
@@ -129,7 +124,7 @@ export default function GlobalSearch() {
       >
         <Search className="h-3.5 w-3.5 shrink-0" />
         <span className="hidden sm:inline">Search...</span>
-        <kbd className="ml-auto hidden items-center gap-0.5 rounded-sm border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground sm:inline-flex">
+        <kbd className="ml-auto hidden items-center gap-0.5 rounded-sm border bg-muted px-1.5 py-0.5 font-mono text-xs text-muted-foreground sm:inline-flex">
           Ctrl K
         </kbd>
       </Button>
@@ -147,78 +142,89 @@ export default function GlobalSearch() {
           placeholder="Search pages, projects, blogs (title or content)..."
         />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-
-          {filteredPages.length > 0 && (
-            <CommandGroup heading="Pages">
-              {filteredPages.map((page) => (
-                <CommandItem
-                  key={page.href}
-                  value={page.href}
-                  onSelect={() => go(page.href)}
-                >
-                  <page.icon />
-                  {page.title}
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          )}
-
-          {filteredProjects.length > 0 && (
+          {!query ? (
+            <EmptyState
+              icon={Search}
+              title="Search kartikey.dev"
+              description="Start typing to search pages, blogs, and projects."
+              className="border-none py-10"
+            />
+          ) : (
             <>
-              <CommandSeparator />
-              <CommandGroup heading="Projects">
-                {filteredProjects.map((project) => (
-                  <CommandItem
-                    key={project.slug}
-                    value={project.slug}
-                    onSelect={() => go(`/projects#${project.slug}`)}
-                  >
-                    <FolderGit2 />
-                    {project.title}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
+              <CommandEmpty>No results found.</CommandEmpty>
+
+              {filteredPages.length > 0 && (
+                <CommandGroup heading="Pages">
+                  {filteredPages.map((page) => (
+                    <CommandItem
+                      key={page.href}
+                      value={page.href}
+                      onSelect={() => go(page.href)}
+                    >
+                      <page.icon />
+                      {page.title}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              )}
+
+              {blogGroups.map((blog) => (
+                <Fragment key={blog.slug}>
+                  <CommandSeparator />
+                  <CommandGroup heading={blog.title}>
+                    {blog.lines.length === 0 ? (
+                      <CommandItem
+                        value={blog.slug}
+                        onSelect={() => go(`/blogs/${blog.slug}`)}
+                      >
+                        <FileText />
+                        {blog.title}
+                      </CommandItem>
+                    ) : (
+                      blog.lines.map((line, i) => (
+                        <CommandItem
+                          key={i}
+                          value={`${blog.slug}-${i}`}
+                          onSelect={() =>
+                            go(
+                              line.anchor
+                                ? `/blogs/${blog.slug}#${line.anchor}`
+                                : `/blogs/${blog.slug}`,
+                            )
+                          }
+                        >
+                          {line.prefix && (
+                            <span className="text-muted-foreground">{line.prefix}</span>
+                          )}
+                          <span className="truncate">
+                            <HighlightedText parts={line.parts} />
+                          </span>
+                        </CommandItem>
+                      ))
+                    )}
+                  </CommandGroup>
+                </Fragment>
+              ))}
+
+              {filteredProjects.length > 0 && (
+                <>
+                  <CommandSeparator />
+                  <CommandGroup heading="Projects">
+                    {filteredProjects.map((project) => (
+                      <CommandItem
+                        key={project.slug}
+                        value={project.slug}
+                        onSelect={() => go(`/projects#${project.slug}`)}
+                      >
+                        <FolderGit2 />
+                        {project.title}
+                      </CommandItem>
+                    ))}
+                  </CommandGroup>
+                </>
+              )}
             </>
           )}
-
-          {blogGroups.map((blog) => (
-            <Fragment key={blog.slug}>
-              <CommandSeparator />
-              <CommandGroup heading={blog.title}>
-                {blog.lines.length === 0 ? (
-                  <CommandItem
-                    value={blog.slug}
-                    onSelect={() => go(`/blogs/${blog.slug}`)}
-                  >
-                    <FileText />
-                    {blog.title}
-                  </CommandItem>
-                ) : (
-                  blog.lines.map((line, i) => (
-                    <CommandItem
-                      key={i}
-                      value={`${blog.slug}-${i}`}
-                      onSelect={() =>
-                        go(
-                          line.anchor
-                            ? `/blogs/${blog.slug}#${line.anchor}`
-                            : `/blogs/${blog.slug}`,
-                        )
-                      }
-                    >
-                      {line.prefix && (
-                        <span className="text-muted-foreground">{line.prefix}</span>
-                      )}
-                      <span className="truncate">
-                        <HighlightedText parts={line.parts} />
-                      </span>
-                    </CommandItem>
-                  ))
-                )}
-              </CommandGroup>
-            </Fragment>
-          ))}
         </CommandList>
       </CommandDialog>
     </>

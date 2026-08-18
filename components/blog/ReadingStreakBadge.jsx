@@ -9,7 +9,7 @@ export function ReadingStreakBadge() {
 
   return (
     <span className="inline-flex items-center gap-1" suppressHydrationWarning>
-      🔥 {count} day streak
+      {count} day streak
     </span>
   );
 }

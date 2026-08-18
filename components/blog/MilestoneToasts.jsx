@@ -5,10 +5,10 @@ import { toast } from "sonner";
 import { useReadingExperience } from "@/components/blog/ReadingExperienceContext";
 
 const MILESTONES = [
-  { at: 25, message: "You're getting into it 👀" },
+  { at: 25, message: "You're getting into it" },
   { at: 50, message: "Halfway there." },
   { at: 75, message: "Almost finished." },
-  { at: 100, message: "You made it 🎉" },
+  { at: 100, message: "You made it" },
 ];
 
 // Fires each milestone toast at most once per article view (the fired-set

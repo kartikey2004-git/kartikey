@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useCopyToClipboard } from "usehooks-ts";
 import { Check, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 export function CopyCodeButton({ code, className }) {
@@ -24,17 +25,19 @@ export function CopyCodeButton({ code, className }) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="icon-xs"
           onClick={handleCopy}
           aria-label={copied ? "Copied to clipboard" : "Copy code"}
           className={cn(
-            "inline-flex items-center justify-center rounded-md border border-border/50 bg-background/80 p-1.5 text-muted-foreground backdrop-blur-sm transition-colors hover:text-foreground hover:border-border",
+            "border border-border/50 bg-background/80 text-muted-foreground backdrop-blur-sm hover:text-foreground hover:border-border",
             className
           )}
         >
           {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-        </button>
+        </Button>
       </TooltipTrigger>
       <TooltipContent>{copied ? "Copied!" : "Copy"}</TooltipContent>
     </Tooltip>

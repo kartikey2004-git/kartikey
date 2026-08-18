@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 import { FaChevronRight } from "@/lib/icons";
 import { ArrowRight } from "lucide-react";
@@ -24,11 +25,27 @@ export default function BlogSection() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-screen -mt-30 border-b border-border">
-        <div className="text-sm text-muted-foreground rounded-md animate-pulse">
-          Loading blog posts...
+      <section className="py-12 p-2 sm:py-14 lg:py-16">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-4 sm:mb-8 flex items-center justify-between gap-4">
+            <h2 className="heading-lg">Blogs</h2>
+          </div>
+
+          <div className="space-y-4 md:-ml-5 -ml-3">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="space-y-3 p-3 sm:p-5 lg:p-6">
+                <Skeleton className="h-5 w-2/3 sm:h-6" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <div className="flex items-center justify-between pt-1">
+                  <Skeleton className="h-3 w-24" />
+                  <Skeleton className="h-3 w-16" />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     );
   }
 
@@ -45,10 +62,10 @@ export default function BlogSection() {
   };
 
   return (
-    <section className="py-8 p-2">
-      <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8">
+    <section className="py-12 p-2 sm:py-14 lg:py-16">
+      <div className="mx-auto max-w-3xl">
         <div className="mb-4 sm:mb-8 flex items-center justify-between gap-4">
-          <h2 className="text-lg font-semibold rounded-sm sm:text-3xl">Blogs</h2>
+          <h2 className="heading-lg">Blogs</h2>
 
           <Button
             asChild
@@ -74,23 +91,26 @@ export default function BlogSection() {
                   {blog.title}
                 </h3>
 
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="body-text">
                   {blog.description}
                 </p>
 
                 <div className="flex items-center justify-between">
-                  <time className="text-[13px] text-muted-foreground sm:text-sm">
+                  <time className="text-sm text-muted-foreground">
                     {formatDate(blog.publishedAt || blog.createdAt)}
                   </time>
 
-                  <Link
-                    href={`/blogs/${blog.slug}`}
-                    onClick={playNavigateSound}
-                    className="text-[14px] sm:text-sm text-primary hover:text-primary/80 transition-colors inline-flex items-center gap-1 mt-1.5"
+                  <Button
+                    asChild
+                    variant="link"
+                    size="sm"
+                    className="group h-auto gap-1 p-0 no-underline hover:no-underline"
                   >
-                    Read more
-                    <ArrowRight className="w-3 h-3 mt-1" />
-                  </Link>
+                    <Link href={`/blogs/${blog.slug}`} onClick={playNavigateSound}>
+                      Read more
+                      <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </Card>

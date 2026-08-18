@@ -10,13 +10,13 @@ function ToolIcon({ name }) {
 
   return (
     <div
-      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[4px] border border-border/70 bg-background text-foreground/60 transition-all duration-200 group-hover:scale-105 group-hover:border-border group-hover:text-foreground"
+      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xs border border-border/70 bg-background text-foreground/60 transition-all duration-200 group-hover:scale-105 group-hover:border-border group-hover:text-foreground"
       aria-hidden="true"
     >
       {Icon ? (
         <Icon className="h-4 w-4" />
       ) : (
-        <span className="font-mono text-[10px] font-semibold tracking-wide">
+        <span className="font-mono text-xs font-semibold tracking-wide">
           {meta.mono}
         </span>
       )}
@@ -29,16 +29,16 @@ function ToolItem({ name }) {
 
   return (
     <div
-      className="group flex items-center gap-3 rounded-[4px] border border-border/60 bg-foreground/[0.015] px-3 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-foreground/[0.035]"
+      className="group flex items-center gap-3 rounded-xs border border-border/60 bg-foreground/[0.015] px-3 py-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-foreground/[0.035]"
       tabIndex={0}
     >
       <ToolIcon name={name} />
       <div className="min-w-0">
-        <div className="truncate text-[13px] font-medium text-foreground/90 transition-colors duration-200 group-hover:text-foreground">
+        <div className="truncate text-sm font-medium text-foreground/90 transition-colors duration-200 group-hover:text-foreground">
           {name}
         </div>
         {meta.purpose && (
-          <div className="truncate text-[11px] text-muted-foreground">
+          <div className="truncate text-xs text-muted-foreground">
             {meta.purpose}
           </div>
         )}
@@ -54,15 +54,15 @@ function CategorySection({ section, index }) {
     <section>
       <div className="mb-4">
         <div className="mb-1.5 flex items-baseline gap-2.5">
-          <span className="font-mono text-[11px] text-muted-foreground/50">
+          <span className="font-mono text-xs text-muted-foreground/50">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <h2 className="text-[13px] font-semibold uppercase tracking-[0.08em] text-foreground">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
             {section.category}
           </h2>
         </div>
         {meta.description && (
-          <p className="max-w-md text-[13px] text-muted-foreground">
+          <p className="max-w-md text-sm text-muted-foreground">
             {meta.description}
           </p>
         )}
@@ -80,10 +80,10 @@ function CategorySection({ section, index }) {
 function SpecRow({ label, value }) {
   return (
     <div className="flex items-baseline justify-between gap-4 border-b border-border/30 py-2 last:border-none">
-      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
+      <span className="font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground/60">
         {label}
       </span>
-      <span className="text-right font-mono text-[12px] text-foreground/85">
+      <span className="text-right font-mono text-sm text-foreground/85">
         {value}
       </span>
     </div>
@@ -92,18 +92,18 @@ function SpecRow({ label, value }) {
 
 function SystemPanel({ label, title, subtitle, rows }) {
   return (
-    <div className="rounded-[4px] border border-border/70 p-5">
+    <div className="rounded-xs border border-border/70 p-5">
       <div className="mb-4 flex items-center justify-between">
         <div>
           <div className="mb-1 flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-foreground/40" />
-            <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground/60">
+            <span className="font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground/60">
               {label}
             </span>
           </div>
           <h3 className="text-sm font-semibold text-foreground">{title}</h3>
           {subtitle && (
-            <p className="mt-0.5 text-[11px] text-muted-foreground">
+            <p className="mt-0.5 text-xs text-muted-foreground">
               {subtitle}
             </p>
           )}
@@ -140,14 +140,14 @@ export default function GearClient() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8 py-16">
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-12">
           <PathnameDisplay />
 
-          <h1 className="text-lg font-semibold sm:text-3xl">
+          <h1 className="heading-lg">
             {gearMeta.headline}
           </h1>
 
-          <p className="mt-3 max-w-lg text-[15px] text-muted-foreground">
+          <p className="mt-3 max-w-lg text-base text-muted-foreground">
             {gearMeta.subtext}
           </p>
         </div>
@@ -167,10 +167,10 @@ export default function GearClient() {
         {/* System */}
         <div className="mb-16 border-t border-border/60 pt-10">
           <div className="mb-6 flex items-baseline gap-2.5">
-            <span className="font-mono text-[11px] text-muted-foreground/50">
+            <span className="font-mono text-xs text-muted-foreground/50">
               ~
             </span>
-            <h2 className="text-[13px] font-semibold uppercase tracking-[0.08em] text-foreground">
+            <h2 className="text-sm font-semibold uppercase tracking-[0.15em] text-foreground">
               My setup
             </h2>
           </div>

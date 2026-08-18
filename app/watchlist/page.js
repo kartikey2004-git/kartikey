@@ -1,5 +1,6 @@
 import { movies, moviesMeta } from "@/app/data";
 import PathnameDisplay from "@/components/PathnameDisplay";
+import { Card } from "@/components/ui/card";
 
 export const metadata = {
   title: "Movies",
@@ -30,15 +31,15 @@ export default function MoviesPage() {
         <header className="mb-12">
           <PathnameDisplay />
 
-          <h1 className="text-lg font-semibold rounded-sm sm:text-3xl">
+          <h1 className="heading-lg">
             {moviesMeta.headline}
           </h1>
 
-          <p className="mt-2 text-md text-muted-foreground">
+          <p className="mt-2 body-text">
             {moviesMeta.subtext}
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] font-mono uppercase tracking-[0.15em]">
+          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-mono uppercase tracking-[0.15em]">
             {moviesMeta.tags.map((tag, i) => (
               <span
                 key={i}
@@ -52,10 +53,13 @@ export default function MoviesPage() {
 
         <div className="space-y-4 md:-ml-5 -ml-3">
           {movies.map((movie, index) => (
-            <div key={movie.id} className="p-3 sm:p-5 lg:p-6">
+            <Card
+              key={movie.id}
+              className="bg-transparent border-none shadow-none p-3 sm:p-5 lg:p-6"
+            >
               <div className="flex flex-col space-y-2">
                 <div className="flex items-start gap-4">
-                  <span className="text-[10px] font-mono text-muted-foreground/50 mt-1">
+                  <span className="text-xs font-mono text-muted-foreground/50 mt-1">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
@@ -64,7 +68,7 @@ export default function MoviesPage() {
                       {movie.title}
                     </h3>
 
-                    <div className="flex items-center gap-2 mt-1 text-[10px] text-muted-foreground sm:text-xs">
+                    <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
                       <span>{movie.year}</span>
                       <span className="text-muted-foreground/30">·</span>
                       {movie.genre.map((g, i) => (
@@ -86,7 +90,7 @@ export default function MoviesPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 
@@ -94,7 +98,7 @@ export default function MoviesPage() {
           <p className="text-sm italic text-muted-foreground/60 leading-relaxed">
             {moviesMeta.quote.split(" — ")[0]}
           </p>
-          <p className="text-[10px] font-mono text-muted-foreground/30 mt-2 tracking-wider">
+          <p className="text-xs font-mono text-muted-foreground/30 mt-2 tracking-wider">
             — {moviesMeta.quote.split(" — ")[1]}
           </p>
         </footer>

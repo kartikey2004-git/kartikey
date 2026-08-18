@@ -13,11 +13,11 @@ import {
 import { useTheme } from "next-themes";
 import GlobalSearch from "@/components/GlobalSearch";
 import { FOCUS_MODE_KEY } from "@/lib/reading-storage";
+import { Button } from "@/components/ui/button";
 
 const BLOG_POST_PATTERN = /^\/blogs\/[^/]+$/;
 
 export function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
@@ -48,24 +48,8 @@ export function Navbar() {
     };
   }, []);
 
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
-
   const handleThemeToggle = async () => {
     await toggleSwitchTheme();
-  };
-
-  const handleClick = () => {
-    setMenuOpen(false);
   };
 
   return (
@@ -79,14 +63,13 @@ export function Navbar() {
           : "bg-background/80"
           }`}
       >
-        <div className="max-w-3xl mx-auto px-3 sm:px-5 lg:px-8 h-16 flex items-center justify-between">
+        <div className="max-w-3xl mx-auto  h-16 flex items-center justify-between">
           <nav className="flex items-center gap-4 lg:gap-6 xl:gap-8">
             {navLinks.map((link, index) => (
               <Link
                 key={link.title}
                 href={link.href}
-                onClick={handleClick}
-                className="relative text-foreground/75 text-[14px] sm:text-md font-normal transition-all duration-300 py-2
+                className="relative text-foreground/75 text-sm sm:text-base font-normal transition-all duration-300 py-2
                   after:absolute after:left-0 after:-bottom-1 after:h-0.25
                   after:w-0 after:bg-foreground
                   after:transition-all after:duration-200 ease-out
@@ -105,18 +88,20 @@ export function Navbar() {
             <GlobalSearch />
 
             {mounted && (
-              <button
+              <Button
                 ref={themeToggleRef}
                 onClick={handleThemeToggle}
-                className="p-1.5 text-foreground/70 md:hover:text-foreground md:hover:bg-accent transition-all duration-300 rounded-sm"
+                variant="ghost"
+                size="icon-sm"
                 aria-label="Toggle theme"
+                className="text-foreground/70 hover:text-foreground duration-300"
               >
                 {resolvedTheme === "dark" ? (
                   <BsSun className="w-3 h-3" />
                 ) : (
                   <BsMoon className="w-3 h-3" />
                 )}
-              </button>
+              </Button>
             )}
 
 

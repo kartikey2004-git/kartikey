@@ -21,12 +21,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Skeleton } from "@/components/ui/skeleton";
+import { EmptyState } from "@/components/ui/empty-state";
+import { ErrorState } from "@/components/ui/error-state";
 import { useState, useEffect } from "react";
 
 const GithubDashboard = () => {
   const [data, setData] = useState([]);
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [availableYears, setAvailableYears] = useState([]);
 
@@ -52,6 +56,7 @@ const GithubDashboard = () => {
         setData(yearData);
       } catch (error) {
         console.error("Error fetching GitHub contributions:", error);
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -72,17 +77,31 @@ const GithubDashboard = () => {
 
   if (loading) {
     return (
-      <div className="p-4 text-sm text-muted-foreground rounded-md">
-        Loading contributions...
+      <div className="w-full min-w-0 space-y-3">
+        <div className="mb-10 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
+          <Skeleton className="h-6 w-40" />
+          <Skeleton className="h-8 w-full sm:w-28" />
+        </div>
+        <Skeleton className="h-40 w-full sm:h-48" />
       </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <ErrorState
+        title="Couldn't load GitHub contributions"
+        description="Something went wrong while fetching contribution data."
+      />
     );
   }
 
   if (data.length === 0) {
     return (
-      <div className="border border-border bg-card p-4 text-sm text-muted-foreground rounded-md">
-        No contribution data available
-      </div>
+      <EmptyState
+        title="No contribution data available"
+        description="Check back once activity has been recorded."
+      />
     );
   }
 

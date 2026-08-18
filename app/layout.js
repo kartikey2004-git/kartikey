@@ -73,7 +73,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
+        className={`${inter.variable} ${geistMono.variable} bg-background text-foreground antialiased px-3`}
       >
         <Analytics />
         <SiteVisitorTracker />

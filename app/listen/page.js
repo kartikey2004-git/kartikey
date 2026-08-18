@@ -24,14 +24,14 @@ export default function Listen() {
       <div className="mx-auto max-w-3xl px-3 sm:px-5 lg:px-8 py-16">
         <header className="mb-12">
           <PathnameDisplay />
-          <h1 className="text-lg font-semibold rounded-sm sm:text-3xl">
+          <h1 className="heading-lg">
             {listenMeta.headline}
           </h1>
-          <p className="mt-2 text-md text-muted-foreground">
+          <p className="mt-2 body-text">
             {listenMeta.subtext}
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px] font-mono uppercase tracking-[0.15em]">
+          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-mono uppercase tracking-[0.15em]">
             {/* persona (primary) */}
             <span className="px-2.5 py-1 text-foreground">
               {persona}
@@ -70,7 +70,7 @@ export default function Listen() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
                 </span>
-                <span className="text-[10px] font-mono tracking-[0.15em] uppercase text-muted-foreground">
+                <span className="text-xs font-mono tracking-[0.15em] uppercase text-muted-foreground">
                   now playing
                 </span>
               </div>
@@ -133,7 +133,7 @@ export default function Listen() {
                         </span>
                       ) : (
                         <>
-                          <span className="absolute text-[11px] font-mono text-muted-foreground/50 group-hover:opacity-0 transition-opacity">
+                          <span className="absolute text-xs font-mono text-muted-foreground/50 group-hover:opacity-0 transition-opacity">
                             {index + 1}
                           </span>
                           <Play
@@ -164,7 +164,7 @@ export default function Listen() {
                   </div>
 
                   {/* duration */}
-                  <span className="text-[10px] text-muted-foreground sm:text-sm ml-4 flex-shrink-0">
+                  <span className="text-xs text-muted-foreground sm:text-sm ml-4 flex-shrink-0">
                     {track.duration}
                   </span>
                 </div>
@@ -178,7 +178,7 @@ export default function Listen() {
           <p className="text-sm italic text-muted-foreground/60 leading-relaxed">
             &ldquo;{listenMeta.quote.split(" — ")[0]}&rdquo;
           </p>
-          <p className="text-[10px] font-mono text-muted-foreground/30 mt-2 tracking-wider">
+          <p className="text-xs font-mono text-muted-foreground/30 mt-2 tracking-wider">
             — {listenMeta.quote.split(" — ")[1]}
           </p>
         </footer>

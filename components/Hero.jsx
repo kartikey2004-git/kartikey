@@ -11,6 +11,7 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 import FlipWords from "@/components/ui/flip-words";
+import { Button } from "@/components/ui/button";
 
 const Hero = () => {
   const roles = ["Developer", "Engineer", "Learner", "Builder"];
@@ -67,7 +68,7 @@ const Hero = () => {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
       </div>
 
-      <div className="relative pb-8">
+      <div className="relative pb-12 sm:pb-14 lg:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -93,14 +94,14 @@ const Hero = () => {
                       Hi, I'm Kartikey
                     </h1>
 
-                    <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-mono uppercase tracking-[0.15em]">
-                      <span className="text-muted-foreground/60">
+                    <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <span className="eyebrow">
                         Ghaziabad, India
                       </span>
 
-                      <span className="text-muted-foreground/20">/</span>
+                      <span className="eyebrow text-muted-foreground/20">/</span>
 
-                      <span className="text-muted-foreground/60">
+                      <span className="eyebrow">
                         Engineer at caffeine
                       </span>
                     </div>
@@ -122,19 +123,25 @@ const Hero = () => {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                   <div className="flex items-center gap-1 flex-wrap">
                     {socialLinks.map(({ icon: Icon, link, label }, index) => (
-                      <a
+                      <Button
                         key={label}
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-1.5 text-muted-foreground md:hover:text-foreground md:hover:bg-accent transition-all duration-300 md:hover:scale-105 rounded-sm"
-                        aria-label={label}
-                        style={{
-                          animationDelay: `${index * 100}ms`,
-                        }}
+                        asChild
+                        variant="ghost"
+                        size="icon-sm"
+                        className="text-muted-foreground hover:bg-transparent hover:text-muted-foreground md:hover:bg-accent md:hover:text-foreground transition-all duration-300 md:hover:scale-105 rounded-sm"
                       >
-                        <Icon className="w-4 h-4" />
-                      </a>
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={label}
+                          style={{
+                            animationDelay: `${index * 100}ms`,
+                          }}
+                        >
+                          <Icon className="w-4 h-4" />
+                        </a>
+                      </Button>
                     ))}
                   </div>
 

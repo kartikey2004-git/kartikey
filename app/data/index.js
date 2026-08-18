@@ -87,33 +87,6 @@ export const projects = [
     currentlyBuilding: false,
   },
   {
-    title: "Kairo",
-    slug: "kairo",
-    description:
-      "An AI-native CLI: chat, search the web, scaffold apps, and hand tasks to an agent that runs tools on its own, without leaving the terminal. OAuth device flow keeps sessions secure.",
-    tech: [
-      "TypeScript",
-      "Express.js",
-      "Google Gemini",
-      "AI SDK",
-      "CLI Development",
-      "Prisma",
-      "Better Auth",
-      "Next.js",
-    ],
-    image: "/kairoo.png",
-    features: [
-      "Chat with AI and pull live web results without leaving the terminal.",
-      "Turn simple prompts into complete applications or useful code.",
-      "Let the built-in agent run tools, execute code, and solve tasks independently.",
-      "Secure your sessions and store conversation history",
-    ],
-    bg: "kairo",
-    projectLink: "https://github.com/kartikey2004-git/Kairo",
-    liveLink: "",
-    currentlyBuilding: false,
-  },
-  {
     title: "VartaX",
     slug: "vartax",
     description:

@@ -6,7 +6,7 @@ export function RelatedPosts({ posts }) {
 
   return (
     <section className="mt-12 border-t border-border/50 pt-8" aria-label="Related posts">
-      <h2 className="text-sm font-semibold text-foreground">Next recommended read</h2>
+      <h2 className="heading-sm">Next recommended read</h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-3">
         {posts.map((post) => (
           <Link

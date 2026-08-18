@@ -2,6 +2,7 @@
 
 import { useLocalStorage } from "usehooks-ts";
 import { Highlighter } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useTextSelection } from "@/hooks/useTextSelection";
 import { useReadingExperience } from "@/components/blog/ReadingExperienceContext";
 import { notesKey } from "@/lib/reading-storage";
@@ -28,14 +29,10 @@ export function HighlightToolbar() {
       role="toolbar"
       aria-label="Selection actions"
     >
-      <button
-        type="button"
-        onClick={handleSave}
-        className="inline-flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium hover:bg-accent"
-      >
+      <Button type="button" variant="ghost" size="xs" onClick={handleSave} className="gap-1.5">
         <Highlighter className="h-3.5 w-3.5" />
         Save Note
-      </button>
+      </Button>
     </div>
   );
 }
