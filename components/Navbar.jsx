@@ -11,9 +11,16 @@ import {
   useModeAnimation,
 } from "react-theme-switch-animation";
 import { useTheme } from "next-themes";
-import GlobalSearch from "@/components/GlobalSearch";
+import dynamic from "next/dynamic";
 import { FOCUS_MODE_KEY } from "@/lib/reading-storage";
 import { Button } from "@/components/ui/button";
+
+const GlobalSearch = dynamic(() => import("@/components/GlobalSearch"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-8 w-8 sm:w-48" aria-hidden="true" />
+  ),
+});
 
 const BLOG_POST_PATTERN = /^\/blogs\/[^/]+$/;
 
@@ -59,7 +66,7 @@ export function Navbar() {
     >
       <div
         className={`w-full backdrop-blur-xl transition-all duration-500 ease-out ${scrolled
-          ? "bg-background/95 shadow-sm"
+          ? "bg-background/95"
           : "bg-background/80"
           }`}
       >

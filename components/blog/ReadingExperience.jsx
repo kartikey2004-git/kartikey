@@ -29,7 +29,7 @@ export function BlogPostWidthWrapper({ children }) {
   return (
     <div
       className={cn(
-        "mx-auto px-3 sm:px-5 lg:px-8 py-16 transition-[max-width] duration-300",
+        "mx-auto py-16 transition-[max-width] duration-300",
         isFocusedBlogPost ? "max-w-5xl" : "max-w-3xl"
       )}
       suppressHydrationWarning

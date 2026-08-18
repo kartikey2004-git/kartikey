@@ -1,7 +1,5 @@
-"use client";
-
-import { FaXTwitter } from "react-icons/fa6";
 import { Mail, ArrowUpRight } from "lucide-react";
+import CopyDmLink from "./CopyDmLink";
 
 const EMAIL = "kartikeybhatnagar247@gmail.com";
 
@@ -22,15 +20,10 @@ const X_DM_HREF = `https://x.com/messages/compose?recipient_id=${X_RECIPIENT_ID}
   X_DM_TEXT
 )}`;
 
+const X_LABEL = "X";
+const X_DESCRIPTION = "Let’s connect, slide into my DMs.";
+
 const contacts = [
-  {
-    key: "x",
-    icon: FaXTwitter,
-    label: "X",
-    description: "Let’s connect, slide into my DMs.",
-    href: X_DM_HREF,
-    external: true,
-  },
   {
     key: "email",
     icon: Mail,
@@ -63,6 +56,14 @@ export default function GetInTouch() {
 
         {/* Contact Links */}
         <div className="mt-8 divide-y divide-border/50  border-border/50">
+          <CopyDmLink
+            href={X_DM_HREF}
+            external
+            label={X_LABEL}
+            description={X_DESCRIPTION}
+            dmText={X_DM_TEXT}
+          />
+
           {contacts.map(
             ({
               key,
@@ -77,18 +78,6 @@ export default function GetInTouch() {
                 href={href}
                 target={external ? "_blank" : undefined}
                 rel={external ? "noopener noreferrer" : undefined}
-                onClick={
-                  key === "x"
-                    ? () => {
-                        navigator.clipboard
-                          .writeText(X_DM_TEXT)
-                          .then(() =>
-                            toast("Message copied — paste it in the DM!")
-                          )
-                          .catch(() => {});
-                      }
-                    : undefined
-                }
                 className="group relative flex items-center gap-3 overflow-hidden px-1 py-4 transition-all duration-300 sm:gap-4 sm:px-2 md:hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 {/* Hover accent */}

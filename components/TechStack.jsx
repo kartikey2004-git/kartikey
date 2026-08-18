@@ -1,20 +1,9 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
-
 import { Badge } from "@/components/ui/badge";
+import ThemedSkillIcon from "@/components/ThemedSkillIcon";
 
 import { technologies, techCategories, highlightsData } from "@/app/data";
 
 export default function AboutMeSection() {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   return (
     <section
       id="how-i-build"
@@ -51,17 +40,7 @@ export default function AboutMeSection() {
                         className="border-dashed border-2 bg-transparent px-4 py-2 text-sm"
                       >
                         <div className="flex items-center gap-2">
-                          <img
-                            src={
-                              mounted &&
-                                resolvedTheme === "light" &&
-                                skill.iconLight
-                                ? skill.iconLight
-                                : skill.icon
-                            }
-                            alt={skill.iconname}
-                            className="h-4 w-4"
-                          />
+                          <ThemedSkillIcon skill={skill} />
 
                           <span className="hidden sm:inline font-mono">
                             {skill.iconname}

@@ -1,5 +1,3 @@
-"use client";
-
 import { gear, gearMeta } from "@/app/data/index.js";
 import PathnameDisplay from "@/components/PathnameDisplay";
 import { CATEGORY_META, getToolMeta } from "./toolMeta";

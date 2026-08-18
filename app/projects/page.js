@@ -1,16 +1,11 @@
-"use client";
-
-import ProjectCard from "@/components/ProjectCard";
+import { SoundProjectCard } from "@/components/SoundLink";
 import { projects } from "@/app/data";
-import { useClickSound } from "@/hooks/useClickSound";
 import PathnameDisplay from "@/components/PathnameDisplay";
 
 export default function ProjectsPage() {
   const reversedAll = [...projects].reverse();
   const recentProjects = reversedAll.slice(0, 5);
   const earlierProjects = reversedAll.slice(5);
-
-  const playNavigateSound = useClickSound("navigate");
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -30,11 +25,7 @@ export default function ProjectsPage() {
 
           <div className="space-y-6">
             {recentProjects.map((project) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                onNavigate={playNavigateSound}
-              />
+              <SoundProjectCard key={project.title} project={project} />
             ))}
           </div>
         </section>
@@ -46,11 +37,7 @@ export default function ProjectsPage() {
 
           <div className="space-y-6">
             {earlierProjects.map((project) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                onNavigate={playNavigateSound}
-              />
+              <SoundProjectCard key={project.title} project={project} />
             ))}
           </div>
         </section>

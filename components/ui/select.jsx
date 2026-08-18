@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { FaCheck, FaChevronDown, FaChevronUp } from "@/lib/icons";
+import { FaCheck, FaChevronDown, FaChevronUp } from "react-icons/fa6";
 import { Select as SelectPrimitive } from "radix-ui";
 
 import { cn } from "@/lib/utils";

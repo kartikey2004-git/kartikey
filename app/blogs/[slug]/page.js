@@ -3,15 +3,23 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Clock } from "lucide-react";
 import { getBlogBySlug, getBlogs } from "@/lib/blogs";
 import { extractHeadings } from "@/lib/search";
-import { countWords, computeReadingStats, extractKeywords, rankRelatedPosts } from "@/lib/blog-reading";
+import {
+  countWords,
+  computeReadingStats,
+  extractKeywords,
+  rankRelatedPosts,
+} from "@/lib/blog-reading";
 import PathnameDisplay from "@/components/PathnameDisplay";
 import BlogContent from "@/components/BlogContent";
 import BlogViewTracker from "@/components/BlogViewTracker";
-import { ReadingExperience, ArticleScrollBoundary, BlogPostWidthWrapper } from "@/components/blog/ReadingExperience";
+import {
+  ReadingExperience,
+  ArticleScrollBoundary,
+  BlogPostWidthWrapper,
+} from "@/components/blog/ReadingExperience";
 import { ReadingProgressBar } from "@/components/blog/ReadingProgressBar";
 import { WordsLeftCounter } from "@/components/blog/WordsLeftCounter";
 import { MilestoneToasts } from "@/components/blog/MilestoneToasts";
-import { KeywordPills } from "@/components/blog/KeywordPills";
 import { KeyboardShortcuts } from "@/components/blog/KeyboardShortcuts";
 import { FocusModeToggle } from "@/components/blog/FocusModeToggle";
 import { TypographyControls } from "@/components/blog/TypographyControls";
@@ -19,7 +27,6 @@ import { ReadingStreakBadge } from "@/components/blog/ReadingStreakBadge";
 import { HighlightToolbar } from "@/components/blog/HighlightToolbar";
 import { SavedHighlightsPanel } from "@/components/blog/SavedHighlightsPanel";
 import { ResumePrompt } from "@/components/blog/ResumePrompt";
-import { ReadingStatsPanel } from "@/components/blog/ReadingStatsPanel";
 import { RelatedPosts } from "@/components/blog/RelatedPosts";
 
 export async function generateStaticParams() {
@@ -64,9 +71,13 @@ export default async function BlogPage({ params }) {
   const wordCount = countWords(blog.content);
   const readingStats = computeReadingStats(blog.content, blog.readTime);
   const keywords = extractKeywords(blog.content, blog.title);
-  let headings = extractHeadings(blog.content).filter((heading) => heading.level === 2);
+  let headings = extractHeadings(blog.content).filter(
+    (heading) => heading.level === 2,
+  );
   if (headings.length === 0) {
-    headings = extractHeadings(blog.content).filter((heading) => heading.level === 3);
+    headings = extractHeadings(blog.content).filter(
+      (heading) => heading.level === 3,
+    );
   }
   const relatedPosts = rankRelatedPosts(blog, blogs, { limit: 3 });
 
@@ -75,7 +86,12 @@ export default async function BlogPage({ params }) {
       <BlogPostWidthWrapper>
         <PathnameDisplay />
 
-        <ReadingExperience key={blog.slug} slug={blog.slug} totalWords={wordCount} headings={headings}>
+        <ReadingExperience
+          key={blog.slug}
+          slug={blog.slug}
+          totalWords={wordCount}
+          headings={headings}
+        >
           <ReadingProgressBar />
 
           <Link
@@ -88,10 +104,14 @@ export default async function BlogPage({ params }) {
 
           <article>
             <header className="mb-10">
-              <h1 className="text-2xl font-semibold sm:text-3xl text-foreground">{blog.title}</h1>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{blog.description}</p>
+              <h1 className="text-2xl font-semibold sm:text-3xl text-foreground">
+                {blog.title}
+              </h1>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                {blog.description}
+              </p>
 
-              <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+              <div className="mt-4 flex flex-wrap items-center gap-4 text-xs text-muted-foreground md:flex-nowrap">
                 <time>{formatDate(blog.publishedAt || blog.createdAt)}</time>
                 {blog.readTime ? (
                   <span className="inline-flex items-center gap-1">

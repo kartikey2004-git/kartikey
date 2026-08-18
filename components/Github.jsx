@@ -1,7 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
 import GithubDashboard from "./dashboard/GithubDashboard";
+import RevealOnScroll from "./RevealOnScroll";
 
 const GithubSection = () => {
   return (
@@ -10,18 +8,13 @@ const GithubSection = () => {
       id="github"
     >
       <div className="mx-auto max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
+        <RevealOnScroll>
           <div className="relative w-full overflow-x-auto">
             <div className="min-w-full">
               <GithubDashboard />
             </div>
           </div>
-        </motion.div>
+        </RevealOnScroll>
       </div>
     </section>
   );

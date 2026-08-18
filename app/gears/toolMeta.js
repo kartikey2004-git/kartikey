@@ -30,6 +30,8 @@ import {
   SiCursor,
   SiLmstudio,
   SiOpencode,
+  SiWebstorm,
+  SiPycharm,
   SiVscodeBrand,
   SiPowershellBrand,
   SiWindowsTerminalBrand,
@@ -39,8 +41,6 @@ import {
   SiWisprFlowBrand,
   SiTraeBrand,
   SiCometBrand,
-  SiWebstormBrand,
-  SiPycharmBrand,
   SiQoderBrand,
 } from "@/lib/icons";
 
@@ -77,10 +77,10 @@ export const TOOL_META = {
   // editors & IDEs
   "VS Code": { icon: SiVscodeBrand, purpose: "Primary editor" },
   WebStorm: {
-    icon: SiWebstormBrand,
+    icon: SiWebstorm,
     purpose: "JavaScript / TypeScript IDE",
   },
-  PyCharm: { icon: SiPycharmBrand, purpose: "Python IDE" },
+  PyCharm: { icon: SiPycharm, purpose: "Python IDE" },
   Zed: { icon: SiZedindustries, purpose: "Fast, native editor" },
   Cursor: { icon: SiCursor, purpose: "AI-assisted development" },
 

@@ -1,9 +1,6 @@
-"use client";
-
 import { ArrowUpRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import Link from "next/link";
-import { useClickSound } from "@/hooks/useClickSound";
+import { SoundLink } from "@/components/SoundLink";
 
 const personalItems = [
   {
@@ -27,8 +24,6 @@ const personalItems = [
 ];
 
 export default function PersonalSection() {
-  const playNavigateSound = useClickSound("navigate");
-
   return (
     <section className="py-12 p-2 sm:py-14 lg:py-16">
       <div className="mx-auto max-w-3xl">
@@ -46,9 +41,8 @@ export default function PersonalSection() {
                   : ""
               }`}
             >
-              <Link
+              <SoundLink
                 href={item.href}
-                onClick={playNavigateSound}
                 className="group flex items-center justify-between gap-4"
               >
                 <div>
@@ -61,7 +55,7 @@ export default function PersonalSection() {
                 </div>
 
                 <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground" />
-              </Link>
+              </SoundLink>
             </Card>
           ))}
         </div>
